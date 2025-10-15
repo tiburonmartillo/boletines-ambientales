@@ -19,6 +19,12 @@ interface ProjectsTableProps {
 export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tiposEstudio }: ProjectsTableProps) {
   const [activeTab, setActiveTab] = useState<"proyectos" | "resolutivos">("proyectos")
   
+  // Debug: Log data when switching tabs
+  console.log("Active tab:", activeTab)
+  console.log("Proyectos count:", proyectos.length)
+  console.log("Resolutivos count:", resolutivos.length)
+  console.log("Sample resolutivo:", resolutivos[0])
+  
   const [search, setSearch] = useState("")
   const [municipioFilter, setMunicipioFilter] = useState<string>("all")
   const [giroFilter, setGiroFilter] = useState<string>("all")
@@ -106,6 +112,7 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
             <Button
               variant={activeTab === "resolutivos" ? "default" : "outline"}
               onClick={() => {
+                console.log("Switching to resolutivos tab")
                 setActiveTab("resolutivos")
                 setCurrentPage(1)
               }}

@@ -55,7 +55,7 @@ export function getAllProyectos(
     boletin.proyectos_ingresados.map((p) => ({
       ...p,
       fecha_publicacion: boletin.fecha_publicacion,
-      boletin_url: boletin.url,
+      boletin_url: boletin.url || boletin.filename,
     })),
   )
 }
@@ -67,7 +67,7 @@ export function getAllResolutivos(
     boletin.resolutivos_emitidos.map((r) => ({
       ...r,
       fecha_publicacion: boletin.fecha_publicacion,
-      boletin_url: boletin.url,
+      boletin_url: boletin.url || boletin.filename,
     })),
   )
 }

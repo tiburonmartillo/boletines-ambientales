@@ -51,6 +51,16 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
         item.nombre_proyecto.toLowerCase().includes(deferredSearch.toLowerCase()) ||
         item.promovente.toLowerCase().includes(deferredSearch.toLowerCase()) ||
         item.expediente.toLowerCase().includes(deferredSearch.toLowerCase())
+      
+      // Debug search
+      if (deferredSearch !== "") {
+        console.log(`Searching for "${deferredSearch}" in:`, {
+          expediente: item.expediente,
+          nombre_proyecto: item.nombre_proyecto,
+          promovente: item.promovente,
+          matchesSearch
+        })
+      }
 
       const matchesMunicipio = deferredMunicipioFilter === "all" || item.municipio === deferredMunicipioFilter
       const matchesGiro = deferredGiroFilter === "all" || item.giro === deferredGiroFilter
@@ -75,6 +85,9 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
 
   const totalPages = Math.ceil(filteredData.length / itemsPerPage)
   const paginatedData = filteredData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+  
+  // Debug search results
+  console.log(`Search results: ${filteredData.length} items found for search "${search}"`)
 
   return (
     <Card className="p-6 bg-card border-border">

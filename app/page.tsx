@@ -21,8 +21,12 @@ export default function DashboardPage() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Para dominio personalizado, usar ruta relativa
-    fetch('/data/boletines.json')
+    // Usar URL absoluta del dominio personalizado
+    const dataUrl = process.env.NODE_ENV === 'production' 
+      ? 'https://adn-a.org/data/boletines.json'
+      : '/data/boletines.json'
+    
+    fetch(dataUrl)
       .then((res) => res.json())
       .then((jsonData) => {
         setData(jsonData)

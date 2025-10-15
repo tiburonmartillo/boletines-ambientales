@@ -48,16 +48,16 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
     return sorted.filter((item) => {
       const matchesSearch =
         deferredSearch === "" ||
-        item.nombre_proyecto.toLowerCase().includes(deferredSearch.toLowerCase()) ||
-        item.promovente.toLowerCase().includes(deferredSearch.toLowerCase()) ||
-        item.expediente.toLowerCase().includes(deferredSearch.toLowerCase())
+        (item.nombre_proyecto && item.nombre_proyecto.toLowerCase().includes(deferredSearch.toLowerCase())) ||
+        (item.promovente && item.promovente.toLowerCase().includes(deferredSearch.toLowerCase())) ||
+        (item.expediente && item.expediente.toLowerCase().includes(deferredSearch.toLowerCase()))
       
       // Debug search
       if (deferredSearch !== "") {
         console.log(`Searching for "${deferredSearch}" in:`, {
-          expediente: item.expediente,
-          nombre_proyecto: item.nombre_proyecto,
-          promovente: item.promovente,
+          expediente: item.expediente || 'null',
+          nombre_proyecto: item.nombre_proyecto || 'null',
+          promovente: item.promovente || 'null',
           matchesSearch
         })
       }
@@ -280,11 +280,11 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
                 className="border-b border-border hover:bg-secondary/50 transition-colors"
               >
                 <td className="py-3 px-4 text-sm font-mono text-foreground">{item.expediente}</td>
-                <td className="py-3 px-4 text-sm text-foreground max-w-xs truncate" title={item.nombre_proyecto}>
-                  {item.nombre_proyecto}
+                <td className="py-3 px-4 text-sm text-foreground max-w-xs truncate" title={item.nombre_proyecto || 'Sin nombre'}>
+                  {item.nombre_proyecto || 'Sin nombre'}
                 </td>
-                <td className="py-3 px-4 text-sm text-muted-foreground max-w-xs truncate" title={item.promovente}>
-                  {item.promovente}
+                <td className="py-3 px-4 text-sm text-muted-foreground max-w-xs truncate" title={item.promovente || 'Sin promovente'}>
+                  {item.promovente || 'Sin promovente'}
                 </td>
                 <td className="py-3 px-4">
                   <Badge variant="outline" className="text-xs">

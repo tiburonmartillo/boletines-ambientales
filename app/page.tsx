@@ -21,7 +21,7 @@ export default function DashboardPage() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch("/data/boletines.json")
+    fetch("/boletines-ambientales/data/boletines.json")
       .then((res) => res.json())
       .then((jsonData) => {
         setData(jsonData)

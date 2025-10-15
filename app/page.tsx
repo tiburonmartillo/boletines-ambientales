@@ -21,7 +21,8 @@ export default function DashboardPage() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch("/boletines-ambientales/data/boletines.json")
+    const basePath = process.env.NODE_ENV === 'production' ? '/boletines-ambientales' : ''
+    fetch(`${basePath}/data/boletines.json`)
       .then((res) => res.json())
       .then((jsonData) => {
         setData(jsonData)

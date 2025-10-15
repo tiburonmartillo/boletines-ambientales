@@ -5,8 +5,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: '/boletines-ambientales',
-  assetPrefix: '/boletines-ambientales/',
+  basePath: process.env.NODE_ENV === 'production' ? '/boletines-ambientales' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/boletines-ambientales/' : '',
   productionBrowserSourceMaps: false,
   webpack: (config, { dev, isServer }) => {
     if (!dev && !isServer) {

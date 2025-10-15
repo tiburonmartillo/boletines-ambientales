@@ -12,14 +12,14 @@ interface DistributionChartsProps {
 const municipiosConfig = {
   count: {
     label: "Proyectos",
-    color: "hsl(var(--chart-1))",
+    color: "#10b981", // Verde esmeralda
   },
 }
 
 const girosConfig = {
   count: {
     label: "Proyectos",
-    color: "hsl(var(--chart-2))",
+    color: "#f59e0b", // Ámbar
   },
 }
 

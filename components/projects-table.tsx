@@ -18,6 +18,10 @@ interface ProjectsTableProps {
 
 export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tiposEstudio }: ProjectsTableProps) {
   const [activeTab, setActiveTab] = useState<"proyectos" | "resolutivos">("proyectos")
+  
+  // Debug: Log first few items to see URL structure
+  console.log("Proyectos sample:", proyectos.slice(0, 3))
+  console.log("Resolutivos sample:", resolutivos.slice(0, 3))
   const [search, setSearch] = useState("")
   const [municipioFilter, setMunicipioFilter] = useState<string>("all")
   const [giroFilter, setGiroFilter] = useState<string>("all")
@@ -287,17 +291,22 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
                   </>
                 )}
                 <td className="py-3 px-4">
-                  {item.boletin_url && item.boletin_url.trim() !== "" ? (
+                  {item.boletin_url && 
+                   typeof item.boletin_url === 'string' && 
+                   item.boletin_url.trim() !== "" && 
+                   item.boletin_url !== "null" && 
+                   item.boletin_url !== "undefined" ? (
                     <a
                       href={item.boletin_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-primary hover:underline text-sm"
+                      className="text-primary hover:underline text-sm font-medium"
+                      title={item.boletin_url}
                     >
-                      Ver PDF
+                      📄 Ver PDF
                     </a>
                   ) : (
-                    <span className="text-muted-foreground text-sm">N/A</span>
+                    <span className="text-muted-foreground text-sm">❌ Sin URL</span>
                   )}
                 </td>
               </tr>

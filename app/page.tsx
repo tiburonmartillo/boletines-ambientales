@@ -21,8 +21,8 @@ export default function DashboardPage() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const basePath = process.env.NODE_ENV === 'production' ? '/boletines-ambientales' : ''
-    fetch(`${basePath}/data/boletines.json`)
+    // Para dominio personalizado, usar ruta relativa
+    fetch('/data/boletines.json')
       .then((res) => res.json())
       .then((jsonData) => {
         setData(jsonData)

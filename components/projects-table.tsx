@@ -75,6 +75,10 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
 
   const totalPages = Math.ceil(filteredData.length / itemsPerPage)
   const paginatedData = filteredData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+  
+  // Debug: Log paginated data
+  console.log("Paginated data for rendering:", paginatedData.slice(0, 2))
+  console.log("First item URL check:", paginatedData[0]?.boletin_url)
 
   return (
     <Card className="p-6 bg-card border-border">
@@ -288,19 +292,22 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
                   </>
                 )}
                 <td className="py-3 px-4">
-                  {item.boletin_url ? (
-                    <a
-                      href={item.boletin_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary hover:underline text-sm font-medium"
-                      title={item.boletin_url}
-                    >
-                      📄 Ver PDF
-                    </a>
-                  ) : (
-                    <span className="text-muted-foreground text-sm">❌ Sin URL</span>
-                  )}
+                  {(() => {
+                    console.log(`Rendering URL for ${item.expediente}:`, item.boletin_url)
+                    return item.boletin_url ? (
+                      <a
+                        href={item.boletin_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary hover:underline text-sm font-medium"
+                        title={item.boletin_url}
+                      >
+                        📄 Ver PDF
+                      </a>
+                    ) : (
+                      <span className="text-muted-foreground text-sm">❌ Sin URL</span>
+                    )
+                  })()}
                 </td>
               </tr>
             ))}

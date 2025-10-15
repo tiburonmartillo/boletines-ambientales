@@ -287,7 +287,7 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
                   </>
                 )}
                 <td className="py-3 px-4">
-                  {item.boletin_url ? (
+                  {item.boletin_url && item.boletin_url.trim() !== "" ? (
                     <a
                       href={item.boletin_url}
                       target="_blank"

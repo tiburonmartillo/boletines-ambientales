@@ -16,11 +16,11 @@ interface TimeSeriesChartProps {
 const chartConfig = {
   proyectos: {
     label: "Proyectos Ingresados",
-    color: "hsl(var(--chart-1))",
+    color: "#3b82f6", // Azul
   },
   resolutivos: {
     label: "Resolutivos Emitidos",
-    color: "hsl(var(--chart-2))",
+    color: "#ec4899", // Rosa
   },
 }
 

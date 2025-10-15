@@ -49,6 +49,11 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
 
   const filteredData = useMemo(() => {
     const sorted = [...currentData].sort((a, b) => {
+      // Handle null dates by putting them at the end
+      if (!a.fecha_ingreso && !b.fecha_ingreso) return 0
+      if (!a.fecha_ingreso) return 1
+      if (!b.fecha_ingreso) return -1
+      
       const dateA = new Date(a.fecha_ingreso.split("/").reverse().join("-"))
       const dateB = new Date(b.fecha_ingreso.split("/").reverse().join("-"))
       return dateB.getTime() - dateA.getTime()
@@ -77,14 +82,18 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
 
       let matchesDateRange = true
       if (deferredFechaInicio || deferredFechaFin) {
-        const itemDate = new Date(item.fecha_ingreso.split("/").reverse().join("-"))
-        if (deferredFechaInicio) {
-          const startDate = new Date(deferredFechaInicio)
-          matchesDateRange = matchesDateRange && itemDate >= startDate
-        }
-        if (deferredFechaFin) {
-          const endDate = new Date(deferredFechaFin)
-          matchesDateRange = matchesDateRange && itemDate <= endDate
+        if (!item.fecha_ingreso) {
+          matchesDateRange = false // Exclude items without dates when filtering by date
+        } else {
+          const itemDate = new Date(item.fecha_ingreso.split("/").reverse().join("-"))
+          if (deferredFechaInicio) {
+            const startDate = new Date(deferredFechaInicio)
+            matchesDateRange = matchesDateRange && itemDate >= startDate
+          }
+          if (deferredFechaFin) {
+            const endDate = new Date(deferredFechaFin)
+            matchesDateRange = matchesDateRange && itemDate <= endDate
+          }
         }
       }
 
@@ -303,7 +312,7 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
                 </td>
                 <td className="py-3 px-4 text-sm text-muted-foreground">{item.giro}</td>
                 <td className="py-3 px-4 text-sm text-muted-foreground">{item.municipio}</td>
-                <td className="py-3 px-4 text-sm text-muted-foreground">{item.fecha_ingreso}</td>
+                <td className="py-3 px-4 text-sm text-muted-foreground">{item.fecha_ingreso || 'Sin fecha'}</td>
                 {activeTab === "resolutivos" && "fecha_resolutivo" in item && (
                   <>
                     <td className="py-3 px-4 text-sm text-muted-foreground">{item.fecha_resolutivo || 'Sin fecha'}</td>

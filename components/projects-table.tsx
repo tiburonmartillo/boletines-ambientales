@@ -36,6 +36,9 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
 
   const currentData = activeTab === "proyectos" ? proyectos : resolutivos
   
+  // Debug: Log current data
+  console.log("Current data for activeTab:", activeTab, "Length:", currentData.length)
+  
   // Use deferred values for better performance with large datasets
   const deferredSearch = useDeferredValue(search)
   const deferredMunicipioFilter = useDeferredValue(municipioFilter)
@@ -303,8 +306,8 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
                 <td className="py-3 px-4 text-sm text-muted-foreground">{item.fecha_ingreso}</td>
                 {activeTab === "resolutivos" && "fecha_resolutivo" in item && (
                   <>
-                    <td className="py-3 px-4 text-sm text-muted-foreground">{item.fecha_resolutivo}</td>
-                    <td className="py-3 px-4 text-sm font-mono text-foreground">{item.no_oficio_resolutivo}</td>
+                    <td className="py-3 px-4 text-sm text-muted-foreground">{item.fecha_resolutivo || 'Sin fecha'}</td>
+                    <td className="py-3 px-4 text-sm font-mono text-foreground">{item.no_oficio_resolutivo || 'Sin oficio'}</td>
                   </>
                 )}
                 <td className="py-3 px-4">

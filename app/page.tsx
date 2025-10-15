@@ -61,14 +61,14 @@ export default function DashboardPage() {
   const girosData = getDistributionByGiro(data)
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border bg-card">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10">
+    <div className="min-h-screen bg-gray-50">
+      {/* Modern Header */}
+      <header className="bg-white border-b border-gray-200 shadow-sm">
+        <div className="container mx-auto px-6 py-6">
+          <div className="flex items-center gap-4">
+            <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg">
               <svg
-                className="w-6 h-6 text-primary"
+                className="w-7 h-7 text-white"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -83,8 +83,8 @@ export default function DashboardPage() {
               </svg>
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-foreground text-balance">Dashboard de Boletines Ambientales</h1>
-              <p className="text-sm text-muted-foreground">Secretaría de Medio Ambiente - Aguascalientes</p>
+              <h1 className="text-3xl font-bold text-gray-900">Dashboard de Boletines Ambientales</h1>
+              <p className="text-gray-600 mt-1">Secretaría de Medio Ambiente del Estado de Aguascalientes</p>
             </div>
           </div>
         </div>
@@ -92,7 +92,7 @@ export default function DashboardPage() {
 
       {/* Main Content */}
       <main className="container mx-auto px-6 py-8">
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-8">
           {/* Stats Cards */}
           <ErrorBoundary>
             <DashboardStats
@@ -103,7 +103,7 @@ export default function DashboardPage() {
             />
           </ErrorBoundary>
 
-          {/* Time Series Chart */}
+          {/* Time Series Chart - Full Width */}
           <ErrorBoundary>
             <TimeSeriesChart data={timeSeriesData} />
           </ErrorBoundary>
@@ -126,12 +126,19 @@ export default function DashboardPage() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-border bg-card mt-12">
-        <div className="container mx-auto px-6 py-6">
-          <p className="text-sm text-muted-foreground text-center">
-            Datos de boletines ambientales publicados por la Secretaría de Medio Ambiente del Estado de Aguascalientes
-          </p>
+      {/* Modern Footer */}
+      <footer className="bg-white border-t border-gray-200 mt-16">
+        <div className="container mx-auto px-6 py-8">
+          <div className="text-center">
+            <p className="text-gray-600 text-sm">
+              Datos de boletines ambientales publicados por la Secretaría de Medio Ambiente del Estado de Aguascalientes
+            </p>
+            <div className="mt-4 flex justify-center">
+              <div className="text-xs text-gray-400">
+                © 2024 Secretaría de Medio Ambiente del Estado de Aguascalientes
+              </div>
+            </div>
+          </div>
         </div>
       </footer>
     </div>

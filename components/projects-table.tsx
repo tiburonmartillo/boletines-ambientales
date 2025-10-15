@@ -22,6 +22,18 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
   // Debug: Log first few items to see URL structure
   console.log("Proyectos sample:", proyectos.slice(0, 3))
   console.log("Resolutivos sample:", resolutivos.slice(0, 3))
+  
+  // Debug: Check specific URL properties
+  if (proyectos.length > 0) {
+    console.log("First proyecto boletin_url:", proyectos[0].boletin_url)
+    console.log("URL type:", typeof proyectos[0].boletin_url)
+    console.log("URL length:", proyectos[0].boletin_url?.length)
+  }
+  if (resolutivos.length > 0) {
+    console.log("First resolutivo boletin_url:", resolutivos[0].boletin_url)
+    console.log("URL type:", typeof resolutivos[0].boletin_url)
+    console.log("URL length:", resolutivos[0].boletin_url?.length)
+  }
   const [search, setSearch] = useState("")
   const [municipioFilter, setMunicipioFilter] = useState<string>("all")
   const [giroFilter, setGiroFilter] = useState<string>("all")

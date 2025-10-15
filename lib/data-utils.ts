@@ -51,36 +51,25 @@ export function getTimeSeriesData(data: BoletinesData) {
 export function getAllProyectos(
   data: BoletinesData,
 ): (Proyecto & { fecha_publicacion: string; boletin_url: string })[] {
-  const result = data.boletines.flatMap((boletin) =>
+  return data.boletines.flatMap((boletin) =>
     boletin.proyectos_ingresados.map((p) => ({
       ...p,
       fecha_publicacion: boletin.fecha_publicacion,
       boletin_url: boletin.url,
     })),
   )
-  
-  // Debug logging
-  console.log("Sample boletin URL:", data.boletines[0]?.url)
-  console.log("Sample proyecto with URL:", result[0])
-  
-  return result
 }
 
 export function getAllResolutivos(
   data: BoletinesData,
 ): (Resolutivo & { fecha_publicacion: string; boletin_url: string })[] {
-  const result = data.boletines.flatMap((boletin) =>
+  return data.boletines.flatMap((boletin) =>
     boletin.resolutivos_emitidos.map((r) => ({
       ...r,
       fecha_publicacion: boletin.fecha_publicacion,
       boletin_url: boletin.url,
     })),
   )
-  
-  // Debug logging
-  console.log("Sample resolutivo with URL:", result[0])
-  
-  return result
 }
 
 export function getDistributionByMunicipio(data: BoletinesData) {

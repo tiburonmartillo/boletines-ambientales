@@ -109,10 +109,19 @@ export function getAllProyectos(
     })),
   )
   
+  // Debug: Check for the new project specifically
+  const newProjectInData = proyectos.find(p => p.expediente === "SSMAA-DIRA-2789-2025")
+  console.log("New project in getAllProyectos:", newProjectInData)
+  console.log("Projects with date 13/10/2025 in getAllProyectos:", proyectos.filter(p => p.fecha_ingreso === "13/10/2025"))
+  
   // Eliminar duplicados basado en expediente normalizado
   const proyectosUnicos = proyectos.filter((proyecto, index, self) => 
     index === self.findIndex(p => p.expediente === proyecto.expediente)
   )
+  
+  // Debug: Check if new project survives deduplication
+  const newProjectAfterDedup = proyectosUnicos.find(p => p.expediente === "SSMAA-DIRA-2789-2025")
+  console.log("New project after deduplication:", newProjectAfterDedup)
   
   console.log(`Proyectos totales: ${proyectos.length}, Únicos: ${proyectosUnicos.length}`)
   

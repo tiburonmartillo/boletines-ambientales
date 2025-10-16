@@ -34,6 +34,12 @@ export default function BoletinesSmaaPage() {
       .then((jsonData) => {
         console.log('Data loaded:', jsonData)
         console.log('Total boletines:', jsonData.boletines?.length)
+        
+        // Debug: Check for the latest boletin
+        const latestBoletin = jsonData.boletines[jsonData.boletines.length - 1]
+        console.log('Latest boletin:', latestBoletin)
+        console.log('Latest boletin projects:', latestBoletin?.proyectos_ingresados)
+        
         setData(jsonData)
         setLoading(false)
       })

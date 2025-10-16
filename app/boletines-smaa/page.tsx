@@ -6,6 +6,8 @@ import { TimeSeriesChart } from "@/components/time-series-chart"
 import { DistributionCharts } from "@/components/distribution-charts"
 import { ProjectsTable } from "@/components/projects-table"
 import { ErrorBoundary } from "@/components/error-boundary"
+import { Navbar } from "@/components/navbar"
+import { Footer } from "@/components/footer"
 import {
   getStats,
   getTimeSeriesData,
@@ -66,8 +68,10 @@ export default function BoletinesSmaaPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Modern Header */}
-      <header className="bg-white border-b border-gray-200 shadow-sm">
+      <Navbar />
+      
+      {/* Dashboard Header */}
+      <header className="bg-white border-b border-gray-200 shadow-sm mt-20">
         <div className="container mx-auto px-6 py-6">
           <div className="flex items-center gap-4">
             <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg">
@@ -87,7 +91,7 @@ export default function BoletinesSmaaPage() {
               </svg>
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Boletines Ambientales</h1>
+              <h1 className="text-3xl font-bold text-gray-900">Dashboard de Boletines Ambientales</h1>
               <p className="text-gray-600 mt-1">Secretaría de Medio Ambiente del Estado de Aguascalientes</p>
             </div>
           </div>
@@ -130,21 +134,7 @@ export default function BoletinesSmaaPage() {
         </div>
       </main>
 
-      {/* Modern Footer */}
-      <footer className="bg-white border-t border-gray-200 mt-16">
-        <div className="container mx-auto px-6 py-8">
-          <div className="text-center">
-            <p className="text-gray-600 text-sm">
-              Datos de boletines ambientales publicados por la Secretaría de Medio Ambiente del Estado de Aguascalientes
-            </p>
-            <div className="mt-4 flex justify-center">
-              <div className="text-xs text-gray-400">
-                © 2024 Secretaría de Medio Ambiente del Estado de Aguascalientes
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

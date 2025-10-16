@@ -174,7 +174,7 @@ function HeroSection() {
               Un Ambiente<br />Sano es<br />Nuestro Derecho
             </h1>
             <p className="font-['Poppins:Regular',_sans-serif] text-[20px] text-[#0D5850]/70 leading-[1.6] max-w-xl">
-              Coalición ciudadana comprometida con la defensa del medio ambiente en Aguascalientes a través de la incidencia social y política.
+              Coalición ciudadana comprometida con la defensa del medio ambiente en Aguascalientes a través de la incidencia social y política. Trabajamos por un ambiente sano, limpio y equilibrado para todas y todos.
             </p>
           </div>
           

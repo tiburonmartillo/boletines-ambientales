@@ -67,14 +67,14 @@ export default function BoletinesSmaaPage() {
   const girosData = getDistributionByGiro(data)
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       <Navbar />
       
       {/* Dashboard Header */}
-      <header className="bg-white border-b border-gray-200 shadow-sm mt-20">
-        <div className="container mx-auto px-6 py-6">
+      <header className="bg-white mt-20">
+        <div className="container mx-auto px-4 sm:px-6 py-4 sm:py-6">
           <div className="flex items-center gap-4">
-            <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg">
+            <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-500">
               <svg
                 className="w-7 h-7 text-white"
                 fill="none"
@@ -91,16 +91,16 @@ export default function BoletinesSmaaPage() {
               </svg>
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Dashboard de Boletines Ambientales</h1>
-              <p className="text-gray-600 mt-1">Secretaría de Medio Ambiente del Estado de Aguascalientes</p>
+              <h1 className="text-2xl sm:text-3xl font-bold text-[#000000]">Boletines Ambientales</h1>
+              <p className="text-[#000000]/70 mt-1 text-sm sm:text-base">Secretaría de Medio Ambiente del Estado de Aguascalientes</p>
             </div>
           </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-6 py-8">
-        <div className="flex flex-col gap-8">
+      <main className="container mx-auto px-4 sm:px-6 py-6 sm:py-8">
+        <div className="flex flex-col gap-6 sm:gap-8">
           {/* Stats Cards */}
           <ErrorBoundary>
             <DashboardStats

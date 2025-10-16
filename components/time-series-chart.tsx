@@ -16,23 +16,23 @@ interface TimeSeriesChartProps {
 const chartConfig = {
   proyectos: {
     label: "Proyectos Ingresados",
-    color: "#3b82f6", // Azul
+    color: "#1E3A8A", // Blue
   },
   resolutivos: {
     label: "Resolutivos Emitidos",
-    color: "#ec4899", // Rosa
+    color: "#F97316", // Orange
   },
 }
 
 export const TimeSeriesChart = memo(function TimeSeriesChart({ data }: TimeSeriesChartProps) {
   return (
-    <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
-      <div className="flex flex-col gap-4">
+    <div className="bg-white rounded-xl border border-[#1E3A8A]/10 p-4 sm:p-6">
+      <div className="flex flex-col gap-3 sm:gap-4">
         <div>
-          <h3 className="text-xl font-semibold text-gray-900">Tendencia Temporal</h3>
-          <p className="text-sm text-gray-600 mt-1">Evolución de proyectos y resolutivos en el tiempo</p>
+          <h3 className="text-lg sm:text-xl font-semibold text-[#000000]">Tendencia Temporal</h3>
+          <p className="text-xs sm:text-sm text-[#000000]/70 mt-1">Evolución de proyectos ingresados y resolutivos emitidos en el tiempo</p>
         </div>
-        <ChartContainer config={chartConfig} className="h-[400px] w-full">
+        <ChartContainer config={chartConfig} className="h-[300px] sm:h-[400px] w-full">
           <LineChart data={data}>
             <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
             <XAxis
@@ -57,7 +57,7 @@ export const TimeSeriesChart = memo(function TimeSeriesChart({ data }: TimeSerie
               type="monotone"
               dataKey="proyectos"
               stroke="var(--color-proyectos)"
-              strokeWidth={3}
+              strokeWidth={2}
               name="Proyectos Ingresados"
               dot={{ fill: "var(--color-proyectos)", stroke: "#ffffff", strokeWidth: 2, r: 4 }}
               activeDot={{ r: 6 }}

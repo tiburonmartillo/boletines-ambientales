@@ -110,22 +110,22 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
   console.log(`Search results: ${filteredData.length} items found for search "${search}"`)
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+    <div className="bg-white rounded-2xl border border-[#1E3A8A]/10 overflow-hidden">
       {/* Modern Header with Tabs */}
-      <div className="border-b border-gray-200 bg-gray-50/50">
-        <div className="px-6 py-4">
+      <div className="border-b border-[#1E3A8A]/10 bg-[#F8FAFC]/50">
+        <div className="px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex items-center justify-between">
-            <div className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+            <div className="flex gap-1 bg-[#F1F5F9] p-1 rounded-lg">
               <Button
                 variant={activeTab === "proyectos" ? "default" : "ghost"}
                 onClick={() => {
                   setActiveTab("proyectos")
                   setCurrentPage(1)
                 }}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                className={`px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition-all ${
                   activeTab === "proyectos" 
-                    ? "bg-white text-gray-900 shadow-sm" 
-                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                    ? "bg-white text-[#000000] shadow-sm" 
+                    : "text-[#000000]/70 hover:text-[#000000] hover:bg-white/50"
                 }`}
               >
                 Proyectos Ingresados
@@ -137,17 +137,17 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
                   setActiveTab("resolutivos")
                   setCurrentPage(1)
                 }}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                className={`px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition-all ${
                   activeTab === "resolutivos" 
-                    ? "bg-white text-gray-900 shadow-sm" 
-                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                    ? "bg-white text-[#000000] shadow-sm" 
+                    : "text-[#000000]/70 hover:text-[#000000] hover:bg-white/50"
                 }`}
               >
                 Resolutivos Emitidos
               </Button>
             </div>
             <div className="flex items-center gap-3">
-              <div className="text-sm text-gray-500">
+              <div className="text-xs sm:text-sm text-[#000000]/60">
                 {filteredData.length} {activeTab === "proyectos" ? "proyectos" : "resolutivos"} encontrados
               </div>
             </div>
@@ -156,13 +156,13 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
       </div>
 
       {/* Filters Section */}
-      <div className="p-6 border-b border-gray-200 bg-gray-50/30">
-        <div className="flex flex-col gap-4">
+      <div className="p-4 sm:p-6 border-b border-[#1E3A8A]/10 bg-[#F8FAFC]/30">
+        <div className="flex flex-col gap-3 sm:gap-4">
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-2 sm:gap-3">
             <div className="relative">
               <svg
-                className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400"
+                className="absolute left-3 top-1/2 -translate-y-1/2 h-3 w-3 sm:h-4 sm:w-4 text-[#000000]/50"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -176,13 +176,13 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
                 />
               </svg>
               <Input
-                placeholder="Buscar proyectos, promoventes o expedientes..."
+                placeholder="Buscar proyectos..."
                 value={search}
                 onChange={(e) => {
                   setSearch(e.target.value)
                   setCurrentPage(1)
                 }}
-                className="pl-9 bg-white border-gray-200 focus:border-blue-500 focus:ring-blue-500"
+                className="pl-8 sm:pl-9 bg-white border-[#1E3A8A]/20 focus:border-[#1E3A8A] focus:ring-[#1E3A8A] text-sm"
               />
             </div>
 

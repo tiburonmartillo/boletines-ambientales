@@ -41212,11 +41212,38 @@
           "boletin_id": 451
         }
       ]
+    },
+    {
+      "id": 452,
+      "secretario": "SECRETARIA DE SUSTENTABILIDAD, MEDIO AMBIENTE Y AGUA",
+      "director": "T.S.U. LUIS MEDINA HERNÁNDEZ",
+      "fecha_publicacion": "06/10/2025",
+      "cantidad_ingresados": 1,
+      "cantidad_resolutivos": 0,
+      "filename": "https://www.aguascalientes.gob.mx/SSMAA/BoletinesSMA/Repositorio/2025/10%20Octubre/BOLETIN41-2025_06%20DE%20OCTUBRE_DEL0610_1010.pdf",
+      "proyectos_ingresados": [
+        {
+          "numero": 1,
+          "tipo_estudio": "MIA",
+          "promovente": "ASM RECYCLED GROUP, S.A. DE C.V.",
+          "nombre_proyecto": "CENTRO DE ACOPIO, REUTILIZACION, RECICLAJE, CO PROCESAMIENTO Y TRATAMIENTO DE RESIDUOS DE MANEJOR ESPECIAL",
+          "naturaleza_proyecto": "MANIFIESTO DE IMPACTO AMBIENTAL, EL PROYECTO CENTRO DE ACOPIO, REUTILIZACION, RECICLAJE, CO PROCESAMIENTO Y TRATAMIENTO DE RESIDUOS DE MANEJOR ESPECIAL, CON UNA SUPERFICIE TOTAL DE 11,000.38 M2",
+          "giro": "ASM RECYCLED GROUP, S.A. DE C.V.",
+          "municipio": "AGUASCALIENTES, AGS",
+          "coordenadas_x": 774532.75,
+          "coordenadas_y": 2421672.08,
+          "expediente": "SSMAA-DIRA-2789-2025",
+          "fecha_ingreso": "13/10/2025",
+          "boletin_id": null,
+          "coord_valida": true
+        }
+      ],
+      "resolutivos_emitidos": []
     }
   ],
   "metadata": {
-    "total_boletines": 451,
-    "archivos_procesados": 9,
+    "total_boletines": 452,
+    "archivos_procesados": 11,
     "errores": 0,
     "fecha_creacion": "2025-09-24",
     "descripcion": "Archivo JSON completo con todos los boletines ambientales de Aguascalientes"

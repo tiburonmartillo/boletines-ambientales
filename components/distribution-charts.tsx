@@ -12,30 +12,30 @@ interface DistributionChartsProps {
 const municipiosConfig = {
   count: {
     label: "Proyectos",
-    color: "#10b981", // Verde esmeralda
+    color: "#1E3A8A", // Blue
   },
 }
 
 const girosConfig = {
   count: {
     label: "Proyectos",
-    color: "#f59e0b", // Ámbar
+    color: "#F97316", // Orange
   },
 }
 
 export function DistributionCharts({ municipiosData, girosData }: DistributionChartsProps) {
   return (
-    <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
-      <div className="flex flex-col gap-6">
+    <div className="bg-white rounded-xl border border-[#1E3A8A]/10  p-4 sm:p-6">
+      <div className="flex flex-col gap-4 sm:gap-6">
         <div>
-          <h3 className="text-xl font-semibold text-gray-900">Distribución de Proyectos</h3>
-          <p className="text-sm text-gray-600 mt-1">Análisis por municipio y giro empresarial</p>
+          <h3 className="text-lg sm:text-xl font-semibold text-[#000000]">Distribución de Proyectos</h3>
+          <p className="text-xs sm:text-sm text-[#000000]/70 mt-1">Análisis por municipio y giro empresarial</p>
         </div>
         
-        <div className="grid grid-cols-1 gap-8">
+        <div className="grid grid-cols-1 gap-6 sm:gap-8">
           <div>
-            <h4 className="text-lg font-medium text-gray-800 mb-4">Por Municipio</h4>
-            <ChartContainer config={municipiosConfig} className="h-[250px] w-full">
+            <h4 className="text-base sm:text-lg font-medium text-[#000000] mb-3 sm:mb-4">Por Municipio</h4>
+            <ChartContainer config={municipiosConfig} className="h-[200px] sm:h-[250px] w-full">
               <BarChart data={municipiosData.slice(0, 10)}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                 <XAxis
@@ -54,8 +54,8 @@ export function DistributionCharts({ municipiosData, girosData }: DistributionCh
           </div>
 
           <div>
-            <h4 className="text-lg font-medium text-gray-800 mb-4">Por Giro</h4>
-            <ChartContainer config={girosConfig} className="h-[250px] w-full">
+            <h4 className="text-base sm:text-lg font-medium text-[#000000] mb-3 sm:mb-4">Por Giro</h4>
+            <ChartContainer config={girosConfig} className="h-[200px] sm:h-[250px] w-full">
               <BarChart data={girosData.slice(0, 10)}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                 <XAxis

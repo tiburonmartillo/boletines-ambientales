@@ -23,14 +23,17 @@ export default function BoletinesSmaaPage() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Usar URL absoluta del dominio personalizado
+    // Usar URL absoluta del dominio personalizado con parámetro de caché
+    const timestamp = new Date().getTime()
     const dataUrl = process.env.NODE_ENV === 'production' 
-      ? 'https://adn-a.org/data/boletines.json'
-      : '/data/boletines.json'
+      ? `https://adn-a.org/data/boletines.json?v=${timestamp}`
+      : `/data/boletines.json?v=${timestamp}`
     
     fetch(dataUrl)
       .then((res) => res.json())
       .then((jsonData) => {
+        console.log('Data loaded:', jsonData)
+        console.log('Total boletines:', jsonData.boletines?.length)
         setData(jsonData)
         setLoading(false)
       })

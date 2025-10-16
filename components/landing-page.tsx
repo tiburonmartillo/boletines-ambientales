@@ -367,10 +367,11 @@ function DashboardSection() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch data from the same source as the dashboard
+    // Fetch data from the same source as the dashboard with cache busting
+    const timestamp = new Date().getTime();
     const dataUrl = process.env.NODE_ENV === 'production' 
-      ? 'https://adn-a.org/data/boletines.json'
-      : '/data/boletines.json';
+      ? `https://adn-a.org/data/boletines.json?v=${timestamp}`
+      : `/data/boletines.json?v=${timestamp}`;
     
     fetch(dataUrl)
       .then((res) => res.json())

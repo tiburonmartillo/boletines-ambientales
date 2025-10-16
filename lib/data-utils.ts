@@ -114,10 +114,28 @@ export function getAllProyectos(
   console.log("New project in getAllProyectos:", newProjectInData)
   console.log("Projects with date 13/10/2025 in getAllProyectos:", proyectos.filter(p => p.fecha_ingreso === "13/10/2025"))
   
-  // Eliminar duplicados basado en expediente normalizado
-  const proyectosUnicos = proyectos.filter((proyecto, index, self) => 
-    index === self.findIndex(p => p.expediente === proyecto.expediente)
-  )
+  // Eliminar duplicados basado en expediente normalizado, manteniendo el más reciente
+  const proyectosUnicos = proyectos.reduce((acc, proyecto) => {
+    const existingIndex = acc.findIndex(p => p.expediente === proyecto.expediente)
+    
+    if (existingIndex === -1) {
+      // No existe, agregarlo
+      acc.push(proyecto)
+    } else {
+      // Ya existe, comparar fechas y mantener el más reciente
+      const existingProject = acc[existingIndex]
+      const existingDate = new Date(existingProject.fecha_publicacion)
+      const newDate = new Date(proyecto.fecha_publicacion)
+      
+      if (newDate > existingDate) {
+        // El nuevo proyecto es más reciente, reemplazar
+        acc[existingIndex] = proyecto
+        console.log(`Reemplazando proyecto duplicado ${proyecto.expediente}: ${existingProject.fecha_publicacion} → ${proyecto.fecha_publicacion}`)
+      }
+    }
+    
+    return acc
+  }, [] as typeof proyectos)
   
   // Debug: Check if new project survives deduplication
   const newProjectAfterDedup = proyectosUnicos.find(p => p.expediente === "SSMAA-DIRA-2789-2025")

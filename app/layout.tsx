@@ -5,10 +5,15 @@ import './globals.css'
 import '../styles/leaflet.css'
 
 export const metadata: Metadata = {
-  title: 'Dashboard de Boletines Ambientales - Aguascalientes',
-  description: 'Visualización de datos de boletines ambientales publicados por la Secretaría de Medio Ambiente del Estado de Aguascalientes',
+  title: 'ADN-Aguascalientes - Un Ambiente Sano es Nuestro Derecho',
+  description: 'Coalición ciudadana comprometida con la defensa del medio ambiente en Aguascalientes. Dashboard de boletines ambientales y información sobre nuestras iniciativas.',
   generator: 'Next.js',
-  keywords: ['medio ambiente', 'aguascalientes', 'boletines', 'proyectos ambientales', 'dashboard'],
+  keywords: ['ADN-Aguascalientes', 'medio ambiente', 'aguascalientes', 'boletines', 'proyectos ambientales', 'dashboard', 'coalición ciudadana'],
+  icons: {
+    icon: '/assets/ico.png',
+    shortcut: '/assets/ico.png',
+    apple: '/assets/ico.png',
+  },
 }
 
 export default function RootLayout({

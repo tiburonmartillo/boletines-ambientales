@@ -124,13 +124,38 @@ export function getAllProyectos(
     } else {
       // Ya existe, comparar fechas y mantener el más reciente
       const existingProject = acc[existingIndex]
-      const existingDate = new Date(existingProject.fecha_publicacion)
-      const newDate = new Date(proyecto.fecha_publicacion)
+      
+      // Función para parsear fechas en formato DD/MM/YYYY
+      const parseDate = (dateStr: string) => {
+        // Si ya está en formato YYYY-MM-DD, usar directamente
+        if (dateStr.includes('-')) {
+          return new Date(dateStr)
+        }
+        // Si está en formato DD/MM/YYYY, convertir
+        const parts = dateStr.split('/')
+        if (parts.length === 3) {
+          const day = parseInt(parts[0])
+          const month = parseInt(parts[1]) - 1 // Mes es 0-indexado
+          const year = parseInt(parts[2])
+          return new Date(year, month, day)
+        }
+        // Fallback al parsing normal
+        return new Date(dateStr)
+      }
+      
+      const existingDate = parseDate(existingProject.fecha_publicacion)
+      const newDate = parseDate(proyecto.fecha_publicacion)
+      
+      console.log(`Comparando fechas para ${proyecto.expediente}:`)
+      console.log(`  Existente: ${existingProject.fecha_publicacion} → ${existingDate}`)
+      console.log(`  Nuevo: ${proyecto.fecha_publicacion} → ${newDate}`)
       
       if (newDate > existingDate) {
         // El nuevo proyecto es más reciente, reemplazar
         acc[existingIndex] = proyecto
-        console.log(`Reemplazando proyecto duplicado ${proyecto.expediente}: ${existingProject.fecha_publicacion} → ${proyecto.fecha_publicacion}`)
+        console.log(`✅ Reemplazando proyecto duplicado ${proyecto.expediente}: ${existingProject.fecha_publicacion} → ${proyecto.fecha_publicacion}`)
+      } else {
+        console.log(`⏭️  Manteniendo proyecto existente (más reciente): ${existingProject.fecha_publicacion}`)
       }
     }
     

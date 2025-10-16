@@ -18,7 +18,7 @@ function Navigation() {
   ];
 
   const externalNavItems = [
-    { href: '/boletines-smaa', label: 'Boletines Ambientales' }
+    { href: '/boletines-ssmaa', label: 'Boletines Ambientales' }
   ];
 
   const scrollToSection = (sectionId: string) => {
@@ -657,7 +657,7 @@ function DashboardSection() {
         {/* CTA Button */}
         <div className="text-center">
           <Link
-            href="/boletines-smaa"
+            href="/boletines-ssmaa"
             className="inline-flex items-center gap-3 bg-gradient-to-r from-[#2B8FA6] to-[#0D5850] text-white font-['Poppins:Bold',_sans-serif] text-[20px] px-8 py-4 rounded-2xl hover:shadow-lg transition-all duration-300 transform hover:scale-105"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

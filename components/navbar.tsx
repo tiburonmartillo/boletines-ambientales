@@ -81,7 +81,7 @@ export function Navbar() {
                 Inicio
               </Link>
               <Link
-                href="/boletines-smaa"
+                href="/boletines-ssmaa"
                 className="font-['Poppins:Regular',_sans-serif] text-[16px] transition-colors duration-200 text-[#0D5850]/70 hover:text-[#0D5850]"
               >
                 Boletines Ambientales

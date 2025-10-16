@@ -27,6 +27,11 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
   console.log("Resolutivos count:", resolutivos.length)
   console.log("Sample resolutivo:", resolutivos[0])
   
+  // Debug: Check for the new project specifically
+  const newProject = proyectos.find(p => p.expediente === "SSMAA-DIRA-2789-2025")
+  console.log("New project found:", newProject)
+  console.log("Projects with date 13/10/2025:", proyectos.filter(p => p.fecha_ingreso === "13/10/2025"))
+  
   const [search, setSearch] = useState("")
   const [municipioFilter, setMunicipioFilter] = useState<string>("all")
   const [giroFilter, setGiroFilter] = useState<string>("all")

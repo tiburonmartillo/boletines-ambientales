@@ -10,7 +10,7 @@ function utmToLatLong(utmX: number | null, utmY: number | null): { lat: number; 
 
   // Para Aguascalientes, usar coordenadas conocidas como referencia
   // Coordenadas aproximadas de Aguascalientes: 21.8818, -102.2916
-  // UTM aproximadas: 774532, 2421672 (zona 14)
+  // UTM aproximadas: 774532, 2421672 (zona 13)
   
   // Si las coordenadas están cerca de los valores conocidos de Aguascalientes,
   // usar una conversión aproximada
@@ -108,7 +108,7 @@ export function MapModal({ coordenadas_x, coordenadas_y, expediente, nombre_proy
                   )}
                   {coords && (
                     <div className="text-xs text-gray-500 mt-1">
-                      <strong>Precisión:</strong> Conversión UTM zona 14 (WGS84) con precisión de ~1 metro
+                      <strong>Precisión:</strong> Conversión UTM zona 13 (WGS84) con precisión de ~1 metro
                     </div>
                   )}
                 </div>

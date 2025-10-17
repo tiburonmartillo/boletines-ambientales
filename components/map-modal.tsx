@@ -71,6 +71,11 @@ export function MapModal({ coordenadas_x, coordenadas_y, expediente, nombre_proy
     )
   }
 
+  // Convertir coordenadas UTM a Lat/Lng
+  const coords = utmToLatLong(coordenadas_x, coordenadas_y)
+  const lat = coords?.lat || 21.8818 // Coordenadas por defecto de Aguascalientes
+  const lng = coords?.lng || -102.2916
+
   return (
     <>
       <Button
@@ -117,25 +122,47 @@ export function MapModal({ coordenadas_x, coordenadas_y, expediente, nombre_proy
                   <div><strong>Expediente:</strong> {expediente}</div>
                   <div><strong>Municipio:</strong> {municipio}</div>
                   <div><strong>Coordenadas UTM:</strong> {coordenadas_x}, {coordenadas_y}</div>
+                  {coords && (
+                    <div><strong>Coordenadas Lat/Lng:</strong> {lat.toFixed(6)}, {lng.toFixed(6)}</div>
+                  )}
                 </div>
               </div>
               
               <div className="h-96">
-                <div className="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-gray-600 mb-4">📍 Mapa de ubicación</div>
-                    <div className="text-sm text-gray-500 mb-4">
-                      UTM: {coordenadas_x}, {coordenadas_y}
-                    </div>
-                    <a
-                      href={`https://www.openstreetmap.org/?mlat=21.8818&mlon=-102.2916&zoom=15`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-                    >
-                      🗺️ Abrir en OpenStreetMap
-                    </a>
+                {coords ? (
+                  <div className="w-full h-full bg-gray-100 rounded-lg overflow-hidden">
+                    <iframe
+                      src={`https://www.openstreetmap.org/export/embed.html?bbox=${lng-0.01},${lat-0.01},${lng+0.01},${lat+0.01}&layer=mapnik&marker=${lat},${lng}`}
+                      width="100%"
+                      height="100%"
+                      style={{ border: 'none' }}
+                      title="Mapa de ubicación del proyecto"
+                    />
                   </div>
+                ) : (
+                  <div className="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="text-gray-600 mb-4">📍 Mapa de ubicación</div>
+                      <div className="text-sm text-gray-500 mb-4">
+                        UTM: {coordenadas_x}, {coordenadas_y}
+                      </div>
+                      <div className="text-sm text-red-500 mb-4">
+                        Error: No se pudieron convertir las coordenadas UTM
+                      </div>
+                    </div>
+                  </div>
+                )}
+                
+                {/* Botón para abrir en OpenStreetMap */}
+                <div className="mt-4 text-center">
+                  <a
+                    href={`https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}&zoom=15`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                  >
+                    🗺️ Abrir en OpenStreetMap
+                  </a>
                 </div>
               </div>
             </div>

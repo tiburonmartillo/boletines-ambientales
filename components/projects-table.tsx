@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo, useDeferredValue } from "react"
+import { useState, useMemo, useDeferredValue, useEffect } from "react"
 import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -20,6 +20,17 @@ interface ProjectsTableProps {
 
 export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tiposEstudio }: ProjectsTableProps) {
   const [activeTab, setActiveTab] = useState<"proyectos" | "resolutivos">("proyectos")
+  const [selectedItem, setSelectedItem] = useState<any>(null)
+  const [isMapModalOpen, setIsMapModalOpen] = useState(false)
+
+  // Función para manejar el clic en la fila
+  const handleRowClick = (item: any) => {
+    // Solo abrir la modal si hay coordenadas disponibles
+    if (item.coordenadas_x && item.coordenadas_y) {
+      setSelectedItem(item)
+      setIsMapModalOpen(true)
+    }
+  }
   
   // Debug: Log data when switching tabs
   console.log("Active tab:", activeTab)
@@ -39,7 +50,12 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
   const [fechaInicio, setFechaInicio] = useState("")
   const [fechaFin, setFechaFin] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
-  const itemsPerPage = 20
+  const [itemsPerPage, setItemsPerPage] = useState(20)
+
+  // Reset page when itemsPerPage changes
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [itemsPerPage])
 
   const currentData = activeTab === "proyectos" ? proyectos : resolutivos
   
@@ -115,7 +131,7 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
   console.log(`Search results: ${filteredData.length} items found for search "${search}"`)
 
   return (
-    <div className="bg-white rounded-2xl border border-[#1E3A8A]/10 overflow-hidden">
+    <div className="bg-white rounded- border border-[#1E3A8A]/10 overflow-hidden">
       {/* Modern Header with Tabs */}
       <div className="border-b border-[#1E3A8A]/10 bg-[#F8FAFC]/50">
         <div className="px-4 sm:px-6 py-3 sm:py-4">
@@ -127,10 +143,10 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
                   setActiveTab("proyectos")
                   setCurrentPage(1)
                 }}
-                className={`px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition-all ${
+                className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
                   activeTab === "proyectos" 
-                    ? "bg-white text-[#000000] shadow-sm" 
-                    : "text-[#000000]/70 hover:text-[#000000] hover:bg-white/50"
+                    ? "bg-white text-[#000000] shadow-sm hover:text-white" 
+                    : "text-[#000000]/70 hover:text-[#000000] hover:bg-blue-100"
                 }`}
               >
                 Proyectos Ingresados
@@ -142,10 +158,10 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
                   setActiveTab("resolutivos")
                   setCurrentPage(1)
                 }}
-                className={`px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition-all ${
+                className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
                   activeTab === "resolutivos" 
-                    ? "bg-white text-[#000000] shadow-sm" 
-                    : "text-[#000000]/70 hover:text-[#000000] hover:bg-white/50"
+                    ? "bg-white text-[#000000] shadow-sm hover:text-white" 
+                    : "text-[#000000]/70 hover:text-[#000000] hover:bg-blue-100"
                 }`}
               >
                 Resolutivos Emitidos
@@ -347,7 +363,12 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
             {paginatedData.map((item, idx) => (
               <tr
                 key={`${item.expediente}-${idx}`}
-                className="hover:bg-gray-50 transition-colors"
+                className={`transition-colors ${
+                  item.coordenadas_x && item.coordenadas_y 
+                    ? 'hover:bg-gray-50 cursor-pointer' 
+                    : 'hover:bg-gray-25'
+                }`}
+                onClick={() => handleRowClick(item)}
               >
                 <td className="py-4 px-6 font-mono text-sm text-gray-900">{item.expediente}</td>
                 <td className="py-4 px-6 text-sm text-gray-900 max-w-xs">
@@ -375,13 +396,13 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
                   </>
                 )}
                 <td className="py-4 px-6">
-                  <MapModal
-                    coordenadas_x={item.coordenadas_x}
-                    coordenadas_y={item.coordenadas_y}
-                    expediente={item.expediente}
-                    nombre_proyecto={item.nombre_proyecto || 'Sin nombre'}
-                    municipio={item.municipio}
-                  />
+                  {item.coordenadas_x && item.coordenadas_y ? (
+                    <span className="inline-flex items-center gap-1 text-blue-600 text-sm">
+                      📍 Ver ubicación
+                    </span>
+                  ) : (
+                    <span className="text-gray-400 text-sm">Sin coordenadas</span>
+                  )}
                 </td>
                 {activeTab === "resolutivos" && "boletin_ingreso_url" in item && (
                   <td className="py-4 px-6">
@@ -421,35 +442,115 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
         </table>
       </div>
 
-      {/* Pagination */}
-      {totalPages > 1 && (
-        <div className="bg-gray-50 px-6 py-4 border-t border-gray-200">
-          <div className="flex items-center justify-between">
-            <div className="text-sm text-gray-600">
-              Página {currentPage} de {totalPages}
-            </div>
-            <div className="flex gap-2">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-                disabled={currentPage === 1}
-                className="border-gray-200 hover:bg-gray-50"
-              >
-                Anterior
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-                disabled={currentPage === totalPages}
-                className="border-gray-200 hover:bg-gray-50"
-              >
-                Siguiente
-              </Button>
+      {/* Enhanced Pagination */}
+      <div className="bg-gray-50 px-4 sm:px-6 py-4 border-t border-gray-200">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+          {/* Left side - Items per page selector */}
+          <div className="flex items-center gap-2">
+            <span className="text-sm text-gray-600">Mostrar:</span>
+            <Select value={itemsPerPage.toString()} onValueChange={(value) => setItemsPerPage(parseInt(value))}>
+              <SelectTrigger className="w-20 h-8 text-sm">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="10">10</SelectItem>
+                <SelectItem value="20">20</SelectItem>
+                <SelectItem value="50">50</SelectItem>
+                <SelectItem value="100">100</SelectItem>
+              </SelectContent>
+            </Select>
+            <span className="text-sm text-gray-600">por página</span>
+          </div>
+
+          {/* Center - Results info */}
+          <div className="flex-1 flex justify-center">
+            <div className="text-sm text-gray-600 text-center">
+              Mostrando {((currentPage - 1) * itemsPerPage) + 1} a {Math.min(currentPage * itemsPerPage, filteredData.length)} de {filteredData.length} resultados
             </div>
           </div>
+
+          {/* Right side - Pagination controls */}
+          {totalPages > 1 && (
+            <div className="flex items-center gap-2">
+              {/* Page input */}
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-gray-600">Página:</span>
+                <Input
+                  type="number"
+                  min="1"
+                  max={totalPages}
+                  value={currentPage}
+                  onChange={(e) => {
+                    const page = parseInt(e.target.value)
+                    if (page >= 1 && page <= totalPages) {
+                      setCurrentPage(page)
+                    }
+                  }}
+                  className="w-16 h-8 text-sm text-center"
+                />
+                <span className="text-sm text-gray-600">de {totalPages}</span>
+              </div>
+
+              {/* Navigation buttons */}
+              <div className="flex gap-1">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setCurrentPage(1)}
+                  disabled={currentPage === 1}
+                  className="h-8 w-8 p-0 border-gray-200 hover:bg-gray-50"
+                  title="Primera página"
+                >
+                  ⏮
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                  disabled={currentPage === 1}
+                  className="h-8 w-8 p-0 border-gray-200 hover:bg-gray-50"
+                  title="Página anterior"
+                >
+                  ◀
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                  disabled={currentPage === totalPages}
+                  className="h-8 w-8 p-0 border-gray-200 hover:bg-gray-50"
+                  title="Página siguiente"
+                >
+                  ▶
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setCurrentPage(totalPages)}
+                  disabled={currentPage === totalPages}
+                  className="h-8 w-8 p-0 border-gray-200 hover:bg-gray-50"
+                  title="Última página"
+                >
+                  ⏭
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
+      </div>
+
+      {/* Modal de ubicación */}
+      {selectedItem && (
+        <MapModal
+          coordenadas_x={selectedItem.coordenadas_x}
+          coordenadas_y={selectedItem.coordenadas_y}
+          expediente={selectedItem.expediente}
+          nombre_proyecto={selectedItem.nombre_proyecto || 'Sin nombre'}
+          municipio={selectedItem.municipio}
+          boletin_url={selectedItem.boletin_url}
+          isOpen={isMapModalOpen}
+          onClose={() => setIsMapModalOpen(false)}
+        />
       )}
     </div>
   )

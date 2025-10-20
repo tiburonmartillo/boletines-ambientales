@@ -183,15 +183,28 @@ export function getAllResolutivos(
       const expedienteNormalizado = normalizeExpediente(r.expediente)
       
       // Buscar el proyecto correspondiente por expediente normalizado
-      const proyectoRelacionado = proyectosConCoordenadas.find(p => p.expediente === expedienteNormalizado)
+      let proyectoRelacionado = proyectosConCoordenadas.find(p => p.expediente === expedienteNormalizado)
+      
+      // Si no se encuentra, intentar buscar con años diferentes (ej: 2024 vs 2025)
+      if (!proyectoRelacionado) {
+        const expedienteBase = expedienteNormalizado.replace(/-202[0-9]$/, '')
+        proyectoRelacionado = proyectosConCoordenadas.find(p => {
+          const pExpedienteBase = p.expediente.replace(/-202[0-9]$/, '')
+          return pExpedienteBase === expedienteBase
+        })
+        
+        if (proyectoRelacionado) {
+          console.log(`✅ Resolutivo ${expedienteNormalizado} vinculado con proyecto ${proyectoRelacionado.expediente} (diferente año)`)
+        }
+      }
       
       const resolutivoConCoordenadas = {
         ...r,
         expediente: expedienteNormalizado, // Usar expediente normalizado
         fecha_publicacion: boletin.fecha_publicacion,
         boletin_url: boletin.url || boletin.filename,
-        coordenadas_x: proyectoRelacionado?.coordenadas_x || null,
-        coordenadas_y: proyectoRelacionado?.coordenadas_y || null,
+        coordenadas_x: proyectoRelacionado?.coordenadas_x || r.coordenadas_x || null,
+        coordenadas_y: proyectoRelacionado?.coordenadas_y || r.coordenadas_y || null,
         boletin_ingreso_url: proyectoRelacionado?.boletin_url || null,
       }
       

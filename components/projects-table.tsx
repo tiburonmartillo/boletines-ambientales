@@ -211,7 +211,8 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
           {/* Main Filter Bar */}
           <div className="w-full max-w-6xl">
             {/* Desktop/Tablet Filter Bar */}
-            <div className="hidden sm:flex items-center bg-white rounded-full shadow-lg border border-gray-200 overflow-hidden">
+            <div className="hidden sm:flex items-center">
+              <div className="flex items-center bg-white rounded-full shadow-lg border border-gray-200 overflow-hidden flex-1">
               
               {/* Search Field */}
               <div className="flex-1 border-r border-gray-200">
@@ -349,7 +350,7 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
               </div>
 
               {/* Mes Filter */}
-              <div className="flex-1 border-r border-gray-200">
+              <div className="flex-1">
                 <div className="p-4">
                   <label className="block text-sm font-semibold text-gray-900 mb-1">Mes</label>
                   <Select
@@ -374,8 +375,10 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
                 </div>
               </div>
 
-              {/* Clear Filters Button */}
-              <div className="p-2">
+              </div>
+
+              {/* Clear Filters Button - Desktop */}
+              <div className="ml-4">
                 <Button
                   onClick={() => {
                     setSearch("")
@@ -393,7 +396,6 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
                   </svg>
                 </Button>
               </div>
-
             </div>
 
             {/* Mobile Filter Bar */}

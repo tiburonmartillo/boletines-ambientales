@@ -212,10 +212,10 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
           <div className="w-full max-w-6xl">
             {/* Desktop/Tablet Filter Bar */}
             <div className="hidden sm:flex items-center">
-              <div className="flex items-center bg-white rounded-full shadow-lg border border-gray-200 overflow-hidden flex-1">
+              <div className="flex items-center bg-white rounded-full shadow border border-gray-200 overflow-hidden flex-1">
               
               {/* Search Field */}
-              <div className="flex-1 border-r border-gray-200">
+              <div className="flex-[3] border-r border-gray-200">
                 <div className="p-4">
                   <label className="block text-sm font-semibold text-gray-900 mb-1">Buscar</label>
                   <div className="relative">
@@ -239,7 +239,7 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
                         setSearch(e.target.value)
                         setCurrentPage(1)
                       }}
-                      className="pl-10 border-0 focus:ring-0 focus:outline-none bg-transparent text-sm"
+                      className="pl-10 border-0 focus:ring-0 focus:outline-none bg-transparent text-sm shadow-none"
                     />
                   </div>
                 </div>
@@ -256,7 +256,7 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
                       setCurrentPage(1)
                     }}
                   >
-                    <SelectTrigger className="border-0 focus:ring-0 focus:outline-none bg-transparent p-0 h-auto">
+                    <SelectTrigger className="border-0 focus:ring-0 focus:outline-none bg-transparent p-0 h-auto shadow-none">
                       <SelectValue placeholder="Todos" />
                     </SelectTrigger>
                     <SelectContent>
@@ -282,7 +282,7 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
                       setCurrentPage(1)
                     }}
                   >
-                    <SelectTrigger className="border-0 focus:ring-0 focus:outline-none bg-transparent p-0 h-auto">
+                    <SelectTrigger className="border-0 focus:ring-0 focus:outline-none bg-transparent p-0 h-auto shadow-none">
                       <SelectValue placeholder="Todos" />
                     </SelectTrigger>
                     <SelectContent>
@@ -308,7 +308,7 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
                       setCurrentPage(1)
                     }}
                   >
-                    <SelectTrigger className="border-0 focus:ring-0 focus:outline-none bg-transparent p-0 h-auto">
+                    <SelectTrigger className="border-0 focus:ring-0 focus:outline-none bg-transparent p-0 h-auto shadow-none">
                       <SelectValue placeholder="Todos" />
                     </SelectTrigger>
                     <SelectContent>
@@ -334,7 +334,7 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
                       setCurrentPage(1)
                     }}
                   >
-                    <SelectTrigger className="border-0 focus:ring-0 focus:outline-none bg-transparent p-0 h-auto">
+                    <SelectTrigger className="border-0 focus:ring-0 focus:outline-none bg-transparent p-0 h-auto shadow-none">
                       <SelectValue placeholder="Todos" />
                     </SelectTrigger>
                     <SelectContent>
@@ -360,7 +360,7 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
                       setCurrentPage(1)
                     }}
                   >
-                    <SelectTrigger className="border-0 focus:ring-0 focus:outline-none bg-transparent p-0 h-auto">
+                    <SelectTrigger className="border-0 focus:ring-0 focus:outline-none bg-transparent p-0 h-auto shadow-none">
                       <SelectValue placeholder="Todos" />
                     </SelectTrigger>
                     <SelectContent>

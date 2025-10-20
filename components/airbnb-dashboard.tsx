@@ -25,7 +25,7 @@ interface Proyecto {
 interface Resolutivo extends Proyecto {
   fecha_resolutivo?: string
   no_oficio_resolutivo?: string
-  boletin_ingreso_url?: string
+  boletin_ingreso_url: string | null
 }
 
 interface AirbnbDashboardProps {
@@ -355,7 +355,7 @@ export function AirbnbDashboard({ proyectos, resolutivos, municipios, giros, tip
                         
                         {activeTab === "resolutivos" && "fecha_resolutivo" in item && (
                           <div className="mt-2 text-xs text-gray-500">
-                            <span>📋 Resolutivo: {item.fecha_resolutivo || 'Sin fecha'}</span>
+                            <span>📋 Resolutivo: {(item as any).fecha_resolutivo || 'Sin fecha'}</span>
                           </div>
                         )}
                       </div>

@@ -64,7 +64,7 @@ function convertToLatLong(x: number | null, y: number | null): { lat: number; ln
   // Ajustar coordenadas UTM (usar coordenadas corregidas)
   let x = correctedX - 500000; // Remover false easting
   x = x / UTMScaleFactor;
-  let y = correctedY / UTMScaleFactor;
+  const y = correctedY / UTMScaleFactor;
   
   // Calcular meridiano central de la zona
   const lambda0 = ((-183 + (zone * 6)) / 180) * Math.PI;

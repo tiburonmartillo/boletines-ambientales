@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -66,15 +66,15 @@ export function Navbar() {
   const [activeSection, setActiveSection] = useState('home');
 
   // All navigation items
-  const navItems = [
+  const navItems = useMemo(() => [
     { id: 'home', label: 'Inicio', href: '/', type: 'page' },
     { id: 'about', label: 'Nosotros', href: '/#about', type: 'section' },
     { id: 'initiatives', label: 'Iniciativas', href: '/#initiatives', type: 'section' },
     { id: 'impact', label: 'Logros', href: '/#impact', type: 'section' },
     { id: 'contact', label: 'Contacto', href: '/#contact', type: 'section' },
     { id: 'boletines', label: 'Boletín Ambiental SSMAA', href: '/boletines-ssmaa', type: 'page' },
-    { id: 'dashboard', label: 'Dashboard Mapa', href: '/airbnb-dashboard', type: 'page' }
-  ];
+    { id: 'dashboard', label: 'Dashboard Mapa Ambiente', href: '/airbnb-dashboard', type: 'page' }
+  ], []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);

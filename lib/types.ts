@@ -21,6 +21,8 @@ export interface Resolutivo {
   nombre_proyecto: string
   giro: string
   municipio: string
+  coordenadas_x: number | null
+  coordenadas_y: number | null
   expediente: string
   fecha_ingreso: string
   fecha_resolutivo: string

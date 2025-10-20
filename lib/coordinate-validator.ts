@@ -4,6 +4,8 @@
 interface CoordinateRanges {
   norte: { min: number; max: number };
   este: { min: number; max: number };
+  norte14: { min: number; max: number };
+  este14: { min: number; max: number };
 }
 
 interface LatLngRanges {

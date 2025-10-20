@@ -51,6 +51,7 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
   const [mesFilter, setMesFilter] = useState<string>("all")
   const [currentPage, setCurrentPage] = useState(1)
   const [itemsPerPage, setItemsPerPage] = useState(20)
+  const [showMobileFilters, setShowMobileFilters] = useState(false)
 
   // Reset page when itemsPerPage changes
   useEffect(() => {
@@ -204,175 +205,239 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
         </div>
       </div>
 
-      {/* Filters Section - Airbnb Style */}
+      {/* Filters Section - Improved Airbnb Style */}
       <div className="p-4 sm:p-6 border-b border-[#1E3A8A]/10 bg-[#F8FAFC]/30">
-        <div className="flex flex-col lg:flex-row items-center justify-center">
-          {/* Horizontal Filter Bar */}
-          <div className="flex flex-col sm:flex-row items-center w-full max-w-6xl bg-white rounded-full shadow-lg border border-gray-200 overflow-hidden">
-            
-            {/* Search Field */}
-            <div className="flex-1 w-full sm:w-auto border-r border-gray-200">
-              <div className="relative p-4">
-                <label className="block text-xs font-semibold text-gray-900 mb-1">Buscar</label>
-                <div className="relative">
-                  <svg
-                    className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+        <div className="flex flex-col items-center justify-center">
+          {/* Main Filter Bar */}
+          <div className="w-full max-w-6xl">
+            {/* Desktop/Tablet Filter Bar */}
+            <div className="hidden sm:flex items-center bg-white rounded-full shadow-lg border border-gray-200 overflow-hidden">
+              
+              {/* Search Field */}
+              <div className="flex-1 border-r border-gray-200">
+                <div className="p-4">
+                  <label className="block text-sm font-semibold text-gray-900 mb-1">Buscar</label>
+                  <div className="relative">
+                    <svg
+                      className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                      />
+                    </svg>
+                    <Input
+                      placeholder="Buscar proyectos..."
+                      value={search}
+                      onChange={(e) => {
+                        setSearch(e.target.value)
+                        setCurrentPage(1)
+                      }}
+                      className="pl-10 border-0 focus:ring-0 focus:outline-none bg-transparent text-sm"
                     />
-                  </svg>
-                  <Input
-                    placeholder="Buscar proyectos..."
-                    value={search}
-                    onChange={(e) => {
-                      setSearch(e.target.value)
-                      setCurrentPage(1)
-                    }}
-                    className="pl-10 border-0 focus:ring-0 focus:outline-none bg-transparent text-sm"
-                  />
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Municipio Filter */}
-            <div className="flex-1 w-full sm:w-auto border-r border-gray-200">
-              <div className="p-4">
-                <label className="block text-xs font-semibold text-gray-900 mb-1">Municipio</label>
-                <Select
-                  value={municipioFilter}
-                  onValueChange={(v) => {
-                    setMunicipioFilter(v)
+              {/* Municipio Filter */}
+              <div className="flex-1 border-r border-gray-200">
+                <div className="p-4">
+                  <label className="block text-sm font-semibold text-gray-900 mb-1">Municipio</label>
+                  <Select
+                    value={municipioFilter}
+                    onValueChange={(v) => {
+                      setMunicipioFilter(v)
+                      setCurrentPage(1)
+                    }}
+                  >
+                    <SelectTrigger className="border-0 focus:ring-0 focus:outline-none bg-transparent p-0 h-auto">
+                      <SelectValue placeholder="Todos" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">Todos</SelectItem>
+                      {municipios.map((m) => (
+                        <SelectItem key={m} value={m}>
+                          {m}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              {/* Giro Filter */}
+              <div className="flex-1 border-r border-gray-200">
+                <div className="p-4">
+                  <label className="block text-sm font-semibold text-gray-900 mb-1">Giro</label>
+                  <Select
+                    value={giroFilter}
+                    onValueChange={(v) => {
+                      setGiroFilter(v)
+                      setCurrentPage(1)
+                    }}
+                  >
+                    <SelectTrigger className="border-0 focus:ring-0 focus:outline-none bg-transparent p-0 h-auto">
+                      <SelectValue placeholder="Todos" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">Todos</SelectItem>
+                      {giros.map((g) => (
+                        <SelectItem key={g} value={g}>
+                          {g}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              {/* Tipo Filter */}
+              <div className="flex-1 border-r border-gray-200">
+                <div className="p-4">
+                  <label className="block text-sm font-semibold text-gray-900 mb-1">Tipo</label>
+                  <Select
+                    value={tipoFilter}
+                    onValueChange={(v) => {
+                      setTipoFilter(v)
+                      setCurrentPage(1)
+                    }}
+                  >
+                    <SelectTrigger className="border-0 focus:ring-0 focus:outline-none bg-transparent p-0 h-auto">
+                      <SelectValue placeholder="Todos" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">Todos</SelectItem>
+                      {tiposEstudio.map((t) => (
+                        <SelectItem key={t} value={t}>
+                          {t}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              {/* Año Filter */}
+              <div className="flex-1 border-r border-gray-200">
+                <div className="p-4">
+                  <label className="block text-sm font-semibold text-gray-900 mb-1">Año</label>
+                  <Select
+                    value={añoFilter}
+                    onValueChange={(v) => {
+                      setAñoFilter(v)
+                      setCurrentPage(1)
+                    }}
+                  >
+                    <SelectTrigger className="border-0 focus:ring-0 focus:outline-none bg-transparent p-0 h-auto">
+                      <SelectValue placeholder="Todos" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">Todos</SelectItem>
+                      {años.map((año) => (
+                        <SelectItem key={año} value={año}>
+                          {año}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              {/* Mes Filter */}
+              <div className="flex-1 border-r border-gray-200">
+                <div className="p-4">
+                  <label className="block text-sm font-semibold text-gray-900 mb-1">Mes</label>
+                  <Select
+                    value={mesFilter}
+                    onValueChange={(v) => {
+                      setMesFilter(v)
+                      setCurrentPage(1)
+                    }}
+                  >
+                    <SelectTrigger className="border-0 focus:ring-0 focus:outline-none bg-transparent p-0 h-auto">
+                      <SelectValue placeholder="Todos" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">Todos</SelectItem>
+                      {meses.map((mes) => (
+                        <SelectItem key={mes.value} value={mes.value}>
+                          {mes.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              {/* Search Button */}
+              <div className="p-2">
+                <Button
+                  onClick={() => {
+                    setSearch("")
+                    setMunicipioFilter("all")
+                    setGiroFilter("all")
+                    setTipoFilter("all")
+                    setAñoFilter("all")
+                    setMesFilter("all")
                     setCurrentPage(1)
                   }}
+                  className="w-12 h-12 bg-red-500 hover:bg-red-600 text-white rounded-full p-0 flex items-center justify-center"
                 >
-                  <SelectTrigger className="border-0 focus:ring-0 focus:outline-none bg-transparent p-0 h-auto">
-                    <SelectValue placeholder="Todos los municipios" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">Todos los municipios</SelectItem>
-                    {municipios.map((m) => (
-                      <SelectItem key={m} value={m}>
-                        {m}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </Button>
               </div>
             </div>
 
-            {/* Giro Filter */}
-            <div className="flex-1 w-full sm:w-auto border-r border-gray-200">
-              <div className="p-4">
-                <label className="block text-xs font-semibold text-gray-900 mb-1">Giro</label>
-                <Select
-                  value={giroFilter}
-                  onValueChange={(v) => {
-                    setGiroFilter(v)
-                    setCurrentPage(1)
-                  }}
-                >
-                  <SelectTrigger className="border-0 focus:ring-0 focus:outline-none bg-transparent p-0 h-auto">
-                    <SelectValue placeholder="Todos los giros" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">Todos los giros</SelectItem>
-                    {giros.map((g) => (
-                      <SelectItem key={g} value={g}>
-                        {g}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+            {/* Mobile Filter Bar */}
+            <div className="sm:hidden flex items-center gap-2">
+              {/* Search Field */}
+              <div className="flex-1 bg-white rounded-full shadow-lg border border-gray-200">
+                <div className="p-4">
+            <div className="relative">
+              <svg
+                className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+              <Input
+                      placeholder="Buscar proyectos..."
+                value={search}
+                onChange={(e) => {
+                  setSearch(e.target.value)
+                  setCurrentPage(1)
+                }}
+                      className="pl-10 border-0 focus:ring-0 focus:outline-none bg-transparent text-sm"
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
 
-            {/* Tipo Filter */}
-            <div className="flex-1 w-full sm:w-auto border-r border-gray-200">
-              <div className="p-4">
-                <label className="block text-xs font-semibold text-gray-900 mb-1">Tipo</label>
-                <Select
-                  value={tipoFilter}
-                  onValueChange={(v) => {
-                    setTipoFilter(v)
-                    setCurrentPage(1)
-                  }}
-                >
-                  <SelectTrigger className="border-0 focus:ring-0 focus:outline-none bg-transparent p-0 h-auto">
-                    <SelectValue placeholder="Todos los tipos" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">Todos los tipos</SelectItem>
-                    {tiposEstudio.map((t) => (
-                      <SelectItem key={t} value={t}>
-                        {t}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
+              {/* Filter Toggle Button */}
+              <Button
+                onClick={() => setShowMobileFilters(!showMobileFilters)}
+                className="w-12 h-12 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full p-0 flex items-center justify-center border border-gray-200"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.414A1 1 0 013 6.707V4z" />
+                </svg>
+              </Button>
 
-            {/* Año Filter */}
-            <div className="flex-1 w-full sm:w-auto border-r border-gray-200">
-              <div className="p-4">
-                <label className="block text-xs font-semibold text-gray-900 mb-1">Año</label>
-                <Select
-                  value={añoFilter}
-                  onValueChange={(v) => {
-                    setAñoFilter(v)
-                    setCurrentPage(1)
-                  }}
-                >
-                  <SelectTrigger className="border-0 focus:ring-0 focus:outline-none bg-transparent p-0 h-auto">
-                    <SelectValue placeholder="Todos los años" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">Todos los años</SelectItem>
-                    {años.map((año) => (
-                      <SelectItem key={año} value={año}>
-                        {año}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-
-            {/* Mes Filter */}
-            <div className="flex-1 w-full sm:w-auto border-r border-gray-200">
-              <div className="p-4">
-                <label className="block text-xs font-semibold text-gray-900 mb-1">Mes</label>
-                <Select
-                  value={mesFilter}
-                  onValueChange={(v) => {
-                    setMesFilter(v)
-                    setCurrentPage(1)
-                  }}
-                >
-                  <SelectTrigger className="border-0 focus:ring-0 focus:outline-none bg-transparent p-0 h-auto">
-                    <SelectValue placeholder="Todos los meses" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">Todos los meses</SelectItem>
-                    {meses.map((mes) => (
-                      <SelectItem key={mes.value} value={mes.value}>
-                        {mes.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-
-            {/* Search Button (Clear Filters) */}
-            <div className="w-full sm:w-auto">
+              {/* Clear Filters Button */}
               <Button
                 onClick={() => {
                   setSearch("")
@@ -383,13 +448,141 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
                   setMesFilter("all")
                   setCurrentPage(1)
                 }}
-                className="w-full sm:w-auto h-full bg-red-500 hover:bg-red-600 text-white rounded-none px-8 py-4 font-semibold"
+                className="w-12 h-12 bg-red-500 hover:bg-red-600 text-white rounded-full p-0 flex items-center justify-center"
               >
-                Limpiar Filtros
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
               </Button>
             </div>
-          </div>
 
+            {/* Mobile Filters Dropdown */}
+            {showMobileFilters && (
+              <div className="sm:hidden mt-4 bg-white rounded-lg shadow-lg border border-gray-200 p-4">
+                <div className="grid grid-cols-1 gap-4">
+                  {/* Municipio Filter */}
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-900 mb-2">Municipio</label>
+            <Select
+              value={municipioFilter}
+              onValueChange={(v) => {
+                setMunicipioFilter(v)
+                setCurrentPage(1)
+              }}
+            >
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Seleccionar municipio" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">Todos los municipios</SelectItem>
+                {municipios.map((m) => (
+                  <SelectItem key={m} value={m}>
+                    {m}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+                  </div>
+
+                  {/* Giro Filter */}
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-900 mb-2">Giro</label>
+            <Select
+              value={giroFilter}
+              onValueChange={(v) => {
+                setGiroFilter(v)
+                setCurrentPage(1)
+              }}
+            >
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Seleccionar giro" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">Todos los giros</SelectItem>
+                {giros.map((g) => (
+                  <SelectItem key={g} value={g}>
+                    {g}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+                  </div>
+
+                  {/* Tipo Filter */}
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-900 mb-2">Tipo</label>
+            <Select
+              value={tipoFilter}
+              onValueChange={(v) => {
+                setTipoFilter(v)
+                setCurrentPage(1)
+              }}
+            >
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Seleccionar tipo" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">Todos los tipos</SelectItem>
+                {tiposEstudio.map((t) => (
+                  <SelectItem key={t} value={t}>
+                    {t}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+        </div>
+
+                  {/* Año Filter */}
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-900 mb-2">Año</label>
+                    <Select
+                      value={añoFilter}
+                      onValueChange={(v) => {
+                        setAñoFilter(v)
+                  setCurrentPage(1)
+                }}
+                    >
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Seleccionar año" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">Todos los años</SelectItem>
+                        {años.map((año) => (
+                          <SelectItem key={año} value={año}>
+                            {año}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+            </div>
+
+                  {/* Mes Filter */}
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-900 mb-2">Mes</label>
+                    <Select
+                      value={mesFilter}
+                      onValueChange={(v) => {
+                        setMesFilter(v)
+                  setCurrentPage(1)
+                }}
+                    >
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Seleccionar mes" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">Todos los meses</SelectItem>
+                        {meses.map((mes) => (
+                          <SelectItem key={mes.value} value={mes.value}>
+                            {mes.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+            </div>
+            </div>
+          </div>
+            )}
+          </div>
         </div>
       </div>
 
@@ -562,21 +755,21 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
                 >
                   ⏮
                 </Button>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-                  disabled={currentPage === 1}
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                disabled={currentPage === 1}
                   className="h-8 w-8 p-0 border-gray-200 hover:bg-gray-50"
                   title="Página anterior"
-                >
+              >
                   ◀
-                </Button>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-                  disabled={currentPage === totalPages}
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                disabled={currentPage === totalPages}
                   className="h-8 w-8 p-0 border-gray-200 hover:bg-gray-50"
                   title="Página siguiente"
                 >
@@ -591,9 +784,9 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
                   title="Última página"
                 >
                   ⏭
-                </Button>
-              </div>
+              </Button>
             </div>
+          </div>
           )}
         </div>
       </div>

@@ -176,101 +176,144 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
         </div>
       </div>
 
-      {/* Filters Section */}
+      {/* Filters Section - Airbnb Style */}
       <div className="p-4 sm:p-6 border-b border-[#1E3A8A]/10 bg-[#F8FAFC]/30">
-        <div className="flex flex-col gap-3 sm:gap-4">
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-2 sm:gap-3">
-            <div className="relative">
-              <svg
-                className="absolute left-3 top-1/2 -translate-y-1/2 h-3 w-3 sm:h-4 sm:w-4 text-[#000000]/50"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-              <Input
-                placeholder="Buscar proyectos..."
-                value={search}
-                onChange={(e) => {
-                  setSearch(e.target.value)
-                  setCurrentPage(1)
-                }}
-                className="pl-8 sm:pl-9 bg-white border-[#1E3A8A]/20 focus:border-[#1E3A8A] focus:ring-[#1E3A8A] text-sm"
-              />
+        <div className="flex flex-col lg:flex-row items-center justify-center">
+          {/* Horizontal Filter Bar */}
+          <div className="flex flex-col sm:flex-row items-center w-full max-w-6xl bg-white rounded-full shadow-lg border border-gray-200 overflow-hidden">
+            
+            {/* Search Field */}
+            <div className="flex-1 w-full sm:w-auto border-r border-gray-200">
+              <div className="relative p-4">
+                <label className="block text-xs font-semibold text-gray-900 mb-1">Buscar</label>
+                <div className="relative">
+                  <svg
+                    className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    />
+                  </svg>
+                  <Input
+                    placeholder="Buscar proyectos..."
+                    value={search}
+                    onChange={(e) => {
+                      setSearch(e.target.value)
+                      setCurrentPage(1)
+                    }}
+                    className="pl-10 border-0 focus:ring-0 focus:outline-none bg-transparent text-sm"
+                  />
+                </div>
+              </div>
             </div>
 
-            <Select
-              value={municipioFilter}
-              onValueChange={(v) => {
-                setMunicipioFilter(v)
-                setCurrentPage(1)
-              }}
-            >
-              <SelectTrigger className="bg-white border-gray-200 focus:border-blue-500 focus:ring-blue-500">
-                <SelectValue placeholder="Filtrar por municipio" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Todos los municipios</SelectItem>
-                {municipios.map((m) => (
-                  <SelectItem key={m} value={m}>
-                    {m}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            {/* Municipio Filter */}
+            <div className="flex-1 w-full sm:w-auto border-r border-gray-200">
+              <div className="p-4">
+                <label className="block text-xs font-semibold text-gray-900 mb-1">Municipio</label>
+                <Select
+                  value={municipioFilter}
+                  onValueChange={(v) => {
+                    setMunicipioFilter(v)
+                    setCurrentPage(1)
+                  }}
+                >
+                  <SelectTrigger className="border-0 focus:ring-0 focus:outline-none bg-transparent p-0 h-auto">
+                    <SelectValue placeholder="Todos los municipios" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">Todos los municipios</SelectItem>
+                    {municipios.map((m) => (
+                      <SelectItem key={m} value={m}>
+                        {m}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
 
-            <Select
-              value={giroFilter}
-              onValueChange={(v) => {
-                setGiroFilter(v)
-                setCurrentPage(1)
-              }}
-            >
-              <SelectTrigger className="bg-white border-gray-200 focus:border-blue-500 focus:ring-blue-500">
-                <SelectValue placeholder="Filtrar por giro" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Todos los giros</SelectItem>
-                {giros.map((g) => (
-                  <SelectItem key={g} value={g}>
-                    {g}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            {/* Giro Filter */}
+            <div className="flex-1 w-full sm:w-auto border-r border-gray-200">
+              <div className="p-4">
+                <label className="block text-xs font-semibold text-gray-900 mb-1">Giro</label>
+                <Select
+                  value={giroFilter}
+                  onValueChange={(v) => {
+                    setGiroFilter(v)
+                    setCurrentPage(1)
+                  }}
+                >
+                  <SelectTrigger className="border-0 focus:ring-0 focus:outline-none bg-transparent p-0 h-auto">
+                    <SelectValue placeholder="Todos los giros" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">Todos los giros</SelectItem>
+                    {giros.map((g) => (
+                      <SelectItem key={g} value={g}>
+                        {g}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
 
-            <Select
-              value={tipoFilter}
-              onValueChange={(v) => {
-                setTipoFilter(v)
-                setCurrentPage(1)
-              }}
-            >
-              <SelectTrigger className="bg-white border-gray-200 focus:border-blue-500 focus:ring-blue-500">
-                <SelectValue placeholder="Filtrar por tipo" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Todos los tipos</SelectItem>
-                {tiposEstudio.map((t) => (
-                  <SelectItem key={t} value={t}>
-                    {t}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-        </div>
+            {/* Tipo Filter */}
+            <div className="flex-1 w-full sm:w-auto border-r border-gray-200">
+              <div className="p-4">
+                <label className="block text-xs font-semibold text-gray-900 mb-1">Tipo</label>
+                <Select
+                  value={tipoFilter}
+                  onValueChange={(v) => {
+                    setTipoFilter(v)
+                    setCurrentPage(1)
+                  }}
+                >
+                  <SelectTrigger className="border-0 focus:ring-0 focus:outline-none bg-transparent p-0 h-auto">
+                    <SelectValue placeholder="Todos los tipos" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">Todos los tipos</SelectItem>
+                    {tiposEstudio.map((t) => (
+                      <SelectItem key={t} value={t}>
+                        {t}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-            <div className="flex flex-col gap-1.5">
-              <label htmlFor="fecha-inicio" className="text-xs text-gray-600 font-medium">
+            {/* Search Button (Clear Filters) */}
+            <div className="w-full sm:w-auto">
+              <Button
+                onClick={() => {
+                  setSearch("")
+                  setMunicipioFilter("all")
+                  setGiroFilter("all")
+                  setTipoFilter("all")
+                  setFechaInicio("")
+                  setFechaFin("")
+                  setCurrentPage(1)
+                }}
+                className="w-full sm:w-auto h-full bg-red-500 hover:bg-red-600 text-white rounded-none px-8 py-4 font-semibold"
+              >
+                Limpiar Filtros
+              </Button>
+            </div>
+          </div>
+
+          {/* Date Filters Row */}
+          <div className="flex flex-col sm:flex-row gap-3 mt-4 w-full max-w-6xl">
+            <div className="flex-1">
+              <label htmlFor="fecha-inicio" className="block text-xs font-semibold text-gray-900 mb-1">
                 Fecha de inicio
               </label>
               <Input
@@ -284,8 +327,8 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
                 className="bg-white border-gray-200 focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
-            <div className="flex flex-col gap-1.5">
-              <label htmlFor="fecha-fin" className="text-xs text-gray-600 font-medium">
+            <div className="flex-1">
+              <label htmlFor="fecha-fin" className="block text-xs font-semibold text-gray-900 mb-1">
                 Fecha de fin
               </label>
               <Input
@@ -312,24 +355,6 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
                 Limpiar fechas
               </Button>
             </div>
-          </div>
-
-          <div className="flex justify-end">
-            <Button
-              variant="ghost"
-              onClick={() => {
-                setSearch("")
-                setMunicipioFilter("all")
-                setGiroFilter("all")
-                setTipoFilter("all")
-                setFechaInicio("")
-                setFechaFin("")
-                setCurrentPage(1)
-              }}
-              className="text-gray-500 hover:text-gray-700 hover:bg-gray-100"
-            >
-              🧹 Limpiar todos los filtros
-            </Button>
           </div>
         </div>
       </div>

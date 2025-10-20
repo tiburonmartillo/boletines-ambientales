@@ -47,8 +47,8 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
   const [municipioFilter, setMunicipioFilter] = useState<string>("all")
   const [giroFilter, setGiroFilter] = useState<string>("all")
   const [tipoFilter, setTipoFilter] = useState<string>("all")
-  const [fechaInicio, setFechaInicio] = useState("")
-  const [fechaFin, setFechaFin] = useState("")
+  const [añoFilter, setAñoFilter] = useState<string>("all")
+  const [mesFilter, setMesFilter] = useState<string>("all")
   const [currentPage, setCurrentPage] = useState(1)
   const [itemsPerPage, setItemsPerPage] = useState(20)
 
@@ -58,6 +58,33 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
   }, [itemsPerPage])
 
   const currentData = activeTab === "proyectos" ? proyectos : resolutivos
+
+  // Generate year and month options
+  const años = useMemo(() => {
+    const years = new Set<string>()
+    currentData.forEach(item => {
+      if (item.fecha_ingreso) {
+        const date = new Date(item.fecha_ingreso.split("/").reverse().join("-"))
+        years.add(date.getFullYear().toString())
+      }
+    })
+    return Array.from(years).sort((a, b) => b.localeCompare(a)) // Most recent first
+  }, [currentData])
+
+  const meses = [
+    { value: "01", label: "Enero" },
+    { value: "02", label: "Febrero" },
+    { value: "03", label: "Marzo" },
+    { value: "04", label: "Abril" },
+    { value: "05", label: "Mayo" },
+    { value: "06", label: "Junio" },
+    { value: "07", label: "Julio" },
+    { value: "08", label: "Agosto" },
+    { value: "09", label: "Septiembre" },
+    { value: "10", label: "Octubre" },
+    { value: "11", label: "Noviembre" },
+    { value: "12", label: "Diciembre" }
+  ]
   
   // Debug: Log current data
   console.log("Current data for activeTab:", activeTab, "Length:", currentData.length)
@@ -67,8 +94,8 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
   const deferredMunicipioFilter = useDeferredValue(municipioFilter)
   const deferredGiroFilter = useDeferredValue(giroFilter)
   const deferredTipoFilter = useDeferredValue(tipoFilter)
-  const deferredFechaInicio = useDeferredValue(fechaInicio)
-  const deferredFechaFin = useDeferredValue(fechaFin)
+  const deferredAñoFilter = useDeferredValue(añoFilter)
+  const deferredMesFilter = useDeferredValue(mesFilter)
 
   const filteredData = useMemo(() => {
     const sorted = [...currentData].sort((a, b) => {
@@ -103,26 +130,27 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
       const matchesGiro = deferredGiroFilter === "all" || item.giro === deferredGiroFilter
       const matchesTipo = deferredTipoFilter === "all" || item.tipo_estudio === deferredTipoFilter
 
-      let matchesDateRange = true
-      if (deferredFechaInicio || deferredFechaFin) {
+      let matchesYearMonth = true
+      if (deferredAñoFilter !== "all" || deferredMesFilter !== "all") {
         if (!item.fecha_ingreso) {
-          matchesDateRange = false // Exclude items without dates when filtering by date
+          matchesYearMonth = false // Exclude items without dates when filtering by date
         } else {
           const itemDate = new Date(item.fecha_ingreso.split("/").reverse().join("-"))
-          if (deferredFechaInicio) {
-            const startDate = new Date(deferredFechaInicio)
-            matchesDateRange = matchesDateRange && itemDate >= startDate
+          const itemYear = itemDate.getFullYear().toString()
+          const itemMonth = (itemDate.getMonth() + 1).toString().padStart(2, '0')
+          
+          if (deferredAñoFilter !== "all") {
+            matchesYearMonth = matchesYearMonth && itemYear === deferredAñoFilter
           }
-          if (deferredFechaFin) {
-            const endDate = new Date(deferredFechaFin)
-            matchesDateRange = matchesDateRange && itemDate <= endDate
+          if (deferredMesFilter !== "all") {
+            matchesYearMonth = matchesYearMonth && itemMonth === deferredMesFilter
           }
         }
       }
 
-      return matchesSearch && matchesMunicipio && matchesGiro && matchesTipo && matchesDateRange
+      return matchesSearch && matchesMunicipio && matchesGiro && matchesTipo && matchesYearMonth
     })
-  }, [currentData, deferredSearch, deferredMunicipioFilter, deferredGiroFilter, deferredTipoFilter, deferredFechaInicio, deferredFechaFin])
+  }, [currentData, deferredSearch, deferredMunicipioFilter, deferredGiroFilter, deferredTipoFilter, deferredAñoFilter, deferredMesFilter])
 
   const totalPages = Math.ceil(filteredData.length / itemsPerPage)
   const paginatedData = filteredData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
@@ -291,6 +319,58 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
               </div>
             </div>
 
+            {/* Año Filter */}
+            <div className="flex-1 w-full sm:w-auto border-r border-gray-200">
+              <div className="p-4">
+                <label className="block text-xs font-semibold text-gray-900 mb-1">Año</label>
+                <Select
+                  value={añoFilter}
+                  onValueChange={(v) => {
+                    setAñoFilter(v)
+                    setCurrentPage(1)
+                  }}
+                >
+                  <SelectTrigger className="border-0 focus:ring-0 focus:outline-none bg-transparent p-0 h-auto">
+                    <SelectValue placeholder="Todos los años" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">Todos los años</SelectItem>
+                    {años.map((año) => (
+                      <SelectItem key={año} value={año}>
+                        {año}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+
+            {/* Mes Filter */}
+            <div className="flex-1 w-full sm:w-auto border-r border-gray-200">
+              <div className="p-4">
+                <label className="block text-xs font-semibold text-gray-900 mb-1">Mes</label>
+                <Select
+                  value={mesFilter}
+                  onValueChange={(v) => {
+                    setMesFilter(v)
+                    setCurrentPage(1)
+                  }}
+                >
+                  <SelectTrigger className="border-0 focus:ring-0 focus:outline-none bg-transparent p-0 h-auto">
+                    <SelectValue placeholder="Todos los meses" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">Todos los meses</SelectItem>
+                    {meses.map((mes) => (
+                      <SelectItem key={mes.value} value={mes.value}>
+                        {mes.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+
             {/* Search Button (Clear Filters) */}
             <div className="w-full sm:w-auto">
               <Button
@@ -299,8 +379,8 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
                   setMunicipioFilter("all")
                   setGiroFilter("all")
                   setTipoFilter("all")
-                  setFechaInicio("")
-                  setFechaFin("")
+                  setAñoFilter("all")
+                  setMesFilter("all")
                   setCurrentPage(1)
                 }}
                 className="w-full sm:w-auto h-full bg-red-500 hover:bg-red-600 text-white rounded-none px-8 py-4 font-semibold"
@@ -310,52 +390,6 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
             </div>
           </div>
 
-          {/* Date Filters Row */}
-          <div className="flex flex-col sm:flex-row gap-3 mt-4 w-full max-w-6xl">
-            <div className="flex-1">
-              <label htmlFor="fecha-inicio" className="block text-xs font-semibold text-gray-900 mb-1">
-                Fecha de inicio
-              </label>
-              <Input
-                id="fecha-inicio"
-                type="date"
-                value={fechaInicio}
-                onChange={(e) => {
-                  setFechaInicio(e.target.value)
-                  setCurrentPage(1)
-                }}
-                className="bg-white border-gray-200 focus:border-blue-500 focus:ring-blue-500"
-              />
-            </div>
-            <div className="flex-1">
-              <label htmlFor="fecha-fin" className="block text-xs font-semibold text-gray-900 mb-1">
-                Fecha de fin
-              </label>
-              <Input
-                id="fecha-fin"
-                type="date"
-                value={fechaFin}
-                onChange={(e) => {
-                  setFechaFin(e.target.value)
-                  setCurrentPage(1)
-                }}
-                className="bg-white border-gray-200 focus:border-blue-500 focus:ring-blue-500"
-              />
-            </div>
-            <div className="flex items-end">
-              <Button
-                variant="outline"
-                onClick={() => {
-                  setFechaInicio("")
-                  setFechaFin("")
-                  setCurrentPage(1)
-                }}
-                className="w-full border-gray-200 hover:bg-gray-50"
-              >
-                Limpiar fechas
-              </Button>
-            </div>
-          </div>
         </div>
       </div>
 

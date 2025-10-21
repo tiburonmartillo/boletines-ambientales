@@ -212,7 +212,7 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
           <div className="w-full max-w-6xl">
             {/* Desktop/Tablet Filter Bar */}
             <div className="hidden md:flex items-center">
-              <div className="flex items-center bg-white rounded-full shadow border border-gray-200 overflow-hidden flex-1">
+              <div className="flex items-center bg-white rounded-full  border border-gray-200 overflow-hidden flex-1 shadow-none">
               
               {/* Search Field */}
               <div className="flex-[3] border-r border-gray-200">
@@ -239,7 +239,7 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
                         setSearch(e.target.value)
                         setCurrentPage(1)
                       }}
-                      className="pl-10 border-0 focus:ring-0 focus:outline-none bg-transparent text-sm shadow-none"
+                      className="pl-10  bg-transparent text-sm shadow-none"
                     />
                   </div>
                 </div>
@@ -401,7 +401,7 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
             {/* Mobile Filter Bar */}
             <div className="md:hidden flex items-center gap-2">
               {/* Search Field */}
-              <div className="flex-1 bg-white rounded-full shadow-lg border border-gray-200">
+              <div className="flex-1 bg-white rounded-full shadow-lg ">
                 <div className="p-4">
             <div className="relative">
               <svg
@@ -424,7 +424,7 @@ export function ProjectsTable({ proyectos, resolutivos, municipios, giros, tipos
                   setSearch(e.target.value)
                   setCurrentPage(1)
                 }}
-                      className="pl-10 border-0 focus:ring-0 focus:outline-none bg-transparent text-sm"
+                      className="pl-10  bg-transparent text-sm"
                     />
                   </div>
                 </div>

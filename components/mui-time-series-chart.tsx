@@ -82,7 +82,6 @@ export const MuiTimeSeriesChart = memo(function MuiTimeSeriesChart({
                   area: false,
                   curve: 'linear',
                   showMark: true,
-                  markSize: 4,
                 },
                 {
                   dataKey: 'resolutivos',
@@ -91,7 +90,6 @@ export const MuiTimeSeriesChart = memo(function MuiTimeSeriesChart({
                   area: false,
                   curve: 'linear',
                   showMark: true,
-                  markSize: 4,
                 },
               ]}
               width={undefined}

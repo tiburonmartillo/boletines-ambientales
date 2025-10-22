@@ -41216,7 +41216,7 @@
     },
     {
       "id": 452,
-      "secretario": "SECRETARIA DE SUSTENTABILIDAD, MEDIO AMBIENTE Y AGUA",
+      "secretario": "LIC. SARAHI MACIAS ALICEA",
       "director": "T.S.U. LUIS MEDINA HERNÁNDEZ",
       "fecha_publicacion": "2025-10-06",
       "cantidad_ingresados": 1,
@@ -41240,11 +41240,53 @@
         }
       ],
       "resolutivos_emitidos": []
+    },
+    {
+      "id": 453,
+      "secretario": "LIC. SARAHI MACIAS ALICEA",
+      "director": "T.S.U. LUIS MEDINA HERNÁNDEZ",
+      "fecha_publicacion": "2025-10-13",
+      "cantidad_ingresados": 2,
+      "cantidad_resolutivos": 0,
+      "filename": "https://www.aguascalientes.gob.mx/SSMAA/BoletinesSMA/Repositorio/2025/10%20Octubre/BOLETIN42-2025_13%20DE%20OCTUBRE_DEL1310_1710.pdf",
+      "proyectos_ingresados": [
+        {
+          "numero": 1,
+          "tipo_estudio": "MIA",
+          "promovente": "YOKOHAMA INDUSTRIES AMERICAS DE MEXICO, S. DE R.L. DE C.V.",
+          "nombre_proyecto": "AMPLIACION PLANTA YOKOHAMA",
+          "naturaleza_proyecto": "MANIFIESTO DE IMPACTO AMBIENTAL",
+          "giro": "NAVE INDUSTRIAL CON UN TOTAL DE 8,181 M²",
+          "municipio": "SAN FRANCISCO DE LOS ROMO",
+          "coordenadas_x": 780669.96,
+          "coordenadas_y": 2439896.16,
+          "expediente": "SSMAA-DIRA-2821-2025",
+          "fecha_ingreso": "2025-10-15",
+          "boletin_id": 453,
+          "coord_valida": true
+        },
+        {
+          "numero": 2,
+          "tipo_estudio": "MIA",
+          "promovente": "C.JORGE OMAR MARTINEZ GUTIERREZ JOMAQ S.A. DE C.V.",
+          "nombre_proyecto": "COMPLEJO AGRO INDUSTRIAL LAS JAULAS",
+          "naturaleza_proyecto": "MANIFIESTO DE IMPACTO AMBIENTAL",
+          "giro": "complejo agroindustrial TOTAL DE 17,426.74M2",
+          "municipio": "JESUS MARIA",
+          "coordenadas_x": 778254.65,
+          "coordenadas_y": 2437134.03,
+          "expediente": "SSMAA-DIRA-2822-2025",
+          "fecha_ingreso": "2025-10-17",
+          "boletin_id": 453,
+          "coord_valida": true
+        }
+      ],
+      "resolutivos_emitidos": []
     }
   ],
   "metadata": {
-    "total_boletines": 452,
-    "archivos_procesados": 12,
+    "total_boletines": 453,
+    "archivos_procesados": 13,
     "errores": 0,
     "fecha_creacion": "2025-09-24",
     "descripcion": "Archivo JSON completo con todos los boletines ambientales de Aguascalientes"

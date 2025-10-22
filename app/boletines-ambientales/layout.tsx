@@ -47,6 +47,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://adn-a.org/boletines-ambientales',
   },
+  other: {
+    'whatsapp:description': '🌱 Descubre más de 1,000 proyectos ambientales de Aguascalientes. Dashboard interactivo con datos oficiales de la SSMAA. Filtra por municipio, giro empresarial y fecha. Transparencia ambiental para todos.',
+    'whatsapp:title': 'Boletines Ambientales - Dashboard Interactivo',
+  },
 }
 
 export default function BoletinesAmbientalesLayout({

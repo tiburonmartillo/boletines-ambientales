@@ -5,7 +5,8 @@ import { Footer } from '@/components/footer'
 import { MuiThemeProvider } from '@/components/mui-theme-provider'
 import { BoletinSummaryWrapper } from '@/components/boletin-summary-wrapper'
 import { Boletin } from '@/lib/types'
-import { redirect } from 'next/navigation'
+import fs from 'fs'
+import path from 'path'
 
 interface ResumenBoletinPageProps {
   params: Promise<{ id: string }>
@@ -42,11 +43,9 @@ export async function generateStaticParams() {
 // Función para obtener datos del boletín en el servidor
 async function getBoletinData(boletinId: number): Promise<Boletin | null> {
   try {
-    const baseUrl = process.env.NODE_ENV === 'production' 
-      ? 'https://adn-a.org' 
-      : (process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000')
-    const response = await fetch(`${baseUrl}/data/boletines.json`)
-    const data = await response.json()
+    const filePath = path.join(process.cwd(), 'public', 'data', 'boletines.json')
+    const fileContents = fs.readFileSync(filePath, 'utf8')
+    const data = JSON.parse(fileContents)
     return data.boletines.find((b: Boletin) => b.id === boletinId) || null
   } catch (error) {
     console.error('Error loading boletin data:', error)

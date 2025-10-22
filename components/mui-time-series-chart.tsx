@@ -94,7 +94,7 @@ export const MuiTimeSeriesChart = memo(function MuiTimeSeriesChart({
               ]}
               width={undefined}
               height={undefined}
-              onItemClick={(event, item) => {
+              onLineClick={(event, item) => {
                 if (onDateSelect && item) {
                   const fecha = chartData[item.dataIndex]?.fecha
                   onDateSelect(fecha || null)

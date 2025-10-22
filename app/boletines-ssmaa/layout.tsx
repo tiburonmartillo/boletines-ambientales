@@ -27,8 +27,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: 'https://adn-a.org/assets/logocompleto.png',
-        width: 1200,
-        height: 630,
+        width: 1811,
+        height: 308,
         alt: 'Dashboard SSMAA - Monitoreo Ambiental en Tiempo Real',
       },
     ],

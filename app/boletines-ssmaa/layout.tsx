@@ -26,9 +26,9 @@ export const metadata: Metadata = {
     siteName: 'ADN-Aguascalientes',
     images: [
       {
-        url: 'https://adn-a.org/assets/miniaturaboletines.png',
-        width: 1238,
-        height: 1005,
+        url: 'https://adn-a.org/assets/logocompleto.png',
+        width: 1200,
+        height: 630,
         alt: 'Dashboard SSMAA - Monitoreo Ambiental en Tiempo Real',
       },
     ],
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Dashboard SSMAA: Monitorea Proyectos Ambientales en Tiempo Real',
     description: '🎯 Supervisa proyectos ambientales con datos oficiales de la SSMAA. Reduce tiempos de búsqueda del 90%. Filtra por municipio y fecha. Transparencia gubernamental.',
-    images: ['https://adn-a.org/assets/miniaturaboletines.png'],
+    images: ['https://adn-a.org/assets/logocompleto.png'],
     creator: '@adn_ags',
     site: '@adn_ags',
   },

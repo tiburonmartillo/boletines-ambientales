@@ -35,6 +35,14 @@ jobs:
     - name: Build
       run: npm run build
       
+    - name: Generate static pages
+      run: node scripts/generate-static-pages.js
+      
+    - name: Copy static pages to out directory
+      run: |
+        mkdir -p out/boletines-ssmaa/resumen
+        cp -r public/boletines-ssmaa/resumen/* out/boletines-ssmaa/resumen/
+      
     - name: Setup Pages
       uses: actions/configure-pages@v4
       

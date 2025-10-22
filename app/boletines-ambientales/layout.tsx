@@ -2,27 +2,26 @@ import type { Metadata } from 'next'
 
 // Metadata específica para la página de boletines ambientales
 export const metadata: Metadata = {
-  title: 'Boletines Ambientales - Dashboard Interactivo | ADN-Aguascalientes',
-  description: '🌱 Descubre el estado ambiental de Aguascalientes con nuestro dashboard interactivo. Más de 1,000 proyectos y resolutivos ambientales de la SSMAA. Visualiza tendencias, filtra por municipio y tipo de proyecto. Transparencia ambiental para todos los ciudadanos.',
+  title: '🎯 Dashboard Ambiental: Analiza 1,000+ Proyectos en Segundos | ADN-Aguascalientes',
+  description: '⚡ Transforma la forma de consultar datos ambientales en Aguascalientes. Dashboard interactivo que acelera la búsqueda de proyectos ambientales en un 95%. Filtra por municipio, giro empresarial y fecha. Datos oficiales de la SSMAA para ciudadanos, empresas y autoridades.',
   keywords: [
-    'boletines ambientales',
-    'aguascalientes',
-    'secretaría medio ambiente',
-    'proyectos ambientales',
-    'resolutivos ambientales',
-    'dashboard ambiental',
+    'dashboard ambiental aguascalientes',
+    'análisis proyectos ambientales',
+    'consulta rápida datos ambientales',
+    'filtros ambientales avanzados',
     'transparencia ambiental',
+    'datos oficiales SSMAA',
+    'gobierno abierto',
     'participación ciudadana',
     'monitoreo ambiental',
     'evaluación impacto ambiental',
-    'SSMAA',
-    'gobierno abierto',
-    'datos ambientales',
-    'visualización datos'
+    'visualización datos ambientales',
+    'herramientas ambientales',
+    'acceso rápido información ambiental'
   ],
   openGraph: {
-    title: '🌱 Boletines Ambientales - Dashboard Interactivo | ADN-Aguascalientes',
-    description: 'Explora más de 1,000 proyectos ambientales de Aguascalientes en tiempo real. Dashboard interactivo con filtros por municipio, giro empresarial y fecha. Datos oficiales de la SSMAA para promover la transparencia ambiental.',
+    title: '🎯 Dashboard Ambiental: Analiza 1,000+ Proyectos en Segundos | ADN-Aguascalientes',
+    description: '⚡ Acelera la consulta de datos ambientales en Aguascalientes. Dashboard interactivo que reduce tiempos de búsqueda en un 95%. Filtra por municipio, giro empresarial y fecha. Datos oficiales de la SSMAA para todos.',
     url: 'https://adn-a.org/boletines-ambientales',
     siteName: 'ADN-Aguascalientes',
     images: [
@@ -30,7 +29,7 @@ export const metadata: Metadata = {
         url: '/assets/logocompleto.png',
         width: 1200,
         height: 630,
-        alt: 'Dashboard de Boletines Ambientales - ADN Aguascalientes',
+        alt: 'Dashboard Ambiental - Análisis Rápido de Proyectos',
       },
     ],
     locale: 'es_MX',
@@ -38,8 +37,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '🌱 Boletines Ambientales - Dashboard Interactivo | ADN-Aguascalientes',
-    description: 'Más de 1,000 proyectos ambientales de Aguascalientes en un dashboard interactivo. Filtra por municipio, giro empresarial y fecha. Datos oficiales de la SSMAA para transparencia ambiental.',
+    title: '🎯 Dashboard Ambiental: Analiza 1,000+ Proyectos en Segundos',
+    description: '⚡ Acelera la consulta de datos ambientales en Aguascalientes. Reduce tiempos de búsqueda en un 95%. Filtra por municipio y fecha. Datos oficiales de la SSMAA.',
     images: ['/assets/logocompleto.png'],
     creator: '@adn_ags',
     site: '@adn_ags',
@@ -48,8 +47,8 @@ export const metadata: Metadata = {
     canonical: 'https://adn-a.org/boletines-ambientales',
   },
   other: {
-    'whatsapp:description': '🌱 Descubre más de 1,000 proyectos ambientales de Aguascalientes. Dashboard interactivo con datos oficiales de la SSMAA. Filtra por municipio, giro empresarial y fecha. Transparencia ambiental para todos.',
-    'whatsapp:title': 'Boletines Ambientales - Dashboard Interactivo',
+    'whatsapp:description': '🎯 Dashboard Ambiental: Analiza más de 1,000 proyectos ambientales en segundos. Reduce tiempos de búsqueda en un 95%. Filtra por municipio, giro empresarial y fecha. Datos oficiales de la SSMAA.',
+    'whatsapp:title': 'Dashboard Ambiental - Análisis Rápido',
   },
 }
 

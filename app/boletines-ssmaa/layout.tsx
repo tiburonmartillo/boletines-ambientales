@@ -2,34 +2,34 @@ import type { Metadata } from 'next'
 
 // Metadata específica para la página de boletines SSMAA
 export const metadata: Metadata = {
-  title: 'Boletines SSMAA - Dashboard Ambiental | ADN-Aguascalientes',
-  description: '🌱 Accede a los boletines oficiales de la Secretaría de Medio Ambiente de Aguascalientes (SSMAA). Dashboard interactivo con más de 1,000 proyectos y resolutivos ambientales. Visualiza tendencias, filtra por municipio y tipo de proyecto. Transparencia gubernamental en tiempo real.',
+  title: '🚀 Dashboard SSMAA: Monitorea Proyectos Ambientales en Tiempo Real | ADN-Aguascalientes',
+  description: '🎯 Descubre cómo los ciudadanos pueden supervisar proyectos ambientales en Aguascalientes. Dashboard interactivo con datos oficiales de la SSMAA. Reduce tiempos de búsqueda del 90%, filtra por municipio y tipo de proyecto. Transparencia gubernamental al alcance de todos.',
   keywords: [
-    'boletines SSMAA',
-    'secretaría medio ambiente aguascalientes',
-    'boletines ambientales oficiales',
-    'proyectos ambientales aguascalientes',
-    'resolutivos ambientales',
-    'dashboard gubernamental',
-    'transparencia ambiental',
-    'gobierno abierto aguascalientes',
-    'monitoreo ambiental',
-    'evaluación impacto ambiental',
-    'SSMAA',
+    'dashboard ambiental aguascalientes',
+    'monitoreo proyectos ambientales',
+    'transparencia gubernamental',
+    'supervisión ciudadana',
     'datos ambientales oficiales',
-    'visualización datos gubernamentales'
+    'boletines SSMAA',
+    'gobierno abierto',
+    'participación ciudadana',
+    'control ambiental',
+    'evaluación impacto ambiental',
+    'SSMAA dashboard',
+    'visualización datos ambientales',
+    'filtros ambientales'
   ],
   openGraph: {
-    title: '🌱 Boletines SSMAA - Dashboard Ambiental | ADN-Aguascalientes',
-    description: 'Accede a los boletines oficiales de la SSMAA de Aguascalientes. Dashboard interactivo con más de 1,000 proyectos ambientales. Filtra por municipio, giro empresarial y fecha. Datos oficiales para transparencia gubernamental.',
+    title: 'Dashboard SSMAA: Monitorea Proyectos Ambientales en Tiempo Real | ADN-Aguascalientes',
+    description: '🎯 Supervisa proyectos ambientales de Aguascalientes con datos oficiales de la SSMAA. Dashboard interactivo que reduce tiempos de búsqueda del 90%. Filtra por municipio, giro empresarial y fecha. Transparencia gubernamental para todos los ciudadanos.',
     url: 'https://adn-a.org/boletines-ssmaa',
     siteName: 'ADN-Aguascalientes',
     images: [
       {
-        url: '/assets/logocompleto.png',
+        url: '/assets/miniaturaboletines.png',
         width: 1200,
         height: 630,
-        alt: 'Dashboard de Boletines SSMAA - ADN Aguascalientes',
+        alt: 'Dashboard SSMAA - Monitoreo Ambiental en Tiempo Real',
       },
     ],
     locale: 'es_MX',
@@ -37,9 +37,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '🌱 Boletines SSMAA - Dashboard Ambiental | ADN-Aguascalientes',
-    description: 'Boletines oficiales de la SSMAA de Aguascalientes en dashboard interactivo. Más de 1,000 proyectos ambientales con filtros por municipio y fecha. Transparencia gubernamental.',
-    images: ['/assets/logocompleto.png'],
+    title: 'Dashboard SSMAA: Monitorea Proyectos Ambientales en Tiempo Real',
+    description: '🎯 Supervisa proyectos ambientales con datos oficiales de la SSMAA. Reduce tiempos de búsqueda del 90%. Filtra por municipio y fecha. Transparencia gubernamental.',
+    images: ['/assets/miniaturaboletines.png'],
     creator: '@adn_ags',
     site: '@adn_ags',
   },
@@ -47,8 +47,8 @@ export const metadata: Metadata = {
     canonical: 'https://adn-a.org/boletines-ssmaa',
   },
   other: {
-    'whatsapp:description': '🌱 Boletines oficiales de la SSMAA de Aguascalientes. Dashboard interactivo con más de 1,000 proyectos ambientales. Filtra por municipio, giro empresarial y fecha. Transparencia gubernamental.',
-    'whatsapp:title': 'Boletines SSMAA - Dashboard Ambiental',
+    'whatsapp:description': '🚀 Dashboard SSMAA: Monitorea proyectos ambientales en tiempo real. Reduce tiempos de búsqueda del 90%. Filtra por municipio, giro empresarial y fecha. Transparencia gubernamental.',
+    'whatsapp:title': 'Dashboard SSMAA - Monitoreo Ambiental',
   },
 }
 

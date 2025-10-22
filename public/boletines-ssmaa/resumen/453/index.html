@@ -140,6 +140,19 @@
             background: #EA580C; 
             border-color: #EA580C; 
         }
+        .loading { 
+            text-align: center; 
+            padding: 2rem; 
+            color: #6B7280; 
+        }
+        .error { 
+            background: #FEF2F2; 
+            border: 1px solid #FECACA; 
+            color: #DC2626; 
+            padding: 1rem; 
+            border-radius: 6px; 
+            text-align: center; 
+        }
         @media (max-width: 768px) {
             .project-info { flex-direction: column; }
             .map-container { width: 100%; height: 250px; margin-top: 1rem; }
@@ -153,101 +166,21 @@
     <div class="container">
         <div class="header">
             <h1>Resumen del Boletín Ambiental de SSMAA</h1>
-            <h2>12 de octubre de 2025</h2>
+            <h2 id="fecha-boletin">Cargando...</h2>
         </div>
         
         <div class="content">
+            <div id="loading" class="loading">
+                <p>Cargando datos del boletín...</p>
+            </div>
             
-                <h2 class="section-title">Proyectos ingresados a impacto ambiental</h2>
-                <div class="fecha-limite">
-                    Fecha límite para solicitud de consulta pública: 24 de octubre de 2025
-                </div>
-                
-                    <div class="project-card">
-                        <h3 class="project-title">AMPLIACION PLANTA YOKOHAMA</h3>
-                        <div class="project-info">
-                            <div class="project-details">
-                                <div class="info-item">
-                                    <span class="info-label">Promovente:</span>
-                                    <span class="info-value">YOKOHAMA INDUSTRIES AMERICAS DE MEXICO, S. DE R.L. DE C.V.</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">Municipio:</span>
-                                    <span class="info-value">SAN FRANCISCO DE LOS ROMO</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">Expediente:</span>
-                                    <span class="info-value">SSMAA-DIRA-2821-2025</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">Fechas de ingreso:</span>
-                                    <span class="info-value">14 de octubre de 2025</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">Tipo:</span>
-                                    <span class="info-value">MIA</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">Naturaleza del proyecto:</span>
-                                    <div class="naturaleza">NATURALEZA DEL PROYECTO: MANIFIESTO DE IMPACTO AMBIENTAL, EL PROYECTO AMPLIACION PLANTA YOKOHAMA INDUSTRIES AMERICAS DE MEXICO, S. DE R.L DE C.V CON UBICACIÓN EN EL MUNICIPIO DE SAN FRANCISCO DE LOS ROMO, CON COORDENADAS X 780669.96, Y 2439896.16 Y UN TOTAL DE 8,181 M².</div>
-                                </div>
-                            </div>
-                            <div class="map-container">
-                                <img src="https://staticmap.openstreetmap.de/staticmap.php?center=2439896.16,780669.96&zoom=15&size=400x300&markers=2439896.16,780669.96,red" alt="Mapa de ubicación" class="map-image">
-                                <div class="map-info">
-                                    Ubicación en SAN FRANCISCO DE LOS ROMO
-                                    <br><a href="https://www.openstreetmap.org/?mlat=2439896.16&mlon=780669.96&zoom=15" target="_blank" class="map-link">Ver en OpenStreetMap</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div class="project-card">
-                        <h3 class="project-title">COMPLEJO AGRO INDUSTRIAL LAS JAULAS</h3>
-                        <div class="project-info">
-                            <div class="project-details">
-                                <div class="info-item">
-                                    <span class="info-label">Promovente:</span>
-                                    <span class="info-value">C.JORGE OMAR MARTINEZ GUTIERREZ JOMAQ S.A. DE C.V.</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">Municipio:</span>
-                                    <span class="info-value">JESUS MARIA</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">Expediente:</span>
-                                    <span class="info-value">SSMAA-DIRA-2822-2025</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">Fechas de ingreso:</span>
-                                    <span class="info-value">16 de octubre de 2025</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">Tipo:</span>
-                                    <span class="info-value">MIA</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">Naturaleza del proyecto:</span>
-                                    <div class="naturaleza">NATURALEZA DEL PROYECTO: MANIFIESTO DE IMPACTO AMBIENTAL, EL PROYECTO COMPLEJO AGRO INDUSTRIAL LAS JAULAS CON UBICACIÓN EN EL MUNICIPIO DE JESUS MARIA CON COORDENADAS X 778254.65, Y 2437134.03 Y UN TOTAL DE 17,426.74M²</div>
-                                </div>
-                            </div>
-                            <div class="map-container">
-                                <img src="https://staticmap.openstreetmap.de/staticmap.php?center=2437134.03,778254.65&zoom=15&size=400x300&markers=2437134.03,778254.65,red" alt="Mapa de ubicación" class="map-image">
-                                <div class="map-info">
-                                    Ubicación en JESUS MARIA
-                                    <br><a href="https://www.openstreetmap.org/?mlat=2437134.03&mlon=778254.65&zoom=15" target="_blank" class="map-link">Ver en OpenStreetMap</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                
+            <div id="error" class="error" style="display: none;">
+                <p>Error al cargar los datos del boletín.</p>
+            </div>
             
-            
-            <h2 class="section-title" style="text-align: center;">
-                No se emitieron resolutivos
-            </h2>
-            
-            
+            <div id="content" style="display: none;">
+                <!-- Contenido se cargará dinámicamente -->
+            </div>
             
             <div class="actions">
                 <button class="btn btn-outline" onclick="window.print()">Imprimir</button>
@@ -266,5 +199,167 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Obtener el ID del boletín de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const boletinId = urlParams.get('id') || '453'; // Default al 453
+        
+        // Función para formatear fechas
+        function formatearFechaCorta(fecha) {
+            const fechaObj = new Date(fecha);
+            return fechaObj.toLocaleDateString('es-ES', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+        }
+        
+        // Función para calcular fecha límite
+        function calcularFechaLimiteConsulta(fechaPublicacion) {
+            const fecha = new Date(fechaPublicacion);
+            let diasAgregados = 0;
+            let diasHabiles = 0;
+            
+            while (diasHabiles < 10) {
+                diasAgregados++;
+                const fechaActual = new Date(fecha);
+                fechaActual.setDate(fecha.getDate() + diasAgregados);
+                
+                if (fechaActual.getDay() !== 0 && fechaActual.getDay() !== 6) {
+                    diasHabiles++;
+                }
+            }
+            
+            const fechaLimite = new Date(fecha);
+            fechaLimite.setDate(fecha.getDate() + diasAgregados);
+            
+            return fechaLimite.toISOString().split('T')[0];
+        }
+        
+        // Función para generar HTML del proyecto
+        function generarHTMLProyecto(proyecto, esResolutivo = false) {
+            const fechaLimite = esResolutivo ? '' : calcularFechaLimiteConsulta(proyecto.fecha_ingreso);
+            const fechaLimiteFormateada = esResolutivo ? '' : formatearFechaCorta(fechaLimite);
+            
+            return `
+                <div class="project-card">
+                    <h3 class="project-title">${proyecto.nombre_proyecto}</h3>
+                    <div class="project-info">
+                        <div class="project-details">
+                            <div class="info-item">
+                                <span class="info-label">Promovente:</span>
+                                <span class="info-value">${proyecto.promovente}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Municipio:</span>
+                                <span class="info-value">${proyecto.municipio}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Expediente:</span>
+                                <span class="info-value">${proyecto.expediente}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">${esResolutivo ? 'Fecha de ingreso:' : 'Fechas de ingreso:'}</span>
+                                <span class="info-value">${formatearFechaCorta(proyecto.fecha_ingreso)}</span>
+                            </div>
+                            ${esResolutivo ? `
+                                <div class="info-item">
+                                    <span class="info-label">Fecha de resolutivo:</span>
+                                    <span class="info-value">${formatearFechaCorta(proyecto.fecha_resolutivo)}</span>
+                                </div>
+                            ` : ''}
+                            <div class="info-item">
+                                <span class="info-label">Tipo:</span>
+                                <span class="info-value">${proyecto.tipo_estudio}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Naturaleza del proyecto:</span>
+                                <div class="naturaleza">${proyecto.naturaleza_proyecto}</div>
+                            </div>
+                        </div>
+                        <div class="map-container">
+                            ${proyecto.coordenadas_x && proyecto.coordenadas_y ? 
+                                `<img src="https://staticmap.openstreetmap.de/staticmap.php?center=${proyecto.coordenadas_y},${proyecto.coordenadas_x}&zoom=15&size=400x300&markers=${proyecto.coordenadas_y},${proyecto.coordenadas_x},red" alt="Mapa de ubicación" class="map-image">` :
+                                '<div style="display: flex; align-items: center; justify-content: center; height: 100%; background: #f5f5f5; color: #6B7280;">Sin coordenadas</div>'
+                            }
+                            <div class="map-info">
+                                Ubicación en ${proyecto.municipio}
+                                ${proyecto.coordenadas_x && proyecto.coordenadas_y ? 
+                                    `<br><a href="https://www.openstreetmap.org/?mlat=${proyecto.coordenadas_y}&mlon=${proyecto.coordenadas_x}&zoom=15" target="_blank" class="map-link">Ver en OpenStreetMap</a>` : ''
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Cargar datos del boletín
+        async function cargarBoletin() {
+            try {
+                const response = await fetch('/data/boletines.json');
+                const data = await response.json();
+                
+                const boletin = data.boletines.find(b => b.id == boletinId);
+                
+                if (!boletin) {
+                    throw new Error('Boletín no encontrado');
+                }
+                
+                // Actualizar título y fecha
+                document.getElementById('fecha-boletin').textContent = formatearFechaCorta(boletin.fecha_publicacion);
+                
+                // Generar contenido
+                let contenido = '';
+                
+                // Proyectos ingresados
+                if (boletin.proyectos_ingresados && boletin.proyectos_ingresados.length > 0) {
+                    const fechaLimite = calcularFechaLimiteConsulta(boletin.fecha_publicacion);
+                    const fechaLimiteFormateada = formatearFechaCorta(fechaLimite);
+                    
+                    contenido += `
+                        <h2 class="section-title">Proyectos ingresados a impacto ambiental</h2>
+                        <div class="fecha-limite">
+                            Fecha límite para solicitud de consulta pública: ${fechaLimiteFormateada}
+                        </div>
+                    `;
+                    
+                    boletin.proyectos_ingresados.forEach(proyecto => {
+                        contenido += generarHTMLProyecto(proyecto, false);
+                    });
+                }
+                
+                // Resolutivos emitidos
+                contenido += `
+                    <h2 class="section-title" style="text-align: center;">
+                        ${boletin.resolutivos_emitidos && boletin.resolutivos_emitidos.length > 0 ? 
+                            `Resolutivos emitidos (${boletin.resolutivos_emitidos.length})` : 
+                            'No se emitieron resolutivos'
+                        }
+                    </h2>
+                `;
+                
+                if (boletin.resolutivos_emitidos && boletin.resolutivos_emitidos.length > 0) {
+                    boletin.resolutivos_emitidos.forEach(resolutivo => {
+                        contenido += generarHTMLProyecto(resolutivo, true);
+                    });
+                }
+                
+                // Mostrar contenido
+                document.getElementById('content').innerHTML = contenido;
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+                
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+            }
+        }
+        
+        // Cargar datos cuando se carga la página
+        cargarBoletin();
+    </script>
 </body>
 </html>

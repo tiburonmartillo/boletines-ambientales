@@ -5,6 +5,7 @@ import { Footer } from '@/components/footer'
 import { MuiThemeProvider } from '@/components/mui-theme-provider'
 import { BoletinSummaryWrapper } from '@/components/boletin-summary-wrapper'
 import { Boletin } from '@/lib/types'
+import { redirect } from 'next/navigation'
 
 interface ResumenBoletinPageProps {
   params: Promise<{ id: string }>
@@ -70,32 +71,7 @@ export default async function ResumenBoletinPage({ params }: ResumenBoletinPageP
     )
   }
 
-  // Redirigir a nuestro archivo estático
-  return (
-    <MuiThemeProvider>
-      <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
-        <Navbar />
-        <Container maxWidth="lg" sx={{ py: 4, mt: '80px' }}>
-          <Box sx={{ textAlign: 'center', py: 8 }}>
-            <Typography variant="h4" gutterBottom>
-              Cargando resumen del boletín...
-            </Typography>
-            <Typography variant="body1" sx={{ mb: 4 }}>
-              Redirigiendo a la página estática...
-            </Typography>
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-                  // Redirigir a nuestro archivo estático
-                  window.location.href = '/static-resumen/${boletinId}/';
-                `
-              }}
-            />
-          </Box>
-        </Container>
-        <Footer />
-      </Box>
-    </MuiThemeProvider>
-  )
+  // Redirigir a nuestro archivo estático usando redirect del servidor
+  redirect(`/static-resumen/${boletinId}/`)
 }
 

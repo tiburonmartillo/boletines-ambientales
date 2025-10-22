@@ -646,26 +646,42 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
                             )}
                           </TableCell>
                           <TableCell>
-                            {proyecto.boletin_url ? (
+                            <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+                              {proyecto.boletin_url ? (
+                                <Button
+                                  size="small"
+                                  color="primary"
+                                  onClick={(e) => {
+                                    e.stopPropagation()
+                                    window.open(proyecto.boletin_url, '_blank', 'noopener,noreferrer')
+                                  }}
+                                  sx={{ minWidth: 'auto', px: 1 }}
+                                >
+                                  Consultar boletín
+                                </Button>
+                              ) : (
+                                <Chip 
+                                  label="Sin URL" 
+                                  size="small" 
+                                  variant="outlined"
+                                  sx={{ color: 'text.secondary' }}
+                                />
+                              )}
+                              
+                              {/* Botón Ver Resumen */}
                               <Button
                                 size="small"
-                                color="primary"
+                                variant="outlined"
+                                color="secondary"
                                 onClick={(e) => {
                                   e.stopPropagation()
-                                  window.open(proyecto.boletin_url, '_blank', 'noopener,noreferrer')
+                                  window.open(`/boletines-ssmaa/resumen/${proyecto.boletin_id}`, '_blank', 'noopener,noreferrer')
                                 }}
                                 sx={{ minWidth: 'auto', px: 1 }}
                               >
-                                Consultar boletín
+                                📋 Resumen
                               </Button>
-                            ) : (
-                              <Chip 
-                                label="Sin URL" 
-                                size="small" 
-                                variant="outlined"
-                                sx={{ color: 'text.secondary' }}
-                              />
-                            )}
+                            </Box>
                           </TableCell>
                         </TableRow>
                       ))
@@ -731,26 +747,42 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
                             )}
                           </TableCell>
                           <TableCell>
-                            {resolutivo.boletin_url ? (
+                            <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+                              {resolutivo.boletin_url ? (
+                                <Button
+                                  size="small"
+                                  color="primary"
+                                  onClick={(e) => {
+                                    e.stopPropagation()
+                                    window.open(resolutivo.boletin_url, '_blank', 'noopener,noreferrer')
+                                  }}
+                                  sx={{ minWidth: 'auto', px: 1 }}
+                                >
+                                  Consultar boletín
+                                </Button>
+                              ) : (
+                                <Chip 
+                                  label="Sin URL" 
+                                  size="small" 
+                                  variant="outlined"
+                                  sx={{ color: 'text.secondary' }}
+                                />
+                              )}
+                              
+                              {/* Botón Ver Resumen */}
                               <Button
                                 size="small"
-                                color="primary"
+                                variant="outlined"
+                                color="secondary"
                                 onClick={(e) => {
                                   e.stopPropagation()
-                                  window.open(resolutivo.boletin_url, '_blank', 'noopener,noreferrer')
+                                  window.open(`/boletines-ssmaa/resumen/${resolutivo.boletin_id}`, '_blank', 'noopener,noreferrer')
                                 }}
                                 sx={{ minWidth: 'auto', px: 1 }}
                               >
-                                Consultar boletín
+                                📋 Resumen
                               </Button>
-                            ) : (
-                              <Chip 
-                                label="Sin URL" 
-                                size="small" 
-                                variant="outlined"
-                                sx={{ color: 'text.secondary' }}
-                              />
-                            )}
+                            </Box>
                           </TableCell>
                         </TableRow>
                       ))

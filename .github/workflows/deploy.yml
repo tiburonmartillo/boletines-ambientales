@@ -40,8 +40,8 @@ jobs:
       
     - name: Copy static pages to out directory
       run: |
-        mkdir -p out/boletines-ssmaa/resumen
-        cp -r public/boletines-ssmaa/resumen/* out/boletines-ssmaa/resumen/
+        mkdir -p out/static-resumen
+        cp -r public/boletines-ssmaa/resumen/* out/static-resumen/
       
     - name: Setup Pages
       uses: actions/configure-pages@v4

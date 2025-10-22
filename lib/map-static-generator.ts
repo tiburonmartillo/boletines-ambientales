@@ -66,19 +66,29 @@ export function generarMapaEstaticoOSM(
     markerColor = 'red'
   } = config
 
-  const conversion = convertirCoordenadasUTM(coordenadas_x, coordenadas_y)
-  
-  if (!conversion.success) {
-    return {
-      url: '',
-      lat: 0,
-      lng: 0,
-      success: false,
-      error: conversion.error
-    }
-  }
+  let lat: number, lng: number
 
-  const { lat, lng } = conversion
+  // Si las coordenadas parecen ser lat/lng (valores pequeños), usarlas directamente
+  if (Math.abs(coordenadas_x) < 90 && Math.abs(coordenadas_y) < 180) {
+    lat = coordenadas_x
+    lng = coordenadas_y
+  } else {
+    // Intentar conversión UTM
+    const conversion = convertirCoordenadasUTM(coordenadas_x, coordenadas_y)
+    
+    if (!conversion.success) {
+      return {
+        url: '',
+        lat: 0,
+        lng: 0,
+        success: false,
+        error: conversion.error
+      }
+    }
+
+    lat = conversion.lat
+    lng = conversion.lng
+  }
   
   // URL base de OpenStreetMap Static Map API
   const baseUrl = 'https://staticmap.openstreetmap.de/staticmap.php'
@@ -149,13 +159,24 @@ export function generarURLMapaCompleto(
   coordenadas_x: number,
   coordenadas_y: number
 ): string {
-  const conversion = convertirCoordenadasUTM(coordenadas_x, coordenadas_y)
-  
-  if (!conversion.success) {
-    return ''
+  let lat: number, lng: number
+
+  // Si las coordenadas parecen ser lat/lng (valores pequeños), usarlas directamente
+  if (Math.abs(coordenadas_x) < 90 && Math.abs(coordenadas_y) < 180) {
+    lat = coordenadas_x
+    lng = coordenadas_y
+  } else {
+    // Intentar conversión UTM
+    const conversion = convertirCoordenadasUTM(coordenadas_x, coordenadas_y)
+    
+    if (!conversion.success) {
+      return ''
+    }
+
+    lat = conversion.lat
+    lng = conversion.lng
   }
 
-  const { lat, lng } = conversion
   return `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}&zoom=15`
 }
 
@@ -168,6 +189,11 @@ export function validarCoordenadasParaMapa(
 ): boolean {
   if (!coordenadas_x || !coordenadas_y) {
     return false
+  }
+
+  // Si las coordenadas parecen ser lat/lng (valores pequeños), aceptarlas directamente
+  if (Math.abs(coordenadas_x) < 90 && Math.abs(coordenadas_y) < 180) {
+    return true
   }
 
   const conversion = convertirCoordenadasUTM(coordenadas_x, coordenadas_y)

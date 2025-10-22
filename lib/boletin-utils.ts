@@ -6,6 +6,13 @@ import { Boletin } from '@/lib/types'
  */
 export function calcularFechaLimiteConsulta(fechaPublicacion: string): string {
   const fecha = new Date(fechaPublicacion)
+  
+  // Validar que la fecha sea válida
+  if (isNaN(fecha.getTime())) {
+    console.warn('Fecha inválida recibida:', fechaPublicacion)
+    return new Date().toISOString().split('T')[0] // Retornar fecha actual como fallback
+  }
+  
   let diasAgregados = 0
   let diasHabiles = 0
   

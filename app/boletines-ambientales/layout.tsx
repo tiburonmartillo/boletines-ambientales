@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 // Metadata específica para la página de boletines ambientales
 export const metadata: Metadata = {
   title: 'Boletines Ambientales - Dashboard Interactivo | ADN-Aguascalientes',
-  description: 'Explora los boletines ambientales de la Secretaría de Medio Ambiente del Estado de Aguascalientes. Dashboard interactivo con más de 1,000 proyectos y resolutivos ambientales. Visualiza tendencias temporales, filtra por municipio, giro empresarial y fecha. Datos actualizados y accesibles para la ciudadanía.',
+  description: '🌱 Descubre el estado ambiental de Aguascalientes con nuestro dashboard interactivo. Más de 1,000 proyectos y resolutivos ambientales de la SSMAA. Visualiza tendencias, filtra por municipio y tipo de proyecto. Transparencia ambiental para todos los ciudadanos.',
   keywords: [
     'boletines ambientales',
     'aguascalientes',
@@ -21,8 +21,8 @@ export const metadata: Metadata = {
     'visualización datos'
   ],
   openGraph: {
-    title: 'Boletines Ambientales - Dashboard Interactivo | ADN-Aguascalientes',
-    description: 'Dashboard interactivo con más de 1,000 proyectos y resolutivos ambientales de Aguascalientes. Explora tendencias temporales, filtra por municipio y giro empresarial. Datos actualizados de la SSMAA.',
+    title: '🌱 Boletines Ambientales - Dashboard Interactivo | ADN-Aguascalientes',
+    description: 'Explora más de 1,000 proyectos ambientales de Aguascalientes en tiempo real. Dashboard interactivo con filtros por municipio, giro empresarial y fecha. Datos oficiales de la SSMAA para promover la transparencia ambiental.',
     url: 'https://adn-a.org/boletines-ambientales',
     siteName: 'ADN-Aguascalientes',
     images: [
@@ -38,8 +38,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Boletines Ambientales - Dashboard Interactivo | ADN-Aguascalientes',
-    description: 'Explora más de 1,000 proyectos y resolutivos ambientales de Aguascalientes. Dashboard interactivo con filtros por municipio, giro empresarial y fecha.',
+    title: '🌱 Boletines Ambientales - Dashboard Interactivo | ADN-Aguascalientes',
+    description: 'Más de 1,000 proyectos ambientales de Aguascalientes en un dashboard interactivo. Filtra por municipio, giro empresarial y fecha. Datos oficiales de la SSMAA para transparencia ambiental.',
     images: ['/assets/logocompleto.png'],
     creator: '@adn_ags',
     site: '@adn_ags',

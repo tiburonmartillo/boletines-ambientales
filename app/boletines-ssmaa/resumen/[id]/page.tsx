@@ -42,7 +42,10 @@ export async function generateStaticParams() {
 // Función para obtener datos del boletín en el servidor
 async function getBoletinData(boletinId: number): Promise<Boletin | null> {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/data/boletines.json`)
+    const baseUrl = process.env.NODE_ENV === 'production' 
+      ? 'https://adn-a.org' 
+      : (process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000')
+    const response = await fetch(`${baseUrl}/data/boletines.json`)
     const data = await response.json()
     return data.boletines.find((b: Boletin) => b.id === boletinId) || null
   } catch (error) {

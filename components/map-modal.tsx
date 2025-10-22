@@ -145,12 +145,15 @@ interface MapModalProps {
   expediente: string
   nombre_proyecto: string
   municipio: string
+  promovente?: string
+  fecha_ingreso?: string
+  naturaleza_proyecto?: string
   boletin_url?: string
   isOpen?: boolean
   onClose?: () => void
 }
 
-export function MapModal({ coordenadas_x, coordenadas_y, expediente, nombre_proyecto, municipio, boletin_url, isOpen: externalIsOpen, onClose }: MapModalProps) {
+export function MapModal({ coordenadas_x, coordenadas_y, expediente, nombre_proyecto, municipio, promovente, fecha_ingreso, naturaleza_proyecto, boletin_url, isOpen: externalIsOpen, onClose }: MapModalProps) {
   const [internalIsOpen, setInternalIsOpen] = useState(false)
   
   // Usar control externo si está disponible, sino usar control interno
@@ -212,6 +215,13 @@ export function MapModal({ coordenadas_x, coordenadas_y, expediente, nombre_proy
                 <h3 className="font-medium text-gray-900">{nombre_proyecto}</h3>
                 <div className="text-sm text-gray-600 mt-2">
                   <div><strong>Expediente:</strong> {expediente}</div>
+                  <div><strong>Promovente:</strong> {promovente || 'No disponible'}</div>
+                  <div><strong>Fecha de Ingreso:</strong> {fecha_ingreso ? new Date(fecha_ingreso).toLocaleDateString('es-ES', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                  }) : 'No disponible'}</div>
+                  <div><strong>Naturaleza del Proyecto:</strong> {naturaleza_proyecto || 'No disponible'}</div>
                   <div><strong>Municipio:</strong> {municipio}</div>
                   <div><strong>Coordenadas UTM:</strong> {coordenadas_x}, {coordenadas_y}</div>
                   {coords && (

@@ -785,6 +785,9 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
           expediente={selectedItem.expediente}
           nombre_proyecto={selectedItem.nombre_proyecto || 'Sin nombre'}
           municipio={selectedItem.municipio}
+          promovente={selectedItem.promovente}
+          fecha_ingreso={selectedItem.fecha_ingreso}
+          naturaleza_proyecto={selectedItem.naturaleza_proyecto}
           boletin_url={selectedItem.boletin_url}
           isOpen={isMapModalOpen}
           onClose={() => setIsMapModalOpen(false)}

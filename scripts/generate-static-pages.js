@@ -1,21 +1,21 @@
 import fs from 'fs'
 import path from 'path'
 
-// Script para generar páginas estáticas individuales para GitHub Pages
+// Script mejorado para generar páginas estáticas con el diseño exacto del plan
 async function generateStaticPages() {
   try {
     // Cargar datos de boletines
     const boletinesData = JSON.parse(fs.readFileSync('public/data/boletines.json', 'utf8'))
     
-    // Obtener los 20 boletines más recientes
+    // Obtener los 30 boletines más recientes
     const recentBoletines = boletinesData.boletines
       .sort((a, b) => new Date(b.fecha_publicacion).getTime() - new Date(a.fecha_publicacion).getTime())
-      .slice(0, 20)
+      .slice(0, 30)
     
     console.log(`Generando páginas para ${recentBoletines.length} boletines...`)
     
     // Crear directorio si no existe
-    const staticDir = 'public/boletines-ssmaa/resumen'
+    const staticDir = 'out/static-resumen'
     if (!fs.existsSync(staticDir)) {
       fs.mkdirSync(staticDir, { recursive: true })
     }
@@ -68,14 +68,25 @@ function generateBoletinHTML(boletin) {
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
         body { 
             font-family: 'Poppins', Arial, sans-serif; 
             background: #f5f5f5; 
             color: #1F2937;
             line-height: 1.6;
         }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 20px; 
+        }
+        
         .header { 
             background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
             color: white; 
@@ -84,9 +95,24 @@ function generateBoletinHTML(boletin) {
             border-radius: 8px 8px 0 0;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-        .header h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .header h2 { font-size: 1.25rem; font-weight: 400; }
-        .content { background: white; padding: 2rem; border-radius: 0 0 8px 8px; }
+        
+        .header h1 { 
+            font-size: 1.75rem; 
+            font-weight: 700; 
+            margin-bottom: 0.5rem; 
+        }
+        
+        .header h2 { 
+            font-size: 1.25rem; 
+            font-weight: 400; 
+        }
+        
+        .content { 
+            background: white; 
+            padding: 2rem; 
+            border-radius: 0 0 8px 8px; 
+        }
+        
         .section-title { 
             font-size: 1.5rem; 
             font-weight: 700; 
@@ -95,6 +121,7 @@ function generateBoletinHTML(boletin) {
             padding-bottom: 0.5rem;
             border-bottom: 2px solid #F3F4F6;
         }
+        
         .fecha-limite { 
             background: #F9FAFB; 
             border-left: 4px solid #F97316; 
@@ -102,6 +129,7 @@ function generateBoletinHTML(boletin) {
             margin-bottom: 1.5rem;
             border-radius: 0 4px 4px 0;
         }
+        
         .project-card { 
             background: white; 
             border: 1px solid #E5E7EB; 
@@ -110,17 +138,39 @@ function generateBoletinHTML(boletin) {
             margin-bottom: 1.5rem;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
+        
         .project-title { 
             font-size: 1.1rem; 
             font-weight: 700; 
             color: #1F2937; 
             margin-bottom: 1rem; 
         }
-        .project-info { display: flex; gap: 2rem; }
-        .project-details { flex: 1; }
-        .info-item { margin-bottom: 0.75rem; }
-        .info-label { font-weight: 600; color: #374151; font-size: 0.875rem; }
-        .info-value { color: #6B7280; font-size: 0.875rem; margin-left: 0.5rem; }
+        
+        .project-info { 
+            display: flex; 
+            gap: 2rem; 
+        }
+        
+        .project-details { 
+            flex: 1; 
+        }
+        
+        .info-item { 
+            margin-bottom: 0.75rem; 
+        }
+        
+        .info-label { 
+            font-weight: 600; 
+            color: #374151; 
+            font-size: 0.875rem; 
+        }
+        
+        .info-value { 
+            color: #6B7280; 
+            font-size: 0.875rem; 
+            margin-left: 0.5rem; 
+        }
+        
         .naturaleza { 
             margin-top: 1rem; 
             padding: 1rem; 
@@ -130,7 +180,13 @@ function generateBoletinHTML(boletin) {
             font-size: 0.875rem; 
             line-height: 1.5; 
         }
-        .map-container { width: 400px; height: 300px; flex-shrink: 0; }
+        
+        .map-container { 
+            width: 400px; 
+            height: 300px; 
+            flex-shrink: 0; 
+        }
+        
         .map-image { 
             width: 100%; 
             height: 100%; 
@@ -138,9 +194,23 @@ function generateBoletinHTML(boletin) {
             border: 1px solid #E5E7EB; 
             border-radius: 4px; 
         }
-        .map-info { margin-top: 0.5rem; text-align: center; font-size: 0.75rem; color: #6B7280; }
-        .map-link { color: #F97316; text-decoration: none; }
-        .map-link:hover { text-decoration: underline; }
+        
+        .map-info { 
+            margin-top: 0.5rem; 
+            text-align: center; 
+            font-size: 0.75rem; 
+            color: #6B7280; 
+        }
+        
+        .map-link { 
+            color: #F97316; 
+            text-decoration: none; 
+        }
+        
+        .map-link:hover { 
+            text-decoration: underline; 
+        }
+        
         .footer { 
             background: #F9FAFB; 
             border-top: 1px solid #E5E7EB; 
@@ -148,17 +218,42 @@ function generateBoletinHTML(boletin) {
             margin-top: 2rem;
             border-radius: 0 0 8px 8px;
         }
-        .footer-content { display: flex; justify-content: space-between; align-items: center; }
-        .footer-text { flex: 1; font-size: 0.75rem; color: #6B7280; line-height: 1.4; }
-        .footer-link { color: #F97316; text-decoration: none; }
-        .footer-link:hover { text-decoration: underline; }
-        .footer-logo { margin-left: 1.5rem; height: 60px; width: auto; }
+        
+        .footer-content { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        
+        .footer-text { 
+            flex: 1; 
+            font-size: 0.75rem; 
+            color: #6B7280; 
+            line-height: 1.4; 
+        }
+        
+        .footer-link { 
+            color: #F97316; 
+            text-decoration: none; 
+        }
+        
+        .footer-link:hover { 
+            text-decoration: underline; 
+        }
+        
+        .footer-logo { 
+            margin-left: 1.5rem; 
+            height: 60px; 
+            width: auto; 
+        }
+        
         .actions { 
             display: flex; 
             gap: 1rem; 
             justify-content: center; 
             margin: 2rem 0; 
         }
+        
         .btn { 
             padding: 0.75rem 1.5rem; 
             border-radius: 6px; 
@@ -169,30 +264,64 @@ function generateBoletinHTML(boletin) {
             cursor: pointer; 
             transition: all 0.2s ease; 
         }
+        
         .btn-outline { 
             background: transparent; 
             color: #F97316; 
             border: 2px solid #F97316; 
         }
+        
         .btn-outline:hover { 
             background: #F97316; 
             color: white; 
         }
+        
         .btn-primary { 
             background: #F97316; 
             color: white; 
             border: 2px solid #F97316; 
         }
+        
         .btn-primary:hover { 
             background: #EA580C; 
             border-color: #EA580C; 
         }
+        
         @media (max-width: 768px) {
-            .project-info { flex-direction: column; }
-            .map-container { width: 100%; height: 250px; margin-top: 1rem; }
-            .footer-content { flex-direction: column; text-align: center; }
-            .footer-logo { margin: 1rem 0 0 0; }
-            .actions { flex-direction: column; align-items: center; }
+            .project-info { 
+                flex-direction: column; 
+            }
+            .map-container { 
+                width: 100%; 
+                height: 250px; 
+                margin-top: 1rem; 
+            }
+            .footer-content { 
+                flex-direction: column; 
+                text-align: center; 
+            }
+            .footer-logo { 
+                margin: 1rem 0 0 0; 
+            }
+            .actions { 
+                flex-direction: column; 
+                align-items: center; 
+            }
+        }
+        
+        @media print {
+            .no-print { 
+                display: none; 
+            }
+            .page-break { 
+                page-break-after: always; 
+            }
+            body { 
+                background: white; 
+            }
+            .container { 
+                padding: 0; 
+            }
         }
     </style>
 </head>
@@ -315,7 +444,7 @@ function generateBoletinHTML(boletin) {
                 `).join('')}
             ` : ''}
             
-            <div class="actions">
+            <div class="actions no-print">
                 <button class="btn btn-outline" onclick="window.print()">Imprimir</button>
                 <a href="/boletines-ssmaa" class="btn btn-primary">Volver al Dashboard</a>
             </div>

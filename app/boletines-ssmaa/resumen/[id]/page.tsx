@@ -71,7 +71,58 @@ export default async function ResumenBoletinPage({ params }: ResumenBoletinPageP
     )
   }
 
-  // Redirigir a nuestro archivo estático usando redirect del servidor
-  redirect(`/static-resumen/${boletinId}/`)
+  const boletin = await getBoletinData(boletinId)
+
+  if (!boletin) {
+    return (
+      <MuiThemeProvider>
+        <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
+          <Navbar />
+          <Container maxWidth="lg" sx={{ py: 4, mt: '80px' }}>
+            <Alert severity="error" sx={{ maxWidth: 600 }}>
+              <Typography variant="h6" gutterBottom>
+                Error al cargar el boletín
+              </Typography>
+              <Typography variant="body2">
+                No se pudo encontrar el boletín solicitado.
+              </Typography>
+            </Alert>
+          </Container>
+          <Footer />
+        </Box>
+      </MuiThemeProvider>
+    )
+  }
+
+  return (
+    <MuiThemeProvider>
+      <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
+        <Navbar />
+        
+        {/* Breadcrumbs */}
+        <Container maxWidth="lg" sx={{ mt: '80px', pt: 2 }}>
+          <Breadcrumbs sx={{ mb: 2 }}>
+            <Link 
+              color="inherit" 
+              href="/boletines-ssmaa"
+              sx={{ textDecoration: 'none' }}
+            >
+              Dashboard SSMAA
+            </Link>
+            <Typography color="text.primary">
+              Resumen Boletín #{boletin.id}
+            </Typography>
+          </Breadcrumbs>
+        </Container>
+
+        {/* Contenido principal */}
+        <Container maxWidth="lg" sx={{ py: 2 }}>
+          <BoletinSummaryWrapper boletin={boletin} />
+        </Container>
+
+        <Footer />
+      </Box>
+    </MuiThemeProvider>
+  )
 }
 

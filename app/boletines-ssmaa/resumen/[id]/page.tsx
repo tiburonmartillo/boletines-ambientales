@@ -70,55 +70,29 @@ export default async function ResumenBoletinPage({ params }: ResumenBoletinPageP
     )
   }
 
-  const boletin = await getBoletinData(boletinId)
-
-  if (!boletin) {
-    return (
-      <MuiThemeProvider>
-        <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
-          <Navbar />
-          <Container maxWidth="lg" sx={{ py: 4, mt: '80px' }}>
-            <Alert severity="error" sx={{ maxWidth: 600 }}>
-              <Typography variant="h6" gutterBottom>
-                Error al cargar el boletín
-              </Typography>
-              <Typography variant="body2">
-                No se pudo encontrar el boletín solicitado.
-              </Typography>
-            </Alert>
-          </Container>
-          <Footer />
-        </Box>
-      </MuiThemeProvider>
-    )
-  }
-
+  // Redirigir a nuestro archivo estático
   return (
     <MuiThemeProvider>
       <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
         <Navbar />
-        
-        {/* Breadcrumbs */}
-        <Container maxWidth="lg" sx={{ mt: '80px', pt: 2 }}>
-          <Breadcrumbs sx={{ mb: 2 }}>
-            <Link 
-              color="inherit" 
-              href="/boletines-ssmaa"
-              sx={{ textDecoration: 'none' }}
-            >
-              Dashboard SSMAA
-            </Link>
-            <Typography color="text.primary">
-              Resumen Boletín #{boletin.id}
+        <Container maxWidth="lg" sx={{ py: 4, mt: '80px' }}>
+          <Box sx={{ textAlign: 'center', py: 8 }}>
+            <Typography variant="h4" gutterBottom>
+              Cargando resumen del boletín...
             </Typography>
-          </Breadcrumbs>
+            <Typography variant="body1" sx={{ mb: 4 }}>
+              Redirigiendo a la página estática...
+            </Typography>
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  // Redirigir a nuestro archivo estático
+                  window.location.href = '/static-resumen/${boletinId}/';
+                `
+              }}
+            />
+          </Box>
         </Container>
-
-        {/* Contenido principal */}
-        <Container maxWidth="lg" sx={{ py: 2 }}>
-          <BoletinSummaryWrapper boletin={boletin} />
-        </Container>
-
         <Footer />
       </Box>
     </MuiThemeProvider>

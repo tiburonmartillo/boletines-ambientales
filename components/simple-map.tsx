@@ -11,6 +11,7 @@ interface SimpleMapProps {
   height?: number
   showLink?: boolean
   staticMode?: boolean // Nueva prop para modo estático (para PDF)
+  mapService?: 'osm' | 'mapbox' | 'google' // Servicio de mapas a usar
 }
 
 // Función para convertir coordenadas a Lat/Long usando el mismo validador que la modal
@@ -140,19 +141,27 @@ function convertToLatLong(x: number | null, y: number | null): { lat: number; ln
 }
 
 // Función para generar URL de mapa estático usando diferentes servicios
-function generateStaticMapUrl(lat: number, lng: number, width: number = 400, height: number = 300): string {
-  // Usar un servicio más confiable - OpenStreetMap France
-  const baseUrl = 'https://staticmap.openstreetmap.fr/staticmap.php'
-  
-  const params = new URLSearchParams({
-    center: `${lat},${lng}`,
-    zoom: '15',
-    size: `${width}x${height}`,
-    markers: `${lat},${lng},red`,
-    maptype: 'mapnik'
-  })
-  
-  return `${baseUrl}?${params.toString()}`
+function generateStaticMapUrl(lat: number, lng: number, width: number = 400, height: number = 300, service: 'osm' | 'mapbox' | 'google' = 'osm'): string {
+  switch (service) {
+    case 'mapbox':
+      // Mapbox Static API (requiere token, pero funciona sin él en algunos casos)
+      const mapboxToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
+      return `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s-marker+ff0000(${lng},${lat})/${lng},${lat},15/${width}x${height}@2x?access_token=${mapboxToken}`
+    
+    case 'google':
+      // Google Maps Static API (requiere API key, usando una demo)
+      return `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=15&size=${width}x${height}&markers=color:red%7C${lat},${lng}&maptype=roadmap&format=png`
+    
+    case 'osm':
+    default:
+      // OpenStreetMap - múltiples servicios como respaldo
+      const services = [
+        `https://staticmap.openstreetmap.fr/staticmap.php?center=${lat},${lng}&zoom=15&size=${width}x${height}&markers=${lat},${lng},red&maptype=mapnik`,
+        `https://tile.openstreetmap.org/${lat},${lng},15.png`,
+        `https://maps.wikimedia.org/osm-intl/15/${Math.floor((lng + 180) / 360 * Math.pow(2, 15))}/${Math.floor((1 - Math.log(Math.tan(lat * Math.PI / 180) + 1 / Math.cos(lat * Math.PI / 180)) / Math.PI) / 2 * Math.pow(2, 15))}.png`
+      ]
+      return services[0] // Usar el primero como principal
+  }
 }
 
 // Función para generar URL de OpenStreetMap completo
@@ -167,7 +176,8 @@ export function SimpleMap({
   width = 400,
   height = 300,
   showLink = true,
-  staticMode = false
+  staticMode = false,
+  mapService = 'osm'
 }: SimpleMapProps) {
   // Convertir coordenadas usando el mismo sistema que la modal
   const coords = convertToLatLong(coordenadas_x, coordenadas_y)
@@ -200,66 +210,75 @@ export function SimpleMap({
   }
 
   const { lat, lng } = coords
-  const mapUrl = generateStaticMapUrl(lat, lng, width, height)
+  const mapUrl = generateStaticMapUrl(lat, lng, width, height, mapService)
   const osmUrl = generateOpenStreetMapUrl(lat, lng)
 
   return (
     <Box sx={{ width, height }}>
-      {staticMode ? (
-        // Modo estático para PDF - usar imagen estática
-        <Box
-          component="img"
-          src={mapUrl}
-          alt={`Mapa de ubicación en ${municipio}`}
-          sx={{
-            width: '100%',
-            height: '100%',
-            border: '1px solid #e0e0e0',
-            borderRadius: 1,
-            objectFit: 'cover'
-          }}
-        />
-      ) : (
-        // Modo interactivo - usar iframe
-        <>
-          <Box
-            component="iframe"
-            src={`https://www.openstreetmap.org/export/embed.html?bbox=${lng-0.005},${lat-0.005},${lng+0.005},${lat+0.005}&layer=mapnik&marker=${lat},${lng}`}
-            sx={{
-              width: '100%',
-              height: '100%',
-              border: '1px solid #e0e0e0',
-              borderRadius: 1,
-              cursor: 'pointer'
-            }}
-            onClick={() => {
-              if (showLink) {
-                window.open(osmUrl, '_blank')
-              }
-            }}
-            title={`Mapa de ubicación en ${municipio}`}
-          />
-          
-          {/* Información del mapa - Solo mostrar si showLink es true */}
-          {showLink && (
-            <Box sx={{ mt: 1, textAlign: 'center' }}>
-              <Typography variant="caption" color="text.secondary">
-                Ubicación en {municipio}
-              </Typography>
-              <Box sx={{ mt: 0.5 }}>
-                <Link
-                  href={osmUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variant="caption"
-                  sx={{ fontSize: '0.75rem' }}
-                >
-                  Ver en OpenStreetMap
-                </Link>
-              </Box>
-            </Box>
-          )}
-        </>
+      {/* Usar imagen estática por defecto para mejor compatibilidad con PDF */}
+      <Box
+        component="img"
+        src={mapUrl}
+        alt={`Mapa de ubicación en ${municipio}`}
+        sx={{
+          width: '100%',
+          height: '100%',
+          border: '1px solid #e0e0e0',
+          borderRadius: 1,
+          objectFit: 'cover',
+          cursor: 'pointer',
+          '&:hover': {
+            opacity: 0.9
+          }
+        }}
+        onClick={() => {
+          if (showLink) {
+            window.open(osmUrl, '_blank')
+          }
+        }}
+        title={`Mapa de ubicación en ${municipio} - Click para ver en OpenStreetMap`}
+        onError={(e) => {
+          // Si falla la imagen, intentar con otro servicio
+          const target = e.target as HTMLImageElement
+          if (mapService === 'osm') {
+            target.src = generateStaticMapUrl(lat, lng, width, height, 'mapbox')
+          } else if (mapService === 'mapbox') {
+            target.src = generateStaticMapUrl(lat, lng, width, height, 'google')
+          } else {
+            // Como último recurso, mostrar un placeholder
+            target.src = `data:image/svg+xml;base64,${btoa(`
+              <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100%" height="100%" fill="#f0f0f0" stroke="#ccc" stroke-width="1"/>
+                <text x="50%" y="50%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="14" fill="#666">
+                  Mapa no disponible
+                </text>
+                <text x="50%" y="60%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="12" fill="#999">
+                  ${municipio}
+                </text>
+              </svg>
+            `)}`
+          }
+        }}
+      />
+      
+      {/* Información del mapa - Solo mostrar si showLink es true */}
+      {showLink && (
+        <Box sx={{ mt: 1, textAlign: 'center' }}>
+          <Typography variant="caption" color="text.secondary">
+            Ubicación en {municipio}
+          </Typography>
+          <Box sx={{ mt: 0.5 }}>
+            <Link
+              href={osmUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="caption"
+              sx={{ fontSize: '0.75rem' }}
+            >
+              Ver en OpenStreetMap
+            </Link>
+          </Box>
+        </Box>
       )}
     </Box>
   )

@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import { Box, Typography, Link } from '@mui/material'
 import { coordinateValidator } from '@/lib/coordinate-validator'
 
@@ -174,11 +175,19 @@ export function SimpleMap({
   staticMode = false,
   mapService = 'mapbox'
 }: SimpleMapProps) {
-  // Convertir coordenadas usando el mismo sistema que la modal
-  const coords = convertToLatLong(coordenadas_x, coordenadas_y)
+  // Usar useEffect para evitar problemas de hidratación
+  const [coords, setCoords] = React.useState<{ lat: number; lng: number } | null>(null)
+  const [isClient, setIsClient] = React.useState(false)
 
-  // Si no se pudieron convertir las coordenadas
-  if (!coords) {
+  React.useEffect(() => {
+    setIsClient(true)
+    // Convertir coordenadas solo en el cliente
+    const convertedCoords = convertToLatLong(coordenadas_x, coordenadas_y)
+    setCoords(convertedCoords)
+  }, [coordenadas_x, coordenadas_y])
+
+  // Si no se pudieron convertir las coordenadas o aún no está en el cliente
+  if (!isClient || !coords) {
     return (
       <Box
         sx={{
@@ -194,8 +203,8 @@ export function SimpleMap({
           p: 2
         }}
       >
-        <Typography variant="body2" color="error" textAlign="center">
-          Coordenadas no disponibles
+        <Typography variant="body2" color="text.secondary" textAlign="center">
+          {isClient ? 'Coordenadas no disponibles' : 'Cargando mapa...'}
         </Typography>
         <Typography variant="caption" color="text.secondary" textAlign="center" sx={{ mt: 1 }}>
           Municipio: {municipio}
@@ -207,13 +216,6 @@ export function SimpleMap({
   const { lat, lng } = coords
   const mapUrl = generateStaticMapUrl(lat, lng, width, height, mapService)
   const osmUrl = generateOpenStreetMapUrl(lat, lng)
-
-  console.log('SimpleMap Debug:', {
-    coords: { lat, lng },
-    mapService,
-    mapUrl,
-    municipio
-  })
 
   return (
     <Box sx={{ width, height }}>
@@ -241,20 +243,16 @@ export function SimpleMap({
         }}
         title={`Mapa de ubicación en ${municipio} - Click para ver en OpenStreetMap`}
         onLoad={() => {
-          console.log('Mapa cargado exitosamente:', mapUrl)
+          // Mapa cargado exitosamente
         }}
         onError={(e) => {
-          console.error('Error cargando mapa:', mapUrl, e)
           // Si falla la imagen, intentar con otro servicio
           const target = e.target as HTMLImageElement
           if (mapService === 'mapbox') {
-            console.log('Intentando con Google Maps...')
             target.src = generateStaticMapUrl(lat, lng, width, height, 'google')
           } else if (mapService === 'google') {
-            console.log('Intentando con OpenStreetMap...')
             target.src = generateStaticMapUrl(lat, lng, width, height, 'osm')
           } else {
-            console.log('Mostrando placeholder...')
             // Como último recurso, mostrar un placeholder
             target.src = `data:image/svg+xml;base64,${btoa(`
               <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">

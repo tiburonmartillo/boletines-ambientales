@@ -305,7 +305,7 @@ export async function generateBoletinPDFSimple(elementId: string, filename: stri
   
   if (!element) {
     console.error('generateBoletinPDFSimple: Elemento no encontrado:', elementId)
-    throw new Error(`Elemento con ID '${elementId}' no encontrado`)
+    throw new Error(`Elemento con ID '${elementId}' no foi encontrado`)
   }
 
   console.log('generateBoletinPDFSimple: Elemento encontrado:', element)
@@ -330,42 +330,100 @@ export async function generateBoletinPDFSimple(elementId: string, filename: stri
 
     console.log('generateBoletinPDFSimple: Iniciando html2canvas...')
 
+    // Reemplazar iframes con imágenes estáticas antes de html2canvas
+    const iframes = element.querySelectorAll('iframe')
+    const originalIframes: { iframe: HTMLIFrameElement, parent: Node, nextSibling: Node | null }[] = []
+    const staticImages: HTMLImageElement[] = []
+
+    console.log('generateBoletinPDFSimple: Encontrados iframes:', iframes.length)
+
+    iframes.forEach((iframe, index) => {
+      const src = iframe.getAttribute('src')
+      console.log(`generateBoletinPDFSimple: Procesando iframe ${index}:`, src)
+      
+      if (src && src.includes('openstreetmap.org')) {
+        // Extraer coordenadas del src del iframe
+        const bboxMatch = src.match(/bbox=([^&]+)/)
+        if (bboxMatch) {
+          const bbox = bboxMatch[1].split(',')
+          const lng = (parseFloat(bbox[0]) + parseFloat(bbox[2])) / 2
+          const lat = (parseFloat(bbox[1]) + parseFloat(bbox[3])) / 2
+          
+          console.log(`generateBoletinPDFSimple: Coordenadas extraídas: lat=${lat}, lng=${lng}`)
+          
+          // Crear imagen estática
+          const img = document.createElement('img')
+          img.src = `https://staticmap.openstreetmap.fr/staticmap.php?center=${lat},${lng}&zoom=15&size=400x300&markers=${lat},${lng},red&maptype=mapnik&format=png&t=static`
+          img.style.cssText = `
+            width: 100%;
+            height: 100%;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            object-fit: cover;
+            background-color: #f0f0f0;
+          `
+          
+          // Guardar referencia para restaurar después
+          originalIframes.push({
+            iframe: iframe,
+            parent: iframe.parentNode!,
+            nextSibling: iframe.nextSibling
+          })
+          
+          // Reemplazar iframe con imagen
+          iframe.parentNode?.replaceChild(img, iframe)
+          staticImages.push(img)
+        }
+      }
+    })
+
+    // Esperar a que las imágenes se carguen
+    await Promise.all(staticImages.map(img => 
+      new Promise<void>((resolve) => {
+        const timeout = setTimeout(() => resolve(), 3000)
+        
+        if (img.complete) {
+          clearTimeout(timeout)
+          resolve()
+        } else {
+          img.onload = () => {
+            clearTimeout(timeout)
+            resolve()
+          }
+          img.onerror = () => {
+            clearTimeout(timeout)
+            resolve()
+          }
+        }
+      })
+    ))
+
     // Configuración básica y confiable para html2canvas
     const canvas = await html2canvas(element, {
-      scale: 2, // Aumentar escala para mejor calidad
+      scale: 1.5, // Escala moderada para mejor rendimiento
       useCORS: true,
       allowTaint: true,
       backgroundColor: '#ffffff',
-      logging: true,
+      logging: false, // Desactivar logs para evitar errores
       width: element.scrollWidth,
       height: element.scrollHeight,
       scrollX: 0,
       scrollY: 0,
-      foreignObjectRendering: false, // Desactivar para mejor compatibilidad
+      foreignObjectRendering: false,
       removeContainer: false,
-      imageTimeout: 10000,
-      onclone: (clonedDoc) => {
-        // Convertir funciones de color modernas a colores compatibles
-        const allElements = clonedDoc.querySelectorAll('*')
-        allElements.forEach(el => {
-          const htmlEl = el as HTMLElement
-          const computedStyle = window.getComputedStyle(el)
-          
-          // Convertir colores oklch a rgb
-          if (computedStyle.color && computedStyle.color.includes('oklch')) {
-            htmlEl.style.color = '#000000'
-          }
-          if (computedStyle.backgroundColor && computedStyle.backgroundColor.includes('oklch')) {
-            htmlEl.style.backgroundColor = '#ffffff'
-          }
-          if (computedStyle.borderColor && computedStyle.borderColor.includes('oklch')) {
-            htmlEl.style.borderColor = '#e0e0e0'
-          }
-        })
-      }
+      imageTimeout: 5000
     })
 
     console.log('generateBoletinPDFSimple: html2canvas completado, canvas size:', canvas.width, 'x', canvas.height)
+
+    // Restaurar iframes originales
+    originalIframes.forEach(({ iframe, parent, nextSibling }) => {
+      if (nextSibling) {
+        parent.insertBefore(iframe, nextSibling)
+      } else {
+        parent.appendChild(iframe)
+      }
+    })
 
     // Remover loading
     document.body.removeChild(loadingElement)

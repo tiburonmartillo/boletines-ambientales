@@ -222,12 +222,12 @@ export function SimpleMap({
         title={`Mapa de ubicación en ${municipio}`}
       />
       
-      {/* Información del mapa */}
-      <Box sx={{ mt: 1, textAlign: 'center' }}>
-        <Typography variant="caption" color="text.secondary">
-          Ubicación en {municipio}
-        </Typography>
-        {showLink && (
+      {/* Información del mapa - Solo mostrar si showLink es true */}
+      {showLink && (
+        <Box sx={{ mt: 1, textAlign: 'center' }}>
+          <Typography variant="caption" color="text.secondary">
+            Ubicación en {municipio}
+          </Typography>
           <Box sx={{ mt: 0.5 }}>
             <Link
               href={osmUrl}
@@ -239,8 +239,8 @@ export function SimpleMap({
               Ver en OpenStreetMap
             </Link>
           </Box>
-        )}
-      </Box>
+        </Box>
+      )}
     </Box>
   )
 }

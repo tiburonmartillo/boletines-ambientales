@@ -30,6 +30,8 @@ import {
 import { FilterList, Clear } from "@mui/icons-material"
 import { styled } from "@mui/material/styles"
 import { MapModal } from "./map-modal"
+import { BoletinModal } from "./boletin-modal"
+import { useBoletinModal } from "@/hooks/useBoletinModal"
 
 const StyledCard = styled(Card)(({ theme }) => ({
   borderRadius: '12px',
@@ -104,6 +106,9 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
   // Estados para modal de ubicación
   const [selectedItem, setSelectedItem] = useState<any>(null)
   const [isMapModalOpen, setIsMapModalOpen] = useState(false)
+  
+  // Hook para modal de boletín con routing
+  const { isOpen: isBoletinModalOpen, selectedBoletin, openModal: openBoletinModal, closeModal: closeBoletinModal } = useBoletinModal()
 
   // Aplicar filtros externos cuando cambien
   useEffect(() => {
@@ -126,6 +131,42 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
     if (item.coordenadas_x && item.coordenadas_y) {
       setSelectedItem(item)
       setIsMapModalOpen(true)
+    }
+  }
+
+  // Función para manejar la apertura del modal de boletín
+  const handleBoletinSummary = async (item: any) => {
+    try {
+      // Cargar los datos completos del boletín desde el JSON
+      const response = await fetch('/data/boletines.json')
+      const data = await response.json()
+      const boletin = data.boletines.find((b: any) => b.id === item.boletin_id)
+      
+      if (boletin) {
+        openBoletinModal(boletin)
+      } else {
+        console.warn(`Boletín con ID ${item.boletin_id} no encontrado`)
+        // Fallback: crear un objeto básico con los datos disponibles
+        const boletinData = {
+          id: item.boletin_id,
+          fecha_publicacion: item.fecha_publicacion,
+          boletin_url: item.boletin_url,
+          proyectos_ingresados: [],
+          resolutivos_emitidos: []
+        }
+        openBoletinModal(boletinData as any)
+      }
+    } catch (error) {
+      console.error('Error cargando datos del boletín:', error)
+      // Fallback: crear un objeto básico con los datos disponibles
+      const boletinData = {
+        id: item.boletin_id,
+        fecha_publicacion: item.fecha_publicacion,
+        boletin_url: item.boletin_url,
+        proyectos_ingresados: [],
+        resolutivos_emitidos: []
+      }
+      openBoletinModal(boletinData as any)
     }
   }
 
@@ -675,7 +716,7 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
                                 color="secondary"
                                 onClick={(e) => {
                                   e.stopPropagation()
-                                  window.open(`/boletines-ssmaa/resumen/${proyecto.boletin_id}`, '_blank', 'noopener,noreferrer')
+                                  handleBoletinSummary(proyecto)
                                 }}
                                 sx={{ minWidth: 'auto', px: 1 }}
                               >
@@ -776,7 +817,7 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
                                 color="secondary"
                                 onClick={(e) => {
                                   e.stopPropagation()
-                                  window.open(`/boletines-ssmaa/resumen/${resolutivo.boletin_id}`, '_blank', 'noopener,noreferrer')
+                                  handleBoletinSummary(resolutivo)
                                 }}
                                 sx={{ minWidth: 'auto', px: 1 }}
                               >
@@ -825,6 +866,13 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
           onClose={() => setIsMapModalOpen(false)}
         />
       )}
+
+      {/* Modal de boletín */}
+      <BoletinModal
+        boletin={selectedBoletin}
+        isOpen={isBoletinModalOpen}
+        onClose={closeBoletinModal}
+      />
     </StyledCard>
   )
 }

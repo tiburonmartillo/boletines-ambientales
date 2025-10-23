@@ -104,32 +104,6 @@ export function BoletinSummaryProject({ proyecto, numero, tipo }: ProjectSummary
                 {proyecto.tipo_estudio}
               </Typography>
             </Box>
-
-            {/* Naturaleza del proyecto */}
-            <Box sx={{ mt: 2 }}>
-              <Typography variant="body2" sx={{ fontWeight: 'bold', color: '#374151', mb: 1 }}>
-                Naturaleza del proyecto:
-              </Typography>
-              <Box
-                sx={{
-                  p: 2,
-                  border: '1px solid #d1d5db',
-                  borderRadius: 1,
-                  backgroundColor: '#f9fafb'
-                }}
-              >
-                <Typography
-                  variant="body2"
-                  sx={{
-                    color: '#374151',
-                    lineHeight: 1.5,
-                    fontSize: '0.875rem'
-                  }}
-                >
-                  {proyecto.naturaleza_proyecto}
-                </Typography>
-              </Box>
-            </Box>
           </Box>
         </Box>
 
@@ -141,8 +115,35 @@ export function BoletinSummaryProject({ proyecto, numero, tipo }: ProjectSummary
             municipio={proyecto.municipio}
             width={400}
             height={300}
-            showLink={true}
+            showLink={false}
           />
+        </Box>
+      </Box>
+
+      {/* Naturaleza del proyecto - Ocupa el 100% del ancho debajo del contenido principal */}
+      <Box sx={{ mt: 2, width: '100%' }}>
+        <Typography variant="body2" sx={{ fontWeight: 'bold', color: '#374151', mb: 1 }}>
+          Naturaleza del proyecto:
+        </Typography>
+        <Box
+          sx={{
+            p: 2,
+            border: '1px solid #d1d5db',
+            borderRadius: 1,
+            backgroundColor: '#f9fafb',
+            width: '100%'
+          }}
+        >
+          <Typography
+            variant="body2"
+            sx={{
+              color: '#374151',
+              lineHeight: 1.5,
+              fontSize: '0.875rem'
+            }}
+          >
+            {proyecto.naturaleza_proyecto}
+          </Typography>
         </Box>
       </Box>
 

@@ -158,11 +158,9 @@ export function ClientOnlyMap({
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    console.log('ClientOnlyMap: Montando componente con coordenadas:', { coordenadas_x, coordenadas_y, municipio })
     setMounted(true)
     // Convertir coordenadas solo en el cliente
     const convertedCoords = convertToLatLong(coordenadas_x, coordenadas_y)
-    console.log('ClientOnlyMap: Coordenadas convertidas:', convertedCoords)
     setCoords(convertedCoords)
   }, [coordenadas_x, coordenadas_y, municipio])
 
@@ -221,58 +219,27 @@ export function ClientOnlyMap({
   }
 
   const { lat, lng } = coords
-  const mapUrl = generateStaticMapUrl(lat, lng, width, height)
   const osmUrl = generateOpenStreetMapUrl(lat, lng)
 
-  console.log('ClientOnlyMap: Generando mapa con URL:', mapUrl)
-
-  return (
-    <Box sx={{ width, height }}>
-      {/* Usar imagen estática por defecto para mejor compatibilidad con PDF */}
-      <Box
-        component="img"
-        src={mapUrl}
-        alt={`Mapa de ubicación en ${municipio}`}
-        sx={{
-          width: '100%',
-          height: '100%',
-          border: '1px solid #e0e0e0',
-          borderRadius: 1,
-          objectFit: 'cover',
-          cursor: 'pointer',
-          backgroundColor: '#f5f5f5',
-          '&:hover': {
-            opacity: 0.9
-          }
-        }}
-        onClick={() => {
-          if (showLink) {
-            window.open(osmUrl, '_blank')
-          }
-        }}
-        title={`Mapa de ubicación en ${municipio} - Click para ver en OpenStreetMap`}
-        onLoad={() => {
-          console.log('ClientOnlyMap: Mapa cargado exitosamente:', mapUrl)
-        }}
-        onError={(e) => {
-          console.error('ClientOnlyMap: Error cargando mapa:', mapUrl, e)
-          // Si falla la imagen, intentar con otros servicios de OpenStreetMap
-          const target = e.target as HTMLImageElement
-          const currentSrc = target.src
-          
-          if (currentSrc.includes('staticmap.openstreetmap.fr')) {
-            console.log('ClientOnlyMap: Intentando con tile.openstreetmap.org...')
-            // Intentar con tile service
-            const tileUrl = `https://tile.openstreetmap.org/${Math.floor((lng + 180) / 360 * Math.pow(2, 15))}/${Math.floor((1 - Math.log(Math.tan(lat * Math.PI / 180) + 1 / Math.cos(lat * Math.PI / 180)) / Math.PI) / 2 * Math.pow(2, 15))}.png`
-            target.src = tileUrl
-          } else if (currentSrc.includes('tile.openstreetmap.org')) {
-            console.log('ClientOnlyMap: Intentando con maps.wikimedia.org...')
-            // Intentar con wikimedia
-            const wikimediaUrl = `https://maps.wikimedia.org/osm-intl/15/${Math.floor((lng + 180) / 360 * Math.pow(2, 15))}/${Math.floor((1 - Math.log(Math.tan(lat * Math.PI / 180) + 1 / Math.cos(lat * Math.PI / 180)) / Math.PI) / 2 * Math.pow(2, 15))}.png`
-            target.src = wikimediaUrl
-          } else {
-            console.log('ClientOnlyMap: Mostrando placeholder...')
-            // Como último recurso, mostrar un placeholder
+  // Si está en modo estático (para PDF), usar imagen estática
+  if (staticMode) {
+    const mapUrl = generateStaticMapUrl(lat, lng, width, height)
+    return (
+      <Box sx={{ width, height }}>
+        <Box
+          component="img"
+          src={mapUrl}
+          alt={`Mapa de ubicación en ${municipio}`}
+          sx={{
+            width: '100%',
+            height: '100%',
+            border: '1px solid #e0e0e0',
+            borderRadius: 1,
+            objectFit: 'cover',
+            backgroundColor: '#f5f5f5'
+          }}
+          onError={(e) => {
+            const target = e.target as HTMLImageElement
             target.src = `data:image/svg+xml;base64,${btoa(`
               <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
                 <rect width="100%" height="100%" fill="#f0f0f0" stroke="#ccc" stroke-width="1"/>
@@ -284,9 +251,25 @@ export function ClientOnlyMap({
                 </text>
               </svg>
             `)}`
-          }
-        }}
-      />
+          }}
+        />
+      </Box>
+    )
+  }
+
+  // Para la modal, usar iframe como en la modal de ubicación
+  return (
+    <Box sx={{ width, height }}>
+      <div className="w-full h-full bg-gray-50 rounded-lg overflow-hidden border border-gray-200">
+        <iframe
+          src={`https://www.openstreetmap.org/export/embed.html?bbox=${lng-0.005},${lat-0.005},${lng+0.005},${lat+0.005}&layer=mapnik&marker=${lat},${lng}`}
+          width="100%"
+          height="100%"
+          style={{ border: 'none' }}
+          title="Mapa de ubicación del proyecto"
+          allowFullScreen
+        />
+      </div>
       
       {/* Información del mapa - Solo mostrar si showLink es true */}
       {showLink && (

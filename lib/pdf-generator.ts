@@ -1,5 +1,6 @@
 import jsPDF from 'jspdf'
 import html2canvas from 'html2canvas'
+import html2pdf from 'html2pdf.js'
 
 /**
  * Genera un PDF del resumen de boletín usando html2canvas y jsPDF
@@ -408,6 +409,61 @@ export async function generateBoletinPDFBasic(elementId: string, filename: strin
       loadingElement.parentNode.removeChild(loadingElement)
     }
     
+    throw new Error(`Error al generar el PDF: ${error instanceof Error ? error.message : 'Error desconocido'}`)
+  }
+}
+
+/**
+ * Genera PDF usando html2pdf.js - Solución robusta y confiable
+ */
+export async function generateBoletinPDFWithHtml2pdf(elementId: string, filename: string): Promise<void> {
+  console.log('generateBoletinPDFWithHtml2pdf: Iniciando generación usando html2pdf.js')
+  
+  const element = document.getElementById(elementId)
+  
+  if (!element) {
+    console.error('generateBoletinPDFWithHtml2pdf: Elemento no encontrado:', elementId)
+    throw new Error(`Elemento con ID '${elementId}' no encontrado`)
+  }
+
+  try {
+    // Configuración optimizada para html2pdf.js
+    const opt = {
+      margin: 10,
+      filename: filename,
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { 
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#ffffff',
+        logging: false,
+        width: element.scrollWidth,
+        height: element.scrollHeight
+      },
+      jsPDF: { 
+        unit: 'mm', 
+        format: 'a4', 
+        orientation: 'portrait',
+        compress: true
+      },
+      pagebreak: { 
+        mode: ['avoid-all', 'css'],
+        before: '.page-break-before',
+        after: '.page-break-after',
+        avoid: 'img'
+      }
+    }
+
+    console.log('generateBoletinPDFWithHtml2pdf: Configuración aplicada:', opt)
+
+    // Generar PDF usando html2pdf.js
+    await html2pdf().set(opt).from(element).save()
+
+    console.log('generateBoletinPDFWithHtml2pdf: PDF generado exitosamente')
+
+  } catch (error) {
+    console.error('generateBoletinPDFWithHtml2pdf: Error al generar PDF:', error)
     throw new Error(`Error al generar el PDF: ${error instanceof Error ? error.message : 'Error desconocido'}`)
   }
 }

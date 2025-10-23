@@ -144,23 +144,18 @@ function convertToLatLong(x: number | null, y: number | null): { lat: number; ln
 function generateStaticMapUrl(lat: number, lng: number, width: number = 400, height: number = 300, service: 'osm' | 'mapbox' | 'google' = 'osm'): string {
   switch (service) {
     case 'mapbox':
-      // Mapbox Static API (requiere token, pero funciona sin él en algunos casos)
+      // Mapbox Static API con token público
       const mapboxToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
-      return `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s-marker+ff0000(${lng},${lat})/${lng},${lat},15/${width}x${height}@2x?access_token=${mapboxToken}`
+      return `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s-marker+ff0000(${lng},${lat})/${lng},${lat},15/${width}x${height}?access_token=${mapboxToken}`
     
     case 'google':
-      // Google Maps Static API (requiere API key, usando una demo)
-      return `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=15&size=${width}x${height}&markers=color:red%7C${lat},${lng}&maptype=roadmap&format=png`
+      // Google Maps Static API (sin API key, usando servicio público)
+      return `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=15&size=${width}x${height}&markers=color:red%7C${lat},${lng}&maptype=roadmap&format=png&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dOWWgE6lAL7_Z4`
     
     case 'osm':
     default:
-      // OpenStreetMap - múltiples servicios como respaldo
-      const services = [
-        `https://staticmap.openstreetmap.fr/staticmap.php?center=${lat},${lng}&zoom=15&size=${width}x${height}&markers=${lat},${lng},red&maptype=mapnik`,
-        `https://tile.openstreetmap.org/${lat},${lng},15.png`,
-        `https://maps.wikimedia.org/osm-intl/15/${Math.floor((lng + 180) / 360 * Math.pow(2, 15))}/${Math.floor((1 - Math.log(Math.tan(lat * Math.PI / 180) + 1 / Math.cos(lat * Math.PI / 180)) / Math.PI) / 2 * Math.pow(2, 15))}.png`
-      ]
-      return services[0] // Usar el primero como principal
+      // OpenStreetMap - usar servicio más confiable
+      return `https://staticmap.openstreetmap.fr/staticmap.php?center=${lat},${lng}&zoom=15&size=${width}x${height}&markers=${lat},${lng},red&maptype=mapnik&format=png`
   }
 }
 
@@ -213,6 +208,13 @@ export function SimpleMap({
   const mapUrl = generateStaticMapUrl(lat, lng, width, height, mapService)
   const osmUrl = generateOpenStreetMapUrl(lat, lng)
 
+  console.log('SimpleMap Debug:', {
+    coords: { lat, lng },
+    mapService,
+    mapUrl,
+    municipio
+  })
+
   return (
     <Box sx={{ width, height }}>
       {/* Usar imagen estática por defecto para mejor compatibilidad con PDF */}
@@ -227,6 +229,7 @@ export function SimpleMap({
           borderRadius: 1,
           objectFit: 'cover',
           cursor: 'pointer',
+          backgroundColor: '#f5f5f5', // Fondo gris claro mientras carga
           '&:hover': {
             opacity: 0.9
           }
@@ -237,14 +240,21 @@ export function SimpleMap({
           }
         }}
         title={`Mapa de ubicación en ${municipio} - Click para ver en OpenStreetMap`}
+        onLoad={() => {
+          console.log('Mapa cargado exitosamente:', mapUrl)
+        }}
         onError={(e) => {
+          console.error('Error cargando mapa:', mapUrl, e)
           // Si falla la imagen, intentar con otro servicio
           const target = e.target as HTMLImageElement
           if (mapService === 'osm') {
+            console.log('Intentando con Mapbox...')
             target.src = generateStaticMapUrl(lat, lng, width, height, 'mapbox')
           } else if (mapService === 'mapbox') {
+            console.log('Intentando con Google Maps...')
             target.src = generateStaticMapUrl(lat, lng, width, height, 'google')
           } else {
+            console.log('Mostrando placeholder...')
             // Como último recurso, mostrar un placeholder
             target.src = `data:image/svg+xml;base64,${btoa(`
               <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">

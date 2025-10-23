@@ -386,10 +386,21 @@ export async function generateBoletinPDFRobust(elementId: string, filename: stri
                 
                 console.log(`generateBoletinPDFRobust: Coordenadas extraídas: lat=${lat}, lng=${lng}`)
                 
-                // Crear imagen estática usando la función mejorada
+                // Crear imagen estática usando tiny-static-map
                 const img = document.createElement('img')
-                const staticMapUrl = generateStaticMapImage(lat, lng, 400, 300)
-                img.src = staticMapUrl
+                // Generar mapa estático con tiny-static-map
+                generateStaticMapWithTinyStaticMap(lat, lng, 400, 300).then(dataURL => {
+                  if (dataURL) {
+                    img.src = dataURL
+                  } else {
+                    // Fallback a URL estática si falla
+                    img.src = `https://staticmap.openstreetmap.fr/staticmap.php?center=${lat},${lng}&zoom=15&size=400x300&markers=${lat},${lng},red&maptype=mapnik&format=png`
+                  }
+                }).catch(error => {
+                  console.error('Error generando mapa estático:', error)
+                  // Fallback a URL estática
+                  img.src = `https://staticmap.openstreetmap.fr/staticmap.php?center=${lat},${lng}&zoom=15&size=400x300&markers=${lat},${lng},red&maptype=mapnik&format=png`
+                })
                 img.style.cssText = `
                   width: 100%;
                   height: 100%;
@@ -510,21 +521,119 @@ export async function generateBoletinPDFRobust(elementId: string, filename: stri
  * Genera una imagen JPG del resumen de boletín usando html2canvas
  */
 /**
- * Genera un mapa estático usando OpenStreetMap tiles
- * Basado en la información de https://www.cssscript.com/static-map-image-openstreet/
+ * Genera un mapa estático usando la librería tiny-static-map
+ * Basado en https://github.com/bopjesvla/tiny-static-map
  */
-function generateStaticMapImage(lat: number, lng: number, width: number, height: number): string {
-  // Usar múltiples servicios de OpenStreetMap como fallback
-  const services = [
-    // Servicio principal con marcadores
-    `https://staticmap.openstreetmap.fr/staticmap.php?center=${lat},${lng}&zoom=15&size=${width}x${height}&markers=${lat},${lng},red&maptype=mapnik&format=png`,
-    // Servicio alternativo de tiles
-    `https://tile.openstreetmap.org/${Math.floor((lng + 180) / 360 * Math.pow(2, 15))}/${Math.floor((1 - Math.log(Math.tan(lat * Math.PI / 180) + 1 / Math.cos(lat * Math.PI / 180)) / Math.PI) / 2 * Math.pow(2, 15))}.png`,
-    // Servicio de Wikimedia
-    `https://maps.wikimedia.org/osm-intl/15/${Math.floor((lng + 180) / 360 * Math.pow(2, 15))}/${Math.floor((1 - Math.log(Math.tan(lat * Math.PI / 180) + 1 / Math.cos(lat * Math.PI / 180)) / Math.PI) / 2 * Math.pow(2, 15))}.png`
-  ]
-  
-  return services[0] // Usar el primero como principal
+async function generateStaticMapWithTinyStaticMap(lat: number, lng: number, width: number, height: number): Promise<string> {
+  return new Promise((resolve, reject) => {
+    try {
+      // Crear un contenedor temporal
+      const tempContainer = document.createElement('div')
+      tempContainer.style.position = 'absolute'
+      tempContainer.style.top = '-9999px'
+      tempContainer.style.left = '-9999px'
+      tempContainer.style.width = `${width}px`
+      tempContainer.style.height = `${height}px`
+      document.body.appendChild(tempContainer)
+
+      // Cargar la librería tiny-static-map si no está cargada
+      if (typeof (window as any).createStaticMap === 'undefined') {
+        const script = document.createElement('script')
+        script.src = '/tiny-static-map.js'
+        script.onload = () => {
+          createStaticMapAndConvert()
+        }
+        script.onerror = () => {
+          reject(new Error('No se pudo cargar tiny-static-map.js'))
+        }
+        document.head.appendChild(script)
+      } else {
+        createStaticMapAndConvert()
+      }
+
+      function createStaticMapAndConvert() {
+        try {
+          // Usar la librería tiny-static-map
+          ;(window as any).createStaticMap(tempContainer, lat, lng, 15, width, height)
+          
+          // Esperar a que se carguen las imágenes
+          const images = tempContainer.querySelectorAll('img')
+          let loadedImages = 0
+          
+          if (images.length === 0) {
+            resolve('') // No hay imágenes, retornar string vacío
+            return
+          }
+
+          images.forEach(img => {
+            img.onload = () => {
+              loadedImages++
+              if (loadedImages === images.length) {
+                convertToDataURL()
+              }
+            }
+            img.onerror = () => {
+              loadedImages++
+              if (loadedImages === images.length) {
+                convertToDataURL()
+              }
+            }
+          })
+
+          // Timeout de seguridad
+          setTimeout(() => {
+            convertToDataURL()
+          }, 5000)
+
+        } catch (error) {
+          console.error('Error creando mapa estático:', error)
+          reject(error)
+        }
+      }
+
+      function convertToDataURL() {
+        try {
+          // Crear un canvas temporal
+          const canvas = document.createElement('canvas')
+          canvas.width = width
+          canvas.height = height
+          const ctx = canvas.getContext('2d')
+          
+          if (!ctx) {
+            reject(new Error('No se pudo crear contexto de canvas'))
+            return
+          }
+
+          // Dibujar el contenedor en el canvas
+          html2canvas(tempContainer, {
+            width: width,
+            height: height,
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: '#ffffff'
+          }).then(canvas => {
+            const dataURL = canvas.toDataURL('image/png')
+            
+            // Limpiar el contenedor temporal
+            document.body.removeChild(tempContainer)
+            
+            resolve(dataURL)
+          }).catch(error => {
+            console.error('Error convirtiendo a canvas:', error)
+            document.body.removeChild(tempContainer)
+            reject(error)
+          })
+        } catch (error) {
+          console.error('Error en convertToDataURL:', error)
+          document.body.removeChild(tempContainer)
+          reject(error)
+        }
+      }
+    } catch (error) {
+      console.error('Error en generateStaticMapWithTinyStaticMap:', error)
+      reject(error)
+    }
+  })
 }
 
 export async function generateBoletinJPG(elementId: string, filename: string): Promise<void> {

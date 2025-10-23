@@ -299,11 +299,16 @@ export async function generateBoletinPDFOptimized(elementId: string, filename: s
  * Genera un PDF usando un enfoque simple y confiable
  */
 export async function generateBoletinPDFRobust(elementId: string, filename: string): Promise<void> {
+  console.log('generateBoletinPDFRobust: Iniciando generación de PDF para elemento:', elementId)
+  
   const element = document.getElementById(elementId)
   
   if (!element) {
+    console.error('generateBoletinPDFRobust: Elemento no encontrado:', elementId)
     throw new Error(`Elemento con ID '${elementId}' no encontrado`)
   }
+
+  console.log('generateBoletinPDFRobust: Elemento encontrado:', element)
 
   try {
     // Mostrar loading simple
@@ -323,9 +328,11 @@ export async function generateBoletinPDFRobust(elementId: string, filename: stri
     `
     document.body.appendChild(loadingElement)
 
-    // Configuración mejorada para html2canvas
+    console.log('generateBoletinPDFRobust: Iniciando html2canvas...')
+
+    // Configuración simplificada para html2canvas
     const canvas = await html2canvas(element, {
-      scale: 2, // Mayor resolución para mejor calidad
+      scale: 1.5, // Reducir escala para mejor rendimiento
       useCORS: true,
       allowTaint: true,
       backgroundColor: '#ffffff',
@@ -336,11 +343,15 @@ export async function generateBoletinPDFRobust(elementId: string, filename: stri
       scrollY: 0,
       foreignObjectRendering: true,
       removeContainer: false,
-      imageTimeout: 10000,
+      imageTimeout: 15000, // Timeout más largo
       onclone: (clonedDoc) => {
+        console.log('generateBoletinPDFRobust: Procesando documento clonado...')
+        
         // Mejorar contraste y colores en el documento clonado
         const clonedElement = clonedDoc.getElementById(elementId)
         if (clonedElement) {
+          console.log('generateBoletinPDFRobust: Elemento clonado encontrado')
+          
           // Forzar estilos para mejor contraste
           clonedElement.style.color = '#000000'
           clonedElement.style.backgroundColor = '#ffffff'
@@ -359,8 +370,12 @@ export async function generateBoletinPDFRobust(elementId: string, filename: stri
           
           // Reemplazar iframes con imágenes estáticas
           const iframes = clonedElement.querySelectorAll('iframe')
-          iframes.forEach((iframe) => {
+          console.log('generateBoletinPDFRobust: Encontrados iframes:', iframes.length)
+          
+          iframes.forEach((iframe, index) => {
             const src = iframe.getAttribute('src')
+            console.log(`generateBoletinPDFRobust: Procesando iframe ${index}:`, src)
+            
             if (src && src.includes('openstreetmap.org')) {
               // Extraer coordenadas del src del iframe
               const bboxMatch = src.match(/bbox=([^&]+)/)
@@ -368,6 +383,8 @@ export async function generateBoletinPDFRobust(elementId: string, filename: stri
                 const bbox = bboxMatch[1].split(',')
                 const lng = (parseFloat(bbox[0]) + parseFloat(bbox[2])) / 2
                 const lat = (parseFloat(bbox[1]) + parseFloat(bbox[3])) / 2
+                
+                console.log(`generateBoletinPDFRobust: Coordenadas extraídas: lat=${lat}, lng=${lng}`)
                 
                 // Crear imagen estática usando la función mejorada
                 const img = document.createElement('img')
@@ -382,6 +399,8 @@ export async function generateBoletinPDFRobust(elementId: string, filename: stri
                   background-color: #f0f0f0;
                 `
                 
+                console.log(`generateBoletinPDFRobust: Reemplazando iframe con imagen: ${staticMapUrl}`)
+                
                 // Reemplazar iframe con imagen
                 iframe.parentNode?.replaceChild(img, iframe)
               }
@@ -391,13 +410,18 @@ export async function generateBoletinPDFRobust(elementId: string, filename: stri
       }
     })
 
+    console.log('generateBoletinPDFRobust: html2canvas completado, canvas size:', canvas.width, 'x', canvas.height)
+
     // Remover loading
     document.body.removeChild(loadingElement)
 
     // Verificar que el canvas tenga contenido
     if (canvas.width === 0 || canvas.height === 0) {
+      console.error('generateBoletinPDFRobust: Canvas vacío')
       throw new Error('No se pudo capturar el contenido del elemento')
     }
+
+    console.log('generateBoletinPDFRobust: Creando PDF...')
 
     // Crear PDF con mejor calidad
     const imgData = canvas.toDataURL('image/png', 1.0) // Máxima calidad PNG
@@ -416,11 +440,15 @@ export async function generateBoletinPDFRobust(elementId: string, filename: stri
     const imgWidth = pageWidth - 20 // Margen de 10mm en cada lado
     const imgHeight = (canvas.height * imgWidth) / canvas.width
 
+    console.log('generateBoletinPDFRobust: Dimensiones calculadas - imgWidth:', imgWidth, 'imgHeight:', imgHeight)
+
     // Si la imagen es más alta que la página, dividir en múltiples páginas
     if (imgHeight <= pageHeight - 20) {
+      console.log('generateBoletinPDFRobust: Añadiendo imagen en una sola página')
       // Una sola página
       pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight)
     } else {
+      console.log('generateBoletinPDFRobust: Dividiendo imagen en múltiples páginas')
       // Múltiples páginas
       let yPosition = 10
       let remainingHeight = imgHeight
@@ -458,12 +486,23 @@ export async function generateBoletinPDFRobust(elementId: string, filename: stri
       }
     }
 
+    console.log('generateBoletinPDFRobust: Iniciando descarga del PDF...')
+
     // Descargar el PDF
     pdf.save(filename)
 
+    console.log('generateBoletinPDFRobust: PDF generado y descargado exitosamente')
+
   } catch (error) {
-    console.error('Error al generar PDF:', error)
-    throw new Error('Error al generar el PDF. Por favor, intenta de nuevo.')
+    console.error('generateBoletinPDFRobust: Error al generar PDF:', error)
+    
+    // Remover loading si existe
+    const loadingElement = document.querySelector('div[style*="position: fixed"]')
+    if (loadingElement && loadingElement.parentNode) {
+      loadingElement.parentNode.removeChild(loadingElement)
+    }
+    
+    throw new Error(`Error al generar el PDF: ${error instanceof Error ? error.message : 'Error desconocido'}`)
   }
 }
 

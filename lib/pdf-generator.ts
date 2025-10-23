@@ -471,11 +471,16 @@ export async function generateBoletinPDFRobust(elementId: string, filename: stri
  * Genera una imagen JPG del resumen de boletín usando html2canvas
  */
 export async function generateBoletinJPG(elementId: string, filename: string): Promise<void> {
+  console.log('generateBoletinJPG: Iniciando generación de imagen para elemento:', elementId)
+  
   const element = document.getElementById(elementId)
   
   if (!element) {
+    console.error('generateBoletinJPG: Elemento no encontrado:', elementId)
     throw new Error(`Elemento con ID '${elementId}' no encontrado`)
   }
+
+  console.log('generateBoletinJPG: Elemento encontrado:', element)
 
   try {
     // Mostrar loading
@@ -495,24 +500,30 @@ export async function generateBoletinJPG(elementId: string, filename: string): P
     `
     document.body.appendChild(loadingElement)
 
-    // Configuración optimizada para html2canvas
+    console.log('generateBoletinJPG: Iniciando html2canvas...')
+
+    // Configuración simplificada para html2canvas
     const canvas = await html2canvas(element, {
-      scale: 2, // Alta resolución para mejor calidad
+      scale: 1.5, // Reducir escala para mejor rendimiento
       useCORS: true,
       allowTaint: true,
       backgroundColor: '#ffffff',
-      logging: false,
+      logging: true, // Habilitar logging para debugging
       width: element.scrollWidth,
       height: element.scrollHeight,
       scrollX: 0,
       scrollY: 0,
       foreignObjectRendering: true,
       removeContainer: false,
-      imageTimeout: 10000,
+      imageTimeout: 15000, // Timeout más largo
       onclone: (clonedDoc) => {
+        console.log('generateBoletinJPG: Procesando documento clonado...')
+        
         // Mejorar contraste y colores en el documento clonado
         const clonedElement = clonedDoc.getElementById(elementId)
         if (clonedElement) {
+          console.log('generateBoletinJPG: Elemento clonado encontrado')
+          
           // Forzar estilos para mejor contraste
           clonedElement.style.color = '#000000'
           clonedElement.style.backgroundColor = '#ffffff'
@@ -531,8 +542,12 @@ export async function generateBoletinJPG(elementId: string, filename: string): P
           
           // Reemplazar iframes con imágenes estáticas
           const iframes = clonedElement.querySelectorAll('iframe')
-          iframes.forEach((iframe) => {
+          console.log('generateBoletinJPG: Encontrados iframes:', iframes.length)
+          
+          iframes.forEach((iframe, index) => {
             const src = iframe.getAttribute('src')
+            console.log(`generateBoletinJPG: Procesando iframe ${index}:`, src)
+            
             if (src && src.includes('openstreetmap.org')) {
               // Extraer coordenadas del src del iframe
               const bboxMatch = src.match(/bbox=([^&]+)/)
@@ -540,6 +555,8 @@ export async function generateBoletinJPG(elementId: string, filename: string): P
                 const bbox = bboxMatch[1].split(',')
                 const lng = (parseFloat(bbox[0]) + parseFloat(bbox[2])) / 2
                 const lat = (parseFloat(bbox[1]) + parseFloat(bbox[3])) / 2
+                
+                console.log(`generateBoletinJPG: Coordenadas extraídas: lat=${lat}, lng=${lng}`)
                 
                 // Crear imagen estática
                 const img = document.createElement('img')
@@ -554,6 +571,8 @@ export async function generateBoletinJPG(elementId: string, filename: string): P
                   background-color: #f0f0f0;
                 `
                 
+                console.log(`generateBoletinJPG: Reemplazando iframe con imagen: ${staticMapUrl}`)
+                
                 // Reemplazar iframe con imagen
                 iframe.parentNode?.replaceChild(img, iframe)
               }
@@ -563,30 +582,48 @@ export async function generateBoletinJPG(elementId: string, filename: string): P
       }
     })
 
+    console.log('generateBoletinJPG: html2canvas completado, canvas size:', canvas.width, 'x', canvas.height)
+
     // Remover loading
     document.body.removeChild(loadingElement)
 
     // Verificar que el canvas tenga contenido
     if (canvas.width === 0 || canvas.height === 0) {
+      console.error('generateBoletinJPG: Canvas vacío')
       throw new Error('No se pudo capturar el contenido del elemento')
     }
+
+    console.log('generateBoletinJPG: Convirtiendo canvas a JPG...')
 
     // Convertir a JPG y descargar
     const imgData = canvas.toDataURL('image/jpeg', 0.9) // Calidad alta JPG
     
+    console.log('generateBoletinJPG: Imagen generada, tamaño:', imgData.length, 'bytes')
+
     // Crear enlace de descarga
     const link = document.createElement('a')
     link.download = filename.endsWith('.jpg') ? filename : `${filename}.jpg`
     link.href = imgData
+    
+    console.log('generateBoletinJPG: Iniciando descarga:', link.download)
     
     // Simular click para descargar
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
 
+    console.log('generateBoletinJPG: Descarga completada')
+
   } catch (error) {
-    console.error('Error al generar JPG:', error)
-    throw new Error('Error al generar la imagen. Por favor, intenta de nuevo.')
+    console.error('generateBoletinJPG: Error al generar JPG:', error)
+    
+    // Remover loading si existe
+    const loadingElement = document.querySelector('div[style*="position: fixed"]')
+    if (loadingElement && loadingElement.parentNode) {
+      loadingElement.parentNode.removeChild(loadingElement)
+    }
+    
+    throw new Error(`Error al generar la imagen: ${error instanceof Error ? error.message : 'Error desconocido'}`)
   }
 }
 

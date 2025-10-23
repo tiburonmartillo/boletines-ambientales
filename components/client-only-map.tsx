@@ -131,7 +131,13 @@ function convertToLatLong(x: number | null, y: number | null): { lat: number; ln
 
 // Función para generar URL de mapa estático usando OpenStreetMap
 function generateStaticMapUrl(lat: number, lng: number, width: number = 400, height: number = 300): string {
-  return `https://staticmap.openstreetmap.fr/staticmap.php?center=${lat},${lng}&zoom=15&size=${width}x${height}&markers=${lat},${lng},red&maptype=mapnik&format=png`
+  // Usar diferentes servicios de OpenStreetMap como fallback
+  const services = [
+    `https://staticmap.openstreetmap.fr/staticmap.php?center=${lat},${lng}&zoom=15&size=${width}x${height}&markers=${lat},${lng},red&maptype=mapnik&format=png`,
+    `https://tile.openstreetmap.org/${Math.floor((lng + 180) / 360 * Math.pow(2, 15))}/${Math.floor((1 - Math.log(Math.tan(lat * Math.PI / 180) + 1 / Math.cos(lat * Math.PI / 180)) / Math.PI) / 2 * Math.pow(2, 15))}.png`,
+    `https://maps.wikimedia.org/osm-intl/15/${Math.floor((lng + 180) / 360 * Math.pow(2, 15))}/${Math.floor((1 - Math.log(Math.tan(lat * Math.PI / 180) + 1 / Math.cos(lat * Math.PI / 180)) / Math.PI) / 2 * Math.pow(2, 15))}.png`
+  ]
+  return services[0] // Usar el primero como principal
 }
 
 // Función para generar URL de OpenStreetMap completo
@@ -250,20 +256,35 @@ export function ClientOnlyMap({
         }}
         onError={(e) => {
           console.error('ClientOnlyMap: Error cargando mapa:', mapUrl, e)
-          // Si falla la imagen, mostrar un placeholder
+          // Si falla la imagen, intentar con otros servicios de OpenStreetMap
           const target = e.target as HTMLImageElement
-          console.log('ClientOnlyMap: Mostrando placeholder...')
-          target.src = `data:image/svg+xml;base64,${btoa(`
-            <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
-              <rect width="100%" height="100%" fill="#f0f0f0" stroke="#ccc" stroke-width="1"/>
-              <text x="50%" y="50%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="14" fill="#666">
-                Mapa no disponible
-              </text>
-              <text x="50%" y="60%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="12" fill="#999">
-                ${municipio}
-              </text>
-            </svg>
-          `)}`
+          const currentSrc = target.src
+          
+          if (currentSrc.includes('staticmap.openstreetmap.fr')) {
+            console.log('ClientOnlyMap: Intentando con tile.openstreetmap.org...')
+            // Intentar con tile service
+            const tileUrl = `https://tile.openstreetmap.org/${Math.floor((lng + 180) / 360 * Math.pow(2, 15))}/${Math.floor((1 - Math.log(Math.tan(lat * Math.PI / 180) + 1 / Math.cos(lat * Math.PI / 180)) / Math.PI) / 2 * Math.pow(2, 15))}.png`
+            target.src = tileUrl
+          } else if (currentSrc.includes('tile.openstreetmap.org')) {
+            console.log('ClientOnlyMap: Intentando con maps.wikimedia.org...')
+            // Intentar con wikimedia
+            const wikimediaUrl = `https://maps.wikimedia.org/osm-intl/15/${Math.floor((lng + 180) / 360 * Math.pow(2, 15))}/${Math.floor((1 - Math.log(Math.tan(lat * Math.PI / 180) + 1 / Math.cos(lat * Math.PI / 180)) / Math.PI) / 2 * Math.pow(2, 15))}.png`
+            target.src = wikimediaUrl
+          } else {
+            console.log('ClientOnlyMap: Mostrando placeholder...')
+            // Como último recurso, mostrar un placeholder
+            target.src = `data:image/svg+xml;base64,${btoa(`
+              <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100%" height="100%" fill="#f0f0f0" stroke="#ccc" stroke-width="1"/>
+                <text x="50%" y="50%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="14" fill="#666">
+                  Mapa no disponible
+                </text>
+                <text x="50%" y="60%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="12" fill="#999">
+                  ${municipio}
+                </text>
+              </svg>
+            `)}`
+          }
         }}
       />
       

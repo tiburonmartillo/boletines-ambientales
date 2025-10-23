@@ -429,7 +429,7 @@ export async function generateBoletinPDFWithHtml2pdf(elementId: string, filename
     // Importar html2pdf.js dinámicamente solo en el cliente
     const html2pdf = (await import('html2pdf.js')).default
 
-    // Configuración básica y simple para html2pdf.js
+    // Configuración que evita problemas con funciones de color modernas
     const opt = {
       margin: 10,
       filename: filename,
@@ -439,7 +439,32 @@ export async function generateBoletinPDFWithHtml2pdf(elementId: string, filename
         useCORS: true,
         allowTaint: true,
         backgroundColor: '#ffffff',
-        logging: false
+        logging: false,
+        ignoreElements: (element) => {
+          // Ignorar elementos que puedan causar problemas
+          return element.classList.contains('no-print') || 
+                 element.tagName === 'SCRIPT' || 
+                 element.tagName === 'STYLE'
+        },
+        onclone: (clonedDoc) => {
+          // Convertir todas las funciones de color modernas a colores básicos
+          const allElements = clonedDoc.querySelectorAll('*')
+          allElements.forEach(el => {
+            const htmlEl = el as HTMLElement
+            const computedStyle = window.getComputedStyle(el)
+            
+            // Reemplazar colores oklch y otras funciones modernas
+            if (computedStyle.color && (computedStyle.color.includes('oklch') || computedStyle.color.includes('hsl'))) {
+              htmlEl.style.color = '#000000'
+            }
+            if (computedStyle.backgroundColor && (computedStyle.backgroundColor.includes('oklch') || computedStyle.backgroundColor.includes('hsl'))) {
+              htmlEl.style.backgroundColor = htmlEl.tagName === 'BODY' ? '#ffffff' : 'transparent'
+            }
+            if (computedStyle.borderColor && (computedStyle.borderColor.includes('oklch') || computedStyle.borderColor.includes('hsl'))) {
+              htmlEl.style.borderColor = '#e0e0e0'
+            }
+          })
+        }
       },
       jsPDF: { 
         unit: 'mm', 

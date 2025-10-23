@@ -149,51 +149,6 @@ export function BoletinSummary({
           )}
         </Box>
 
-        {/* Botones de acción */}
-        {(showPrintButton || showDownloadButton) && (
-          <Box
-            sx={{
-              display: 'flex',
-              gap: 2,
-              justifyContent: 'center',
-              mt: 4,
-              mb: 3
-            }}
-            className="no-print"
-          >
-            {showPrintButton && (
-              <Button
-                variant="outlined"
-                onClick={handlePrint}
-                sx={{
-                  borderColor: '#F97316',
-                  color: '#F97316',
-                  '&:hover': {
-                    borderColor: '#EA580C',
-                    backgroundColor: '#FFF7ED'
-                  }
-                }}
-              >
-                Imprimir
-              </Button>
-            )}
-            
-            {showDownloadButton && onDownloadPDF && (
-              <Button
-                variant="contained"
-                onClick={onDownloadPDF}
-                sx={{
-                  backgroundColor: '#F97316',
-                  '&:hover': {
-                    backgroundColor: '#EA580C'
-                  }
-                }}
-              >
-                Descargar PDF
-              </Button>
-            )}
-          </Box>
-        )}
       </Box>
 
       {/* Footer */}

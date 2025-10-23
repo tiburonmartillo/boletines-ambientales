@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { Box, Button } from '@mui/material'
+import { useRouter } from 'next/navigation'
 import { BoletinSummary } from '@/components/boletin-summary'
 import { generateBoletinPDF } from '@/lib/pdf-generator'
 import { Boletin } from '@/lib/types'
@@ -12,6 +13,7 @@ interface BoletinSummaryWrapperProps {
 
 export function BoletinSummaryWrapper({ boletin }: BoletinSummaryWrapperProps) {
   const [isGeneratingPDF, setIsGeneratingPDF] = React.useState(false)
+  const router = useRouter()
 
   const handleDownloadPDF = async () => {
     try {
@@ -26,7 +28,7 @@ export function BoletinSummaryWrapper({ boletin }: BoletinSummaryWrapperProps) {
   }
 
   const handleBackToDashboard = () => {
-    window.location.href = '/boletines-ssmaa'
+    router.push('/boletines-ssmaa')
   }
 
   return (

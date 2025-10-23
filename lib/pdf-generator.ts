@@ -108,7 +108,7 @@ export async function generateBoletinPDF(elementId: string, filename: string): P
         clonedImages.forEach(img => {
           if (img.src && img.src.includes('staticmap.openstreetmap.fr')) {
             // Forzar recarga de la imagen
-            const newSrc = img.src + '&t=' + Date.now()
+            const newSrc = img.src + '&t=static'
             img.src = newSrc
           }
         })
@@ -371,7 +371,7 @@ export async function generateBoletinPDFRobust(elementId: string, filename: stri
                 
                 // Crear imagen estática
                 const img = document.createElement('img')
-                const staticMapUrl = `https://staticmap.openstreetmap.fr/staticmap.php?center=${lat},${lng}&zoom=15&size=400x300&markers=${lat},${lng},red&maptype=mapnik&t=${Date.now()}`
+                const staticMapUrl = `https://staticmap.openstreetmap.fr/staticmap.php?center=${lat},${lng}&zoom=15&size=400x300&markers=${lat},${lng},red&maptype=mapnik&t=static`
                 img.src = staticMapUrl
                 img.style.cssText = `
                   width: 100%;

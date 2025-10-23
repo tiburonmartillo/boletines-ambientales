@@ -2,7 +2,7 @@
 
 import { Box, Typography, Paper, Divider } from '@mui/material'
 import { Proyecto, Resolutivo } from '@/lib/types'
-import { SimpleMap } from './simple-map'
+import { ClientOnlyMap } from './client-only-map'
 import { formatearFechaCorta } from '@/lib/boletin-utils'
 
 interface ProjectSummaryProps {
@@ -110,7 +110,7 @@ export function BoletinSummaryProject({ proyecto, numero, tipo, staticMode = fal
 
         {/* Mapa - Columna derecha */}
         <Box sx={{ width: 400, flexShrink: 0 }}>
-          <SimpleMap
+          <ClientOnlyMap
             coordenadas_x={proyecto.coordenadas_x}
             coordenadas_y={proyecto.coordenadas_y}
             municipio={proyecto.municipio}

@@ -4,22 +4,22 @@ import React, { useState, useEffect } from 'react'
 import { Box, Typography, Link } from '@mui/material'
 import { coordinateValidator } from '@/lib/coordinate-validator'
 
-interface SimpleMapProps {
+interface ClientOnlyMapProps {
   coordenadas_x: number | null
   coordenadas_y: number | null
   municipio: string
   width?: number
   height?: number
   showLink?: boolean
-  staticMode?: boolean // Nueva prop para modo estático (para PDF)
-  mapService?: 'osm' | 'mapbox' | 'google' // Servicio de mapas a usar
+  staticMode?: boolean
+  mapService?: 'osm' | 'mapbox' | 'google'
 }
 
-// Función para convertir coordenadas a Lat/Long usando el mismo validador que la modal
+// Función para convertir coordenadas a Lat/Long
 function convertToLatLong(x: number | null, y: number | null): { lat: number; lng: number } | null {
   if (!x || !y) return null
 
-  // Validar y corregir coordenadas usando el mismo validador que la modal
+  // Validar y corregir coordenadas
   const validationResult = coordinateValidator.processCoordinates(x, y);
   
   if (!validationResult.success) {
@@ -27,31 +27,22 @@ function convertToLatLong(x: number | null, y: number | null): { lat: number; ln
     return null;
   }
 
-  // Usar coordenadas corregidas
   const correctedX = validationResult.corrected.x;
   const correctedY = validationResult.corrected.y;
-
-  // Si las coordenadas fueron corregidas, loggear la corrección
-  if (validationResult.wasCorrected) {
-    console.log(`✅ Coordenadas UTM corregidas (ambos dígitos faltantes): ${x}, ${y} → ${correctedX}, ${correctedY}`);
-  }
 
   // Si las coordenadas ya están en formato Lat/Lng, devolverlas directamente
   if (validationResult.type === 'latlng') {
     return { lat: correctedY, lng: correctedX };
   }
 
-  // Si son coordenadas UTM, aplicar conversión completa (igual que la modal)
+  // Si son coordenadas UTM, aplicar conversión completa
   if (validationResult.type === 'utm' || validationResult.type === 'utm14') {
     const zone = validationResult.type === 'utm14' ? 14 : 13;
     
-    // Implementación precisa de conversión UTM a coordenadas geográficas
-    // Basada en las ecuaciones estándar de la proyección UTM
-    
     // Parámetros del elipsoide WGS84
-    const sm_a = 6378137; // Semieje mayor
-    const sm_b = 6356752.314; // Semieje menor
-    const UTMScaleFactor = 0.9996; // Factor de escala UTM
+    const sm_a = 6378137;
+    const sm_b = 6356752.314;
+    const UTMScaleFactor = 0.9996;
     
     // Función auxiliar para calcular la latitud del pie
     const calculateFootpointLatitude = (y: number): number => {
@@ -68,8 +59,8 @@ function convertToLatLong(x: number | null, y: number | null): { lat: number; ln
              (delta_ * Math.sin(6 * y_)) + (epsilon_ * Math.sin(8 * y_));
     };
     
-    // Ajustar coordenadas UTM (usar coordenadas corregidas)
-    let x = correctedX - 500000; // Remover false easting
+    // Ajustar coordenadas UTM
+    let x = correctedX - 500000;
     x = x / UTMScaleFactor;
     const y = correctedY / UTMScaleFactor;
     
@@ -133,29 +124,24 @@ function convertToLatLong(x: number | null, y: number | null): { lat: number; ln
     const latDegrees = (lat / Math.PI) * 180;
     const lngDegrees = (lng / Math.PI) * 180;
     
-    console.log(`Conversión UTM precisa: ${correctedX}, ${correctedY} → Lat/Lng: ${latDegrees.toFixed(6)}, ${lngDegrees.toFixed(6)}`);
-    
     return { lat: latDegrees, lng: lngDegrees };
   }
 
   return null;
 }
 
-// Función para generar URL de mapa estático usando diferentes servicios
+// Función para generar URL de mapa estático
 function generateStaticMapUrl(lat: number, lng: number, width: number = 400, height: number = 300, service: 'osm' | 'mapbox' | 'google' = 'mapbox'): string {
   switch (service) {
     case 'mapbox':
-      // Mapbox Static API con token público
       const mapboxToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
       return `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s-marker+ff0000(${lng},${lat})/${lng},${lat},15/${width}x${height}?access_token=${mapboxToken}`
     
     case 'google':
-      // Google Maps Static API (sin API key, usando servicio público)
       return `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=15&size=${width}x${height}&markers=color:red%7C${lat},${lng}&maptype=roadmap&format=png&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dOWWgE6lAL7_Z4`
     
     case 'osm':
     default:
-      // OpenStreetMap - usar servicio más confiable
       return `https://staticmap.openstreetmap.fr/staticmap.php?center=${lat},${lng}&zoom=15&size=${width}x${height}&markers=${lat},${lng},red&maptype=mapnik&format=png`
   }
 }
@@ -165,7 +151,7 @@ function generateOpenStreetMapUrl(lat: number, lng: number): string {
   return `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}&zoom=15`
 }
 
-export function SimpleMap({ 
+export function ClientOnlyMap({ 
   coordenadas_x, 
   coordenadas_y, 
   municipio,
@@ -174,20 +160,19 @@ export function SimpleMap({
   showLink = true,
   staticMode = false,
   mapService = 'mapbox'
-}: SimpleMapProps) {
-  // Usar useEffect para evitar problemas de hidratación
-  const [coords, setCoords] = React.useState<{ lat: number; lng: number } | null>(null)
-  const [isClient, setIsClient] = React.useState(false)
+}: ClientOnlyMapProps) {
+  const [coords, setCoords] = useState<{ lat: number; lng: number } | null>(null)
+  const [mounted, setMounted] = useState(false)
 
-  React.useEffect(() => {
-    setIsClient(true)
+  useEffect(() => {
+    setMounted(true)
     // Convertir coordenadas solo en el cliente
     const convertedCoords = convertToLatLong(coordenadas_x, coordenadas_y)
     setCoords(convertedCoords)
   }, [coordenadas_x, coordenadas_y])
 
-  // Si no se pudieron convertir las coordenadas o aún no está en el cliente
-  if (!isClient || !coords) {
+  // Si no está montado, mostrar placeholder consistente
+  if (!mounted) {
     return (
       <Box
         sx={{
@@ -204,7 +189,34 @@ export function SimpleMap({
         }}
       >
         <Typography variant="body2" color="text.secondary" textAlign="center">
-          {isClient ? 'Coordenadas no disponibles' : 'Cargando mapa...'}
+          Cargando mapa...
+        </Typography>
+        <Typography variant="caption" color="text.secondary" textAlign="center" sx={{ mt: 1 }}>
+          Municipio: {municipio}
+        </Typography>
+      </Box>
+    )
+  }
+
+  // Si no se pudieron convertir las coordenadas
+  if (!coords) {
+    return (
+      <Box
+        sx={{
+          width,
+          height,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: '#f5f5f5',
+          border: '1px solid #e0e0e0',
+          borderRadius: 1,
+          p: 2
+        }}
+      >
+        <Typography variant="body2" color="text.secondary" textAlign="center">
+          Coordenadas no disponibles
         </Typography>
         <Typography variant="caption" color="text.secondary" textAlign="center" sx={{ mt: 1 }}>
           Municipio: {municipio}
@@ -231,7 +243,7 @@ export function SimpleMap({
           borderRadius: 1,
           objectFit: 'cover',
           cursor: 'pointer',
-          backgroundColor: '#f5f5f5', // Fondo gris claro mientras carga
+          backgroundColor: '#f5f5f5',
           '&:hover': {
             opacity: 0.9
           }
@@ -242,9 +254,6 @@ export function SimpleMap({
           }
         }}
         title={`Mapa de ubicación en ${municipio} - Click para ver en OpenStreetMap`}
-        onLoad={() => {
-          // Mapa cargado exitosamente
-        }}
         onError={(e) => {
           // Si falla la imagen, intentar con otro servicio
           const target = e.target as HTMLImageElement

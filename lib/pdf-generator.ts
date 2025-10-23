@@ -298,6 +298,111 @@ export async function generateBoletinPDFOptimized(elementId: string, filename: s
 /**
  * Genera un PDF usando un enfoque simple y confiable
  */
+export async function generateBoletinPDFSimple(elementId: string, filename: string): Promise<void> {
+  console.log('generateBoletinPDFSimple: Iniciando generación de PDF para elemento:', elementId)
+  
+  const element = document.getElementById(elementId)
+  
+  if (!element) {
+    console.error('generateBoletinPDFSimple: Elemento no encontrado:', elementId)
+    throw new Error(`Elemento con ID '${elementId}' no encontrado`)
+  }
+
+  console.log('generateBoletinPDFSimple: Elemento encontrado:', element)
+
+  try {
+    // Mostrar loading simple
+    const loadingElement = document.createElement('div')
+    loadingElement.innerHTML = 'Generando PDF...'
+    loadingElement.style.cssText = `
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      z-index: 9999;
+      font-family: Arial, sans-serif;
+    `
+    document.body.appendChild(loadingElement)
+
+    console.log('generateBoletinPDFSimple: Iniciando html2canvas...')
+
+    // Configuración básica y confiable para html2canvas
+    const canvas = await html2canvas(element, {
+      scale: 2, // Aumentar escala para mejor calidad
+      useCORS: true,
+      allowTaint: true,
+      backgroundColor: '#ffffff',
+      logging: true,
+      width: element.scrollWidth,
+      height: element.scrollHeight,
+      scrollX: 0,
+      scrollY: 0,
+      foreignObjectRendering: false, // Desactivar para mejor compatibilidad
+      removeContainer: false,
+      imageTimeout: 10000
+    })
+
+    console.log('generateBoletinPDFSimple: html2canvas completado, canvas size:', canvas.width, 'x', canvas.height)
+
+    // Remover loading
+    document.body.removeChild(loadingElement)
+
+    // Verificar que el canvas tenga contenido
+    if (canvas.width === 0 || canvas.height === 0) {
+      console.error('generateBoletinPDFSimple: Canvas vacío')
+      throw new Error('No se pudo capturar el contenido del elemento')
+    }
+
+    console.log('generateBoletinPDFSimple: Creando PDF...')
+
+    // Crear PDF
+    const imgData = canvas.toDataURL('image/png', 1.0)
+    const pdf = new jsPDF({
+      orientation: 'portrait',
+      unit: 'mm',
+      format: 'a4'
+    })
+
+    // Dimensiones de la página A4
+    const pageWidth = pdf.internal.pageSize.getWidth()
+    const pageHeight = pdf.internal.pageSize.getHeight()
+    
+    // Calcular dimensiones de la imagen
+    const imgWidth = pageWidth - 20
+    const imgHeight = (canvas.height * imgWidth) / canvas.width
+
+    console.log('generateBoletinPDFSimple: Dimensiones calculadas - imgWidth:', imgWidth, 'imgHeight:', imgHeight)
+
+    // Añadir imagen al PDF
+    pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight)
+
+    console.log('generateBoletinPDFSimple: Iniciando descarga del PDF...')
+
+    // Descargar el PDF
+    pdf.save(filename)
+
+    console.log('generateBoletinPDFSimple: PDF generado y descargado exitosamente')
+
+  } catch (error) {
+    console.error('generateBoletinPDFSimple: Error al generar PDF:', error)
+    
+    // Remover loading si existe
+    const loadingElement = document.querySelector('div[style*="position: fixed"]')
+    if (loadingElement && loadingElement.parentNode) {
+      loadingElement.parentNode.removeChild(loadingElement)
+    }
+    
+    throw new Error(`Error al generar el PDF: ${error instanceof Error ? error.message : 'Error desconocido'}`)
+  }
+}
+
+/**
+ * Genera un PDF usando un enfoque simple y confiable
+ */
 export async function generateBoletinPDFRobust(elementId: string, filename: string): Promise<void> {
   console.log('generateBoletinPDFRobust: Iniciando generación de PDF para elemento:', elementId)
   

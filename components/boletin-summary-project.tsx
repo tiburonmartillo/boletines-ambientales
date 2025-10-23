@@ -118,7 +118,7 @@ export function BoletinSummaryProject({ proyecto, numero, tipo, staticMode = fal
 
         {/* Mapa - Columna derecha */}
         <Box sx={{ 
-          width: { xs: '100%', md: 400 },
+          width: '100%',
           flexShrink: 0,
           order: { xs: -1, md: 0 }
         }}>

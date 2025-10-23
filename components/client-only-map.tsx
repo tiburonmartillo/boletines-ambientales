@@ -225,7 +225,7 @@ export function ClientOnlyMap({
   if (staticMode) {
     const mapUrl = generateStaticMapUrl(lat, lng, width, height)
     return (
-      <Box sx={{ width, height }}>
+      <Box sx={{ width: '100%', height }}>
         <Box
           component="img"
           src={mapUrl}
@@ -259,7 +259,7 @@ export function ClientOnlyMap({
 
   // Para la modal, usar iframe como en la modal de ubicación
   return (
-    <Box sx={{ width, height }}>
+    <Box sx={{ width: '100%', height }}>
       <div className="w-full h-full bg-gray-50 rounded-lg overflow-hidden border border-gray-200">
         <iframe
           src={`https://www.openstreetmap.org/export/embed.html?bbox=${lng-0.005},${lat-0.005},${lng+0.005},${lat+0.005}&layer=mapnik&marker=${lat},${lng}`}

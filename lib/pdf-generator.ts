@@ -343,7 +343,26 @@ export async function generateBoletinPDFSimple(elementId: string, filename: stri
       scrollY: 0,
       foreignObjectRendering: false, // Desactivar para mejor compatibilidad
       removeContainer: false,
-      imageTimeout: 10000
+      imageTimeout: 10000,
+      onclone: (clonedDoc) => {
+        // Convertir funciones de color modernas a colores compatibles
+        const allElements = clonedDoc.querySelectorAll('*')
+        allElements.forEach(el => {
+          const htmlEl = el as HTMLElement
+          const computedStyle = window.getComputedStyle(el)
+          
+          // Convertir colores oklch a rgb
+          if (computedStyle.color && computedStyle.color.includes('oklch')) {
+            htmlEl.style.color = '#000000'
+          }
+          if (computedStyle.backgroundColor && computedStyle.backgroundColor.includes('oklch')) {
+            htmlEl.style.backgroundColor = '#ffffff'
+          }
+          if (computedStyle.borderColor && computedStyle.borderColor.includes('oklch')) {
+            htmlEl.style.borderColor = '#e0e0e0'
+          }
+        })
+      }
     })
 
     console.log('generateBoletinPDFSimple: html2canvas completado, canvas size:', canvas.width, 'x', canvas.height)

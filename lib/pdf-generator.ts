@@ -386,21 +386,10 @@ export async function generateBoletinPDFRobust(elementId: string, filename: stri
                 
                 console.log(`generateBoletinPDFRobust: Coordenadas extraídas: lat=${lat}, lng=${lng}`)
                 
-                // Crear imagen estática usando tiny-static-map
+                // Crear imagen estática directamente
                 const img = document.createElement('img')
-                // Generar mapa estático con tiny-static-map
-                generateStaticMapWithTinyStaticMap(lat, lng, 400, 300).then(dataURL => {
-                  if (dataURL) {
-                    img.src = dataURL
-                  } else {
-                    // Fallback a URL estática si falla
-                    img.src = `https://staticmap.openstreetmap.fr/staticmap.php?center=${lat},${lng}&zoom=15&size=400x300&markers=${lat},${lng},red&maptype=mapnik&format=png`
-                  }
-                }).catch(error => {
-                  console.error('Error generando mapa estático:', error)
-                  // Fallback a URL estática
-                  img.src = `https://staticmap.openstreetmap.fr/staticmap.php?center=${lat},${lng}&zoom=15&size=400x300&markers=${lat},${lng},red&maptype=mapnik&format=png`
-                })
+                // Usar URL estática directa para evitar problemas de DOM
+                img.src = `https://staticmap.openstreetmap.fr/staticmap.php?center=${lat},${lng}&zoom=15&size=400x300&markers=${lat},${lng},red&maptype=mapnik&format=png&t=static`
                 img.style.cssText = `
                   width: 100%;
                   height: 100%;
@@ -614,18 +603,24 @@ async function generateStaticMapWithTinyStaticMap(lat: number, lng: number, widt
           }).then(canvas => {
             const dataURL = canvas.toDataURL('image/png')
             
-            // Limpiar el contenedor temporal
-            document.body.removeChild(tempContainer)
+            // Limpiar el contenedor temporal solo si aún existe
+            if (document.body.contains(tempContainer)) {
+              document.body.removeChild(tempContainer)
+            }
             
             resolve(dataURL)
           }).catch(error => {
             console.error('Error convirtiendo a canvas:', error)
-            document.body.removeChild(tempContainer)
+            if (document.body.contains(tempContainer)) {
+              document.body.removeChild(tempContainer)
+            }
             reject(error)
           })
         } catch (error) {
           console.error('Error en convertToDataURL:', error)
-          document.body.removeChild(tempContainer)
+          if (document.body.contains(tempContainer)) {
+            document.body.removeChild(tempContainer)
+          }
           reject(error)
         }
       }

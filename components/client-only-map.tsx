@@ -165,11 +165,13 @@ export function ClientOnlyMap({
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    console.log('ClientOnlyMap: Montando componente con coordenadas:', { coordenadas_x, coordenadas_y, municipio })
     setMounted(true)
     // Convertir coordenadas solo en el cliente
     const convertedCoords = convertToLatLong(coordenadas_x, coordenadas_y)
+    console.log('ClientOnlyMap: Coordenadas convertidas:', convertedCoords)
     setCoords(convertedCoords)
-  }, [coordenadas_x, coordenadas_y])
+  }, [coordenadas_x, coordenadas_y, municipio])
 
   // Si no está montado, mostrar placeholder consistente
   if (!mounted) {
@@ -229,6 +231,8 @@ export function ClientOnlyMap({
   const mapUrl = generateStaticMapUrl(lat, lng, width, height, mapService)
   const osmUrl = generateOpenStreetMapUrl(lat, lng)
 
+  console.log('ClientOnlyMap: Generando mapa con URL:', mapUrl)
+
   return (
     <Box sx={{ width, height }}>
       {/* Usar imagen estática por defecto para mejor compatibilidad con PDF */}
@@ -254,14 +258,21 @@ export function ClientOnlyMap({
           }
         }}
         title={`Mapa de ubicación en ${municipio} - Click para ver en OpenStreetMap`}
+        onLoad={() => {
+          console.log('ClientOnlyMap: Mapa cargado exitosamente:', mapUrl)
+        }}
         onError={(e) => {
+          console.error('ClientOnlyMap: Error cargando mapa:', mapUrl, e)
           // Si falla la imagen, intentar con otro servicio
           const target = e.target as HTMLImageElement
           if (mapService === 'mapbox') {
+            console.log('ClientOnlyMap: Intentando con Google Maps...')
             target.src = generateStaticMapUrl(lat, lng, width, height, 'google')
           } else if (mapService === 'google') {
+            console.log('ClientOnlyMap: Intentando con OpenStreetMap...')
             target.src = generateStaticMapUrl(lat, lng, width, height, 'osm')
           } else {
+            console.log('ClientOnlyMap: Mostrando placeholder...')
             // Como último recurso, mostrar un placeholder
             target.src = `data:image/svg+xml;base64,${btoa(`
               <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">

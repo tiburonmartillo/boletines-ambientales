@@ -12,7 +12,6 @@ interface ClientOnlyMapProps {
   height?: number
   showLink?: boolean
   staticMode?: boolean
-  mapService?: 'osm' | 'mapbox' | 'google'
 }
 
 // Función para convertir coordenadas a Lat/Long
@@ -130,20 +129,9 @@ function convertToLatLong(x: number | null, y: number | null): { lat: number; ln
   return null;
 }
 
-// Función para generar URL de mapa estático
-function generateStaticMapUrl(lat: number, lng: number, width: number = 400, height: number = 300, service: 'osm' | 'mapbox' | 'google' = 'google'): string {
-  switch (service) {
-    case 'mapbox':
-      const mapboxToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
-      return `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s-marker+ff0000(${lng},${lat})/${lng},${lat},15/${width}x${height}?access_token=${mapboxToken}`
-    
-    case 'google':
-      return `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=15&size=${width}x${height}&markers=color:red%7C${lat},${lng}&maptype=roadmap&format=png`
-    
-    case 'osm':
-    default:
-      return `https://staticmap.openstreetmap.fr/staticmap.php?center=${lat},${lng}&zoom=15&size=${width}x${height}&markers=${lat},${lng},red&maptype=mapnik&format=png`
-  }
+// Función para generar URL de mapa estático usando OpenStreetMap
+function generateStaticMapUrl(lat: number, lng: number, width: number = 400, height: number = 300): string {
+  return `https://staticmap.openstreetmap.fr/staticmap.php?center=${lat},${lng}&zoom=15&size=${width}x${height}&markers=${lat},${lng},red&maptype=mapnik&format=png`
 }
 
 // Función para generar URL de OpenStreetMap completo
@@ -158,8 +146,7 @@ export function ClientOnlyMap({
   width = 400,
   height = 300,
   showLink = true,
-  staticMode = false,
-  mapService = 'google'
+  staticMode = false
 }: ClientOnlyMapProps) {
   const [coords, setCoords] = useState<{ lat: number; lng: number } | null>(null)
   const [mounted, setMounted] = useState(false)
@@ -228,7 +215,7 @@ export function ClientOnlyMap({
   }
 
   const { lat, lng } = coords
-  const mapUrl = generateStaticMapUrl(lat, lng, width, height, mapService)
+  const mapUrl = generateStaticMapUrl(lat, lng, width, height)
   const osmUrl = generateOpenStreetMapUrl(lat, lng)
 
   console.log('ClientOnlyMap: Generando mapa con URL:', mapUrl)
@@ -263,29 +250,20 @@ export function ClientOnlyMap({
         }}
         onError={(e) => {
           console.error('ClientOnlyMap: Error cargando mapa:', mapUrl, e)
-          // Si falla la imagen, intentar con otro servicio
+          // Si falla la imagen, mostrar un placeholder
           const target = e.target as HTMLImageElement
-          if (mapService === 'mapbox') {
-            console.log('ClientOnlyMap: Intentando con Google Maps...')
-            target.src = generateStaticMapUrl(lat, lng, width, height, 'google')
-          } else if (mapService === 'google') {
-            console.log('ClientOnlyMap: Intentando con OpenStreetMap...')
-            target.src = generateStaticMapUrl(lat, lng, width, height, 'osm')
-          } else {
-            console.log('ClientOnlyMap: Mostrando placeholder...')
-            // Como último recurso, mostrar un placeholder
-            target.src = `data:image/svg+xml;base64,${btoa(`
-              <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
-                <rect width="100%" height="100%" fill="#f0f0f0" stroke="#ccc" stroke-width="1"/>
-                <text x="50%" y="50%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="14" fill="#666">
-                  Mapa no disponible
-                </text>
-                <text x="50%" y="60%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="12" fill="#999">
-                  ${municipio}
-                </text>
-              </svg>
-            `)}`
-          }
+          console.log('ClientOnlyMap: Mostrando placeholder...')
+          target.src = `data:image/svg+xml;base64,${btoa(`
+            <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
+              <rect width="100%" height="100%" fill="#f0f0f0" stroke="#ccc" stroke-width="1"/>
+              <text x="50%" y="50%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="14" fill="#666">
+                Mapa no disponible
+              </text>
+              <text x="50%" y="60%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="12" fill="#999">
+                ${municipio}
+              </text>
+            </svg>
+          `)}`
         }}
       />
       

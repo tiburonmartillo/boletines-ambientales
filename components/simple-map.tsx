@@ -1,7 +1,7 @@
 'use client'
 
 import { Box, Typography, Link } from '@mui/material'
-import { generarMapaEstaticoOSM, generarURLMapaCompleto, validarCoordenadasParaMapa } from '@/lib/map-static-generator'
+import { coordinateValidator } from '@/lib/coordinate-validator'
 
 interface SimpleMapProps {
   coordenadas_x: number | null
@@ -12,6 +12,67 @@ interface SimpleMapProps {
   showLink?: boolean
 }
 
+// Función para convertir coordenadas a Lat/Long usando el mismo validador que la modal
+function convertToLatLong(x: number | null, y: number | null): { lat: number; lng: number } | null {
+  if (!x || !y) return null
+
+  // Validar y corregir coordenadas usando el mismo validador que la modal
+  const validationResult = coordinateValidator.processCoordinates(x, y);
+  
+  if (!validationResult.success) {
+    console.warn('Coordenadas inválidas:', validationResult.error);
+    return null;
+  }
+
+  // Usar coordenadas corregidas
+  const correctedX = validationResult.corrected.x;
+  const correctedY = validationResult.corrected.y;
+
+  // Si las coordenadas fueron corregidas, loggear la corrección
+  if (validationResult.wasCorrected) {
+    console.log(`✅ Coordenadas UTM corregidas (ambos dígitos faltantes): ${x}, ${y} → ${correctedX}, ${correctedY}`);
+  }
+
+  // Si las coordenadas ya están en formato Lat/Lng, devolverlas directamente
+  if (validationResult.type === 'latlng') {
+    return { lat: correctedY, lng: correctedX };
+  }
+
+  // Si son coordenadas UTM, aplicar conversión (simplificada para mapa estático)
+  if (validationResult.type === 'utm' || validationResult.type === 'utm14') {
+    // Para mapa estático, usar una conversión simple aproximada
+    // Esto es una aproximación rápida para mostrar la ubicación
+    const zone = validationResult.type === 'utm14' ? 14 : 13;
+    
+    // Conversión aproximada UTM a Lat/Lng para zona 13/14 México
+    const lat = correctedY / 111000; // Aproximación simple
+    const lng = correctedX / 111000; // Aproximación simple
+    
+    return { lat, lng };
+  }
+
+  return null;
+}
+
+// Función para generar URL de mapa estático usando OpenStreetMap
+function generateStaticMapUrl(lat: number, lng: number, width: number = 400, height: number = 300): string {
+  const baseUrl = 'https://staticmap.openstreetmap.de/staticmap.php'
+  const params = new URLSearchParams({
+    center: `${lat},${lng}`,
+    zoom: '15',
+    size: `${width}x${height}`,
+    markers: `${lat},${lng},red`,
+    maptype: 'mapnik'
+  })
+  
+  return `${baseUrl}?${params.toString()}`
+}
+
+// Función para generar URL de OpenStreetMap completo
+function generateOpenStreetMapUrl(lat: number, lng: number): string {
+  return `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}&zoom=15`
+}
+
 export function SimpleMap({ 
   coordenadas_x, 
   coordenadas_y, 
@@ -20,8 +81,11 @@ export function SimpleMap({
   height = 300,
   showLink = true
 }: SimpleMapProps) {
-  // Validar coordenadas
-  if (!coordenadas_x || !coordenadas_y) {
+  // Convertir coordenadas usando el mismo sistema que la modal
+  const coords = convertToLatLong(coordenadas_x, coordenadas_y)
+
+  // Si no se pudieron convertir las coordenadas
+  if (!coords) {
     return (
       <Box
         sx={{
@@ -47,72 +111,16 @@ export function SimpleMap({
     )
   }
 
-  if (!validarCoordenadasParaMapa(coordenadas_x, coordenadas_y)) {
-    return (
-      <Box
-        sx={{
-          width,
-          height,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: '#f5f5f5',
-          border: '1px solid #e0e0e0',
-          borderRadius: 1,
-          p: 2
-        }}
-      >
-        <Typography variant="body2" color="error" textAlign="center">
-          Coordenadas inválidas
-        </Typography>
-        <Typography variant="caption" color="text.secondary" textAlign="center" sx={{ mt: 1 }}>
-          Municipio: {municipio}
-        </Typography>
-      </Box>
-    )
-  }
-
-  // Generar mapa
-  const mapResult = generarMapaEstaticoOSM(coordenadas_x, coordenadas_y, {
-    width,
-    height,
-    zoom: 15,
-    markerColor: 'red'
-  })
-
-  if (!mapResult.success) {
-    return (
-      <Box
-        sx={{
-          width,
-          height,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: '#f5f5f5',
-          border: '1px solid #e0e0e0',
-          borderRadius: 1,
-          p: 2
-        }}
-      >
-        <Typography variant="body2" color="error" textAlign="center">
-          {mapResult.error || 'No se pudo cargar el mapa'}
-        </Typography>
-        <Typography variant="caption" color="text.secondary" textAlign="center" sx={{ mt: 1 }}>
-          Municipio: {municipio}
-        </Typography>
-      </Box>
-    )
-  }
+  const { lat, lng } = coords
+  const mapUrl = generateStaticMapUrl(lat, lng, width, height)
+  const osmUrl = generateOpenStreetMapUrl(lat, lng)
 
   return (
     <Box sx={{ width, height }}>
       {/* Mapa estático */}
       <Box
         component="img"
-        src={mapResult.url}
+        src={mapUrl}
         alt={`Mapa de ubicación en ${municipio}`}
         sx={{
           width: '100%',
@@ -124,8 +132,7 @@ export function SimpleMap({
         }}
         onClick={() => {
           if (showLink) {
-            const url = generarURLMapaCompleto(coordenadas_x, coordenadas_y)
-            window.open(url, '_blank')
+            window.open(osmUrl, '_blank')
           }
         }}
       />
@@ -138,7 +145,7 @@ export function SimpleMap({
         {showLink && (
           <Box sx={{ mt: 0.5 }}>
             <Link
-              href={generarURLMapaCompleto(coordenadas_x, coordenadas_y)}
+              href={osmUrl}
               target="_blank"
               rel="noopener noreferrer"
               variant="caption"

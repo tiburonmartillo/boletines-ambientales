@@ -15,16 +15,14 @@ interface ResumenBoletinPageProps {
 // Función para generar parámetros estáticos
 export async function generateStaticParams() {
   try {
-    // Cargar datos de boletines para generar rutas estáticas
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/data/boletines.json`)
-    const data = await response.json()
+    // Cargar datos de boletines usando fs.readFileSync
+    const filePath = path.join(process.cwd(), 'public', 'data', 'boletines.json')
+    const fileContents = fs.readFileSync(filePath, 'utf8')
+    const data = JSON.parse(fileContents)
     
-    // Generar parámetros para los primeros 50 boletines más recientes
-    const recentBoletines = data.boletines
-      .sort((a: any, b: any) => new Date(b.fecha_publicacion).getTime() - new Date(a.fecha_publicacion).getTime())
-      .slice(0, 50)
-    
-    return recentBoletines.map((boletin: any) => ({
+    // Generar parámetros para TODOS los boletines disponibles
+    // Esto asegura que todas las rutas estén disponibles
+    return data.boletines.map((boletin: Boletin) => ({
       id: boletin.id.toString(),
     }))
   } catch (error) {
@@ -35,7 +33,12 @@ export async function generateStaticParams() {
       { id: '452' },
       { id: '451' },
       { id: '450' },
-      { id: '449' }
+      { id: '449' },
+      { id: '448' },
+      { id: '447' },
+      { id: '446' },
+      { id: '445' },
+      { id: '444' }
     ]
   }
 }

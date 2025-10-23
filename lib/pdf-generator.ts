@@ -1,6 +1,5 @@
 import jsPDF from 'jspdf'
 import html2canvas from 'html2canvas'
-import html2pdf from 'html2pdf.js'
 
 /**
  * Genera un PDF del resumen de boletín usando html2canvas y jsPDF
@@ -427,31 +426,25 @@ export async function generateBoletinPDFWithHtml2pdf(elementId: string, filename
   }
 
   try {
-    // Configuración optimizada para html2pdf.js
+    // Importar html2pdf.js dinámicamente solo en el cliente
+    const html2pdf = (await import('html2pdf.js')).default
+
+    // Configuración básica y simple para html2pdf.js
     const opt = {
       margin: 10,
       filename: filename,
-      image: { type: 'jpeg', quality: 0.98 },
+      image: { type: 'jpeg', quality: 0.95 },
       html2canvas: { 
-        scale: 2,
+        scale: 1,
         useCORS: true,
         allowTaint: true,
         backgroundColor: '#ffffff',
-        logging: false,
-        width: element.scrollWidth,
-        height: element.scrollHeight
+        logging: false
       },
       jsPDF: { 
         unit: 'mm', 
         format: 'a4', 
-        orientation: 'portrait',
-        compress: true
-      },
-      pagebreak: { 
-        mode: ['avoid-all', 'css'],
-        before: '.page-break-before',
-        after: '.page-break-after',
-        avoid: 'img'
+        orientation: 'portrait'
       }
     }
 

@@ -27,7 +27,11 @@ export function BoletinSummaryProject({ proyecto, numero, tipo, staticMode = fal
         backgroundColor: '#ffffff'
       }}
     >
-      <Box sx={{ display: 'flex', gap: 3 }}>
+      <Box sx={{ 
+        display: 'flex', 
+        gap: 3,
+        flexDirection: { xs: 'column', md: 'row' }
+      }}>
         {/* Información del proyecto - Columna izquierda */}
         <Box sx={{ flex: 1 }}>
           <Typography
@@ -43,7 +47,11 @@ export function BoletinSummaryProject({ proyecto, numero, tipo, staticMode = fal
             {proyecto.nombre_proyecto}
           </Typography>
 
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+          <Box sx={{ 
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+            gap: 2
+          }}>
             {/* Promovente */}
             <Box>
               <Typography variant="body2" sx={{ fontWeight: 'bold', color: '#374151' }}>
@@ -109,7 +117,11 @@ export function BoletinSummaryProject({ proyecto, numero, tipo, staticMode = fal
         </Box>
 
         {/* Mapa - Columna derecha */}
-        <Box sx={{ width: 400, flexShrink: 0 }}>
+        <Box sx={{ 
+          width: { xs: '100%', md: 400 },
+          flexShrink: 0,
+          order: { xs: -1, md: 0 }
+        }}>
           <ClientOnlyMap
             coordenadas_x={proyecto.coordenadas_x}
             coordenadas_y={proyecto.coordenadas_y}

@@ -63,7 +63,7 @@ export function BoletinModal({ boletin, isOpen, onClose }: BoletinModalProps) {
           />
           
           {/* Modal */}
-          <div className="relative bg-white rounded-xl shadow-xl max-w-7xl w-full mx-4 max-h-[95vh] overflow-hidden">
+          <div className="relative bg-white rounded-xl shadow-xl max-w-6xl w-full mx-4 max-h-[95vh] overflow-hidden">
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-gray-200">
               <div>

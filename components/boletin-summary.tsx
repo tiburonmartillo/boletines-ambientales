@@ -48,8 +48,8 @@ export function BoletinSummary({
         sx={{
           backgroundColor: '#F97316',
           color: '#ffffff',
-          py: 3,
-          px: 4,
+          py: { xs: 2, md: 3 },
+          px: { xs: 2, md: 4 },
           textAlign: 'center',
           borderRadius: '8px 8px 0 0'
         }}
@@ -59,7 +59,7 @@ export function BoletinSummary({
           component="h1"
           sx={{
             fontWeight: 'bold',
-            fontSize: '1.75rem',
+            fontSize: { xs: '1.25rem', md: '1.75rem' },
             mb: 1
           }}
         >
@@ -68,7 +68,7 @@ export function BoletinSummary({
         <Typography
           variant="h6"
           sx={{
-            fontSize: '1.25rem',
+            fontSize: { xs: '1rem', md: '1.25rem' },
             fontWeight: 400
           }}
         >
@@ -77,7 +77,7 @@ export function BoletinSummary({
       </Box>
 
       {/* Contenido principal */}
-      <Box sx={{ p: 4 }}>
+      <Box sx={{ p: { xs: 2, md: 4 } }}>
         {/* Sección de proyectos ingresados */}
         {boletin.proyectos_ingresados && boletin.proyectos_ingresados.length > 0 && (
           <Box sx={{ mb: 4 }}>
@@ -160,12 +160,18 @@ export function BoletinSummary({
         sx={{
           backgroundColor: '#f9fafb',
           borderTop: '1px solid #e5e7eb',
-          py: 3,
-          px: 4,
+          py: { xs: 2, md: 3 },
+          px: { xs: 2, md: 4 },
           borderRadius: '0 0 8px 8px'
         }}
       >
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Box sx={{ 
+          display: 'flex', 
+          justifyContent: 'space-between', 
+          alignItems: 'center',
+          flexDirection: { xs: 'column', md: 'row' },
+          gap: { xs: 2, md: 0 }
+        }}>
           {/* Información legal */}
           <Box sx={{ flex: 1 }}>
             <Typography
@@ -215,13 +221,13 @@ export function BoletinSummary({
           </Box>
 
           {/* Logo */}
-          <Box sx={{ ml: 3 }}>
+          <Box sx={{ ml: { xs: 0, md: 3 } }}>
             <Box
               component="img"
               src="/assets/logocompleto.png"
               alt="Alianza por la Defensa de la Naturaleza Aguascalientes"
               sx={{
-                height: 60,
+                height: { xs: 40, md: 60 },
                 width: 'auto'
               }}
             />

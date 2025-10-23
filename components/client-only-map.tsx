@@ -131,14 +131,14 @@ function convertToLatLong(x: number | null, y: number | null): { lat: number; ln
 }
 
 // Función para generar URL de mapa estático
-function generateStaticMapUrl(lat: number, lng: number, width: number = 400, height: number = 300, service: 'osm' | 'mapbox' | 'google' = 'mapbox'): string {
+function generateStaticMapUrl(lat: number, lng: number, width: number = 400, height: number = 300, service: 'osm' | 'mapbox' | 'google' = 'google'): string {
   switch (service) {
     case 'mapbox':
       const mapboxToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
       return `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s-marker+ff0000(${lng},${lat})/${lng},${lat},15/${width}x${height}?access_token=${mapboxToken}`
     
     case 'google':
-      return `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=15&size=${width}x${height}&markers=color:red%7C${lat},${lng}&maptype=roadmap&format=png&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dOWWgE6lAL7_Z4`
+      return `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=15&size=${width}x${height}&markers=color:red%7C${lat},${lng}&maptype=roadmap&format=png`
     
     case 'osm':
     default:
@@ -159,7 +159,7 @@ export function ClientOnlyMap({
   height = 300,
   showLink = true,
   staticMode = false,
-  mapService = 'mapbox'
+  mapService = 'google'
 }: ClientOnlyMapProps) {
   const [coords, setCoords] = useState<{ lat: number; lng: number } | null>(null)
   const [mounted, setMounted] = useState(false)

@@ -1,10 +1,9 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { Box, Typography, Link, Alert } from '@mui/material'
+import { Box, Typography, Link } from '@mui/material'
 import { generarMapaEstaticoOSM, generarURLMapaCompleto, validarCoordenadasParaMapa } from '@/lib/map-static-generator'
 
-interface MapStaticProps {
+interface SimpleMapProps {
   coordenadas_x: number | null
   coordenadas_y: number | null
   municipio: string
@@ -13,85 +12,16 @@ interface MapStaticProps {
   showLink?: boolean
 }
 
-export function BoletinSummaryMap({ 
+export function SimpleMap({ 
   coordenadas_x, 
   coordenadas_y, 
   municipio,
   width = 400,
   height = 300,
   showLink = true
-}: MapStaticProps) {
-  const [mapData, setMapData] = useState<{
-    url: string
-    lat: number
-    lng: number
-    success: boolean
-    error?: string
-  } | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-
-  useEffect(() => {
-    const loadMap = () => {
-      if (!coordenadas_x || !coordenadas_y) {
-        setError('Coordenadas no disponibles')
-        setLoading(false)
-        return
-      }
-
-      if (!validarCoordenadasParaMapa(coordenadas_x, coordenadas_y)) {
-        setError('Coordenadas inválidas')
-        setLoading(false)
-        return
-      }
-
-      try {
-        const mapResult = generarMapaEstaticoOSM(coordenadas_x, coordenadas_y, {
-          width,
-          height,
-          zoom: 15,
-          markerColor: 'red'
-        })
-
-        if (mapResult.success) {
-          setMapData(mapResult)
-        } else {
-          setError(mapResult.error || 'Error al generar el mapa')
-        }
-      } catch (err) {
-        setError('Error al cargar el mapa')
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    // Usar setTimeout para asegurar que se ejecute después del render
-    const timeoutId = setTimeout(loadMap, 100)
-    return () => clearTimeout(timeoutId)
-  }, [coordenadas_x, coordenadas_y, width, height])
-
-  if (loading) {
-    return (
-      <Box
-        sx={{
-          width,
-          height,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: '#f5f5f5',
-          border: '1px solid #e0e0e0',
-          borderRadius: 1
-        }}
-      >
-        <Typography variant="body2" color="text.secondary">
-          Cargando mapa...
-        </Typography>
-      </Box>
-    )
-  }
-
-  if (error || !mapData?.success) {
+}: SimpleMapProps) {
+  // Validar coordenadas
+  if (!coordenadas_x || !coordenadas_y) {
     return (
       <Box
         sx={{
@@ -108,7 +38,67 @@ export function BoletinSummaryMap({
         }}
       >
         <Typography variant="body2" color="error" textAlign="center">
-          {error || 'No se pudo cargar el mapa'}
+          Coordenadas no disponibles
+        </Typography>
+        <Typography variant="caption" color="text.secondary" textAlign="center" sx={{ mt: 1 }}>
+          Municipio: {municipio}
+        </Typography>
+      </Box>
+    )
+  }
+
+  if (!validarCoordenadasParaMapa(coordenadas_x, coordenadas_y)) {
+    return (
+      <Box
+        sx={{
+          width,
+          height,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: '#f5f5f5',
+          border: '1px solid #e0e0e0',
+          borderRadius: 1,
+          p: 2
+        }}
+      >
+        <Typography variant="body2" color="error" textAlign="center">
+          Coordenadas inválidas
+        </Typography>
+        <Typography variant="caption" color="text.secondary" textAlign="center" sx={{ mt: 1 }}>
+          Municipio: {municipio}
+        </Typography>
+      </Box>
+    )
+  }
+
+  // Generar mapa
+  const mapResult = generarMapaEstaticoOSM(coordenadas_x, coordenadas_y, {
+    width,
+    height,
+    zoom: 15,
+    markerColor: 'red'
+  })
+
+  if (!mapResult.success) {
+    return (
+      <Box
+        sx={{
+          width,
+          height,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: '#f5f5f5',
+          border: '1px solid #e0e0e0',
+          borderRadius: 1,
+          p: 2
+        }}
+      >
+        <Typography variant="body2" color="error" textAlign="center">
+          {mapResult.error || 'No se pudo cargar el mapa'}
         </Typography>
         <Typography variant="caption" color="text.secondary" textAlign="center" sx={{ mt: 1 }}>
           Municipio: {municipio}
@@ -122,7 +112,7 @@ export function BoletinSummaryMap({
       {/* Mapa estático */}
       <Box
         component="img"
-        src={mapData.url}
+        src={mapResult.url}
         alt={`Mapa de ubicación en ${municipio}`}
         sx={{
           width: '100%',
@@ -133,8 +123,8 @@ export function BoletinSummaryMap({
           cursor: 'pointer'
         }}
         onClick={() => {
-          if (showLink && mapData.success) {
-            const url = generarURLMapaCompleto(coordenadas_x!, coordenadas_y!)
+          if (showLink) {
+            const url = generarURLMapaCompleto(coordenadas_x, coordenadas_y)
             window.open(url, '_blank')
           }
         }}
@@ -145,10 +135,10 @@ export function BoletinSummaryMap({
         <Typography variant="caption" color="text.secondary">
           Ubicación en {municipio}
         </Typography>
-        {showLink && mapData.success && (
+        {showLink && (
           <Box sx={{ mt: 0.5 }}>
             <Link
-              href={generarURLMapaCompleto(coordenadas_x!, coordenadas_y!)}
+              href={generarURLMapaCompleto(coordenadas_x, coordenadas_y)}
               target="_blank"
               rel="noopener noreferrer"
               variant="caption"

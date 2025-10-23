@@ -468,61 +468,6 @@ export async function generateBoletinPDFWithHtml2pdf(elementId: string, filename
   }
 }
 
-/**
- * Función alternativa usando window.print() para evitar problemas con html2canvas
- */
-export async function generateBoletinPDFPrint(elementId: string, filename: string): Promise<void> {
-  console.log('generateBoletinPDFPrint: Iniciando generación usando window.print()')
-  
-  const element = document.getElementById(elementId)
-  
-  if (!element) {
-    console.error('generateBoletinPDFPrint: Elemento no encontrado:', elementId)
-    throw new Error(`Elemento con ID '${elementId}' no encontrado`)
-  }
-
-  // Crear una ventana nueva para imprimir
-  const printWindow = window.open('', '_blank')
-  
-  if (!printWindow) {
-    throw new Error('No se pudo abrir la ventana de impresión')
-  }
-
-  // Escribir el contenido HTML
-  printWindow.document.write(`
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <title>${filename}</title>
-      <style>
-        body {
-          font-family: Arial, sans-serif;
-          margin: 0;
-          padding: 20px;
-          background: white;
-          color: black;
-        }
-        @media print {
-          body { margin: 0; }
-        }
-      </style>
-    </head>
-    <body>
-      ${element.outerHTML}
-    </body>
-    </html>
-  `)
-
-  printWindow.document.close()
-  
-  // Esperar a que se cargue y luego imprimir
-  printWindow.onload = () => {
-    printWindow.print()
-    printWindow.close()
-  }
-
-  console.log('generateBoletinPDFPrint: Ventana de impresión abierta')
-}
 
 export async function generateBoletinPDFSimple(elementId: string, filename: string): Promise<void> {
   console.log('generateBoletinPDFSimple: Iniciando generación de PDF para elemento:', elementId)

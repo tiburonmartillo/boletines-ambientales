@@ -48,13 +48,8 @@ export function useDashboardData() {
   useEffect(() => {
     const loadData = async () => {
       try {
-        console.log('[useDashboardData] Starting data loading...')
-        
         // Cargar datos desde el archivo JSON estático
-        const timestamp = new Date().getTime()
-        const dataUrl = `/data/boletines.json?v=${timestamp}`
-        
-        console.log('[useDashboardData] Loading from:', dataUrl)
+        const dataUrl = `/data/boletines.json?v=static`
 
         // Crear un AbortController para manejar timeouts
         const controller = new AbortController()
@@ -74,11 +69,7 @@ export function useDashboardData() {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
 
-        console.log('[useDashboardData] Starting JSON parsing...')
         const jsonData: BoletinesData = await response.json()
-        
-        console.log('[useDashboardData] Raw data loaded successfully!')
-        console.log('[useDashboardData] Total boletines:', jsonData.boletines?.length)
 
         // Validar estructura de datos
         if (!jsonData.boletines || !Array.isArray(jsonData.boletines)) {
@@ -88,18 +79,12 @@ export function useDashboardData() {
         setData(jsonData)
 
         // Procesar datos usando las funciones de utilidad
-        console.log('[useDashboardData] Processing data...')
-        
         const stats = getStats(jsonData)
         const timeSeriesData = getTimeSeriesData(jsonData)
         const municipiosData = getDistributionByMunicipio(jsonData)
         const girosData = getDistributionByGiro(jsonData)
         const proyectos = getAllProyectos(jsonData)
         const resolutivos = getAllResolutivos(jsonData)
-
-        console.log('[useDashboardData] Data processing completed!')
-        console.log('[useDashboardData] Total proyectos:', proyectos.length)
-        console.log('[useDashboardData] Total resolutivos:', resolutivos.length)
 
         // Crear datos procesados
         const processed: ProcessedData = {
@@ -121,7 +106,6 @@ export function useDashboardData() {
         setLoading(false)
         
       } catch (err) {
-        console.error("[useDashboardData] Error loading data:", err)
         
         if (err instanceof Error) {
           if (err.name === 'AbortError') {

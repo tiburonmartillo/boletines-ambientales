@@ -69,7 +69,7 @@ function BoletinesAmbientalesContent() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
             <Box>
               <Typography variant="h4" component="h1" fontWeight="bold" color="text.primary">
-                Boletines Ambientales
+                Dashboard de Boletines Ambientales SSMAA
               </Typography>
               <Typography variant="subtitle1" color="text.secondary" sx={{ mt: 0.5 }}>
                 Visualización interactiva de los boletines ambientales publicados por la Secretaría de Medio Ambiente del Estado de Aguascalientes en:

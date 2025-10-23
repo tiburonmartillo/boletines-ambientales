@@ -38,25 +38,111 @@ function convertToLatLong(x: number | null, y: number | null): { lat: number; ln
     return { lat: correctedY, lng: correctedX };
   }
 
-  // Si son coordenadas UTM, aplicar conversión (simplificada para mapa estático)
+  // Si son coordenadas UTM, aplicar conversión completa (igual que la modal)
   if (validationResult.type === 'utm' || validationResult.type === 'utm14') {
-    // Para mapa estático, usar una conversión simple aproximada
-    // Esto es una aproximación rápida para mostrar la ubicación
     const zone = validationResult.type === 'utm14' ? 14 : 13;
     
-    // Conversión aproximada UTM a Lat/Lng para zona 13/14 México
-    const lat = correctedY / 111000; // Aproximación simple
-    const lng = correctedX / 111000; // Aproximación simple
+    // Implementación precisa de conversión UTM a coordenadas geográficas
+    // Basada en las ecuaciones estándar de la proyección UTM
     
-    return { lat, lng };
+    // Parámetros del elipsoide WGS84
+    const sm_a = 6378137; // Semieje mayor
+    const sm_b = 6356752.314; // Semieje menor
+    const UTMScaleFactor = 0.9996; // Factor de escala UTM
+    
+    // Función auxiliar para calcular la latitud del pie
+    const calculateFootpointLatitude = (y: number): number => {
+      const n = (sm_a - sm_b) / (sm_a + sm_b);
+      const alpha_ = ((sm_a + sm_b) / 2) * (1 + (n ** 2) / 4) + (n ** 4) / 64;
+      const y_ = y / alpha_;
+      
+      const beta_ = (3 * n / 2) + (-27 * (n ** 3) / 32) + (269 * (n ** 5) / 512);
+      const gamma_ = (21 * (n ** 2) / 16) + (-55 * (n ** 4) / 32);
+      const delta_ = (151 * (n ** 3) / 96) + (-417 * (n ** 5) / 128);
+      const epsilon_ = (1097 * (n ** 4) / 512);
+      
+      return y_ + (beta_ * Math.sin(2 * y_)) + (gamma_ * Math.sin(4 * y_)) + 
+             (delta_ * Math.sin(6 * y_)) + (epsilon_ * Math.sin(8 * y_));
+    };
+    
+    // Ajustar coordenadas UTM (usar coordenadas corregidas)
+    let x = correctedX - 500000; // Remover false easting
+    x = x / UTMScaleFactor;
+    const y = correctedY / UTMScaleFactor;
+    
+    // Calcular meridiano central de la zona
+    const lambda0 = ((-183 + (zone * 6)) / 180) * Math.PI;
+    
+    // Calcular latitud del pie
+    const phif = calculateFootpointLatitude(y);
+    
+    // Precalcular valores auxiliares
+    const ep2 = (sm_a ** 2 - sm_b ** 2) / (sm_b ** 2);
+    const cf = Math.cos(phif);
+    const nuf2 = ep2 * (cf ** 2);
+    const Nf = (sm_a ** 2) / (sm_b * Math.sqrt(1 + nuf2));
+    
+    const tf = Math.tan(phif);
+    const tf2 = tf * tf;
+    const tf4 = tf2 * tf2;
+    
+    // Calcular coeficientes fraccionarios
+    let Nfpow = Nf;
+    const x1frac = 1 / (Nfpow * cf);
+    
+    Nfpow = Nfpow * Nf;
+    const x2frac = tf / (2 * Nfpow);
+    
+    Nfpow = Nfpow * Nf;
+    const x3frac = 1 / (6 * Nfpow * cf);
+    
+    Nfpow = Nfpow * Nf;
+    const x4frac = tf / (24 * Nfpow);
+    
+    Nfpow = Nfpow * Nf;
+    const x5frac = 1 / (120 * Nfpow * cf);
+    
+    Nfpow = Nfpow * Nf;
+    const x6frac = tf / (720 * Nfpow);
+    
+    Nfpow = Nfpow * Nf;
+    const x7frac = 1 / (5040 * Nfpow * cf);
+    
+    Nfpow = Nfpow * Nf;
+    const x8frac = tf / (40320 * Nfpow);
+    
+    // Calcular coeficientes polinomiales
+    const x2poly = -1 - nuf2;
+    const x3poly = -1 - 2 * tf2 - nuf2;
+    const x4poly = 5 + 3 * tf2 + 6 * nuf2 - 6 * tf2 * nuf2 - 3 * (nuf2 * nuf2) - 9 * tf2 * (nuf2 * nuf2);
+    const x5poly = 5 + 28 * tf2 + 24 * tf4 + 6 * nuf2 + 8 * tf2 * nuf2;
+    const x6poly = -61 - 90 * tf2 - 45 * tf4 - 107 * nuf2 + 162 * tf2 * nuf2;
+    const x7poly = -61 - 662 * tf2 - 1320 * tf4 - 720 * (tf4 * tf2);
+    const x8poly = 1385 + 3633 * tf2 + 4095 * tf4 + 1575 * (tf4 * tf2);
+    
+    // Calcular latitud y longitud
+    const lat = phif + x2frac * x2poly * (x * x) + x4frac * x4poly * x ** 4 + 
+                x6frac * x6poly * x ** 6 + x8frac * x8poly * x ** 8;
+    const lng = lambda0 + x1frac * x + x3frac * x3poly * x ** 3 + 
+                x5frac * x5poly * x ** 5 + x7frac * x7poly * x ** 7;
+    
+    // Convertir de radianes a grados
+    const latDegrees = (lat / Math.PI) * 180;
+    const lngDegrees = (lng / Math.PI) * 180;
+    
+    console.log(`Conversión UTM precisa: ${correctedX}, ${correctedY} → Lat/Lng: ${latDegrees.toFixed(6)}, ${lngDegrees.toFixed(6)}`);
+    
+    return { lat: latDegrees, lng: lngDegrees };
   }
 
   return null;
 }
 
-// Función para generar URL de mapa estático usando OpenStreetMap
+// Función para generar URL de mapa estático usando diferentes servicios
 function generateStaticMapUrl(lat: number, lng: number, width: number = 400, height: number = 300): string {
-  const baseUrl = 'https://staticmap.openstreetmap.de/staticmap.php'
+  // Usar un servicio más confiable - OpenStreetMap France
+  const baseUrl = 'https://staticmap.openstreetmap.fr/staticmap.php'
+  
   const params = new URLSearchParams({
     center: `${lat},${lng}`,
     zoom: '15',
@@ -117,15 +203,13 @@ export function SimpleMap({
 
   return (
     <Box sx={{ width, height }}>
-      {/* Mapa estático */}
+      {/* Mapa usando iframe (más confiable) */}
       <Box
-        component="img"
-        src={mapUrl}
-        alt={`Mapa de ubicación en ${municipio}`}
+        component="iframe"
+        src={`https://www.openstreetmap.org/export/embed.html?bbox=${lng-0.005},${lat-0.005},${lng+0.005},${lat+0.005}&layer=mapnik&marker=${lat},${lng}`}
         sx={{
           width: '100%',
           height: '100%',
-          objectFit: 'cover',
           border: '1px solid #e0e0e0',
           borderRadius: 1,
           cursor: 'pointer'
@@ -135,6 +219,7 @@ export function SimpleMap({
             window.open(osmUrl, '_blank')
           }
         }}
+        title={`Mapa de ubicación en ${municipio}`}
       />
       
       {/* Información del mapa */}

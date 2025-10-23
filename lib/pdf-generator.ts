@@ -323,17 +323,72 @@ export async function generateBoletinPDFRobust(elementId: string, filename: stri
     `
     document.body.appendChild(loadingElement)
 
-    // Configuración simple para html2canvas
+    // Configuración mejorada para html2canvas
     const canvas = await html2canvas(element, {
-      scale: 1.5,
+      scale: 2, // Mayor resolución para mejor calidad
       useCORS: true,
       allowTaint: true,
       backgroundColor: '#ffffff',
-      logging: false,
+      logging: true, // Habilitar logs para debugging
       width: element.scrollWidth,
       height: element.scrollHeight,
       scrollX: 0,
-      scrollY: 0
+      scrollY: 0,
+      foreignObjectRendering: true,
+      removeContainer: false,
+      imageTimeout: 10000,
+      onclone: (clonedDoc) => {
+        // Mejorar contraste y colores en el documento clonado
+        const clonedElement = clonedDoc.getElementById(elementId)
+        if (clonedElement) {
+          // Forzar estilos para mejor contraste
+          clonedElement.style.color = '#000000'
+          clonedElement.style.backgroundColor = '#ffffff'
+          
+          // Mejorar contraste de texto
+          const textElements = clonedElement.querySelectorAll('*')
+          textElements.forEach(el => {
+            const htmlEl = el as HTMLElement
+            if (htmlEl.style.color === '' || htmlEl.style.color === 'rgb(107, 114, 128)') {
+              htmlEl.style.color = '#000000'
+            }
+            if (htmlEl.style.backgroundColor === '' || htmlEl.style.backgroundColor === 'rgb(249, 250, 251)') {
+              htmlEl.style.backgroundColor = '#ffffff'
+            }
+          })
+          
+          // Reemplazar iframes con imágenes estáticas
+          const iframes = clonedElement.querySelectorAll('iframe')
+          iframes.forEach((iframe) => {
+            const src = iframe.getAttribute('src')
+            if (src && src.includes('openstreetmap.org')) {
+              // Extraer coordenadas del src del iframe
+              const bboxMatch = src.match(/bbox=([^&]+)/)
+              if (bboxMatch) {
+                const bbox = bboxMatch[1].split(',')
+                const lng = (parseFloat(bbox[0]) + parseFloat(bbox[2])) / 2
+                const lat = (parseFloat(bbox[1]) + parseFloat(bbox[3])) / 2
+                
+                // Crear imagen estática
+                const img = document.createElement('img')
+                const staticMapUrl = `https://staticmap.openstreetmap.fr/staticmap.php?center=${lat},${lng}&zoom=15&size=400x300&markers=${lat},${lng},red&maptype=mapnik&t=${Date.now()}`
+                img.src = staticMapUrl
+                img.style.cssText = `
+                  width: 100%;
+                  height: 100%;
+                  border: 1px solid #e0e0e0;
+                  border-radius: 4px;
+                  object-fit: cover;
+                  background-color: #f0f0f0;
+                `
+                
+                // Reemplazar iframe con imagen
+                iframe.parentNode?.replaceChild(img, iframe)
+              }
+            }
+          })
+        }
+      }
     })
 
     // Remover loading
@@ -344,12 +399,13 @@ export async function generateBoletinPDFRobust(elementId: string, filename: stri
       throw new Error('No se pudo capturar el contenido del elemento')
     }
 
-    // Crear PDF
-    const imgData = canvas.toDataURL('image/png', 1.0)
+    // Crear PDF con mejor calidad
+    const imgData = canvas.toDataURL('image/png', 1.0) // Máxima calidad PNG
     const pdf = new jsPDF({
       orientation: 'portrait',
       unit: 'mm',
-      format: 'a4'
+      format: 'a4',
+      compress: false // No comprimir para mantener calidad
     })
 
     // Dimensiones de la página A4

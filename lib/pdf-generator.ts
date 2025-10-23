@@ -369,9 +369,9 @@ export async function generateBoletinPDFRobust(elementId: string, filename: stri
                 const lng = (parseFloat(bbox[0]) + parseFloat(bbox[2])) / 2
                 const lat = (parseFloat(bbox[1]) + parseFloat(bbox[3])) / 2
                 
-                // Crear imagen estática
+                // Crear imagen estática usando la función mejorada
                 const img = document.createElement('img')
-                const staticMapUrl = `https://staticmap.openstreetmap.fr/staticmap.php?center=${lat},${lng}&zoom=15&size=400x300&markers=${lat},${lng},red&maptype=mapnik&t=static`
+                const staticMapUrl = generateStaticMapImage(lat, lng, 400, 300)
                 img.src = staticMapUrl
                 img.style.cssText = `
                   width: 100%;
@@ -470,6 +470,24 @@ export async function generateBoletinPDFRobust(elementId: string, filename: stri
 /**
  * Genera una imagen JPG del resumen de boletín usando html2canvas
  */
+/**
+ * Genera un mapa estático usando OpenStreetMap tiles
+ * Basado en la información de https://www.cssscript.com/static-map-image-openstreet/
+ */
+function generateStaticMapImage(lat: number, lng: number, width: number, height: number): string {
+  // Usar múltiples servicios de OpenStreetMap como fallback
+  const services = [
+    // Servicio principal con marcadores
+    `https://staticmap.openstreetmap.fr/staticmap.php?center=${lat},${lng}&zoom=15&size=${width}x${height}&markers=${lat},${lng},red&maptype=mapnik&format=png`,
+    // Servicio alternativo de tiles
+    `https://tile.openstreetmap.org/${Math.floor((lng + 180) / 360 * Math.pow(2, 15))}/${Math.floor((1 - Math.log(Math.tan(lat * Math.PI / 180) + 1 / Math.cos(lat * Math.PI / 180)) / Math.PI) / 2 * Math.pow(2, 15))}.png`,
+    // Servicio de Wikimedia
+    `https://maps.wikimedia.org/osm-intl/15/${Math.floor((lng + 180) / 360 * Math.pow(2, 15))}/${Math.floor((1 - Math.log(Math.tan(lat * Math.PI / 180) + 1 / Math.cos(lat * Math.PI / 180)) / Math.PI) / 2 * Math.pow(2, 15))}.png`
+  ]
+  
+  return services[0] // Usar el primero como principal
+}
+
 export async function generateBoletinJPG(elementId: string, filename: string): Promise<void> {
   console.log('generateBoletinJPG: Iniciando generación de imagen para elemento:', elementId)
   

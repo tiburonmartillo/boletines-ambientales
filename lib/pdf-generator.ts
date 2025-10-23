@@ -410,7 +410,7 @@ export async function generateBoletinPDFRobust(elementId: string, filename: stri
                   background-color: #f0f0f0;
                 `
                 
-                console.log(`generateBoletinPDFRobust: Reemplazando iframe con imagen: ${staticMapUrl}`)
+                console.log(`generateBoletinPDFRobust: Reemplazando iframe con imagen`)
                 
                 // Reemplazar iframe con imagen
                 iframe.parentNode?.replaceChild(img, iframe)

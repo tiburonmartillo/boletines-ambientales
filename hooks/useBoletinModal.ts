@@ -1,23 +1,23 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
 import { Boletin } from '@/lib/types'
 
 export function useBoletinModal() {
-  const router = useRouter()
-  const searchParams = useSearchParams()
   const [isOpen, setIsOpen] = useState(false)
   const [selectedBoletin, setSelectedBoletin] = useState<Boletin | null>(null)
 
-  // Detectar si hay un parámetro de boletín en la URL
+  // Detectar si hay un parámetro de boletín en la URL al cargar la página
   useEffect(() => {
-    const boletinId = searchParams.get('boletin')
-    if (boletinId && !isNaN(Number(boletinId))) {
-      // Cargar los datos del boletín desde el JSON
-      loadBoletinData(Number(boletinId))
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search)
+      const boletinId = urlParams.get('boletin')
+      if (boletinId && !isNaN(Number(boletinId))) {
+        // Cargar los datos del boletín desde el JSON
+        loadBoletinData(Number(boletinId))
+      }
     }
-  }, [searchParams])
+  }, [])
 
   const loadBoletinData = async (boletinId: number) => {
     try {
@@ -41,20 +41,22 @@ export function useBoletinModal() {
     setSelectedBoletin(boletin)
     setIsOpen(true)
     // Actualizar la URL para incluir el parámetro del boletín
-    const params = new URLSearchParams(searchParams.toString())
-    params.set('boletin', boletin.id.toString())
-    router.push(`?${params.toString()}`, { scroll: false })
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href)
+      url.searchParams.set('boletin', boletin.id.toString())
+      window.history.pushState({}, '', url.toString())
+    }
   }
 
   const closeModal = () => {
     setIsOpen(false)
     setSelectedBoletin(null)
     // Remover el parámetro de boletín de la URL
-    const params = new URLSearchParams(searchParams.toString())
-    params.delete('boletin')
-    const newSearch = params.toString()
-    const newUrl = newSearch ? `?${newSearch}` : window.location.pathname
-    router.push(newUrl, { scroll: false })
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href)
+      url.searchParams.delete('boletin')
+      window.history.pushState({}, '', url.toString())
+    }
   }
 
   return {

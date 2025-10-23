@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { Button } from './ui/button'
 import { BoletinSummary } from './boletin-summary'
-import { generateBoletinPDFRobust } from '@/lib/pdf-generator'
+import { generateBoletinJPG } from '@/lib/pdf-generator'
 import { Boletin } from '@/lib/types'
 import { formatearFechaCorta } from '@/lib/boletin-utils'
 
@@ -14,19 +14,19 @@ interface BoletinModalProps {
 }
 
 export function BoletinModal({ boletin, isOpen, onClose }: BoletinModalProps) {
-  const [isGeneratingPDF, setIsGeneratingPDF] = useState(false)
+  const [isGeneratingJPG, setIsGeneratingJPG] = useState(false)
 
-  const handleDownloadPDF = async () => {
+  const handleDownloadJPG = async () => {
     if (!boletin) return
     
     try {
-      setIsGeneratingPDF(true)
-      await generateBoletinPDFRobust('boletin-summary', `Resumen-Boletin-SSMAA-${boletin.id}.pdf`)
+      setIsGeneratingJPG(true)
+      await generateBoletinJPG('boletin-summary', `Resumen-Boletin-SSMAA-${boletin.id}.jpg`)
     } catch (err) {
-      console.error('Error al generar PDF:', err)
-      alert('Error al generar el PDF. Por favor, intenta de nuevo.')
+      console.error('Error al generar JPG:', err)
+      alert('Error al generar la imagen. Por favor, intenta de nuevo.')
     } finally {
-      setIsGeneratingPDF(false)
+      setIsGeneratingJPG(false)
     }
   }
 
@@ -121,11 +121,11 @@ export function BoletinModal({ boletin, isOpen, onClose }: BoletinModalProps) {
                 
                 <Button
                   variant="default"
-                  onClick={handleDownloadPDF}
-                  disabled={isGeneratingPDF}
+                  onClick={handleDownloadJPG}
+                  disabled={isGeneratingJPG}
                   className="bg-[#F97316] hover:bg-[#EA580C] text-white"
                 >
-                  {isGeneratingPDF ? 'Generando PDF...' : '📋 Descargar PDF'}
+                  {isGeneratingJPG ? 'Generando imagen...' : '📷 Descargar JPG'}
                 </Button>
               </div>
             </div>

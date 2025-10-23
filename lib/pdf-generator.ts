@@ -468,6 +468,129 @@ export async function generateBoletinPDFRobust(elementId: string, filename: stri
 }
 
 /**
+ * Genera una imagen JPG del resumen de boletín usando html2canvas
+ */
+export async function generateBoletinJPG(elementId: string, filename: string): Promise<void> {
+  const element = document.getElementById(elementId)
+  
+  if (!element) {
+    throw new Error(`Elemento con ID '${elementId}' no encontrado`)
+  }
+
+  try {
+    // Mostrar loading
+    const loadingElement = document.createElement('div')
+    loadingElement.innerHTML = 'Generando imagen...'
+    loadingElement.style.cssText = `
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      z-index: 9999;
+      font-family: Arial, sans-serif;
+    `
+    document.body.appendChild(loadingElement)
+
+    // Configuración optimizada para html2canvas
+    const canvas = await html2canvas(element, {
+      scale: 2, // Alta resolución para mejor calidad
+      useCORS: true,
+      allowTaint: true,
+      backgroundColor: '#ffffff',
+      logging: false,
+      width: element.scrollWidth,
+      height: element.scrollHeight,
+      scrollX: 0,
+      scrollY: 0,
+      foreignObjectRendering: true,
+      removeContainer: false,
+      imageTimeout: 10000,
+      onclone: (clonedDoc) => {
+        // Mejorar contraste y colores en el documento clonado
+        const clonedElement = clonedDoc.getElementById(elementId)
+        if (clonedElement) {
+          // Forzar estilos para mejor contraste
+          clonedElement.style.color = '#000000'
+          clonedElement.style.backgroundColor = '#ffffff'
+          
+          // Mejorar contraste de texto
+          const textElements = clonedElement.querySelectorAll('*')
+          textElements.forEach(el => {
+            const htmlEl = el as HTMLElement
+            if (htmlEl.style.color === '' || htmlEl.style.color === 'rgb(107, 114, 128)') {
+              htmlEl.style.color = '#000000'
+            }
+            if (htmlEl.style.backgroundColor === '' || htmlEl.style.backgroundColor === 'rgb(249, 250, 251)') {
+              htmlEl.style.backgroundColor = '#ffffff'
+            }
+          })
+          
+          // Reemplazar iframes con imágenes estáticas
+          const iframes = clonedElement.querySelectorAll('iframe')
+          iframes.forEach((iframe) => {
+            const src = iframe.getAttribute('src')
+            if (src && src.includes('openstreetmap.org')) {
+              // Extraer coordenadas del src del iframe
+              const bboxMatch = src.match(/bbox=([^&]+)/)
+              if (bboxMatch) {
+                const bbox = bboxMatch[1].split(',')
+                const lng = (parseFloat(bbox[0]) + parseFloat(bbox[2])) / 2
+                const lat = (parseFloat(bbox[1]) + parseFloat(bbox[3])) / 2
+                
+                // Crear imagen estática
+                const img = document.createElement('img')
+                const staticMapUrl = `https://staticmap.openstreetmap.fr/staticmap.php?center=${lat},${lng}&zoom=15&size=400x300&markers=${lat},${lng},red&maptype=mapnik&t=static`
+                img.src = staticMapUrl
+                img.style.cssText = `
+                  width: 100%;
+                  height: 100%;
+                  border: 1px solid #e0e0e0;
+                  border-radius: 4px;
+                  object-fit: cover;
+                  background-color: #f0f0f0;
+                `
+                
+                // Reemplazar iframe con imagen
+                iframe.parentNode?.replaceChild(img, iframe)
+              }
+            }
+          })
+        }
+      }
+    })
+
+    // Remover loading
+    document.body.removeChild(loadingElement)
+
+    // Verificar que el canvas tenga contenido
+    if (canvas.width === 0 || canvas.height === 0) {
+      throw new Error('No se pudo capturar el contenido del elemento')
+    }
+
+    // Convertir a JPG y descargar
+    const imgData = canvas.toDataURL('image/jpeg', 0.9) // Calidad alta JPG
+    
+    // Crear enlace de descarga
+    const link = document.createElement('a')
+    link.download = filename.endsWith('.jpg') ? filename : `${filename}.jpg`
+    link.href = imgData
+    
+    // Simular click para descargar
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+
+  } catch (error) {
+    console.error('Error al generar JPG:', error)
+    throw new Error('Error al generar la imagen. Por favor, intenta de nuevo.')
+  }
+}
+
+/**
  * Función de utilidad para mostrar progreso de generación
  */
 export function showPDFProgress(message: string = 'Generando PDF...'): () => void {

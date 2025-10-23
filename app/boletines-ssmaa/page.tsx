@@ -16,43 +16,12 @@ function BoletinesAmbientalesContent() {
   return (
     <ClientOnlyWrapper
       fallback={
-        <div style={{
-          minHeight: '100vh',
-          backgroundColor: '#f5f5f5',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}>
-          <div style={{
-            textAlign: 'center',
-            maxWidth: '400px',
-            padding: '20px'
-          }}>
-            <div style={{
-              width: '60px',
-              height: '60px',
-              border: '4px solid #e0e0e0',
-              borderTop: '4px solid #1976d2',
-              borderRadius: '50%',
-              animation: 'spin 1s linear infinite',
-              margin: '0 auto 24px auto'
-            }}></div>
-            <h2 style={{
-              fontSize: '1.25rem',
-              fontWeight: '600',
-              color: '#333',
-              margin: '0 0 16px 0'
-            }}>
+        <div className="flex items-center justify-center min-h-screen bg-gray-100">
+          <div className="text-center max-w-md p-5">
+            <div className="w-16 h-16 border-4 border-gray-300 border-t-blue-600 rounded-full animate-spin mx-auto mb-6"></div>
+            <h2 className="text-xl font-semibold text-gray-700 mb-4">
               Cargando datos del dashboard...
             </h2>
-            <style dangerouslySetInnerHTML={{
-              __html: `
-                @keyframes spin {
-                  0% { transform: rotate(0deg); }
-                  100% { transform: rotate(360deg); }
-                }
-              `
-            }} />
           </div>
         </div>
       }

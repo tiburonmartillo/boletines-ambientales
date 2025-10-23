@@ -30,7 +30,7 @@ export function BoletinSummaryProject({ proyecto, numero, tipo, staticMode = fal
       <Box sx={{ 
         display: 'flex', 
         gap: 3,
-        flexDirection: { xs: 'column', md: 'row' }
+        flexDirection: { xs: 'column', lg: 'row' }
       }}>
         {/* Información del proyecto - Columna izquierda */}
         <Box sx={{ flex: 1 }}>
@@ -118,9 +118,9 @@ export function BoletinSummaryProject({ proyecto, numero, tipo, staticMode = fal
 
         {/* Mapa - Columna derecha */}
         <Box sx={{ 
-          width: '100%',
+          width: { xs: '100%', lg: '50%' },
           flexShrink: 0,
-          order: { xs: -1, md: 0 }
+          order: { xs: -1, lg: 0 }
         }}>
           <ClientOnlyMap
             coordenadas_x={proyecto.coordenadas_x}

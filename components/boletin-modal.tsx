@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { Button } from './ui/button'
 import { BoletinSummary } from './boletin-summary'
-import { generateBoletinPDFBasic } from '@/lib/pdf-generator'
+import { generateBoletinPDFBasic, generateBoletinPDFPrint } from '@/lib/pdf-generator'
 import { Boletin } from '@/lib/types'
 import { formatearFechaCorta } from '@/lib/boletin-utils'
 
@@ -21,7 +21,14 @@ export function BoletinModal({ boletin, isOpen, onClose }: BoletinModalProps) {
     
     try {
       setIsGeneratingPDF(true)
-      await generateBoletinPDFBasic('boletin-summary', `Resumen-Boletin-SSMAA-${boletin.id}.pdf`)
+      // Intentar primero con html2canvas
+      try {
+        await generateBoletinPDFBasic('boletin-summary', `Resumen-Boletin-SSMAA-${boletin.id}.pdf`)
+      } catch (html2canvasError) {
+        console.warn('html2canvas falló, usando window.print():', html2canvasError)
+        // Si falla html2canvas, usar window.print()
+        await generateBoletinPDFPrint('boletin-summary', `Resumen-Boletin-SSMAA-${boletin.id}.pdf`)
+      }
     } catch (err) {
       console.error('Error al generar PDF:', err)
       alert('Error al generar el PDF. Por favor, intenta de nuevo.')

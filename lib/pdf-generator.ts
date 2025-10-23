@@ -340,7 +340,22 @@ export async function generateBoletinPDFBasic(elementId: string, filename: strin
       width: element.scrollWidth,
       height: element.scrollHeight,
       scrollX: 0,
-      scrollY: 0
+      scrollY: 0,
+      onclone: (clonedDoc) => {
+        // Eliminar todos los estilos problemáticos
+        const allElements = clonedDoc.querySelectorAll('*')
+        allElements.forEach(el => {
+          const htmlEl = el as HTMLElement
+          // Forzar estilos básicos
+          htmlEl.style.color = '#000000'
+          htmlEl.style.backgroundColor = htmlEl.tagName === 'BODY' ? '#ffffff' : 'transparent'
+          htmlEl.style.borderColor = '#e0e0e0'
+          // Eliminar estilos CSS modernos
+          htmlEl.removeAttribute('style')
+          htmlEl.style.color = '#000000'
+          htmlEl.style.backgroundColor = htmlEl.tagName === 'BODY' ? '#ffffff' : 'transparent'
+        })
+      }
     })
 
     console.log('generateBoletinPDFBasic: html2canvas completado, canvas size:', canvas.width, 'x', canvas.height)
@@ -395,6 +410,62 @@ export async function generateBoletinPDFBasic(elementId: string, filename: strin
     
     throw new Error(`Error al generar el PDF: ${error instanceof Error ? error.message : 'Error desconocido'}`)
   }
+}
+
+/**
+ * Función alternativa usando window.print() para evitar problemas con html2canvas
+ */
+export async function generateBoletinPDFPrint(elementId: string, filename: string): Promise<void> {
+  console.log('generateBoletinPDFPrint: Iniciando generación usando window.print()')
+  
+  const element = document.getElementById(elementId)
+  
+  if (!element) {
+    console.error('generateBoletinPDFPrint: Elemento no encontrado:', elementId)
+    throw new Error(`Elemento con ID '${elementId}' no encontrado`)
+  }
+
+  // Crear una ventana nueva para imprimir
+  const printWindow = window.open('', '_blank')
+  
+  if (!printWindow) {
+    throw new Error('No se pudo abrir la ventana de impresión')
+  }
+
+  // Escribir el contenido HTML
+  printWindow.document.write(`
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>${filename}</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 20px;
+          background: white;
+          color: black;
+        }
+        @media print {
+          body { margin: 0; }
+        }
+      </style>
+    </head>
+    <body>
+      ${element.outerHTML}
+    </body>
+    </html>
+  `)
+
+  printWindow.document.close()
+  
+  // Esperar a que se cargue y luego imprimir
+  printWindow.onload = () => {
+    printWindow.print()
+    printWindow.close()
+  }
+
+  console.log('generateBoletinPDFPrint: Ventana de impresión abierta')
 }
 
 export async function generateBoletinPDFSimple(elementId: string, filename: string): Promise<void> {

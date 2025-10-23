@@ -141,7 +141,7 @@ function convertToLatLong(x: number | null, y: number | null): { lat: number; ln
 }
 
 // Función para generar URL de mapa estático usando diferentes servicios
-function generateStaticMapUrl(lat: number, lng: number, width: number = 400, height: number = 300, service: 'osm' | 'mapbox' | 'google' = 'osm'): string {
+function generateStaticMapUrl(lat: number, lng: number, width: number = 400, height: number = 300, service: 'osm' | 'mapbox' | 'google' = 'mapbox'): string {
   switch (service) {
     case 'mapbox':
       // Mapbox Static API con token público
@@ -172,7 +172,7 @@ export function SimpleMap({
   height = 300,
   showLink = true,
   staticMode = false,
-  mapService = 'osm'
+  mapService = 'mapbox'
 }: SimpleMapProps) {
   // Convertir coordenadas usando el mismo sistema que la modal
   const coords = convertToLatLong(coordenadas_x, coordenadas_y)
@@ -247,12 +247,12 @@ export function SimpleMap({
           console.error('Error cargando mapa:', mapUrl, e)
           // Si falla la imagen, intentar con otro servicio
           const target = e.target as HTMLImageElement
-          if (mapService === 'osm') {
-            console.log('Intentando con Mapbox...')
-            target.src = generateStaticMapUrl(lat, lng, width, height, 'mapbox')
-          } else if (mapService === 'mapbox') {
+          if (mapService === 'mapbox') {
             console.log('Intentando con Google Maps...')
             target.src = generateStaticMapUrl(lat, lng, width, height, 'google')
+          } else if (mapService === 'google') {
+            console.log('Intentando con OpenStreetMap...')
+            target.src = generateStaticMapUrl(lat, lng, width, height, 'osm')
           } else {
             console.log('Mostrando placeholder...')
             // Como último recurso, mostrar un placeholder

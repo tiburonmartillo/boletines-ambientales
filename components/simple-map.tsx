@@ -10,6 +10,7 @@ interface SimpleMapProps {
   width?: number
   height?: number
   showLink?: boolean
+  staticMode?: boolean // Nueva prop para modo estático (para PDF)
 }
 
 // Función para convertir coordenadas a Lat/Long usando el mismo validador que la modal
@@ -165,7 +166,8 @@ export function SimpleMap({
   municipio,
   width = 400,
   height = 300,
-  showLink = true
+  showLink = true,
+  staticMode = false
 }: SimpleMapProps) {
   // Convertir coordenadas usando el mismo sistema que la modal
   const coords = convertToLatLong(coordenadas_x, coordenadas_y)
@@ -203,43 +205,61 @@ export function SimpleMap({
 
   return (
     <Box sx={{ width, height }}>
-      {/* Mapa usando iframe (más confiable) */}
-      <Box
-        component="iframe"
-        src={`https://www.openstreetmap.org/export/embed.html?bbox=${lng-0.005},${lat-0.005},${lng+0.005},${lat+0.005}&layer=mapnik&marker=${lat},${lng}`}
-        sx={{
-          width: '100%',
-          height: '100%',
-          border: '1px solid #e0e0e0',
-          borderRadius: 1,
-          cursor: 'pointer'
-        }}
-        onClick={() => {
-          if (showLink) {
-            window.open(osmUrl, '_blank')
-          }
-        }}
-        title={`Mapa de ubicación en ${municipio}`}
-      />
-      
-      {/* Información del mapa - Solo mostrar si showLink es true */}
-      {showLink && (
-        <Box sx={{ mt: 1, textAlign: 'center' }}>
-          <Typography variant="caption" color="text.secondary">
-            Ubicación en {municipio}
-          </Typography>
-          <Box sx={{ mt: 0.5 }}>
-            <Link
-              href={osmUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="caption"
-              sx={{ fontSize: '0.75rem' }}
-            >
-              Ver en OpenStreetMap
-            </Link>
-          </Box>
-        </Box>
+      {staticMode ? (
+        // Modo estático para PDF - usar imagen estática
+        <Box
+          component="img"
+          src={mapUrl}
+          alt={`Mapa de ubicación en ${municipio}`}
+          sx={{
+            width: '100%',
+            height: '100%',
+            border: '1px solid #e0e0e0',
+            borderRadius: 1,
+            objectFit: 'cover'
+          }}
+        />
+      ) : (
+        // Modo interactivo - usar iframe
+        <>
+          <Box
+            component="iframe"
+            src={`https://www.openstreetmap.org/export/embed.html?bbox=${lng-0.005},${lat-0.005},${lng+0.005},${lat+0.005}&layer=mapnik&marker=${lat},${lng}`}
+            sx={{
+              width: '100%',
+              height: '100%',
+              border: '1px solid #e0e0e0',
+              borderRadius: 1,
+              cursor: 'pointer'
+            }}
+            onClick={() => {
+              if (showLink) {
+                window.open(osmUrl, '_blank')
+              }
+            }}
+            title={`Mapa de ubicación en ${municipio}`}
+          />
+          
+          {/* Información del mapa - Solo mostrar si showLink es true */}
+          {showLink && (
+            <Box sx={{ mt: 1, textAlign: 'center' }}>
+              <Typography variant="caption" color="text.secondary">
+                Ubicación en {municipio}
+              </Typography>
+              <Box sx={{ mt: 0.5 }}>
+                <Link
+                  href={osmUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="caption"
+                  sx={{ fontSize: '0.75rem' }}
+                >
+                  Ver en OpenStreetMap
+                </Link>
+              </Box>
+            </Box>
+          )}
+        </>
       )}
     </Box>
   )

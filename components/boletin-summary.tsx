@@ -16,13 +16,15 @@ interface BoletinSummaryProps {
   showPrintButton?: boolean
   showDownloadButton?: boolean
   onDownloadPDF?: () => void
+  staticMode?: boolean // Nueva prop para modo estático (para PDF)
 }
 
 export function BoletinSummary({ 
   boletin, 
   showPrintButton = true,
   showDownloadButton = true,
-  onDownloadPDF
+  onDownloadPDF,
+  staticMode = false
 }: BoletinSummaryProps) {
   const fechaLimite = calcularFechaLimiteConsulta(boletin.fecha_publicacion)
   const fechaLimiteFormateada = formatearFechaCorta(fechaLimite)
@@ -112,6 +114,7 @@ export function BoletinSummary({
                 proyecto={proyecto}
                 numero={index + 1}
                 tipo="proyecto"
+                staticMode={staticMode}
               />
             ))}
           </Box>
@@ -143,6 +146,7 @@ export function BoletinSummary({
                   proyecto={resolutivo}
                   numero={index + 1}
                   tipo="resolutivo"
+                  staticMode={staticMode}
                 />
               ))}
             </>

@@ -29,6 +29,53 @@ export async function generateBoletinPDF(elementId: string, filename: string): P
     `
     document.body.appendChild(loadingElement)
 
+    // Cambiar todos los mapas a modo estático temporalmente
+    const iframes = element.querySelectorAll('iframe')
+    const originalSrcs: string[] = []
+    const staticImages: HTMLImageElement[] = []
+    
+    // Reemplazar iframes con imágenes estáticas
+    iframes.forEach((iframe, index) => {
+      const src = iframe.getAttribute('src')
+      if (src && src.includes('openstreetmap.org')) {
+        originalSrcs[index] = src
+        
+        // Extraer coordenadas del src del iframe
+        const bboxMatch = src.match(/bbox=([^&]+)/)
+        if (bboxMatch) {
+          const bbox = bboxMatch[1].split(',')
+          const lng = (parseFloat(bbox[0]) + parseFloat(bbox[2])) / 2
+          const lat = (parseFloat(bbox[1]) + parseFloat(bbox[3])) / 2
+          
+          // Crear imagen estática
+          const img = document.createElement('img')
+          const staticMapUrl = `https://staticmap.openstreetmap.fr/staticmap.php?center=${lat},${lng}&zoom=15&size=400x300&markers=${lat},${lng},red&maptype=mapnik`
+          img.src = staticMapUrl
+          img.style.width = '100%'
+          img.style.height = '100%'
+          img.style.border = '1px solid #e0e0e0'
+          img.style.borderRadius = '4px'
+          img.style.objectFit = 'cover'
+          
+          // Reemplazar iframe con imagen
+          iframe.parentNode?.replaceChild(img, iframe)
+          staticImages.push(img)
+        }
+      }
+    })
+
+    // Esperar a que las imágenes se carguen
+    await Promise.all(staticImages.map(img => 
+      new Promise<void>((resolve) => {
+        if (img.complete) {
+          resolve()
+        } else {
+          img.onload = () => resolve()
+          img.onerror = () => resolve() // Continuar aunque falle la carga
+        }
+      })
+    ))
+
     // Configuración para html2canvas
     const canvas = await html2canvas(element, {
       scale: 2, // Mayor resolución
@@ -40,6 +87,17 @@ export async function generateBoletinPDF(elementId: string, filename: string): P
       height: element.scrollHeight,
       scrollX: 0,
       scrollY: 0
+    })
+
+    // Restaurar iframes originales
+    staticImages.forEach((img, index) => {
+      const iframe = document.createElement('iframe')
+      iframe.src = originalSrcs[index]
+      iframe.style.width = '100%'
+      iframe.style.height = '100%'
+      iframe.style.border = '1px solid #e0e0e0'
+      iframe.style.borderRadius = '4px'
+      img.parentNode?.replaceChild(iframe, img)
     })
 
     // Remover loading

@@ -9,9 +9,10 @@ interface ProjectSummaryProps {
   proyecto: Proyecto | Resolutivo
   numero: number
   tipo: 'proyecto' | 'resolutivo'
+  staticMode?: boolean // Nueva prop para modo estático (para PDF)
 }
 
-export function BoletinSummaryProject({ proyecto, numero, tipo }: ProjectSummaryProps) {
+export function BoletinSummaryProject({ proyecto, numero, tipo, staticMode = false }: ProjectSummaryProps) {
   const isResolutivo = tipo === 'resolutivo'
   const resolutivo = isResolutivo ? proyecto as Resolutivo : null
 
@@ -116,6 +117,7 @@ export function BoletinSummaryProject({ proyecto, numero, tipo }: ProjectSummary
             width={400}
             height={300}
             showLink={false}
+            staticMode={staticMode}
           />
         </Box>
       </Box>

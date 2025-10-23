@@ -93,6 +93,7 @@ export function BoletinModal({ boletin, isOpen, onClose }: BoletinModalProps) {
                   boletin={boletin}
                   showPrintButton={false}
                   showDownloadButton={false}
+                  staticMode={false}
                 />
               </div>
             </div>

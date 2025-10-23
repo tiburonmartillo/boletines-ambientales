@@ -296,7 +296,7 @@ export async function generateBoletinPDFOptimized(elementId: string, filename: s
 }
 
 /**
- * Genera un PDF usando un enfoque alternativo más robusto
+ * Genera un PDF usando un enfoque simple y confiable
  */
 export async function generateBoletinPDFRobust(elementId: string, filename: string): Promise<void> {
   const element = document.getElementById(elementId)
@@ -306,122 +306,43 @@ export async function generateBoletinPDFRobust(elementId: string, filename: stri
   }
 
   try {
-    // Mostrar loading
+    // Mostrar loading simple
     const loadingElement = document.createElement('div')
-    loadingElement.innerHTML = `
-      <div style="text-align: center; color: white;">
-        <div style="margin-bottom: 10px;">Generando PDF...</div>
-        <div style="width: 40px; height: 40px; border: 4px solid #f3f3f3; border-top: 4px solid #F97316; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto;"></div>
-      </div>
-    `
+    loadingElement.innerHTML = 'Generando PDF...'
     loadingElement.style.cssText = `
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: rgba(0,0,0,0.9);
+      background: rgba(0,0,0,0.8);
       color: white;
-      padding: 30px;
-      border-radius: 12px;
+      padding: 20px;
+      border-radius: 8px;
       z-index: 9999;
       font-family: Arial, sans-serif;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     `
-
-    // Agregar CSS para la animación
-    const style = document.createElement('style')
-    style.textContent = `
-      @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
-    `
-    document.head.appendChild(style)
     document.body.appendChild(loadingElement)
 
-    // Crear un contenedor temporal para el PDF
-    const tempContainer = document.createElement('div')
-    tempContainer.style.cssText = `
-      position: absolute;
-      left: -9999px;
-      top: -9999px;
-      width: 210mm;
-      background: white;
-      padding: 20px;
-      font-family: Arial, sans-serif;
-    `
-
-    // Clonar el contenido del elemento
-    const clonedElement = element.cloneNode(true) as HTMLElement
-    tempContainer.appendChild(clonedElement)
-    document.body.appendChild(tempContainer)
-
-    // Reemplazar iframes con imágenes estáticas en el clon
-    const iframes = clonedElement.querySelectorAll('iframe')
-    const imagePromises: Promise<void>[] = []
-
-    iframes.forEach((iframe) => {
-      const src = iframe.getAttribute('src')
-      if (src && src.includes('openstreetmap.org')) {
-        // Extraer coordenadas del src del iframe
-        const bboxMatch = src.match(/bbox=([^&]+)/)
-        if (bboxMatch) {
-          const bbox = bboxMatch[1].split(',')
-          const lng = (parseFloat(bbox[0]) + parseFloat(bbox[2])) / 2
-          const lat = (parseFloat(bbox[1]) + parseFloat(bbox[3])) / 2
-          
-          // Crear imagen estática
-          const img = document.createElement('img')
-          const staticMapUrl = `https://staticmap.openstreetmap.fr/staticmap.php?center=${lat},${lng}&zoom=15&size=400x300&markers=${lat},${lng},red&maptype=mapnik&t=${Date.now()}`
-          
-          const imagePromise = new Promise<void>((resolve) => {
-            img.onload = () => resolve()
-            img.onerror = () => resolve() // Continuar aunque falle
-            img.src = staticMapUrl
-          })
-          
-          imagePromises.push(imagePromise)
-          
-          // Reemplazar iframe con imagen
-          img.style.cssText = `
-            width: 100%;
-            height: 100%;
-            border: 1px solid #e0e0e0;
-            border-radius: 4px;
-            object-fit: cover;
-          `
-          
-          iframe.parentNode?.replaceChild(img, iframe)
-        }
-      }
-    })
-
-    // Esperar a que todas las imágenes se carguen
-    await Promise.all(imagePromises)
-    
-    // Esperar un poco más para asegurar renderizado
-    await new Promise(resolve => setTimeout(resolve, 2000))
-
-    // Generar canvas con configuración optimizada
-    const canvas = await html2canvas(tempContainer, {
-      scale: 1.2,
+    // Configuración simple para html2canvas
+    const canvas = await html2canvas(element, {
+      scale: 1.5,
       useCORS: true,
       allowTaint: true,
       backgroundColor: '#ffffff',
       logging: false,
-      width: tempContainer.scrollWidth,
-      height: tempContainer.scrollHeight,
+      width: element.scrollWidth,
+      height: element.scrollHeight,
       scrollX: 0,
-      scrollY: 0,
-      foreignObjectRendering: true,
-      removeContainer: false,
-      imageTimeout: 20000,
+      scrollY: 0
     })
 
-    // Limpiar contenedor temporal
-    document.body.removeChild(tempContainer)
+    // Remover loading
     document.body.removeChild(loadingElement)
-    document.head.removeChild(style)
+
+    // Verificar que el canvas tenga contenido
+    if (canvas.width === 0 || canvas.height === 0) {
+      throw new Error('No se pudo capturar el contenido del elemento')
+    }
 
     // Crear PDF
     const imgData = canvas.toDataURL('image/png', 1.0)
@@ -485,7 +406,7 @@ export async function generateBoletinPDFRobust(elementId: string, filename: stri
     pdf.save(filename)
 
   } catch (error) {
-    console.error('Error al generar PDF robusto:', error)
+    console.error('Error al generar PDF:', error)
     throw new Error('Error al generar el PDF. Por favor, intenta de nuevo.')
   }
 }

@@ -10,8 +10,28 @@ import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { MuiThemeProvider } from "@/components/mui-theme-provider"
 import { useDashboardData } from "@/hooks/useDashboardData"
+import { ClientOnlyWrapper } from "@/components/client-only-wrapper"
 
 function BoletinesAmbientalesContent() {
+  return (
+    <ClientOnlyWrapper
+      fallback={
+        <Box sx={{ minHeight: '100vh', bgcolor: 'background.default', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Box sx={{ textAlign: 'center', maxWidth: 400 }}>
+            <CircularProgress size={60} sx={{ color: 'primary.main', mb: 3 }} />
+            <Typography variant="h6" color="text.primary" sx={{ mb: 2 }}>
+              Cargando datos del dashboard...
+            </Typography>
+          </Box>
+        </Box>
+      }
+    >
+      <BoletinesAmbientalesContentInner />
+    </ClientOnlyWrapper>
+  )
+}
+
+function BoletinesAmbientalesContentInner() {
   const [selectedDate, setSelectedDate] = useState<string | null>(null)
   
   const { processedData, loading, error } = useDashboardData()

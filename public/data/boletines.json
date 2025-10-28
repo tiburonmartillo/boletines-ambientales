@@ -41282,11 +41282,96 @@
         }
       ],
       "resolutivos_emitidos": []
+    },
+    {
+      "id": 454,
+      "secretario": "LIC. SARAHI MACIAS ALICEA",
+      "director": "T.S.U. LUIS MEDINA HERNÁNDEZ",
+      "fecha_publicacion": "2025-10-28",
+      "cantidad_ingresados": 2,
+      "cantidad_resolutivos": 3,
+      "filename": "https://www.aguascalientes.gob.mx/SSMAA/BoletinesSMA/Repositorio/2025/10%20Octubre/BOLETIN43-2025_20%20DE%20OCTUBRE_DEL2010_2410.pdf",
+      "proyectos_ingresados": [
+        {
+          "numero": 1,
+          "tipo_estudio": "MIA",
+          "promovente": "CASAS JAVER S. A. DE C. V.",
+          "nombre_proyecto": "ETAPA XI DEL FRACC. PASEOS DEL SUR",
+          "naturaleza_proyecto": "MANIFIESTO DE IMPACTO AMBIENTAL, EL PROYECTO ETAPA XI DEL FRACCIONAMIENTO PASEOS DEL SUR, CON UBICACION EN EL MUNICIPIO DE AGUASCALIENTES CON COORDENADAS X 781.265, Y 4146188.",
+          "giro": "urbanización y construcción de un Desarrollo Habitacional",
+          "municipio": "AGUASCALIENTES",
+          "coordenadas_x": 781.265,
+          "coordenadas_y": 4146188,
+          "expediente": "SSMAA- DIRA-2823-2025",
+          "fecha_ingreso": "2025-10-22",
+          "boletin_id": 454,
+          "coord_valida": true
+        },
+        {
+          "numero": 2,
+          "tipo_estudio": "MIA",
+          "promovente": "CONSTRUCCIONES Y DESARROLLOS MAGNOS, S.A. DE C.V.",
+          "nombre_proyecto": "CONJUNTO CONDOMINIAL IMPERIA RESIDENCIAL",
+          "naturaleza_proyecto": "MANIFIESTO DE IMPACTO AMBIENTAL, EL PROYECTO EL CONJUNTO CONDOMINAL IMPERIA, CONDOMINIO HABITACIONAL, CON UBICASCION EN EL MUNICIPIO DE AGUASCALIENTES CON COORDENADAS X 772798.131, Y 2419753.469, CON UNA SUPERFICIE TOTAL DE 68,510.72",
+          "giro": "urbanización y construcción de un Desarrollo Habitacional",
+          "municipio": "AGUASCALIENTES",
+          "coordenadas_x": 772798.131,
+          "coordenadas_y": 2419753.469,
+          "expediente": "SSMAA- DIRA-2824-2026",
+          "fecha_ingreso": "2025-10-23",
+          "boletin_id": 454,
+          "coord_valida": true
+        }
+      ],
+      "resolutivos_emitidos": [
+        {
+          "numero": 1,
+          "tipo_estudio": "RESOLUTIVO",
+          "promovente": "EDUARDO LÓPEZ ARELLANO",
+          "nombre_proyecto": "BODEGA ALTEC",
+          "naturaleza_proyecto": null,
+          "giro": "CONSTRUCCIÓN",
+          "municipio": "AGUASCALIENTES",
+          "expediente": "SSMAA-DIRA-2776-2025",
+          "fecha_ingreso": "2025-05-21",
+          "fecha_resolutivo": "2025-06-18",
+          "no_oficio_resolutivo": "SSMAA/DGGyEA/0697/2025",
+          "boletin_id": 454
+        },
+        {
+          "numero": 2,
+          "tipo_estudio": "AUTORIZACIÓN",
+          "promovente": "FUNDIDORA DDF MEXICO, S.A.P.I. DE C.V.",
+          "nombre_proyecto": "EXTENSIÓN NAVE 2 DDF",
+          "naturaleza_proyecto": null,
+          "giro": "INDUSTRIAL",
+          "municipio": "AGUASCALIENTES",
+          "expediente": "SSMAA-DIRA-2635-2024",
+          "fecha_ingreso": "2024-04-15",
+          "fecha_resolutivo": "2025-06-17",
+          "no_oficio_resolutivo": "SSMAA/DGGyEA/0694/2025",
+          "boletin_id": 454
+        },
+        {
+          "numero": 3,
+          "tipo_estudio": "RESOLUCION DE DESECHAMIENTO",
+          "promovente": "MEYZA DISEÑO Y MAQUINADO, S.A. DE C.V.",
+          "nombre_proyecto": "MEYZA DISEÑO Y MAQUINADOS, S.A. DE C.V.",
+          "naturaleza_proyecto": null,
+          "giro": "INDUSTRIAL",
+          "municipio": "AGUASCALIENTES",
+          "expediente": "SSMAA-DIRA-2782-2025",
+          "fecha_ingreso": "2025-06-03",
+          "fecha_resolutivo": "2025-06-16",
+          "no_oficio_resolutivo": "SSMAA/DGGyEA/0951/2025",
+          "boletin_id": 454
+        }
+      ]
     }
   ],
   "metadata": {
-    "total_boletines": 453,
-    "archivos_procesados": 13,
+    "total_boletines": 454,
+    "archivos_procesados": 14,
     "errores": 0,
     "fecha_creacion": "2025-09-24",
     "descripcion": "Archivo JSON completo con todos los boletines ambientales de Aguascalientes"

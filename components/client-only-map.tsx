@@ -131,13 +131,19 @@ function convertToLatLong(x: number | null, y: number | null): { lat: number; ln
 
 // Función para generar URL de mapa estático usando OpenStreetMap
 function generateStaticMapUrl(lat: number, lng: number, width: number = 400, height: number = 300): string {
-  // Usar diferentes servicios de OpenStreetMap como fallback
-  const services = [
-    `https://staticmap.openstreetmap.fr/staticmap.php?center=${lat},${lng}&zoom=15&size=${width}x${height}&markers=${lat},${lng},red&maptype=mapnik&format=png`,
-    `https://tile.openstreetmap.org/${Math.floor((lng + 180) / 360 * Math.pow(2, 15))}/${Math.floor((1 - Math.log(Math.tan(lat * Math.PI / 180) + 1 / Math.cos(lat * Math.PI / 180)) / Math.PI) / 2 * Math.pow(2, 15))}.png`,
-    `https://maps.wikimedia.org/osm-intl/15/${Math.floor((lng + 180) / 360 * Math.pow(2, 15))}/${Math.floor((1 - Math.log(Math.tan(lat * Math.PI / 180) + 1 / Math.cos(lat * Math.PI / 180)) / Math.PI) / 2 * Math.pow(2, 15))}.png`
-  ]
-  return services[0] // Usar el primero como principal
+  // Usar el servicio más confiable con parámetros adicionales para mejor calidad
+  const baseUrl = 'https://staticmap.openstreetmap.fr/staticmap.php'
+  const params = new URLSearchParams({
+    center: `${lat},${lng}`,
+    zoom: '15',  
+    size: `${width}x${height}`,
+    markers: `${lat},${lng},red`,
+    maptype: 'mapnik',
+    format: 'png',
+    t: Date.now().toString() // Cache buster para evitar problemas de caché
+  })
+  
+  return `${baseUrl}?${params.toString()}`
 }
 
 // Función para generar URL de OpenStreetMap completo
@@ -224,6 +230,8 @@ export function ClientOnlyMap({
   // Si está en modo estático (para PDF), usar imagen estática
   if (staticMode) {
     const mapUrl = generateStaticMapUrl(lat, lng, width, height)
+    console.log('ClientOnlyMap staticMode: Generando mapa estático para coordenadas:', { lat, lng, mapUrl })
+    
     return (
       <Box sx={{ width: '100%', height }}>
         <Box
@@ -238,7 +246,11 @@ export function ClientOnlyMap({
             objectFit: 'cover',
             backgroundColor: '#f5f5f5'
           }}
+          onLoad={() => {
+            console.log('ClientOnlyMap: Mapa estático cargado exitosamente para', municipio)
+          }}
           onError={(e) => {
+            console.error('ClientOnlyMap: Error cargando mapa estático para', municipio, 'URL:', mapUrl)
             const target = e.target as HTMLImageElement
             target.src = `data:image/svg+xml;base64,${btoa(`
               <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
@@ -248,6 +260,9 @@ export function ClientOnlyMap({
                 </text>
                 <text x="50%" y="60%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="12" fill="#999">
                   ${municipio}
+                </text>
+                <text x="50%" y="65%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="10" fill="#999">
+                  Lat: ${lat.toFixed(4)}, Lng: ${lng.toFixed(4)}
                 </text>
               </svg>
             `)}`

@@ -433,20 +433,20 @@ export async function generateBoletinPDFWithHtml2pdf(elementId: string, filename
     const opt = {
       margin: 10,
       filename: filename,
-      image: { type: 'jpeg', quality: 0.95 },
+      image: { type: 'jpeg' as const, quality: 0.95 },
       html2canvas: { 
         scale: 1,
         useCORS: true,
         allowTaint: true,
         backgroundColor: '#ffffff',
         logging: false,
-        ignoreElements: (element) => {
+        ignoreElements: (element: HTMLElement) => {
           // Ignorar elementos que puedan causar problemas
           return element.classList.contains('no-print') || 
                  element.tagName === 'SCRIPT' || 
                  element.tagName === 'STYLE'
         },
-        onclone: (clonedDoc) => {
+        onclone: (clonedDoc: Document) => {
           // Convertir todas las funciones de color modernas a colores básicos
           const allElements = clonedDoc.querySelectorAll('*')
           allElements.forEach(el => {
@@ -469,7 +469,7 @@ export async function generateBoletinPDFWithHtml2pdf(elementId: string, filename
       jsPDF: { 
         unit: 'mm', 
         format: 'a4', 
-        orientation: 'portrait'
+        orientation: 'portrait' as const
       }
     }
 

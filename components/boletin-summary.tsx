@@ -115,6 +115,7 @@ export function BoletinSummary({
                 numero={index + 1}
                 tipo="proyecto"
                 staticMode={staticMode}
+                todosLosProyectos={boletin.proyectos_ingresados}
               />
             ))}
           </Box>
@@ -147,6 +148,7 @@ export function BoletinSummary({
                   numero={index + 1}
                   tipo="resolutivo"
                   staticMode={staticMode}
+                  todosLosProyectos={boletin.proyectos_ingresados}
                 />
               ))}
             </>

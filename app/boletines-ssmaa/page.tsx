@@ -10,50 +10,8 @@ import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { MuiThemeProvider } from "@/components/mui-theme-provider"
 import { useDashboardData } from "@/hooks/useDashboardData"
-import { ClientOnlyWrapper } from "@/components/client-only-wrapper"
 
-function BoletinesAmbientalesContent() {
-  return (
-    <ClientOnlyWrapper
-      fallback={
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          minHeight: '100vh',
-          backgroundColor: '#f5f5f5'
-        }}>
-          <div style={{
-            textAlign: 'center',
-            maxWidth: '400px',
-            padding: '20px'
-          }}>
-            <div style={{
-              width: '60px',
-              height: '60px',
-              border: '4px solid #e0e0e0',
-              borderTop: '4px solid #1976d2',
-              borderRadius: '50%',
-              margin: '0 auto 24px auto'
-            }}></div>
-            <h2 style={{
-              fontSize: '1.25rem',
-              fontWeight: '600',
-              color: '#333',
-              margin: '0 0 16px 0'
-            }}>
-              Cargando datos del dashboard...
-            </h2>
-          </div>
-        </div>
-      }
-    >
-      <BoletinesAmbientalesContentInner />
-    </ClientOnlyWrapper>
-  )
-}
-
-function BoletinesAmbientalesContentInner() {
+function BoletinesAmbientalesPageContent() {
   const [selectedDate, setSelectedDate] = useState<string | null>(null)
   
   const { processedData, loading, error } = useDashboardData()
@@ -152,11 +110,18 @@ function BoletinesAmbientalesContentInner() {
             border: '1px solid rgba(30, 58, 138, 0.1)'
           }}>
             <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'center' }}>
-              Última actualización: {new Date(metadata.lastUpdated).toLocaleDateString('es-ES', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-              })} 
+              Última actualización: {(() => {
+                try {
+                  const date = new Date(metadata.lastUpdated)
+                  const monthNames = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
+                  const day = date.getDate()
+                  const month = monthNames[date.getMonth()]
+                  const year = date.getFullYear()
+                  return `${day} de ${month} de ${year}`
+                } catch {
+                  return 'Fecha no disponible'
+                }
+              })()}
             </Typography>
           </Box>
 
@@ -190,7 +155,7 @@ function BoletinesAmbientalesContentInner() {
 export default function BoletinesAmbientalesPage() {
   return (
     <MuiThemeProvider>
-      <BoletinesAmbientalesContent />
+      <BoletinesAmbientalesPageContent />
     </MuiThemeProvider>
   )
 }

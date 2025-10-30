@@ -1,8 +1,15 @@
 import type { Metadata } from 'next'
-import { GeistSans } from 'geist/font/sans'
+import { Kumbh_Sans } from 'next/font/google'
 import { GeistMono } from 'geist/font/mono'
 import './globals.css'
 import '../styles/leaflet.css'
+
+const kumbhSans = Kumbh_Sans({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+  weight: ['100','200','300','400','500','600','700','800','900']
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://adn-a.org'),
@@ -77,7 +84,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
+      <body className={`font-sans ${kumbhSans.variable} ${GeistMono.variable}`} suppressHydrationWarning>
         {children}
       </body>
     </html>

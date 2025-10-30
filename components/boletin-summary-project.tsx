@@ -10,11 +10,26 @@ interface ProjectSummaryProps {
   numero: number
   tipo: 'proyecto' | 'resolutivo'
   staticMode?: boolean // Nueva prop para modo estático (para PDF)
+  todosLosProyectos?: Proyecto[] // Proyectos del boletín para buscar coordenadas
 }
 
-export function BoletinSummaryProject({ proyecto, numero, tipo, staticMode = false }: ProjectSummaryProps) {
+export function BoletinSummaryProject({ proyecto, numero, tipo, staticMode = false, todosLosProyectos = [] }: ProjectSummaryProps) {
   const isResolutivo = tipo === 'resolutivo'
   const resolutivo = isResolutivo ? proyecto as Resolutivo : null
+  
+  // Para resolutivos, buscar coordenadas del proyecto ingresado correspondiente
+  let coordenadas_x = proyecto.coordenadas_x
+  let coordenadas_y = proyecto.coordenadas_y
+  
+  if (isResolutivo && !coordenadas_x && !coordenadas_y && todosLosProyectos.length > 0) {
+    // Buscar el proyecto ingresado con el mismo expediente
+    const proyectoIngresado = todosLosProyectos.find(p => p.expediente === proyecto.expediente)
+    if (proyectoIngresado) {
+      coordenadas_x = proyectoIngresado.coordenadas_x
+      coordenadas_y = proyectoIngresado.coordenadas_y
+      console.log(`🗺️ Resolutivo ${proyecto.expediente}: Coordenadas obtenidas del proyecto ingresado`, { coordenadas_x, coordenadas_y })
+    }
+  }
 
   return (
     <Paper
@@ -122,15 +137,39 @@ export function BoletinSummaryProject({ proyecto, numero, tipo, staticMode = fal
           flexShrink: 0,
           order: { xs: -1, lg: 0 }
         }}>
-          <ClientOnlyMap
-            coordenadas_x={proyecto.coordenadas_x}
-            coordenadas_y={proyecto.coordenadas_y}
-            municipio={proyecto.municipio}
-            width={400}
-            height={300}
-            showLink={false}
-            staticMode={staticMode}
-          />
+          {coordenadas_x && coordenadas_y ? (
+            <ClientOnlyMap
+              coordenadas_x={coordenadas_x}
+              coordenadas_y={coordenadas_y}
+              municipio={proyecto.municipio}
+              width={400}
+              height={300}
+              showLink={false}
+              staticMode={staticMode}
+            />
+          ) : (
+            <Box
+              sx={{
+                width: '100%',
+                height: 300,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: '#f5f5f5',
+                border: '1px solid #e0e0e0',
+                borderRadius: 1,
+                p: 2
+              }}
+            >
+              <Typography variant="body2" color="text.secondary" textAlign="center">
+                Mapas de ubicación no disponibles
+              </Typography>
+              <Typography variant="caption" color="text.secondary" textAlign="center" sx={{ mt: 1 }}>
+                Este {isResolutivo ? 'resolutivo' : 'proyecto'} no tiene coordenadas registradas
+              </Typography>
+            </Box>
+          )}
         </Box>
       </Box>
 

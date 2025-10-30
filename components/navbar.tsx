@@ -73,6 +73,7 @@ export function Navbar() {
     { id: 'impact', label: 'Logros', href: '/#impact', type: 'section' },
     { id: 'contact', label: 'Contacto', href: '/#contact', type: 'section' },
     { id: 'boletines', label: 'Boletines Ambientales', href: '/boletines-ssmaa', type: 'page' },
+  
   ], []);
 
   const scrollToSection = (sectionId: string) => {

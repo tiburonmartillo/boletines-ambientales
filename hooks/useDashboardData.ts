@@ -12,7 +12,8 @@ import {
 // Función para obtener la fecha del boletín más reciente
 function getLatestBoletinDate(boletines: any[]): string {
   if (!boletines || boletines.length === 0) {
-    return new Date().toISOString()
+    // Usar una fecha fija para evitar errores de hidratación
+    return '2025-01-01T00:00:00.000Z'
   }
   
   const latestBoletin = boletines.reduce((latest, current) => {

@@ -278,7 +278,7 @@ export function ClientOnlyMap({
     console.log('ClientOnlyMap staticMode: Generando mapa para coordenadas:', { lat, lng, municipio })
     
     // Crear un placeholder atractivo inmediatamente
-    const placeholderSvg = `data:image/svg+xml;base64,${btoa(`
+    const svgString = `
       <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -289,26 +289,28 @@ export function ClientOnlyMap({
         <rect width="100%" height="100%" fill="url(#bg)" stroke="#0891b2" stroke-width="2"/>
         <circle cx="50%" cy="40%" r="12" fill="#dc2626" stroke="#ffffff" stroke-width="2"/>
         <text x="50%" y="60%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="16" fill="#0f172a" font-weight="bold">
-          📍 ${municipio}
+          ${municipio}
         </text>
         <text x="50%" y="72%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="12" fill="#475569">
           ${lat.toFixed(4)}, ${lng.toFixed(4)}
         </text>
         <text x="50%" y="85%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="10" fill="#64748b">
-          Ubicación del proyecto
+          Ubicacion del proyecto
         </text>
       </svg>
-    `)}`
+    `.trim().replace(/\s+/g, ' ')
     
-    // Intentar cargar mapa estático real
-    const mapUrl = generateStaticMapUrl(lat, lng, width, height)
-    console.log('ClientOnlyMap: URL del mapa estático:', mapUrl)
+    // Usar encodeURIComponent en lugar de btoa para manejar caracteres especiales
+    const placeholderSvg = `data:image/svg+xml,${encodeURIComponent(svgString)}`
+    
+    // Usar el placeholder directamente ya que el servicio de mapas estáticos puede no estar disponible
+    console.log('ClientOnlyMap: Usando placeholder SVG para', municipio)
     
     return (
       <Box sx={{ width: '100%', height }}>
         <Box
           component="img"
-          src={mapUrl}
+          src={placeholderSvg}
           alt={`Mapa de ubicación en ${municipio}`}
           sx={{
             width: '100%',
@@ -317,14 +319,6 @@ export function ClientOnlyMap({
             borderRadius: 1,
             objectFit: 'cover',
             backgroundColor: '#f5f5f5'
-          }}
-          onLoad={() => {
-            console.log('✅ ClientOnlyMap: Mapa estático cargado exitosamente para', municipio)
-          }}
-          onError={(e) => {
-            console.warn('⚠️ ClientOnlyMap: Error cargando mapa estático, usando placeholder para', municipio)
-            const target = e.target as HTMLImageElement
-            target.src = placeholderSvg
           }}
         />
       </Box>

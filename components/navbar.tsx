@@ -72,7 +72,9 @@ export function Navbar() {
     { id: 'initiatives', label: 'Iniciativas', href: '/#initiatives', type: 'section' },
     { id: 'impact', label: 'Logros', href: '/#impact', type: 'section' },
     { id: 'contact', label: 'Contacto', href: '/#contact', type: 'section' },
-    { id: 'boletines', label: 'Boletines Ambientales', href: '/boletines-ssmaa', type: 'page' },
+    { id: 'dashboard', label: 'Boletines ambientales', href: '/dashboard', type: 'page' },
+    { id: 'subscription', label: 'Suscríbete', href: '/#subscription', type: 'section' },
+    { id: 'boletines', label: 'Dashboard', href: '/boletines-ssmaa', type: 'page' },
   
   ], []);
 

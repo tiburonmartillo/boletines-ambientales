@@ -698,7 +698,7 @@ function Footer() {
 
 function SubscriptionSection() {
   return (
-    <section className="py-10 sm:py-16 lg:py-20 relative bg-white">
+    <section id="subscription" className="py-10 sm:py-16 lg:py-20 relative bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="bg-gray-50 rounded-3xl p-6 sm:p-10 border border-gray-200">
         <h2 className="font-bold text-[28px] sm:text-[32px] lg:text-[40px] text-[#000000] text-center mb-3">

@@ -538,7 +538,7 @@ function DashboardSection() {
 
 function Footer() {
   return (
-    <footer className="py-10 sm:py-16 lg:py-20 relative bg-[#1E3A8A]">
+    <footer id="contact" className="py-10 sm:py-16 lg:py-20 relative bg-[#1E3A8A]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <h2 className="font-bold text-[40px] sm:text-[48px] lg:text-[64px] xl:text-[80px] text-white mb-6 sm:mb-8 lg:mb-12">
           Contacto

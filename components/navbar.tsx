@@ -178,8 +178,8 @@ export function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[#1E3A8A]/10 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex justify-between items-center">
-          <div className="flex items-center flex-shrink-0">
-            <Link href="/" className="flex items-center">
+          <div className="flex items-center flex-shrink-0 h-12 sm:h-16">
+            <Link href="/" className="flex items-center h-full">
               {/* Logo SVG en pantallas chicas */}
               <svg 
                 width="96" 
@@ -187,7 +187,7 @@ export function Navbar() {
                 viewBox="0 0 1583 365" 
                 fill="none" 
                 xmlns="http://www.w3.org/2000/svg"
-                className="block sm:hidden w-24 h-24 flex-shrink-0"
+                className="block sm:hidden h-[90%] w-auto flex-shrink-0"
               >
                 <path d="M145.88 325.284C169.202 321.533 197.527 306.315 220.731 312.719C258.767 323.219 271.574 346.506 320.903 337.488C335.749 334.772 348.921 321.76 364.056 317.161C367.349 316.16 370.574 318.763 370.384 322.202C369.475 338.675 373.915 351.512 354.672 359.171C317.315 374.039 267.531 357.353 228.18 343.794C216.276 339.689 203.398 339.214 191.305 342.723C177.112 346.847 163.192 352.257 148.419 352.096C145.797 352.067 143.591 350.272 143.051 347.706C141.477 340.248 141.558 327.888 145.88 325.284Z" fill="#86CDE3"/>
                 <path d="M88.4131 265.212C92.6049 265.212 96.0049 268.616 96.0049 272.813C96.0049 277.009 92.6048 280.413 88.4131 280.413C84.2215 280.412 80.8224 277.009 80.8223 272.813C80.8223 268.616 84.2214 265.212 88.4131 265.212Z" fill="#8CC059"/>
@@ -216,7 +216,7 @@ export function Navbar() {
               <img 
                 src="/assets/Logo ADN-A completo.svg" 
                 alt="ADN-Aguascalientes" 
-                className="hidden sm:block sm:h-16 sm:w-auto"
+                className="hidden sm:block sm:h-[90%] sm:w-auto"
               />
             </Link>
           </div>

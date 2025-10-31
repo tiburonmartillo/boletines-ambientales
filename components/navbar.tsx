@@ -184,13 +184,13 @@ export function Navbar() {
               <img 
                 src="/assets/Logo ADN-A corto.png" 
                 alt="ADN-Aguascalientes"
-                className="block sm:hidden h-[90%] w-auto flex-shrink-0"
+                className="block sm:hidden h-[50%] w-auto flex-shrink-0"
               />
               {/* Logo completo en pantallas grandes */}
               <img 
                 src="/assets/Logo ADN-A completo.png" 
                 alt="ADN-Aguascalientes" 
-                className="hidden sm:block sm:h-[85%] sm:w-auto"
+                className="hidden sm:block sm:h-[70%] sm:w-auto"
               />
             </Link>
           </div>

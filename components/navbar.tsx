@@ -178,7 +178,7 @@ export function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[#1E3A8A]/10 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex justify-between items-center">
-          <div className="flex items-center flex-shrink-0 h-12 sm:h-16">
+          <div className="flex items-center flex-shrink-0 h-16 sm:h-20">
             <Link href="/" className="flex items-center h-full">
               {/* Logo SVG en pantallas chicas */}
               <svg 

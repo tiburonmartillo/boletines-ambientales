@@ -5,6 +5,7 @@ import { Box, Container, Typography, Paper, CircularProgress, Alert, Link } from
 import { MuiDashboardStats } from "@/components/mui-dashboard-stats"
 import { MuiTimeSeriesChart } from "@/components/mui-time-series-chart"
 import { MuiProjectsTable } from "@/components/mui-projects-table"
+import { ProjectsMap } from "@/components/projects-map"
 import { ErrorBoundary } from "@/components/error-boundary"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
@@ -131,6 +132,11 @@ function BoletinesAmbientalesPageContent() {
               data={timeSeriesData}
               onDateSelect={handleDateSelect}
             />
+          </ErrorBoundary>
+
+          {/* Projects Map */}
+          <ErrorBoundary>
+            <ProjectsMap proyectos={proyectos} />
           </ErrorBoundary>
 
           {/* Projects Table */}

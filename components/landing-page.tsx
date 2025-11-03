@@ -412,9 +412,9 @@ function DashboardSection() {
           <div className="relative lg:pl-8">
             <div className="relative">
               {/* Illustration container */}
-              <div className="relative bg-[#f3f3f3] rounded-3xl p-8 lg:p-12 border border-gray-200 shadow-sm">
+              <div className="relative bg-white rounded-3xl p-8 lg:p-12 border border-gray-200 shadow-sm">
                 <Image
-                  src="/assets/FloatDoodle.svg"
+                  src="/assets/FloatDoodle.png"
                   alt="Personas analizando datos ambientales"
                   width={640}
                   height={480}

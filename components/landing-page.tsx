@@ -24,10 +24,10 @@ function HeroSection() {
         <div className="space-y-8">
           <div className="space-y-6">
           
-            <h1 className="font-bold text-[36px] sm:text-[48px] lg:text-[56px] xl:text-[72px] leading-[1] text-[#000000]">
+            <h1 className="font-bold text-[36px] sm:text-[48px] lg:text-[56px] xl:text-[72px] leading-[1] text-gray-700">
               Un Ambiente<br />Sano es<br />Nuestro Derecho
             </h1>
-            <p className="text-[16px] sm:text-[18px] lg:text-[20px] text-[#000000]/80 leading-[1.6] max-w-xl">
+            <p className="text-[16px] sm:text-[18px] lg:text-[20px] text-gray-700/80 leading-[1.6] max-w-xl">
               Coalición ciudadana comprometida con la defensa del medio ambiente en Aguascalientes a través de la incidencia social y política. Trabajamos por un ambiente sano, limpio y equilibrado para todas y todos.
             </p>
           </div>
@@ -70,10 +70,10 @@ function FeaturedCampaignSection() {
               <div className="inline-block border-2 border-[#F97316] text-gray-500 border-2 px-4 sm:px-6 py-2 rounded-full mb-4 sm:mb-6">
                 <span className="font-bold text-[16px]">🐸 CAMPAÑA DESTACADA</span>
               </div>
-              <h2 className="font-bold text-[32px] sm:text-[40px] lg:text-[48px] xl:text-[56px] text-[#000000] mb-4 sm:mb-6 leading-[1.1]">
+              <h2 className="font-bold text-[32px] sm:text-[40px] lg:text-[48px] xl:text-[56px] text-gray-700 mb-4 sm:mb-6 leading-[1.1]">
                 #ADNaRanita
               </h2>
-              <p className="text-[16px] sm:text-[18px] lg:text-[20px] xl:text-[22px] text-[#000000]/80 leading-[1.7] mb-6 sm:mb-8">
+              <p className="text-[16px] sm:text-[18px] lg:text-[20px] xl:text-[22px] text-gray-700/80 leading-[1.7] mb-6 sm:mb-8">
                 Únete a nuestra petición ciudadana en Change.org para la protección de las especies endémicas y ecosistemas vulnerables de Aguascalientes. Tu firma puede hacer la diferencia.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -107,21 +107,21 @@ function FeaturedCampaignSection() {
                 <div className="bg-white rounded-2xl p-4 shadow-lg">
                   <div className="text-center mb-6">
                     <div className="text-[72px] mb-4">🐸</div>
-                    <h3 className="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-[#000000] mb-2">
+                    <h3 className="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-gray-700 mb-2">
                       Protejamos nuestra biodiversidad
                     </h3>
-                    <p className="text-[14px] sm:text-[16px] text-[#000000]/70">
+                    <p className="text-[14px] sm:text-[16px] text-gray-700/70">
                       Las especies endémicas de Aguascalientes están en peligro. Necesitamos tu apoyo para proteger nuestros ecosistemas únicos.
                     </p>
                   </div>
                   <div className="grid grid-cols-2 gap-4 pt-6 border-t border-[#0D5850]/10">
                     <div className="text-center">
                       <div className="font-bold text-[24px] sm:text-[28px] lg:text-[32px] text-[#F97316]">19K+</div>
-                      <div className="text-[12px] sm:text-[14px] text-[#000000]/70">Firmas</div>
+                      <div className="text-[12px] sm:text-[14px] text-gray-700/70">Firmas</div>
                     </div>
                     <div className="text-center">
                       <div className="font-bold text-[24px] sm:text-[28px] lg:text-[32px] text-[#1E3A8A]">25K</div>
-                      <div className="text-[12px] sm:text-[14px] text-[#000000]/70">Meta</div>
+                      <div className="text-[12px] sm:text-[14px] text-gray-700/70">Meta</div>
                     </div>
                   </div>
                 </div>
@@ -138,26 +138,26 @@ function AboutSection() {
   return (
     <section id="about" className="py-10 sm:py-16 lg:py-20 relative bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <h2 className="font-bold text-[40px] sm:text-[48px] lg:text-[64px] xl:text-[80px] text-[#000000] mb-6 sm:mb-8 lg:mb-12">
+        <h2 className="font-bold text-[40px] sm:text-[48px] lg:text-[64px] xl:text-[80px] text-gray-700 mb-6 sm:mb-8 lg:mb-12">
           Nosotros
         </h2>
         
         <div className="max-w-4xl">
-          <p className="text-[16px] sm:text-[18px] lg:text-[20px] xl:text-[22px] text-[#000000]/80 leading-[1.7] mb-6 sm:mb-8">
+          <p className="text-[16px] sm:text-[18px] lg:text-[20px] xl:text-[22px] text-gray-700/80 leading-[1.7] mb-6 sm:mb-8">
             ADN-Aguascalientes es una coalición de asociaciones civiles y personas comprometidas con la defensa del derecho humano a un medio ambiente sano, limpio y equilibrado.
           </p>
-          <p className="text-[16px] sm:text-[18px] lg:text-[20px] xl:text-[22px] text-[#000000]/80 leading-[1.7]">
+          <p className="text-[16px] sm:text-[18px] lg:text-[20px] xl:text-[22px] text-gray-700/80 leading-[1.7]">
             Trabajamos a través de la incidencia social y política para promover políticas públicas ambientales efectivas, fomentar la participación ciudadana en la toma de decisiones ambientales, y defender los ecosistemas naturales de Aguascalientes. Creemos que un medio ambiente sano es fundamental para el bienestar de las comunidades presentes y futuras.
           </p>
         </div>
 
         {/* Mission */}
         <div className="mt-16 border-2 border-teal-500 rounded-3xl p-8">
-          <h3 className="font-bold text-[20px] sm:text-[24px] lg:text-[28px] text-[#000000] mb-4 sm:mb-6">
+          <h3 className="font-bold text-[20px] sm:text-[24px] lg:text-[28px] text-gray-700 mb-4 sm:mb-6">
             NUESTRA MISIÓN
           </h3>
           <div className="max-w-4xl">
-            <p className="font-medium text-[16px] sm:text-[18px] lg:text-[20px] text-[#000000]/80 leading-[1.7]">
+            <p className="font-medium text-[16px] sm:text-[18px] lg:text-[20px] text-gray-700/80 leading-[1.7]">
               Promover y defender el derecho a un medio ambiente sano mediante la articulación de esfuerzos ciudadanos, la incidencia en políticas públicas, y la generación de conciencia ambiental. Buscamos construir una sociedad informada y participativa que contribuya activamente a la protección y restauración de los recursos naturales en Aguascalientes.
             </p>
           </div>
@@ -165,7 +165,7 @@ function AboutSection() {
 
         {/* Our Work */}
         <div className="mt-16">
-          <h3 className="font-bold text-[20px] sm:text-[24px] lg:text-[28px] text-[#000000] mb-6 sm:mb-8">
+          <h3 className="font-bold text-[20px] sm:text-[24px] lg:text-[28px] text-gray-700 mb-6 sm:mb-8">
             NUESTRO TRABAJO
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -202,10 +202,10 @@ function WorkItem({ title, description, color }: { title: string; description: s
       className="bg-white rounded-2xl p-4 sm:p-6 hover:shadow-lg transition-shadow duration-300 border border-[#1E3A8A]/10"
     >
       <div className="w-12 h-1 mb-4 rounded-full" style={{ backgroundColor: color }} />
-  <h4 className="font-extrabold text-[16px] sm:text-[18px] lg:text-[20px] text-[#000000] mb-2 sm:mb-3">
+  <h4 className="font-extrabold text-[16px] sm:text-[18px] lg:text-[20px] text-gray-700 mb-2 sm:mb-3">
         {title}
       </h4>
-      <p className="text-[14px] sm:text-[16px] lg:text-[18px] text-[#000000]/70 leading-[1.6]">
+      <p className="text-[14px] sm:text-[16px] lg:text-[18px] text-gray-700/70 leading-[1.6]">
         {description}
       </p>
     </div>
@@ -239,7 +239,7 @@ function InitiativesSection() {
   return (
     <section id="initiatives" className="py-10 sm:py-16 lg:py-20 relative bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <h2 className="font-bold text-[40px] sm:text-[48px] lg:text-[64px] xl:text-[80px] text-[#000000] mb-6 sm:mb-8 lg:mb-12">
+        <h2 className="font-bold text-[40px] sm:text-[48px] lg:text-[64px] xl:text-[80px] text-gray-700 mb-6 sm:mb-8 lg:mb-12">
           Iniciativas
         </h2>
         
@@ -265,13 +265,13 @@ function InitiativeItem({ title, period, description }: { title: string; period:
     >
       <div className="relative">
         <div className="absolute left-[-30px] sm:left-[-40px] top-[8px] w-[12px] h-[12px] sm:w-[16px] sm:h-[16px] bg-[#F97316] rounded-full" />
-        <h3 className="font-extrabold text-[18px] sm:text-[20px] lg:text-[22px] text-[#000000] mb-2">
+        <h3 className="font-extrabold text-[18px] sm:text-[20px] lg:text-[22px] text-gray-700 mb-2">
           {title}
         </h3>
         <p className="font-extralight text-[14px] sm:text-[16px] lg:text-[18px] text-[#1E3A8A] mb-2 sm:mb-3">
           {period}
         </p>
-        <p className="text-[14px] sm:text-[16px] lg:text-[18px] text-[#000000]/80 leading-[1.7]">
+        <p className="text-[14px] sm:text-[16px] lg:text-[18px] text-gray-700/80 leading-[1.7]">
           {description}
         </p>
       </div>
@@ -301,7 +301,7 @@ function ImpactSection() {
   return (
     <section id="impact" className="py-10 sm:py-16 lg:py-20 relative bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <h2 className="font-bold text-[40px] sm:text-[48px] lg:text-[64px] xl:text-[80px] text-[#000000] mb-6 sm:mb-8 lg:mb-12">
+        <h2 className="font-bold text-[40px] sm:text-[48px] lg:text-[64px] xl:text-[80px] text-gray-700 mb-6 sm:mb-8 lg:mb-12">
           Logros
         </h2>
         
@@ -315,13 +315,13 @@ function ImpactSection() {
               <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#F97316] rounded-full flex items-center justify-center mb-3 sm:mb-4">
                 <span className="font-bold text-white text-[16px] sm:text-[18px]">{index + 1}</span>
               </div>
-              <h3 className="font-extrabold text-[16px] sm:text-[18px] lg:text-[20px] text-[#000000] mb-2">
+              <h3 className="font-extrabold text-[16px] sm:text-[18px] lg:text-[20px] text-gray-700 mb-2">
                 {achievement.title}
               </h3>
               <p className="font-extralight text-[14px] sm:text-[16px] text-[#1E3A8A] mb-2 sm:mb-3">
                 {achievement.year}
               </p>
-              <p className="text-[14px] sm:text-[16px] text-[#000000]/80 leading-[1.6]">
+              <p className="text-[14px] sm:text-[16px] text-gray-700/80 leading-[1.6]">
                 {achievement.description}
               </p>
             </div>
@@ -360,147 +360,131 @@ function DashboardSection() {
   const totalResolutivos = data ? data.boletines.reduce((sum: number, boletin: any) => sum + boletin.cantidad_resolutivos, 0) : 892;
 
   return (
-    <section id="dashboard" className="py-10 sm:py-16 lg:py-20 relative bg-blue-50">
+    <section id="dashboard" className="py-20 sm:py-28 lg:py-32 relative bg-gradient-to-br from-[var(--color-primary)] via-[var(--color-primary)] to-[var(--color-primary)]/95">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="font-bold text-[32px] sm:text-[40px] lg:text-[48px] xl:text-[64px] text-[#000000] mb-4 sm:mb-6">
-            Boletines Ambientales
-          </h2>
-          <p className="font-['Poppins:Regular',_sans-serif] text-[16px] sm:text-[18px] lg:text-[20px] text-gray-500 leading-[1.7] max-w-4xl mx-auto">
-            Herramienta interactiva para consultar proyectos ingresados y resolutivos emitidos por la Secretaría de Medio Ambiente del Estado de Aguascalientes
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center mb-12 sm:mb-16">
-          {/* Preview Visual */}
-          <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-md border border-gray-200">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          
+          {/* Left: Content */}
+          <div className="space-y-8 lg:space-y-10">
             <div className="space-y-6">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
-                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg>
-                </div>
-                <div>
-              <h3 className="font-bold text-[18px] sm:text-[20px] lg:text-[24px] text-[#000000]">
-                    Gráficas Interactivas
-                  </h3>
-                  <p className="text-[14px] sm:text-[16px] text-[#1E3A8A]">
-                    Visualiza tendencias temporales y distribuciones
-                  </p>
-                </div>
-              </div>
-              
-              <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-xl p-6">
-                <div className="grid grid-cols-2 gap-4 text-center">
-                  <div className="bg-white rounded-lg p-4">
-                    <div className="text-xl sm:text-2xl font-bold text-[#1E3A8A]">
-                      {loading ? '...' : totalProyectos.toLocaleString()}
-                    </div>
-                    <div className="text-xs sm:text-sm text-[#000000]/70">Proyectos Ingresados</div>
-                  </div>
-                  <div className="bg-white rounded-lg p-4">
-                    <div className="text-xl sm:text-2xl font-bold text-[#F97316]">
-                      {loading ? '...' : totalResolutivos.toLocaleString()}
-                    </div>
-                    <div className="text-xs sm:text-sm text-[#000000]/70">Resolutivos Emitidos</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Características */}
-          <div className="space-y-6 sm:space-y-8">
-            <div>
-              <h3 className="font-bold text-[24px] sm:text-[28px] lg:text-[32px] text-[#000000] mb-4 sm:mb-6">
-                Características Principales
-              </h3>
-              <p className="text-[16px] sm:text-[18px] text-[#1E3A8A] leading-[1.7] mb-6 sm:mb-8">
-                Accede a información detallada sobre proyectos ambientales con herramientas avanzadas de búsqueda y análisis.
+              <h2 className="font-bold text-[40px] sm:text-[48px] lg:text-[56px] xl:text-[64px] leading-tight text-white">
+                Transparencia Ambiental
+                <span className="block text-[var(--color-accent)] mt-2">al Alcance</span>
+              </h2>
+              <p className="text-[18px] sm:text-[20px] lg:text-[22px] text-white/90 leading-relaxed max-w-lg">
+                Accede a información pública sobre proyectos ambientales en Aguascalientes. Visualiza, analiza y consulta datos oficiales de manera sencilla.
               </p>
             </div>
 
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#1E3A8A] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  </svg>
+            {/* Stats */}
+            <div className="grid grid-cols-2 gap-6 pt-6">
+              <div className="space-y-2">
+                <div className="text-[48px] sm:text-[56px] lg:text-[64px] font-bold text-[var(--color-accent)]">
+                  {loading ? '...' : totalProyectos.toLocaleString()}
                 </div>
-                <div>
-                  <h4 className="font-bold text-[16px] sm:text-[18px] text-[#000000] mb-2">
-                    Filtros Avanzados
-                  </h4>
-                  <p className="text-[14px] sm:text-[16px] text-[#1E3A8A]">
-                    Busca por municipio, giro, tipo de estudio y fechas
-                  </p>
-                </div>
+                <div className="text-[14px] sm:text-[16px] text-white/80">Proyectos Registrados</div>
               </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#1E3A8A] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
+              <div className="space-y-2">
+                <div className="text-[48px] sm:text-[56px] lg:text-[64px] font-bold text-[var(--brand-blue)]">
+                  {loading ? '...' : totalResolutivos.toLocaleString()}
                 </div>
-                <div>
-                  <h4 className="font-bold text-[16px] sm:text-[18px] text-[#000000] mb-2">
-                    Mapas de Ubicación
-                  </h4>
-                  <p className="text-[14px] sm:text-[16px] text-[#1E3A8A]">
-                    Visualiza la ubicación exacta de cada proyecto
-                  </p>
-                </div>
+                <div className="text-[14px] sm:text-[16px] text-white/80">Resolutivos Emitidos</div>
               </div>
+            </div>
 
-              <div className="flex items-start gap-4">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#1E3A8A] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                </div>
-                <div>
-                  <h4 className="font-bold text-[16px] sm:text-[18px] text-[#000000] mb-2">
-                    Consulta de Boletines
-                  </h4>
-                  <p className="text-[14px] sm:text-[16px] text-[#1E3A8A]">
-                    Accede directamente a los documentos oficiales
-                  </p>
-                </div>
+            {/* CTA */}
+            <div className="pt-4">
+              <Link
+                href="/boletines-ssmaa"
+                className="inline-flex items-center gap-3 bg-white text-[var(--color-primary)] font-bold text-[18px] px-8 py-4 rounded-full hover:bg-[var(--color-accent)] hover:text-white transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+                Explorar Dashboard
+              </Link>
+            </div>
+          </div>
+
+          {/* Right: Illustration */}
+          <div className="relative lg:pl-8">
+            <div className="relative">
+              {/* Humans illustration */}
+              <div className="relative bg-white/10 backdrop-blur-sm rounded-3xl p-8 lg:p-12 border border-white/20">
+                <img 
+                  src="https://storyset.com/illustration/data-report/amico.svg" 
+                  alt="Personas analizando datos ambientales"
+                  className="w-full h-auto max-w-md mx-auto opacity-90"
+                  onError={(e) => {
+                    // Fallback: ilustración SVG inline simple
+                    (e.target as HTMLImageElement).style.display = 'none';
+                    const parent = (e.target as HTMLImageElement).parentElement;
+                    if (parent && !parent.querySelector('.fallback-illustration')) {
+                      const fallback = document.createElement('div');
+                      fallback.className = 'fallback-illustration flex items-center justify-center h-64';
+                      fallback.innerHTML = `
+                        <svg class="w-64 h-64 text-white/40" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <circle cx="200" cy="120" r="30" fill="currentColor"/>
+                          <path d="M120 250 Q120 220 200 220 T280 250" stroke="currentColor" stroke-width="15" fill="none"/>
+                          <circle cx="140" cy="320" r="25" fill="currentColor" opacity="0.7"/>
+                          <circle cx="200" cy="330" r="25" fill="currentColor" opacity="0.8"/>
+                          <circle cx="260" cy="320" r="25" fill="currentColor" opacity="0.7"/>
+                          <rect x="100" y="80" width="200" height="140" rx="10" fill="currentColor" opacity="0.2"/>
+                          <path d="M150 140 L250 140 M150 180 L250 180 M150 220 L250 220" stroke="currentColor" stroke-width="8" opacity="0.5"/>
+                        </svg>
+                      `;
+                      parent.appendChild(fallback);
+                    }
+                  }}
+                />
               </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#1E3A8A] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                  </svg>
-                </div>
-                <div>
-                  <h4 className="font-bold text-[16px] sm:text-[18px] text-[#000000] mb-2">
-                    Trazabilidad Completa
-                  </h4>
-                  <p className="text-[14px] sm:text-[16px] text-[#1E3A8A]">
-                    Relación entre proyectos ingresados y resolutivos emitidos
-                  </p>
-                </div>
+              
+              {/* Floating badge */}
+              <div className="absolute -bottom-4 -right-4 bg-[var(--color-accent)] text-white rounded-2xl p-4 shadow-2xl transform rotate-3 hover:rotate-6 transition-transform">
+                <div className="text-sm font-medium">100% Gratis</div>
+                <div className="text-xs opacity-90">Acceso público</div>
               </div>
             </div>
           </div>
+
         </div>
 
-        {/* CTA Button */}
-        <div className="text-center">
-          <Link
-            href="/boletines-ssmaa"
-            className="inline-flex items-center gap-3 bg-blue-600 text-white font-bold text-[20px] px-8 py-4 rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-            </svg>
-            Explorar herramienta
-          </Link>
+        {/* Minimal features */}
+        <div className="mt-20 lg:mt-24 pt-12 border-t border-white/20">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="space-y-3">
+              <div className="w-12 h-12 mx-auto bg-white/10 rounded-xl flex items-center justify-center">
+                <svg className="w-6 h-6 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+              <div className="text-[14px] text-white/90">Búsqueda Inteligente</div>
+            </div>
+            <div className="space-y-3">
+              <div className="w-12 h-12 mx-auto bg-white/10 rounded-xl flex items-center justify-center">
+                <svg className="w-6 h-6 text-[var(--brand-blue)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+              <div className="text-[14px] text-white/90">Visualización Clara</div>
+            </div>
+            <div className="space-y-3">
+              <div className="w-12 h-12 mx-auto bg-white/10 rounded-xl flex items-center justify-center">
+                <svg className="w-6 h-6 text-[var(--brand-green)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                </svg>
+              </div>
+              <div className="text-[14px] text-white/90">Mapas Interactivos</div>
+            </div>
+            <div className="space-y-3">
+              <div className="w-12 h-12 mx-auto bg-white/10 rounded-xl flex items-center justify-center">
+                <svg className="w-6 h-6 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
+              <div className="text-[14px] text-white/90">Descarga de Datos</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -514,10 +498,10 @@ function SubscriptionSection() {
     <section id="subscription" className="py-10 sm:py-16 lg:py-20 relative bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="bg-gray-50 rounded-3xl p-6 sm:p-10 border border-gray-200">
-        <h2 className="font-bold text-[28px] sm:text-[32px] lg:text-[40px] text-[#000000] text-center mb-3">
+        <h2 className="font-bold text-[28px] sm:text-[32px] lg:text-[40px] text-gray-700 text-center mb-3">
             ¿Quieres recibir el resumen semanal del boletín?
           </h2>
-          <p className="text-[16px] sm:text-[18px] lg:text-[20px] text-[#000000]/80 text-center max-w-3xl mx-auto">
+          <p className="text-[16px] sm:text-[18px] lg:text-[20px] text-gray-700/80 text-center max-w-3xl mx-auto">
             Suscríbete gratis y recibe en tu correo los proyectos ingresados y los resolutivos emitidos, una vez por semana.
           </p>
           <div className="mt-6 text-center">
@@ -536,7 +520,7 @@ function SubscriptionSection() {
 
 export default function LandingPage() {
   return (
-    <div className="bg-white min-h-screen text-[#000000]">
+    <div className="bg-white min-h-screen text-gray-700">
       <Navbar />
       <main>
         <HeroSection />

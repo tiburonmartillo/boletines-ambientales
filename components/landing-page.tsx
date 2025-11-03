@@ -412,7 +412,7 @@ function DashboardSection() {
               {/* Humans illustration */}
               <div className="relative bg-white/10 backdrop-blur-sm rounded-3xl p-8 lg:p-12 border border-white/20">
                 <img 
-                  src="https://storyset.com/illustration/data-report/amico.svg" 
+                  src="https://blush.design/illustration/s/ZnojT4R8e3IrXUxi?c=Hair_0~fecb51-0.3~4b69fd_Skin_0~d96e05-0.3~dcad7f" 
                   alt="Personas analizando datos ambientales"
                   className="w-full h-auto max-w-md mx-auto opacity-90"
                   onError={(e) => {

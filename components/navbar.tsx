@@ -178,19 +178,19 @@ export function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[#1E3A8A]/10 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex justify-between items-center">
-          <div className="flex items-center flex-shrink-0 h-14 sm:h-20">
+          <div className="flex items-center flex-shrink-0 h-16 sm:h-20">
             <Link href="/" className="flex items-center h-full">
               {/* Logo PNG en pantallas chicas */}
               <img 
-                src="/assets/Logo ADN-A corto.png" 
+                src="/assets/Logo%20ADN-A%20corto.png" 
                 alt="ADN-Aguascalientes"
-                className="block sm:hidden h-[50%] w-auto flex-shrink-0"
+                className="block sm:hidden h-[90%] w-auto flex-shrink-0"
               />
               {/* Logo completo en pantallas grandes */}
               <img 
-                src="/assets/Logo ADN-A completo.png" 
+                src="/assets/Logo%20ADN-A%20completo.png" 
                 alt="ADN-Aguascalientes" 
-                className="hidden sm:block sm:h-[70%] sm:w-auto"
+                className="hidden sm:block sm:h-[85%] sm:w-auto"
               />
             </Link>
           </div>

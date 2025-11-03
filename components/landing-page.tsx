@@ -360,18 +360,18 @@ function DashboardSection() {
   const totalResolutivos = data ? data.boletines.reduce((sum: number, boletin: any) => sum + boletin.cantidad_resolutivos, 0) : 892;
 
   return (
-    <section id="dashboard" className="py-20 sm:py-28 lg:py-32 relative bg-gradient-to-br from-[var(--color-primary)] via-[var(--color-primary)] to-[var(--color-primary)]/95">
+    <section id="dashboard" className="py-20 sm:py-28 lg:py-32 relative bg-[#f8f8f8]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
           {/* Left: Content */}
           <div className="space-y-8 lg:space-y-10">
             <div className="space-y-6">
-              <h2 className="font-bold text-[40px] sm:text-[48px] lg:text-[56px] xl:text-[64px] leading-tight text-white">
+              <h2 className="font-bold text-[40px] sm:text-[48px] lg:text-[56px] xl:text-[64px] leading-tight text-gray-700">
                 Transparencia Ambiental
                 <span className="block text-[var(--color-accent)] mt-2">al Alcance</span>
               </h2>
-              <p className="text-[18px] sm:text-[20px] lg:text-[22px] text-white/90 leading-relaxed max-w-lg">
+              <p className="text-[18px] sm:text-[20px] lg:text-[22px] text-gray-700/80 leading-relaxed max-w-lg">
                 Accede a información pública sobre proyectos ambientales en Aguascalientes. Visualiza, analiza y consulta datos oficiales de manera sencilla.
               </p>
             </div>
@@ -382,13 +382,13 @@ function DashboardSection() {
                 <div className="text-[48px] sm:text-[56px] lg:text-[64px] font-bold text-[var(--color-accent)]">
                   {loading ? '...' : totalProyectos.toLocaleString()}
                 </div>
-                <div className="text-[14px] sm:text-[16px] text-white/80">Proyectos Registrados</div>
+                <div className="text-[14px] sm:text-[16px] text-gray-600">Proyectos Registrados</div>
               </div>
               <div className="space-y-2">
                 <div className="text-[48px] sm:text-[56px] lg:text-[64px] font-bold text-[var(--brand-blue)]">
                   {loading ? '...' : totalResolutivos.toLocaleString()}
                 </div>
-                <div className="text-[14px] sm:text-[16px] text-white/80">Resolutivos Emitidos</div>
+                <div className="text-[14px] sm:text-[16px] text-gray-600">Resolutivos Emitidos</div>
               </div>
             </div>
 
@@ -396,7 +396,7 @@ function DashboardSection() {
             <div className="pt-4">
               <Link
                 href="/boletines-ssmaa"
-                className="inline-flex items-center gap-3 bg-white text-[var(--color-primary)] font-bold text-[18px] px-8 py-4 rounded-full hover:bg-[var(--color-accent)] hover:text-white transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105"
+                className="inline-flex items-center gap-3 bg-[var(--color-accent)] text-white font-bold text-[18px] px-8 py-4 rounded-full hover:bg-[var(--color-primary)] transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
@@ -411,8 +411,8 @@ function DashboardSection() {
           {/* Right: Illustration */}
           <div className="relative lg:pl-8">
             <div className="relative">
-              {/* Humans illustration */}
-              <div className="relative bg-white/10 backdrop-blur-sm rounded-3xl p-8 lg:p-12 border border-white/20">
+              {/* Illustration container */}
+              <div className="relative bg-white rounded-3xl p-8 lg:p-12 border border-gray-200 shadow-sm">
                 <img 
                   src="/assets/FloatDoodle.svg" 
                   alt="Personas analizando datos ambientales"
@@ -425,7 +425,7 @@ function DashboardSection() {
                       const fallback = document.createElement('div');
                       fallback.className = 'fallback-illustration flex items-center justify-center h-64';
                       fallback.innerHTML = `
-                      <svg class="w-64 h-64 text-white/40" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                       <svg class="w-64 h-64 text-gray-400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <circle cx="200" cy="120" r="30" fill="currentColor"/>
                       <path d="M120 250 Q120 220 200 220 T280 250" stroke="currentColor" stroke-width="15" fill="none"/>
                       <circle cx="140" cy="320" r="25" fill="currentColor" opacity="0.7"/>
@@ -442,7 +442,7 @@ function DashboardSection() {
               </div>
               
               {/* Floating badge */}
-              <div className="absolute -bottom-4 -right-4 bg-[var(--color-accent)] text-white rounded-2xl p-4 shadow-2xl transform rotate-3 hover:rotate-6 transition-transform">
+              <div className="absolute -bottom-4 -right-4 bg-[var(--color-accent)] text-white rounded-2xl p-4 shadow-xl transform rotate-3 hover:rotate-6 transition-transform">
                 <div className="text-sm font-medium">100% Gratis</div>
                 <div className="text-xs opacity-90">Acceso público</div>
               </div>
@@ -452,39 +452,39 @@ function DashboardSection() {
         </div>
 
         {/* Minimal features */}
-        <div className="mt-20 lg:mt-24 pt-12 border-t border-white/20">
+        <div className="mt-20 lg:mt-24 pt-12 border-t border-gray-200">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div className="space-y-3">
-              <div className="w-12 h-12 mx-auto bg-white/10 rounded-xl flex items-center justify-center">
+              <div className="w-12 h-12 mx-auto bg-white rounded-xl border border-gray-200 flex items-center justify-center">
                 <svg className="w-6 h-6 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               </div>
-              <div className="text-[14px] text-white/90">Búsqueda Inteligente</div>
+              <div className="text-[14px] text-gray-700">Búsqueda Inteligente</div>
             </div>
             <div className="space-y-3">
-              <div className="w-12 h-12 mx-auto bg-white/10 rounded-xl flex items-center justify-center">
+              <div className="w-12 h-12 mx-auto bg-white rounded-xl border border-gray-200 flex items-center justify-center">
                 <svg className="w-6 h-6 text-[var(--brand-blue)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
               </div>
-              <div className="text-[14px] text-white/90">Visualización Clara</div>
+              <div className="text-[14px] text-gray-700">Visualización Clara</div>
             </div>
             <div className="space-y-3">
-              <div className="w-12 h-12 mx-auto bg-white/10 rounded-xl flex items-center justify-center">
+              <div className="w-12 h-12 mx-auto bg-white rounded-xl border border-gray-200 flex items-center justify-center">
                 <svg className="w-6 h-6 text-[var(--brand-green)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 </svg>
               </div>
-              <div className="text-[14px] text-white/90">Mapas Interactivos</div>
+              <div className="text-[14px] text-gray-700">Mapas Interactivos</div>
             </div>
             <div className="space-y-3">
-              <div className="w-12 h-12 mx-auto bg-white/10 rounded-xl flex items-center justify-center">
+              <div className="w-12 h-12 mx-auto bg-white rounded-xl border border-gray-200 flex items-center justify-center">
                 <svg className="w-6 h-6 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </div>
-              <div className="text-[14px] text-white/90">Descarga de Datos</div>
+              <div className="text-[14px] text-gray-700">Descarga de Datos</div>
             </div>
           </div>
         </div>
@@ -511,30 +511,7 @@ function DashboardSection() {
 
 // Reemplazado por componente dedicado en components/footer.tsx
 
-function SubscriptionSection() {
-  return (
-    <section id="subscription" className="py-10 sm:py-16 lg:py-20 relative bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="bg-gray-50 rounded-3xl p-6 sm:p-10 border border-gray-200">
-        <h2 className="font-bold text-[28px] sm:text-[32px] lg:text-[40px] text-gray-700 text-center mb-3">
-            ¿Quieres recibir el resumen semanal del boletín?
-          </h2>
-          <p className="text-[16px] sm:text-[18px] lg:text-[20px] text-gray-700/80 text-center max-w-3xl mx-auto">
-            Suscríbete gratis y recibe en tu correo los proyectos ingresados y los resolutivos emitidos, una vez por semana.
-          </p>
-          <div className="mt-6 text-center">
-            <a
-              href="https://www.notion.so/adnags/29c2b8101e5c80fdbd89f8c03728e80d"
-              className="inline-block w-full sm:w-auto px-8 py-4 rounded-full font-bold text-[18px] text-gray-700 bg-blue-100 hover:bg-blue-700 hover:text-white border border-black transition-colors"
-            >
-              Suscribirme al resumen semanal
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+
 
 export default function LandingPage() {
   return (
@@ -547,7 +524,6 @@ export default function LandingPage() {
         <InitiativesSection />
         <ImpactSection />
         <DashboardSection />
-        <SubscriptionSection />
       </main>
       <Footer />
     </div>

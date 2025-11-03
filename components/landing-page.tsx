@@ -413,31 +413,13 @@ function DashboardSection() {
             <div className="relative">
               {/* Illustration container */}
               <div className="relative bg-white rounded-3xl p-8 lg:p-12 border border-gray-200 shadow-sm">
-                <img 
-                  src="/assets/FloatDoodle.svg" 
+                <Image
+                  src="/assets/FloatDoodle.svg"
                   alt="Personas analizando datos ambientales"
+                  width={640}
+                  height={480}
+                  priority
                   className="w-full h-auto max-w-md mx-auto opacity-90"
-                  onError={(e) => {
-                    // Fallback: ilustración SVG inline simple
-                    (e.target as HTMLImageElement).style.display = 'none';
-                    const parent = (e.target as HTMLImageElement).parentElement;
-                    if (parent && !parent.querySelector('.fallback-illustration')) {
-                      const fallback = document.createElement('div');
-                      fallback.className = 'fallback-illustration flex items-center justify-center h-64';
-                      fallback.innerHTML = `
-                       <svg class="w-64 h-64 text-gray-400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="200" cy="120" r="30" fill="currentColor"/>
-                      <path d="M120 250 Q120 220 200 220 T280 250" stroke="currentColor" stroke-width="15" fill="none"/>
-                      <circle cx="140" cy="320" r="25" fill="currentColor" opacity="0.7"/>
-                      <circle cx="200" cy="330" r="25" fill="currentColor" opacity="0.8"/>
-                      <circle cx="260" cy="320" r="25" fill="currentColor" opacity="0.7"/>
-                      <rect x="100" y="80" width="200" height="140" rx="10" fill="currentColor" opacity="0.2"/>
-                      <path d="M150 140 L250 140 M150 180 L250 180 M150 220 L250 220" stroke="currentColor" stroke-width="8" opacity="0.5"/>
-                      </svg>
-                      `;
-                      parent.appendChild(fallback);
-                    }
-                  }}
                 />
               </div>
               
@@ -452,7 +434,7 @@ function DashboardSection() {
         </div>
 
         {/* Minimal features */}
-        <div className="mt-20 lg:mt-24 pt-12 border-t border-gray-200">
+        <div className="my-20 lg:mt-24 pt-12 border-t border-gray-200">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div className="space-y-3">
               <div className="w-12 h-12 mx-auto bg-white rounded-xl border border-gray-200 flex items-center justify-center">
@@ -488,7 +470,7 @@ function DashboardSection() {
             </div>
           </div>
         </div>
-                      <div className="mt-6 bg-white rounded-2xl p-5 sm:p-6 border border-[var(--border)]/80 shadow-lg">
+                      <div className="mt-8 bg-white rounded-2xl p-5 sm:p-6 border border-[var(--border)]/80 shadow-lg">
                         <h3 className="font-bold text-[18px] sm:text-[20px] text-[var(--color-primary)] text-center mb-2">
                           ¿Quieres recibir el resumen semanal del boletín?
                         </h3>

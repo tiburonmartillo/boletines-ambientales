@@ -349,10 +349,9 @@ function DashboardSection() {
         setData(jsonData);
         setLoading(false);
       })
-      .catch((err) => {
-        console.error("Error loading data:", err);
-        setLoading(false);
-      });
+          .catch((err) => {
+            setLoading(false);
+          });
   }, []);
 
   // Calculate totals from the data

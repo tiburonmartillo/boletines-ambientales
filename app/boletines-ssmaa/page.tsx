@@ -14,8 +14,17 @@ import { useDashboardData } from "@/hooks/useDashboardData"
 
 function BoletinesAmbientalesPageContent() {
   const [selectedDate, setSelectedDate] = useState<string | null>(null)
+  const [mounted, setMounted] = useState(false)
   
   const { processedData, loading, error } = useDashboardData()
+  const [highlightExpediente, setHighlightExpediente] = useState<string | null>(null)
+
+  // Evitar SSR para prevenir hydration mismatch (MUI/emotion/Leaflet)
+  useEffect(() => { setMounted(true) }, [])
+
+  if (!mounted) {
+    return null
+  }
 
   // Mostrar loading mientras carga
   if (loading) {
@@ -136,7 +145,10 @@ function BoletinesAmbientalesPageContent() {
 
           {/* Projects Map */}
           <ErrorBoundary>
-            <ProjectsMap proyectos={proyectos} />
+            <ProjectsMap 
+              proyectos={proyectos} 
+              onSelectExpediente={(exp) => setHighlightExpediente(exp)}
+            />
           </ErrorBoundary>
 
           {/* Projects Table */}
@@ -148,6 +160,7 @@ function BoletinesAmbientalesPageContent() {
               giros={stats.giros}
               tiposEstudio={stats.tiposEstudio}
               selectedDate={selectedDate}
+              highlightExpediente={highlightExpediente || undefined}
             />
           </ErrorBoundary>
         </Box>

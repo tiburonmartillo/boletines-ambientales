@@ -87,9 +87,10 @@ interface MuiProjectsTableProps {
   giros: string[]
   tiposEstudio: string[]
   selectedDate?: string | null
+  highlightExpediente?: string
 }
 
-export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, tiposEstudio, selectedDate }: MuiProjectsTableProps) {
+export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, tiposEstudio, selectedDate, highlightExpediente }: MuiProjectsTableProps) {
   const [activeTab, setActiveTab] = useState<"proyectos" | "resolutivos">("proyectos")
   const [search, setSearch] = useState("")
   const [municipioFilter, setMunicipioFilter] = useState<string>("all")
@@ -106,6 +107,7 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
   // Estados para modal de ubicación
   const [selectedItem, setSelectedItem] = useState<any>(null)
   const [isMapModalOpen, setIsMapModalOpen] = useState(false)
+  const [highlight, setHighlight] = useState<string | null>(null)
   
   // Hook para modal de boletín con routing
   const { isOpen: isBoletinModalOpen, selectedBoletin, openModal: openBoletinModal, closeModal: closeBoletinModal } = useBoletinModal()
@@ -123,6 +125,28 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
       setTipoFilter("all")
     }
   }, [selectedDate])
+
+  // Resaltar y filtrar desde el mapa
+  useEffect(() => {
+    if (!highlightExpediente || typeof highlightExpediente !== 'string') return
+    setActiveTab("proyectos")
+    // Filtrar por expediente (similar a buscar por expediente)
+    setSearch(highlightExpediente)
+    // Limpiar otros filtros para mostrar solo el registro
+    setMunicipioFilter("all")
+    setGiroFilter("all")
+    setTipoFilter("all")
+    setYearFilter("all")
+    setMonthFilter("all")
+    setHighlight(highlightExpediente)
+    // Resetear a la primera página ya que solo habrá un resultado
+    setPage(0)
+    // Scroll suave al render
+    setTimeout(() => {
+      const el = document.getElementById(`row-${highlightExpediente}`)
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }, 100)
+  }, [highlightExpediente])
 
   const handleRowClick = (item: any) => {
     if (item.coordenadas_x && item.coordenadas_y) {
@@ -166,9 +190,14 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
       if (!a.fecha_ingreso && !b.fecha_ingreso) return 0
       if (!a.fecha_ingreso) return 1
       if (!b.fecha_ingreso) return -1
-      const dateA = new Date(a.fecha_ingreso.split("/").reverse().join("-"))
-      const dateB = new Date(b.fecha_ingreso.split("/").reverse().join("-"))
-      return dateB.getTime() - dateA.getTime()
+      try {
+        const dateA = new Date(a.fecha_ingreso.split("/").reverse().join("-"))
+        const dateB = new Date(b.fecha_ingreso.split("/").reverse().join("-"))
+        if (isNaN(dateA.getTime()) || isNaN(dateB.getTime())) return 0
+        return dateB.getTime() - dateA.getTime()
+      } catch {
+        return 0
+      }
     })
   }
 
@@ -196,13 +225,25 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
       let matchesMonth = true
       
       if (yearFilter !== "all" && proyecto.fecha_ingreso) {
-        const fechaIngreso = new Date(proyecto.fecha_ingreso)
-        matchesYear = fechaIngreso.getFullYear().toString() === yearFilter
+        try {
+          const fechaIngreso = new Date(proyecto.fecha_ingreso)
+          if (!isNaN(fechaIngreso.getTime())) {
+            matchesYear = fechaIngreso.getFullYear().toString() === yearFilter
+          }
+        } catch {
+          matchesYear = false
+        }
       }
       
       if (monthFilter !== "all" && proyecto.fecha_ingreso) {
-        const fechaIngreso = new Date(proyecto.fecha_ingreso)
-        matchesMonth = (fechaIngreso.getMonth() + 1).toString() === monthFilter
+        try {
+          const fechaIngreso = new Date(proyecto.fecha_ingreso)
+          if (!isNaN(fechaIngreso.getTime())) {
+            matchesMonth = (fechaIngreso.getMonth() + 1).toString() === monthFilter
+          }
+        } catch {
+          matchesMonth = false
+        }
       }
 
       return matchesSearch && matchesMunicipio && matchesGiro && matchesTipo && matchesYear && matchesMonth
@@ -234,13 +275,25 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
       let matchesMonth = true
       
       if (yearFilter !== "all" && resolutivo.fecha_ingreso) {
-        const fechaIngreso = new Date(resolutivo.fecha_ingreso)
-        matchesYear = fechaIngreso.getFullYear().toString() === yearFilter
+        try {
+          const fechaIngreso = new Date(resolutivo.fecha_ingreso)
+          if (!isNaN(fechaIngreso.getTime())) {
+            matchesYear = fechaIngreso.getFullYear().toString() === yearFilter
+          }
+        } catch {
+          matchesYear = false
+        }
       }
       
       if (monthFilter !== "all" && resolutivo.fecha_ingreso) {
-        const fechaIngreso = new Date(resolutivo.fecha_ingreso)
-        matchesMonth = (fechaIngreso.getMonth() + 1).toString() === monthFilter
+        try {
+          const fechaIngreso = new Date(resolutivo.fecha_ingreso)
+          if (!isNaN(fechaIngreso.getTime())) {
+            matchesMonth = (fechaIngreso.getMonth() + 1).toString() === monthFilter
+          }
+        } catch {
+          matchesMonth = false
+        }
       }
 
       return matchesSearch && matchesMunicipio && matchesGiro && matchesTipo && matchesYear && matchesMonth
@@ -477,11 +530,14 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
                   paginatedProyectos.map((proyecto) => (
                     <TableRow 
                       key={`${proyecto.expediente || 'unknown'}-${proyecto.boletin_id || 'unknown'}`} 
+                      id={`row-${proyecto.expediente}`}
                       hover
                       onClick={() => handleRowClick(proyecto)}
                       sx={{ 
                         cursor: proyecto.coordenadas_x && proyecto.coordenadas_y ? 'pointer' : 'default',
-                        '&:hover': { backgroundColor: proyecto.coordenadas_x && proyecto.coordenadas_y ? 'rgba(0, 0, 0, 0.04)' : 'inherit' }
+                        '&:hover': { backgroundColor: proyecto.coordenadas_x && proyecto.coordenadas_y ? 'rgba(0, 0, 0, 0.04)' : 'inherit' },
+                        backgroundColor: highlight === proyecto.expediente ? 'rgba(246, 150, 80, 0.18)' : 'inherit',
+                        outline: highlight === proyecto.expediente ? '2px solid rgba(2, 57, 35, 0.35)' : 'none'
                       }}
                     >
                       <TableCell>{proyecto.expediente || 'N/A'}</TableCell>

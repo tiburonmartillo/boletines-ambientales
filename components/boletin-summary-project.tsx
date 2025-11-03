@@ -27,7 +27,6 @@ export function BoletinSummaryProject({ proyecto, numero, tipo, staticMode = fal
     if (proyectoIngresado) {
       coordenadas_x = proyectoIngresado.coordenadas_x
       coordenadas_y = proyectoIngresado.coordenadas_y
-      console.log(`🗺️ Resolutivo ${proyecto.expediente}: Coordenadas obtenidas del proyecto ingresado`, { coordenadas_x, coordenadas_y })
     }
   }
 

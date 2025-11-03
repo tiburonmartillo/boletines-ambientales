@@ -24,14 +24,12 @@ function fixCoordinateDigits(x: number, y: number): { x: number; y: number } {
     const yStr = y.toString();
     if (yStr.length === 8 && yStr.startsWith('24')) {
       correctedY = parseInt(yStr.substring(0, 7)); // Remover último dígito
-      console.log(`🔧 Coordenada Y corregida: ${y} -> ${correctedY}`);
     }
   }
   
   // Corregir X si tiene formato incorrecto (ej: 781.265 -> 781265)
   if (x < 10000 && x > 100) {
     correctedX = Math.round(x * 1000);
-    console.log(`🔧 Coordenada X corregida: ${x} -> ${correctedX}`);
   }
   
   return { x: correctedX, y: correctedY };
@@ -48,7 +46,6 @@ function convertToLatLong(x: number | null, y: number | null): { lat: number; ln
   const validationResult = coordinateValidator.processCoordinates(correctedX, correctedY);
   
   if (!validationResult.success) {
-    console.warn('Coordenadas inválidas después de corrección:', validationResult.error);
     return null;
   }
 
@@ -171,7 +168,6 @@ function generateStaticMapUrl(lat: number, lng: number, width: number = 400, hei
   const timestamp = Date.now()
   const mainUrl = services[0] + `&t=${timestamp}`
   
-  console.log('generateStaticMapUrl: Usando servicio principal:', mainUrl)
   return mainUrl
 }
 
@@ -192,27 +188,11 @@ export function ClientOnlyMap({
   const [coords, setCoords] = useState<{ lat: number; lng: number } | null>(null)
   const [mounted, setMounted] = useState(false)
 
-  console.log('🗺️ ClientOnlyMap renderizado:', {
-    municipio,
-    coordenadas_x,
-    coordenadas_y,
-    staticMode,
-    width,
-    height
-  })
-
   useEffect(() => {
-    console.log('🗺️ ClientOnlyMap useEffect ejecutado:', { municipio, staticMode })
     setMounted(true)
     
     // Convertir coordenadas solo en el cliente
     const convertedCoords = convertToLatLong(coordenadas_x, coordenadas_y)
-    console.log('🗺️ Coordenadas convertidas:', { 
-      original: { x: coordenadas_x, y: coordenadas_y }, 
-      converted: convertedCoords,
-      municipio 
-    })
-    
     setCoords(convertedCoords)
   }, [coordenadas_x, coordenadas_y, municipio, staticMode])
 
@@ -275,8 +255,6 @@ export function ClientOnlyMap({
 
   // Si está en modo estático (para PDF), usar imagen estática o placeholder mejorado
   if (staticMode) {
-    console.log('ClientOnlyMap staticMode: Generando mapa para coordenadas:', { lat, lng, municipio })
-    
     // Crear un placeholder atractivo inmediatamente
     const svgString = `
       <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
@@ -304,8 +282,6 @@ export function ClientOnlyMap({
     const placeholderSvg = `data:image/svg+xml,${encodeURIComponent(svgString)}`
     
     // Usar el placeholder directamente ya que el servicio de mapas estáticos puede no estar disponible
-    console.log('ClientOnlyMap: Usando placeholder SVG para', municipio)
-    
     return (
       <Box sx={{ width: '100%', height }}>
         <Box

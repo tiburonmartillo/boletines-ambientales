@@ -181,13 +181,13 @@ export function Navbar() {
             <Link href="/" className="flex items-center h-full">
               {/* Logo PNG en pantallas chicas */}
               <img 
-                src="/assets/logo-adna-corto.png" 
+                src="/assets/Logo-ADN-A-corto.png" 
                 alt="ADN-Aguascalientes"
                 className="block md:hidden h-[80%] w-auto flex-shrink-0"
               />
               {/* Logo completo en pantallas grandes */}
               <img 
-                src="/assets/logo-adna-completo.png" 
+                src="/assets/Logo-ADN-A-completo.png" 
                 alt="ADN-Aguascalientes" 
                 className="hidden md:block sm:h-[85%] sm:w-auto"
               />

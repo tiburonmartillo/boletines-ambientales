@@ -50,10 +50,10 @@ export class CoordinateValidator {
       este14: { min: 200000.00, max: 300000.00 }
     };
     
-    // Rangos válidos para Lat/Lng en México
+    // Rangos válidos para Lat/Lng en México (ampliados para incluir todas las coordenadas válidas de Aguascalientes)
     this.latLngRanges = {
-      lat: { min: 21.619133, max: 22.447841 },
-      lng: { min: -102.884216, max: -101.850128 }
+      lat: { min: 21.50, max: 22.50 }, // Ampliado desde 21.619133
+      lng: { min: -103.0, max: -101.5 } // Ampliado desde -102.884216
     };
   }
 
@@ -132,10 +132,15 @@ export class CoordinateValidator {
     }
     
     // Lat/Lng invertido: Lat primero, Lng segundo
+    // Detectar si X parece latitud (20-25) y Y parece longitud (100-105 en valor absoluto)
     const isLatFirst = Math.abs(normalizedX) >= 20 && Math.abs(normalizedX) <= 25;
     const isLngSecond = Math.abs(normalizedY) >= 100 && Math.abs(normalizedY) <= 105;
     
-    if (isLatFirst && isLngSecond) {
+    // También verificar si están en los rangos correctos pero invertidos
+    const xCouldBeLat = normalizedX >= this.latLngRanges.lat.min && normalizedX <= this.latLngRanges.lat.max;
+    const yCouldBeLng = normalizedY >= this.latLngRanges.lng.min && normalizedY <= this.latLngRanges.lng.max;
+    
+    if ((isLatFirst && isLngSecond) || (xCouldBeLat && yCouldBeLng)) {
       return { type: 'latlng_inverted', x: normalizedX, y: normalizedY };
     }
     
@@ -224,7 +229,6 @@ export class CoordinateValidator {
         for (const testY of possibleYValues) {
           const validation = this.validateRange({ x: coords.x, y: testY }, 'utm');
           if (validation.valid) {
-            console.log(`✅ Coordenadas UTM corregidas (dígito faltante): ${coords.x}, ${coords.y} → ${coords.x}, ${testY.toFixed(6)}`);
             return { x: coords.x, y: testY };
           }
         }
@@ -241,7 +245,6 @@ export class CoordinateValidator {
         for (const testX of possibleXValues) {
           const validation = this.validateRange({ x: testX, y: coords.y }, 'utm');
           if (validation.valid) {
-            console.log(`✅ Coordenadas UTM corregidas (dígito faltante en X): ${coords.x}, ${coords.y} → ${testX.toFixed(6)}, ${coords.y}`);
             return { x: testX, y: coords.y };
           }
         }
@@ -257,7 +260,6 @@ export class CoordinateValidator {
         for (const correction of possibleCorrections) {
           const validation = this.validateRange(correction, 'utm');
           if (validation.valid) {
-            console.log(`✅ Coordenadas UTM corregidas (ambos dígitos faltantes): ${coords.x}, ${coords.y} → ${correction.x.toFixed(6)}, ${correction.y.toFixed(6)}`);
             return correction;
           }
         }
@@ -274,7 +276,6 @@ export class CoordinateValidator {
         const correctedX = -coords.x;
         const validation = this.validateRange({ x: correctedX, y: coords.y }, 'latlng');
         if (validation.valid) {
-          console.log(`✅ Coordenadas Lat/Lng corregidas (signo): ${coords.x}, ${coords.y} → ${correctedX.toFixed(6)}, ${coords.y.toFixed(6)}`);
           return { x: correctedX, y: coords.y };
         }
       }
@@ -282,7 +283,6 @@ export class CoordinateValidator {
       // Intentar invertir X e Y si están fuera de rango
       const invertedValidation = this.validateRange({ x: coords.y, y: coords.x }, 'latlng');
       if (invertedValidation.valid) {
-        console.log(`✅ Coordenadas Lat/Lng invertidas: ${coords.x}, ${coords.y} → ${coords.y.toFixed(6)}, ${coords.x.toFixed(6)}`);
         return { x: coords.y, y: coords.x };
       }
     }
@@ -305,7 +305,6 @@ export class CoordinateValidator {
         
         const validation = this.validateRange({ x: correctedX, y: correctedY }, 'utm');
         if (validation.valid) {
-          console.log(`Coordenadas UTM corregidas moviendo punto decimal (factor ${factor}): ${coords.x}, ${coords.y} → ${correctedX.toFixed(6)}, ${correctedY.toFixed(6)}`);
           return { x: correctedX, y: correctedY };
         }
       }
@@ -317,7 +316,6 @@ export class CoordinateValidator {
         
         const validation = this.validateRange({ x: correctedX, y: correctedY }, 'utm');
         if (validation.valid) {
-          console.log(`Coordenadas UTM corregidas moviendo punto decimal (factor ${factor}): ${coords.x}, ${coords.y} → ${correctedX.toFixed(6)}, ${correctedY.toFixed(6)}`);
           return { x: correctedX, y: correctedY };
         }
       }
@@ -331,7 +329,6 @@ export class CoordinateValidator {
         
         const validation = this.validateRange({ x: correctedX, y: correctedY }, 'latlng');
         if (validation.valid) {
-          console.log(`Coordenadas Lat/Lng corregidas moviendo punto decimal (factor ${factor}): ${coords.x}, ${coords.y} → ${correctedX.toFixed(6)}, ${correctedY.toFixed(6)}`);
           return { x: correctedX, y: correctedY };
         }
       }
@@ -343,7 +340,6 @@ export class CoordinateValidator {
         
         const validation = this.validateRange({ x: correctedX, y: correctedY }, 'latlng');
         if (validation.valid) {
-          console.log(`Coordenadas Lat/Lng corregidas moviendo punto decimal (factor ${factor}): ${coords.x}, ${coords.y} → ${correctedX.toFixed(6)}, ${correctedY.toFixed(6)}`);
           return { x: correctedX, y: correctedY };
         }
       }

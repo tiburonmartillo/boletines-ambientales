@@ -52,7 +52,7 @@ function SocialIcon({ type, url }: { type: 'instagram' | 'facebook' | 'tiktok' |
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="text-[#000000] hover:text-[#F97316] transition-colors duration-200"
+      className="text-[#000000] hover:text-[var(--color-accent)] transition-colors duration-200"
     >
       <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24">
         {getIcon()}
@@ -175,7 +175,7 @@ export function Navbar() {
   }, [pathname, navItems]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[#1E3A8A]/10 shadow-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[var(--border-soft)] shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center flex-shrink-0 h-16 sm:h-20">
@@ -184,13 +184,13 @@ export function Navbar() {
               <img 
                 src="/assets/logo-adna-corto.png" 
                 alt="ADN-Aguascalientes"
-                className="block sm:hidden h-[90%] w-auto flex-shrink-0"
+                className="block md:hidden h-[80%] w-auto flex-shrink-0"
               />
               {/* Logo completo en pantallas grandes */}
               <img 
                 src="/assets/logo-adna-completo.png" 
                 alt="ADN-Aguascalientes" 
-                className="hidden sm:block sm:h-[85%] sm:w-auto"
+                className="hidden md:block sm:h-[85%] sm:w-auto"
               />
             </Link>
           </div>
@@ -200,7 +200,7 @@ export function Navbar() {
               href="https://adnags.notion.site/29c2b8101e5c80fdbd89f8c03728e80d"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#F97316] hover:bg-[#1E3A8A] text-white px-4 py-2 rounded-full transition-all duration-300 font-medium text-[14px] whitespace-nowrap flex-shrink-0"
+              className="inline-flex items-center gap-2 bg-[var(--color-accent)] hover:bg-[var(--color-primary)] text-white px-4 py-2 rounded-full transition-all duration-300 font-medium text-[14px] whitespace-nowrap flex-shrink-0"
             >
               <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />

@@ -3,40 +3,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-  /* Light theme with orange/blue color scheme */
+  /* Paleta ADN-A (variables globales) */
   --background: #ffffff;
   --foreground: #000000;
   --card: #ffffff;
   --card-foreground: #000000;
   --popover: #ffffff;
   --popover-foreground: #000000;
-  --primary: #1E3A8A;
+  /* Colores de marca solicitados */
+  --primary: #023923;           /* verde oscuro */
+  --accent: #F69650;            /* naranja */
+  --brand-blue: #86CDE3;        /* azul claro */
+  --brand-green: #8CC059;       /* verde claro */
   --primary-foreground: #ffffff;
   --secondary: #f8fafc;
   --secondary-foreground: #000000;
   --muted: #f1f5f9;
   --muted-foreground: #64748b;
-  --accent: #F97316;
   --accent-foreground: #ffffff;
   --destructive: #dc2626;
   --destructive-foreground: #ffffff;
-  --border: #e2e8f0;
+  --border: #e2e8f0;            /* borde neutro */
+  --border-soft: rgba(2,57,35,0.10); /* borde suave basado en primary */
   --input: #e2e8f0;
-  --ring: #1E3A8A;
-  --chart-1: #1E3A8A;
-  --chart-2: #F97316;
-  --chart-3: #3B82F6;
-  --chart-4: #059669;
+  --ring: var(--primary);
+  /* Charts mapeados a la paleta */
+  --chart-1: var(--primary);
+  --chart-2: var(--accent);
+  --chart-3: var(--brand-blue);
+  --chart-4: var(--brand-green);
   --chart-5: #dc2626;
   --radius: 0.5rem;
   --sidebar: #ffffff;
   --sidebar-foreground: #000000;
-  --sidebar-primary: #1E3A8A;
+  --sidebar-primary: var(--primary);
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #f8fafc;
   --sidebar-accent-foreground: #000000;
   --sidebar-border: #e2e8f0;
-  --sidebar-ring: #1E3A8A;
+  --sidebar-ring: var(--primary);
 }
 
 @theme inline {

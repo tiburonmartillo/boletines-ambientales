@@ -406,22 +406,6 @@ function DashboardSection() {
             </div>
 
             {/* Mini suscripción integrada */}
-            <div className="mt-6 bg-white rounded-2xl p-5 sm:p-6 border border-[var(--border)]/80 shadow-lg">
-              <h3 className="font-bold text-[18px] sm:text-[20px] text-[var(--color-primary)] text-center mb-2">
-                ¿Quieres recibir el resumen semanal del boletín?
-              </h3>
-              <p className="text-[14px] sm:text-[16px] text-gray-700/80 text-center">
-                Suscríbete gratis y recibe en tu correo los proyectos ingresados y los resolutivos emitidos, una vez por semana.
-              </p>
-              <div className="mt-4 text-center">
-                <a
-                  href="https://www.notion.so/adnags/29c2b8101e5c80fdbd89f8c03728e80d"
-                  className="inline-block px-6 py-3 rounded-full font-bold text-[16px] bg-[var(--color-accent)] text-white hover:bg-[var(--color-primary)] transition-colors"
-                >
-                  Suscribirme al resumen semanal
-                </a>
-              </div>
-            </div>
           </div>
 
           {/* Right: Illustration */}
@@ -430,7 +414,7 @@ function DashboardSection() {
               {/* Humans illustration */}
               <div className="relative bg-white/10 backdrop-blur-sm rounded-3xl p-8 lg:p-12 border border-white/20">
                 <img 
-                  src="https://blush.design/illustration/s/ZnojT4R8e3IrXUxi?c=Hair_0~fecb51-0.3~4b69fd_Skin_0~d96e05-0.3~dcad7f" 
+                  src="/assets/FloatDoodle.svg" 
                   alt="Personas analizando datos ambientales"
                   className="w-full h-auto max-w-md mx-auto opacity-90"
                   onError={(e) => {
@@ -441,15 +425,15 @@ function DashboardSection() {
                       const fallback = document.createElement('div');
                       fallback.className = 'fallback-illustration flex items-center justify-center h-64';
                       fallback.innerHTML = `
-                        <svg class="w-64 h-64 text-white/40" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <circle cx="200" cy="120" r="30" fill="currentColor"/>
-                          <path d="M120 250 Q120 220 200 220 T280 250" stroke="currentColor" stroke-width="15" fill="none"/>
-                          <circle cx="140" cy="320" r="25" fill="currentColor" opacity="0.7"/>
-                          <circle cx="200" cy="330" r="25" fill="currentColor" opacity="0.8"/>
-                          <circle cx="260" cy="320" r="25" fill="currentColor" opacity="0.7"/>
-                          <rect x="100" y="80" width="200" height="140" rx="10" fill="currentColor" opacity="0.2"/>
-                          <path d="M150 140 L250 140 M150 180 L250 180 M150 220 L250 220" stroke="currentColor" stroke-width="8" opacity="0.5"/>
-                        </svg>
+                      <svg class="w-64 h-64 text-white/40" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="200" cy="120" r="30" fill="currentColor"/>
+                      <path d="M120 250 Q120 220 200 220 T280 250" stroke="currentColor" stroke-width="15" fill="none"/>
+                      <circle cx="140" cy="320" r="25" fill="currentColor" opacity="0.7"/>
+                      <circle cx="200" cy="330" r="25" fill="currentColor" opacity="0.8"/>
+                      <circle cx="260" cy="320" r="25" fill="currentColor" opacity="0.7"/>
+                      <rect x="100" y="80" width="200" height="140" rx="10" fill="currentColor" opacity="0.2"/>
+                      <path d="M150 140 L250 140 M150 180 L250 180 M150 220 L250 220" stroke="currentColor" stroke-width="8" opacity="0.5"/>
+                      </svg>
                       `;
                       parent.appendChild(fallback);
                     }
@@ -504,6 +488,22 @@ function DashboardSection() {
             </div>
           </div>
         </div>
+                      <div className="mt-6 bg-white rounded-2xl p-5 sm:p-6 border border-[var(--border)]/80 shadow-lg">
+                        <h3 className="font-bold text-[18px] sm:text-[20px] text-[var(--color-primary)] text-center mb-2">
+                          ¿Quieres recibir el resumen semanal del boletín?
+                        </h3>
+                        <p className="text-[14px] sm:text-[16px] text-gray-700/80 text-center">
+                          Suscríbete gratis y recibe en tu correo los proyectos ingresados y los resolutivos emitidos, una vez por semana.
+                        </p>
+                        <div className="mt-4 text-center">
+                          <a
+                            href="https://www.notion.so/adnags/29c2b8101e5c80fdbd89f8c03728e80d"
+                            className="inline-block px-6 py-3 rounded-full font-bold text-[16px] bg-[var(--color-accent)] text-white hover:bg-[var(--color-primary)] transition-colors"
+                          >
+                            Suscribirme al resumen semanal
+                          </a>
+                        </div>
+                      </div>
       </div>
     </section>
   );

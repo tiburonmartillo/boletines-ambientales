@@ -404,6 +404,24 @@ function DashboardSection() {
                 Explorar Dashboard
               </Link>
             </div>
+
+            {/* Mini suscripción integrada */}
+            <div className="mt-6 bg-white rounded-2xl p-5 sm:p-6 border border-[var(--border)]/80 shadow-lg">
+              <h3 className="font-bold text-[18px] sm:text-[20px] text-[var(--color-primary)] text-center mb-2">
+                ¿Quieres recibir el resumen semanal del boletín?
+              </h3>
+              <p className="text-[14px] sm:text-[16px] text-gray-700/80 text-center">
+                Suscríbete gratis y recibe en tu correo los proyectos ingresados y los resolutivos emitidos, una vez por semana.
+              </p>
+              <div className="mt-4 text-center">
+                <a
+                  href="https://www.notion.so/adnags/29c2b8101e5c80fdbd89f8c03728e80d"
+                  className="inline-block px-6 py-3 rounded-full font-bold text-[16px] bg-[var(--color-accent)] text-white hover:bg-[var(--color-primary)] transition-colors"
+                >
+                  Suscribirme al resumen semanal
+                </a>
+              </div>
+            </div>
           </div>
 
           {/* Right: Illustration */}

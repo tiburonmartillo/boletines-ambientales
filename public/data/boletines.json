@@ -41368,11 +41368,37 @@
           "boletin_id": 454
         }
       ]
+    },
+    {
+      "id": 455,
+      "secretario": "LIC. SARAHI MACIAS ALICEA",
+      "director": "T.S.U. LUIS MEDINA HERNÁNDEZ",
+      "fecha_publicacion": "04 de noviembre de 2025",
+      "cantidad_ingresados": 0,
+      "cantidad_resolutivos": 1,
+      "filename": "https://www.aguascalientes.gob.mx/SSMAA/BoletinesSMA/Repositorio/2025/11%20Noviembre/BOLETIN44-2025_04%20DE%20NOVIEMBRE_DEL2710_3110.pdf",
+      "proyectos_ingresados": [],
+      "resolutivos_emitidos": [
+        {
+          "numero": 1,
+          "tipo_estudio": "RESOLUTIVO",
+          "promovente": "SISTEMAS DE ARNESES K&S MÉXICANA S.A. DE C.V., PLANTA ALUMINIO",
+          "nombre_proyecto": "K&S PLANTA ALUMINIO SISTEMAS DE ARNESES K&S MEXICANA S.A. DE C.V.",
+          "naturaleza_proyecto": null,
+          "giro": "INDUSTRIAL",
+          "municipio": "SAN FRANCISCO DE LOS ROMO",
+          "expediente": "SSMAA-DIRA-2791-2025",
+          "fecha_ingreso": "16-jun-25",
+          "fecha_resolutivo": "29-ago-25",
+          "no_oficio_resolutivo": "SSMAA/DGGyEA/0931/2025",
+          "boletin_id": 455
+        }
+      ]
     }
   ],
   "metadata": {
-    "total_boletines": 454,
-    "archivos_procesados": 14,
+    "total_boletines": 455,
+    "archivos_procesados": 15,
     "errores": 0,
     "fecha_creacion": "2025-09-24",
     "descripcion": "Archivo JSON completo con todos los boletines ambientales de Aguascalientes"

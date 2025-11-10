@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
 import { Kumbh_Sans } from 'next/font/google'
 import { GeistMono } from 'geist/font/mono'
+import '@radix-ui/themes/styles.css'
 import './globals.css'
 import '../styles/leaflet.css'
+import { RadixThemeProvider } from '@/components/radix-theme-provider'
 
 const kumbhSans = Kumbh_Sans({
   subsets: ['latin'],
@@ -85,7 +87,9 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`font-sans ${kumbhSans.variable} ${GeistMono.variable}`} suppressHydrationWarning>
-        {children}
+        <RadixThemeProvider>
+          {children}
+        </RadixThemeProvider>
       </body>
     </html>
   )

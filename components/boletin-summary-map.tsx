@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Box, Typography, Link, Alert } from '@mui/material'
+import { Box, Text, Link, Callout, Flex } from '@radix-ui/themes'
 import { generarMapaEstaticoOSM, generarURLMapaCompleto, validarCoordenadasParaMapa } from '@/lib/map-static-generator'
 
 interface MapStaticProps {
@@ -72,64 +72,61 @@ export function BoletinSummaryMap({
 
   if (loading) {
     return (
-      <Box
-        sx={{
+      <Flex
+        align="center"
+        justify="center"
+        style={{
           width,
           height,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
           backgroundColor: '#f5f5f5',
           border: '1px solid #e0e0e0',
-          borderRadius: 1
+          borderRadius: 'var(--radius-3)'
         }}
       >
-        <Typography variant="body2" color="text.secondary">
+        <Text size="2" color="gray">
           Cargando mapa...
-        </Typography>
-      </Box>
+        </Text>
+      </Flex>
     )
   }
 
   if (error || !mapData?.success) {
     return (
-      <Box
-        sx={{
+      <Flex
+        direction="column"
+        align="center"
+        justify="center"
+        style={{
           width,
           height,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
           backgroundColor: '#f5f5f5',
           border: '1px solid #e0e0e0',
-          borderRadius: 1,
-          p: 2
+          borderRadius: 'var(--radius-3)',
+          padding: 'var(--space-3)'
         }}
       >
-        <Typography variant="body2" color="error" textAlign="center">
+        <Text size="2" color="red" style={{ textAlign: 'center' }}>
           {error || 'No se pudo cargar el mapa'}
-        </Typography>
-        <Typography variant="caption" color="text.secondary" textAlign="center" sx={{ mt: 1 }}>
+        </Text>
+        <Text size="1" color="gray" style={{ textAlign: 'center', marginTop: 'var(--space-2)' }}>
           Municipio: {municipio}
-        </Typography>
-      </Box>
+        </Text>
+      </Flex>
     )
   }
 
   return (
-    <Box sx={{ width, height }}>
+    <Box style={{ width, height }}>
       {/* Mapa estático */}
-      <Box
-        component="img"
+      <img
         src={mapData.url}
         alt={`Mapa de ubicación en ${municipio}`}
-        sx={{
+        style={{
           width: '100%',
           height: '100%',
           objectFit: 'cover',
           border: '1px solid #e0e0e0',
-          borderRadius: 1,
+          borderRadius: 'var(--radius-3)',
           cursor: 'pointer'
         }}
         onClick={() => {
@@ -141,24 +138,21 @@ export function BoletinSummaryMap({
       />
       
       {/* Información del mapa */}
-      <Box sx={{ mt: 1, textAlign: 'center' }}>
-        <Typography variant="caption" color="text.secondary">
+      <Flex direction="column" align="center" gap="1" style={{ marginTop: 'var(--space-2)' }}>
+        <Text size="1" color="gray">
           Ubicación en {municipio}
-        </Typography>
+        </Text>
         {showLink && mapData.success && (
-          <Box sx={{ mt: 0.5 }}>
-            <Link
-              href={generarURLMapaCompleto(coordenadas_x!, coordenadas_y!)}
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="caption"
-              sx={{ fontSize: '0.75rem' }}
-            >
-              Ver en OpenStreetMap
-            </Link>
-          </Box>
+          <Link
+            href={generarURLMapaCompleto(coordenadas_x!, coordenadas_y!)}
+            target="_blank"
+            rel="noopener noreferrer"
+            size="1"
+          >
+            Ver en OpenStreetMap
+          </Link>
         )}
-      </Box>
+      </Flex>
     </Box>
   )
 }

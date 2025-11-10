@@ -1,7 +1,8 @@
 "use client"
 
 import { useEffect, useMemo, useRef, useState } from "react"
-import { Box, Card, CardContent, TextField, Typography } from "@mui/material"
+import { Box, Card, Heading, Text, Flex } from "@radix-ui/themes"
+import { Input } from "@/components/ui/input"
 import { coordinateValidator } from '@/lib/coordinate-validator'
 
 type Proyecto = {
@@ -319,33 +320,21 @@ export function ProjectsMap({ proyectos, onSelectExpediente }: ProjectsMapProps)
   }, [items, ready])
 
   return (
-    <Card elevation={0} sx={{ borderRadius: '12px', border: '1px solid rgba(30,58,138,.1)' }}>
-      <CardContent sx={{ p: 3 }}>
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-          <Box>
-            <Typography variant="h6" fontWeight="semibold">Mapa de proyectos ingresados</Typography>
-            <Typography variant="body2" color="text.secondary">Pasa el cursor sobre un marcador para ver detalles. Usa la búsqueda para filtrar por promovente, expediente o nombre del proyecto.</Typography>
-          </Box>
-          <TextField 
-            label="Buscar en el mapa" 
-            size="small" 
-            value={query} 
-            onChange={(e) => setQuery(e.target.value)} 
-            placeholder="promovente, expediente, nombre..."
-          />
-          <Box sx={{ height: 520, borderRadius: 2, overflow: 'hidden', position: 'relative', zIndex: 0 }} className="adna-map">
-            <div ref={mapRef} style={{ width: '100%', height: '100%' }} />
-          </Box>
+    <Card style={{ borderRadius: '12px', border: '1px solid rgba(30,58,138,.1)' }}>
+      <Flex direction="column" gap="3" p="4">
+        <Flex direction="column" gap="2">
+          <Heading size="5" weight="bold">Mapa de proyectos ingresados</Heading>
+          <Text size="2" color="gray">Pasa el cursor sobre un marcador para ver detalles. Usa la búsqueda para filtrar por promovente, expediente o nombre del proyecto.</Text>
+        </Flex>
+        <Input
+          placeholder="promovente, expediente, nombre..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        <Box style={{ height: 520, overflow: 'hidden', position: 'relative', zIndex: 0 }} className="adna-map">
+          <div ref={mapRef} style={{ width: '100%', height: '100%' }} />
         </Box>
-      </CardContent>
-      {/* Forzar que Leaflet quede por debajo de cualquier modal */}
-      <style jsx global>{`
-        .adna-map { z-index: 0 !important; }
-        .adna-map .leaflet-pane,
-        .adna-map .leaflet-control,
-        .adna-map .leaflet-top,
-        .adna-map .leaflet-bottom { z-index: 10 !important; }
-      `}</style>
+      </Flex>
     </Card>
   )
 }

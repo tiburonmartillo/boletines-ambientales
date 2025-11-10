@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { Box, Typography, Link } from '@mui/material'
+import { Box, Text, Link, Flex } from '@radix-ui/themes'
 import { coordinateValidator } from '@/lib/coordinate-validator'
 
 interface SimpleMapProps {
@@ -189,27 +189,26 @@ export function SimpleMap({
   // Si no se pudieron convertir las coordenadas o aún no está en el cliente
   if (!isClient || !coords) {
     return (
-      <Box
-        sx={{
+      <Flex
+        direction="column"
+        align="center"
+        justify="center"
+        style={{
           width,
           height,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
           backgroundColor: '#f5f5f5',
           border: '1px solid #e0e0e0',
-          borderRadius: 1,
-          p: 2
+          borderRadius: 'var(--radius-3)',
+          padding: 'var(--space-3)'
         }}
       >
-        <Typography variant="body2" color="text.secondary" textAlign="center">
+        <Text size="2" color="gray" style={{ textAlign: 'center' }}>
           {isClient ? 'Coordenadas no disponibles' : 'Cargando mapa...'}
-        </Typography>
-        <Typography variant="caption" color="text.secondary" textAlign="center" sx={{ mt: 1 }}>
+        </Text>
+        <Text size="1" color="gray" style={{ textAlign: 'center', marginTop: 'var(--space-2)' }}>
           Municipio: {municipio}
-        </Typography>
-      </Box>
+        </Text>
+      </Flex>
     )
   }
 
@@ -218,23 +217,19 @@ export function SimpleMap({
   const osmUrl = generateOpenStreetMapUrl(lat, lng)
 
   return (
-    <Box sx={{ width, height }}>
+    <Box style={{ width, height }}>
       {/* Usar imagen estática por defecto para mejor compatibilidad con PDF */}
-      <Box
-        component="img"
+      <img
         src={mapUrl}
         alt={`Mapa de ubicación en ${municipio}`}
-        sx={{
+        style={{
           width: '100%',
           height: '100%',
           border: '1px solid #e0e0e0',
-          borderRadius: 1,
+          borderRadius: 'var(--radius-3)',
           objectFit: 'cover',
           cursor: 'pointer',
-          backgroundColor: '#f5f5f5', // Fondo gris claro mientras carga
-          '&:hover': {
-            opacity: 0.9
-          }
+          backgroundColor: '#f5f5f5'
         }}
         onClick={() => {
           if (showLink) {
@@ -271,22 +266,19 @@ export function SimpleMap({
       
       {/* Información del mapa - Solo mostrar si showLink es true */}
       {showLink && (
-        <Box sx={{ mt: 1, textAlign: 'center' }}>
-          <Typography variant="caption" color="text.secondary">
+        <Flex direction="column" align="center" gap="1" style={{ marginTop: 'var(--space-2)' }}>
+          <Text size="1" color="gray">
             Ubicación en {municipio}
-          </Typography>
-          <Box sx={{ mt: 0.5 }}>
-            <Link
-              href={osmUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="caption"
-              sx={{ fontSize: '0.75rem' }}
-            >
-              Ver en OpenStreetMap
-            </Link>
-          </Box>
-        </Box>
+          </Text>
+          <Link
+            href={osmUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            size="1"
+          >
+            Ver en OpenStreetMap
+          </Link>
+        </Flex>
       )}
     </Box>
   )

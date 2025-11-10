@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, Typography, Paper, Divider } from '@mui/material'
+import { Box, Heading, Text, Card, Separator, Flex } from '@radix-ui/themes'
 import { Proyecto, Resolutivo } from '@/lib/types'
 import { ClientOnlyMap } from './client-only-map'
 import { formatearFechaCorta } from '@/lib/boletin-utils'
@@ -31,111 +31,67 @@ export function BoletinSummaryProject({ proyecto, numero, tipo, staticMode = fal
   }
 
   return (
-    <Paper
-      elevation={1}
-      sx={{
-        p: 3,
-        mb: 3,
-        borderRadius: 2,
-        border: '1px solid #e0e0e0',
-        backgroundColor: '#ffffff'
-      }}
-    >
-      <Box sx={{ 
-        display: 'flex', 
-        gap: 3,
-        flexDirection: { xs: 'column', lg: 'row' }
-      }}>
+    <Card>
+      <Box p="4" mb="4">
+        <Flex 
+        gap="4"
+        direction={{ initial: 'column', lg: 'row' }}
+      >
         {/* Información del proyecto - Columna izquierda */}
-        <Box sx={{ flex: 1 }}>
-          <Typography
-            variant="h6"
-            component="h3"
-            sx={{
-              fontWeight: 'bold',
-              color: '#1F2937',
-              mb: 2,
-              fontSize: '1.1rem'
-            }}
-          >
+        <Flex direction="column" gap="3" style={{ flex: 1 }}>
+          <Heading size="4" weight="bold">
             {proyecto.nombre_proyecto}
-          </Typography>
+          </Heading>
 
-          <Box sx={{ 
-            display: 'grid',
-            gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
-            gap: 2
-          }}>
+          <Flex direction="column" gap="2" wrap="wrap">
             {/* Promovente */}
             <Box>
-              <Typography variant="body2" sx={{ fontWeight: 'bold', color: '#374151' }}>
-                Promovente:
-              </Typography>
-              <Typography variant="body2" sx={{ color: '#6B7280', ml: 1 }}>
-                {proyecto.promovente}
-              </Typography>
+              <Text size="2" weight="bold">Promovente:</Text>
+              <Text size="2" color="gray">{proyecto.promovente}</Text>
             </Box>
 
             {/* Municipio */}
             <Box>
-              <Typography variant="body2" sx={{ fontWeight: 'bold', color: '#374151' }}>
-                Municipio:
-              </Typography>
-              <Typography variant="body2" sx={{ color: '#6B7280', ml: 1 }}>
-                {proyecto.municipio}
-              </Typography>
+              <Text size="2" weight="bold">Municipio:</Text>
+              <Text size="2" color="gray">{proyecto.municipio}</Text>
             </Box>
 
             {/* Expediente */}
             <Box>
-              <Typography variant="body2" sx={{ fontWeight: 'bold', color: '#374151' }}>
-                Expediente:
-              </Typography>
-              <Typography variant="body2" sx={{ color: '#6B7280', ml: 1 }}>
-                {proyecto.expediente}
-              </Typography>
+              <Text size="2" weight="bold">Expediente:</Text>
+              <Text size="2" color="gray">{proyecto.expediente}</Text>
             </Box>
 
             {/* Fechas */}
             <Box>
-              <Typography variant="body2" sx={{ fontWeight: 'bold', color: '#374151' }}>
+              <Text size="2" weight="bold">
                 {isResolutivo ? 'Fecha de ingreso:' : 'Fechas de ingreso:'}
-              </Typography>
-              <Typography variant="body2" sx={{ color: '#6B7280', ml: 1 }}>
+              </Text>
+              <Text size="2" color="gray">
                 {formatearFechaCorta(proyecto.fecha_ingreso)}
-              </Typography>
+              </Text>
             </Box>
 
             {/* Fecha de resolutivo (solo para resolutivos) */}
             {isResolutivo && resolutivo && (
               <Box>
-                <Typography variant="body2" sx={{ fontWeight: 'bold', color: '#374151' }}>
-                  Fecha de resolutivo:
-                </Typography>
-                <Typography variant="body2" sx={{ color: '#6B7280', ml: 1 }}>
+                <Text size="2" weight="bold">Fecha de resolutivo:</Text>
+                <Text size="2" color="gray">
                   {formatearFechaCorta(resolutivo.fecha_resolutivo)}
-                </Typography>
+                </Text>
               </Box>
             )}
 
             {/* Tipo de estudio */}
             <Box>
-              <Typography variant="body2" sx={{ fontWeight: 'bold', color: '#374151' }}>
-                Tipo:
-              </Typography>
-              <Typography variant="body2" sx={{ color: '#6B7280', ml: 1 }}>
-                {proyecto.tipo_estudio}
-              </Typography>
+              <Text size="2" weight="bold">Tipo:</Text>
+              <Text size="2" color="gray">{proyecto.tipo_estudio}</Text>
             </Box>
-          </Box>
-        </Box>
+          </Flex>
+        </Flex>
 
         {/* Mapa - Columna derecha */}
-        <Box sx={{ 
-          width: { xs: '100%', lg: '50%' },
-          flexShrink: 0,
-          order: { xs: -1, lg: 0 }
-        }}>
+        <Box>
           {coordenadas_x && coordenadas_y ? (
             <ClientOnlyMap
               coordenadas_x={coordenadas_x}
@@ -147,62 +103,41 @@ export function BoletinSummaryProject({ proyecto, numero, tipo, staticMode = fal
               staticMode={staticMode}
             />
           ) : (
-            <Box
-              sx={{
-                width: '100%',
-                height: 300,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor: '#f5f5f5',
-                border: '1px solid #e0e0e0',
-                borderRadius: 1,
-                p: 2
-              }}
+            <Flex
+              direction="column"
+              align="center"
+              justify="center"
+              p="3"
+              style={{ width: '100%', height: 300 }}
             >
-              <Typography variant="body2" color="text.secondary" textAlign="center">
+              <Text size="2" color="gray" align="center">
                 Mapas de ubicación no disponibles
-              </Typography>
-              <Typography variant="caption" color="text.secondary" textAlign="center" sx={{ mt: 1 }}>
+              </Text>
+              <Text size="1" color="gray" align="center" mt="2">
                 Este {isResolutivo ? 'resolutivo' : 'proyecto'} no tiene coordenadas registradas
-              </Typography>
-            </Box>
+              </Text>
+            </Flex>
           )}
         </Box>
-      </Box>
+      </Flex>
 
-      {/* Naturaleza del proyecto - Ocupa el 100% del ancho debajo del contenido principal */}
-      <Box sx={{ mt: 2, width: '100%' }}>
-        <Typography variant="body2" sx={{ fontWeight: 'bold', color: '#374151', mb: 1 }}>
+      {/* Naturaleza del proyecto */}
+      <Box mt="3">
+        <Text size="2" weight="bold" mb="2">
           Naturaleza del proyecto:
-        </Typography>
-        <Box
-          sx={{
-            p: 2,
-            border: '1px solid #d1d5db',
-            borderRadius: 1,
-            backgroundColor: '#f9fafb',
-            width: '100%'
-          }}
-        >
-          <Typography
-            variant="body2"
-            sx={{
-              color: '#374151',
-              lineHeight: 1.5,
-              fontSize: '0.875rem'
-            }}
-          >
+        </Text>
+        <Box p="3">
+          <Text size="2">
             {proyecto.naturaleza_proyecto}
-          </Typography>
+          </Text>
         </Box>
       </Box>
 
       {/* Separador entre proyectos */}
       {numero > 1 && (
-        <Divider sx={{ mt: 3, borderColor: '#e5e7eb' }} />
+        <Separator mt="4" />
       )}
-    </Paper>
+      </Box>
+    </Card>
   )
 }

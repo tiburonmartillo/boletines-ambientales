@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { Box, Typography, Link } from '@mui/material'
+import { Box, Text, Link, Flex } from '@radix-ui/themes'
 import { coordinateValidator } from '@/lib/coordinate-validator'
 
 interface ClientOnlyMapProps {
@@ -199,54 +199,52 @@ export function ClientOnlyMap({
   // Si no está montado, mostrar placeholder consistente
   if (!mounted) {
     return (
-      <Box
-        sx={{
+      <Flex
+        direction="column"
+        align="center"
+        justify="center"
+        style={{
           width,
           height,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
           backgroundColor: '#f5f5f5',
           border: '1px solid #e0e0e0',
-          borderRadius: 1,
-          p: 2
+          borderRadius: 'var(--radius-3)',
+          padding: 'var(--space-3)'
         }}
       >
-        <Typography variant="body2" color="text.secondary" textAlign="center">
+        <Text size="2" color="gray" style={{ textAlign: 'center' }}>
           Cargando mapa...
-        </Typography>
-        <Typography variant="caption" color="text.secondary" textAlign="center" sx={{ mt: 1 }}>
+        </Text>
+        <Text size="1" color="gray" style={{ textAlign: 'center', marginTop: 'var(--space-2)' }}>
           Municipio: {municipio}
-        </Typography>
-      </Box>
+        </Text>
+      </Flex>
     )
   }
 
   // Si no se pudieron convertir las coordenadas
   if (!coords) {
     return (
-      <Box
-        sx={{
+      <Flex
+        direction="column"
+        align="center"
+        justify="center"
+        style={{
           width,
           height,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
           backgroundColor: '#f5f5f5',
           border: '1px solid #e0e0e0',
-          borderRadius: 1,
-          p: 2
+          borderRadius: 'var(--radius-3)',
+          padding: 'var(--space-3)'
         }}
       >
-        <Typography variant="body2" color="text.secondary" textAlign="center">
+        <Text size="2" color="gray" style={{ textAlign: 'center' }}>
           Coordenadas no disponibles
-        </Typography>
-        <Typography variant="caption" color="text.secondary" textAlign="center" sx={{ mt: 1 }}>
+        </Text>
+        <Text size="1" color="gray" style={{ textAlign: 'center', marginTop: 'var(--space-2)' }}>
           Municipio: {municipio}
-        </Typography>
-      </Box>
+        </Text>
+      </Flex>
     )
   }
 
@@ -283,16 +281,15 @@ export function ClientOnlyMap({
     
     // Usar el placeholder directamente ya que el servicio de mapas estáticos puede no estar disponible
     return (
-      <Box sx={{ width: '100%', height }}>
-        <Box
-          component="img"
+      <Box style={{ width: '100%', height }}>
+        <img
           src={placeholderSvg}
           alt={`Mapa de ubicación en ${municipio}`}
-          sx={{
+          style={{
             width: '100%',
             height: '100%',
             border: '1px solid #e0e0e0',
-            borderRadius: 1,
+            borderRadius: 'var(--radius-3)',
             objectFit: 'cover',
             backgroundColor: '#f5f5f5'
           }}
@@ -303,7 +300,7 @@ export function ClientOnlyMap({
 
   // Para la modal, usar iframe como en la modal de ubicación
   return (
-    <Box sx={{ width: '100%', height }}>
+    <Box style={{ width: '100%', height }}>
       <div className="w-full h-full bg-gray-50 rounded-lg overflow-hidden border border-gray-200">
         <iframe
           src={`https://www.openstreetmap.org/export/embed.html?bbox=${lng-0.005},${lat-0.005},${lng+0.005},${lat+0.005}&layer=mapnik&marker=${lat},${lng}`}
@@ -317,22 +314,19 @@ export function ClientOnlyMap({
       
       {/* Información del mapa - Solo mostrar si showLink es true */}
       {showLink && (
-        <Box sx={{ mt: 1, textAlign: 'center' }}>
-          <Typography variant="caption" color="text.secondary">
+        <Flex direction="column" align="center" gap="1" style={{ marginTop: 'var(--space-2)' }}>
+          <Text size="1" color="gray">
             Ubicación en {municipio}
-          </Typography>
-          <Box sx={{ mt: 0.5 }}>
-            <Link
-              href={osmUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="caption"
-              sx={{ fontSize: '0.75rem' }}
-            >
-              Ver en OpenStreetMap
-            </Link>
-          </Box>
-        </Box>
+          </Text>
+          <Link
+            href={osmUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            size="1"
+          >
+            Ver en OpenStreetMap
+          </Link>
+        </Flex>
       )}
     </Box>
   )

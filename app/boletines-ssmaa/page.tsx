@@ -1,15 +1,15 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Box, Container, Typography, Paper, CircularProgress, Alert, Link } from "@mui/material"
-import { MuiDashboardStats } from "@/components/mui-dashboard-stats"
-import { MuiTimeSeriesChart } from "@/components/mui-time-series-chart"
-import { MuiProjectsTable } from "@/components/mui-projects-table"
+import { Box, Flex, Heading, Text, Card, Spinner, Callout, Link } from "@radix-ui/themes"
+import { DashboardStatsRadix } from "@/components/dashboard-stats-radix"
+import { TimeSeriesChartRadix } from "@/components/time-series-chart-radix"
+import { ProjectsTableRadix } from "@/components/projects-table-radix"
 import { ProjectsMap } from "@/components/projects-map"
 import { ErrorBoundary } from "@/components/error-boundary"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
-import { MuiThemeProvider } from "@/components/mui-theme-provider"
+import { RadixThemeProvider } from "@/components/radix-theme-provider"
 import { useDashboardData } from "@/hooks/useDashboardData"
 
 function BoletinesAmbientalesPageContent() {
@@ -19,7 +19,7 @@ function BoletinesAmbientalesPageContent() {
   const { processedData, loading, error } = useDashboardData()
   const [highlightExpediente, setHighlightExpediente] = useState<string | null>(null)
 
-  // Evitar SSR para prevenir hydration mismatch (MUI/emotion/Leaflet)
+  // Evitar SSR para prevenir hydration mismatch
   useEffect(() => { setMounted(true) }, [])
 
   if (!mounted) {
@@ -29,29 +29,44 @@ function BoletinesAmbientalesPageContent() {
   // Mostrar loading mientras carga
   if (loading) {
     return (
-      <Box sx={{ minHeight: '100vh', bgcolor: 'background.default', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <Box sx={{ textAlign: 'center', maxWidth: 400 }}>
-          <CircularProgress size={60} sx={{ color: 'primary.main', mb: 3 }} />
-          <Typography variant="h6" color="text.primary" sx={{ mb: 2 }}>
+      <Flex 
+        direction="column" 
+        align="center" 
+        justify="center" 
+        p="9"
+      >
+        <Flex direction="column" align="center" gap="4">
+          <Spinner size="3" />
+          <Heading size="5">
             Cargando datos del dashboard...
-          </Typography>
-        </Box>
-      </Box>
+          </Heading>
+        </Flex>
+      </Flex>
     )
   }
 
   if (error || !processedData) {
     return (
-      <Box sx={{ minHeight: '100vh', bgcolor: 'background.default', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <Alert severity="error" sx={{ maxWidth: 600 }}>
-          <Typography variant="h6" gutterBottom>
-            Error al cargar los datos
-          </Typography>
-          <Typography variant="body2">
-            {error || "No se pudieron cargar los datos del dashboard. Por favor, intenta de nuevo más tarde."}
-          </Typography>
-        </Alert>
-      </Box>
+      <Flex 
+        direction="column" 
+        align="center" 
+        justify="center" 
+        p="9"
+      >
+        <Callout.Root color="red">
+          <Callout.Icon>⚠️</Callout.Icon>
+          <Callout.Text>
+            <Flex direction="column" gap="2">
+              <Heading size="4">
+                Error al cargar los datos
+              </Heading>
+              <Text>
+                {error || "No se pudieron cargar los datos del dashboard. Por favor, intenta de nuevo más tarde."}
+              </Text>
+            </Flex>
+          </Callout.Text>
+        </Callout.Root>
+      </Flex>
     )
   }
 
@@ -63,44 +78,35 @@ function BoletinesAmbientalesPageContent() {
   }
 
   return (
-    <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
+    <Box>
       <Navbar />
       
       {/* Dashboard Header */}
-      <Paper 
-        elevation={0} 
-        sx={{ 
-          mt: '80px', 
-          bgcolor: 'background.paper',
-          borderRadius: 0
-        }}
-      >
-        <Container maxWidth="xl" sx={{ py: 4 }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Box>
-              <Typography variant="h4" component="h1" fontWeight="bold" color="text.primary">
-                Dashboard de Boletines Ambientales SSMAA
-              </Typography>
-              <Typography variant="subtitle1" color="text.secondary" sx={{ mt: 0.5 }}>
-                Visualización interactiva de los boletines ambientales publicados por la Secretaría de Medio Ambiente del Estado de Aguascalientes en:
-              </Typography>
-              <Link href="https://www.aguascalientes.gob.mx/SSMAA/BoletinesSMA/usuario_webexplorer.asp" target="_blank">
-                <Typography variant="subtitle1" color="text.secondary" sx={{ mt: 0.5 }}>
-                https://www.aguascalientes.gob.mx/SSMAA/BoletinesSMA
-                </Typography>
-              </Link>
-            </Box>
-          </Box>
-        </Container>
-      </Paper>
+      <Card mt="8">
+        <Flex direction="column" gap="2" p="6">
+          <Heading size="8" weight="bold">
+            Dashboard de Boletines Ambientales SSMAA
+          </Heading>
+          <Text size="3" color="gray">
+            Visualización interactiva de los boletines ambientales publicados por la Secretaría de Medio Ambiente del Estado de Aguascalientes en:
+          </Text>
+          <Link 
+            href="https://www.aguascalientes.gob.mx/SSMAA/BoletinesSMA/usuario_webexplorer.asp" 
+            target="_blank"
+          >
+            <Text size="3" color="gray">
+              https://www.aguascalientes.gob.mx/SSMAA/BoletinesSMA
+            </Text>
+          </Link>
+        </Flex>
+      </Card>
 
       {/* Main Content */}
-      <Container maxWidth="xl" sx={{ py: 4 }}>
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+      <Flex direction="column" gap="6" p="6">
 
           {/* Stats Cards */}
           <ErrorBoundary>
-            <MuiDashboardStats
+            <DashboardStatsRadix
               totalBoletines={stats.totalBoletines}
               totalProyectos={stats.totalProyectos}
               totalResolutivos={stats.totalResolutivos}
@@ -109,35 +115,33 @@ function BoletinesAmbientalesPageContent() {
           </ErrorBoundary>
 
           {/* Fecha de actualización */}
-          <Box sx={{ 
-            display: 'flex', 
-            justifyContent: 'center', 
-            alignItems: 'center',
-            py: 2,
-            px: 3,
-            bgcolor: 'background.paper',
-            borderRadius: 2,
-            border: '1px solid rgba(30, 58, 138, 0.1)'
-          }}>
-            <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'center' }}>
-              Última actualización: {(() => {
-                try {
-                  const date = new Date(metadata.lastUpdated)
-                  const monthNames = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
-                  const day = date.getDate()
-                  const month = monthNames[date.getMonth()]
-                  const year = date.getFullYear()
-                  return `${day} de ${month} de ${year}`
-                } catch {
-                  return 'Fecha no disponible'
-                }
-              })()}
-            </Typography>
-          </Box>
+          <Card>
+            <Flex 
+              justify="center" 
+              align="center"
+              py="3"
+              px="4"
+            >
+              <Text size="2" color="gray" align="center">
+                Última actualización: {(() => {
+                  try {
+                    const date = new Date(metadata.lastUpdated)
+                    const monthNames = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
+                    const day = date.getDate()
+                    const month = monthNames[date.getMonth()]
+                    const year = date.getFullYear()
+                    return `${day} de ${month} de ${year}`
+                  } catch {
+                    return 'Fecha no disponible'
+                  }
+                })()}
+              </Text>
+            </Flex>
+          </Card>
 
           {/* Time Series Chart - Full Width */}
           <ErrorBoundary>
-            <MuiTimeSeriesChart 
+            <TimeSeriesChartRadix 
               data={timeSeriesData}
               onDateSelect={handleDateSelect}
             />
@@ -153,7 +157,7 @@ function BoletinesAmbientalesPageContent() {
 
           {/* Projects Table */}
           <ErrorBoundary>
-            <MuiProjectsTable
+            <ProjectsTableRadix
               proyectos={proyectos}
               resolutivos={resolutivos}
               municipios={stats.municipios}
@@ -163,8 +167,7 @@ function BoletinesAmbientalesPageContent() {
               highlightExpediente={highlightExpediente || undefined}
             />
           </ErrorBoundary>
-        </Box>
-      </Container>
+        </Flex>
 
       <Footer />
     </Box>
@@ -172,9 +175,5 @@ function BoletinesAmbientalesPageContent() {
 }
 
 export default function BoletinesAmbientalesPage() {
-  return (
-    <MuiThemeProvider>
-      <BoletinesAmbientalesPageContent />
-    </MuiThemeProvider>
-  )
+  return <BoletinesAmbientalesPageContent />
 }

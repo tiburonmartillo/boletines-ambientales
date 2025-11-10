@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, Typography, Paper, Button, Divider } from '@mui/material'
+import { Box, Heading, Text, Button, Separator, Flex, Card, Link } from '@radix-ui/themes'
 import { Boletin } from '@/lib/types'
 import { BoletinSummaryProject } from './boletin-summary-project'
 import { 
@@ -34,78 +34,33 @@ export function BoletinSummary({
   }
 
   return (
-    <Box
-      id="boletin-summary"
-      className="boletin-summary"
-      sx={{
-        maxWidth: '100%',
-        margin: '0 auto',
-        backgroundColor: '#ffffff'
-      }}
-    >
-      {/* Header naranja */}
-      <Box
-        sx={{
-          backgroundColor: '#F97316',
-          color: '#ffffff',
-          py: { xs: 2, md: 3 },
-          px: { xs: 2, md: 4 },
-          textAlign: 'center',
-          borderRadius: '8px 8px 0 0'
-        }}
-      >
-        <Typography
-          variant="h4"
-          component="h1"
-          sx={{
-            fontWeight: 'bold',
-            fontSize: { xs: '1.25rem', md: '1.75rem' },
-            mb: 1
-          }}
-        >
-          Resumen del Boletín Ambiental de SSMAA
-        </Typography>
-        <Typography
-          variant="h6"
-          sx={{
-            fontSize: { xs: '1rem', md: '1.25rem' },
-            fontWeight: 400
-          }}
-        >
-          {formatearFechaCorta(boletin.fecha_publicacion)}
-        </Typography>
+    <Card id="boletin-summary" className="boletin-summary">
+      {/* Header */}
+      <Box p="4" style={{ backgroundColor: '#F97316', color: '#ffffff' }}>
+        <Flex direction="column" gap="2" align="center">
+          <Heading size="8" weight="bold">
+            Resumen del Boletín Ambiental de SSMAA
+          </Heading>
+          <Text size="5">
+            {formatearFechaCorta(boletin.fecha_publicacion)}
+          </Text>
+        </Flex>
       </Box>
 
       {/* Contenido principal */}
-      <Box sx={{ p: { xs: 2, md: 4 } }}>
+      <Box p="4">
         {/* Sección de proyectos ingresados */}
         {boletin.proyectos_ingresados && boletin.proyectos_ingresados.length > 0 && (
-          <Box sx={{ mb: 4 }}>
-            <Typography
-              variant="h5"
-              component="h2"
-              sx={{
-                fontWeight: 'bold',
-                color: '#1F2937',
-                mb: 2,
-                fontSize: '1.5rem'
-              }}
-            >
+          <Flex direction="column" gap="4" mb="6">
+            <Heading size="6" weight="bold">
               Proyectos ingresados a impacto ambiental
-            </Typography>
+            </Heading>
             
-            <Typography
-              variant="body1"
-              sx={{
-                color: '#6B7280',
-                mb: 3,
-                fontSize: '1rem'
-              }}
-            >
+            <Text size="3" color="gray">
               Fecha límite para solicitud de consulta pública: {fechaLimiteFormateada}
-            </Typography>
+            </Text>
 
-            <Divider sx={{ mb: 3, borderColor: '#e5e7eb' }} />
+            <Separator />
 
             {/* Lista de proyectos */}
             {boletin.proyectos_ingresados.map((proyecto, index) => (
@@ -118,29 +73,19 @@ export function BoletinSummary({
                 todosLosProyectos={boletin.proyectos_ingresados}
               />
             ))}
-          </Box>
+          </Flex>
         )}
 
         {/* Sección de resolutivos emitidos */}
-        <Box sx={{ mb: 4 }}>
-          <Typography
-            variant="h5"
-            component="h2"
-            sx={{
-              fontWeight: 'bold',
-              color: '#1F2937',
-              mb: 2,
-              fontSize: '1.5rem',
-              textAlign: 'center'
-            }}
-          >
+        <Flex direction="column" gap="4" mb="6">
+          <Heading size="6" weight="bold" align="center">
             {getTextoResolutivos(boletin)}
-          </Typography>
+          </Heading>
 
           {/* Lista de resolutivos */}
           {boletin.resolutivos_emitidos && boletin.resolutivos_emitidos.length > 0 && (
             <>
-              <Divider sx={{ mb: 3, borderColor: '#e5e7eb' }} />
+              <Separator />
               {boletin.resolutivos_emitidos.map((resolutivo, index) => (
                 <BoletinSummaryProject
                   key={`resolutivo-${resolutivo.expediente}`}
@@ -153,88 +98,45 @@ export function BoletinSummary({
               ))}
             </>
           )}
-        </Box>
+        </Flex>
 
       </Box>
 
       {/* Footer */}
-      <Box
-        sx={{
-          backgroundColor: '#f9fafb',
-          borderTop: '1px solid #e5e7eb',
-          py: { xs: 2, md: 3 },
-          px: { xs: 2, md: 4 },
-          borderRadius: '0 0 8px 8px'
-        }}
-      >
-        <Box sx={{ 
-          display: 'flex', 
-          justifyContent: 'space-between', 
-          alignItems: 'center',
-          flexDirection: { xs: 'column', md: 'row' },
-          gap: { xs: 2, md: 0 }
-        }}>
+      <Box p="4" style={{ backgroundColor: '#f9fafb', borderTop: '1px solid #e5e7eb' }}>
+        <Flex 
+          justify="between" 
+          align="center"
+          direction={{ initial: 'column', md: 'row' }}
+          gap="4"
+        >
           {/* Información legal */}
-          <Box sx={{ flex: 1 }}>
-            <Typography
-              variant="caption"
-              sx={{
-                color: '#6B7280',
-                fontSize: '0.75rem',
-                lineHeight: 1.4,
-                display: 'block',
-                mb: 1
-              }}
-            >
+          <Flex direction="column" gap="2">
+            <Text size="1" color="gray">
               La información presentada es obtenida de{' '}
-              <Box
-                component="a"
+              <Link
                 href="https://www.aguascalientes.gob.mx/SSMAA/BoletinesSMA/usuario_webexplorer.asp"
                 target="_blank"
                 rel="noopener noreferrer"
-                sx={{ color: '#F97316', textDecoration: 'none' }}
               >
                 https://www.aguascalientes.gob.mx/SSMAA/BoletinesSMA/usuario_webexplorer.asp
-              </Box>
-            </Typography>
-            <Typography
-              variant="caption"
-              sx={{
-                color: '#6B7280',
-                fontSize: '0.75rem',
-                lineHeight: 1.4,
-                display: 'block',
-                mb: 1
-              }}
-            >
+              </Link>
+            </Text>
+            <Text size="1" color="gray">
               La precisión de las ubicaciones y la calidad de la información son responsabilidad de la Secretaría de Sustentabilidad, Medio Ambiente y Agua.
-            </Typography>
-            <Typography
-              variant="caption"
-              sx={{
-                color: '#6B7280',
-                fontSize: '0.75rem',
-                lineHeight: 1.4,
-                display: 'block'
-              }}
-            >
+            </Text>
+            <Text size="1" color="gray">
               ADN-A se limita a compartir información pública de interés para la sociedad.
-            </Typography>
-          </Box>
+            </Text>
+          </Flex>
 
           {/* Logo */}
-          <Box sx={{ ml: { xs: 0, md: 3 } }}>
-            <Box
-              component="img"
-              src="/assets/logocompleto.png"
-              alt="Alianza por la Defensa de la Naturaleza Aguascalientes"
-              sx={{
-                height: { xs: 40, md: 60 },
-                width: 'auto'
-              }}
-            />
-          </Box>
-        </Box>
+          <img
+            src="/assets/logocompleto.png"
+            alt="Alianza por la Defensa de la Naturaleza Aguascalientes"
+            style={{ height: '60px', width: 'auto' }}
+          />
+        </Flex>
       </Box>
 
       {/* Estilos CSS para impresión */}
@@ -253,13 +155,8 @@ export function BoletinSummary({
             box-shadow: none !important;
             border: none !important;
           }
-          
-          .MuiPaper-root {
-            box-shadow: none !important;
-            border: 1px solid #e0e0e0 !important;
-          }
         }
       `}</style>
-    </Box>
+    </Card>
   )
 }

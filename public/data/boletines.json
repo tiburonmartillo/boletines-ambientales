@@ -85,7 +85,7 @@
           "fecha_resolutivo": "2016-12-23",
           "no_oficio_resolutivo": "SMAE-DIRA.2962/16",
           "boletin_id": 2,
-          "naturaleza_proyecto": "Construcción de Nave Industrial en donde se fabricarán productos de belleza para el cabello, ubicada en la calle Textileros Lote 15, 16 y 17 del Parque Industrial Chichimeco, municipio de Jesús María. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS PUBLICACIÓN SMAE-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Construcción de Nave Industrial en donde se fabricarán productos de belleza para el cabello, ubicada en la calle Textileros Lote 15, 16 y 17 del Parque Industrial Chichimeco, municipio de Jesús María."
         }
       ],
       "año": 2016,
@@ -207,7 +207,7 @@
           "fecha_ingreso": "2017-01-16",
           "boletin_id": 6,
           "coord_valida": null,
-          "naturaleza_proyecto": "Se constituye de un estacionamiento en planta subterráneo, 33 locales, comerciales distribuidos en dos niveles, 3 terrazas, áreas verdes y/o ajardinadas, elevador, sanitarios a ubicarse en Avenida Aguascalientes Poniente s/n, Fracc. España en el municipio de Aguascalientes. El predio consta de una superficie total de 4,938.74 m2. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS PUBLICACIÓN SMAE-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Se constituye de un estacionamiento en planta subterráneo, 33 locales, comerciales distribuidos en dos niveles, 3 terrazas, áreas verdes y/o ajardinadas, elevador, sanitarios a ubicarse en Avenida Aguascalientes Poniente s/n, Fracc. España en el municipio de Aguascalientes. El predio consta de una superficie total de 4,938.74 m2."
         },
         {
           "numero": 2,
@@ -313,7 +313,7 @@
           "fecha_ingreso": "2017-01-27",
           "boletin_id": 7,
           "coord_valida": null,
-          "naturaleza_proyecto": "El proyecto actual consiste en la edificación de una nave industrial con una superficie total de 22,000.06 m2. La nave contará con las siguientes áreas y/o servicios: oficinas, comedor, nave, pasillos (3), baños y vistidores, cuarto de bonbas, cuarto de compresores, cuarto de calderas, cuarto de subestación, cuarto de residuos peligrosos, caseta de vigilancia, estacionamiento. Ubicada en calle Prolongación J. Gómez Portugal, en el municipio de Jesús María. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS PUBLICACIÓN SMAE-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "El proyecto actual consiste en la edificación de una nave industrial con una superficie total de 22,000.06 m2. La nave contará con las siguientes áreas y/o servicios: oficinas, comedor, nave, pasillos (3), baños y vistidores, cuarto de bonbas, cuarto de compresores, cuarto de calderas, cuarto de subestación, cuarto de residuos peligrosos, caseta de vigilancia, estacionamiento. Ubicada en calle Prolongación J. Gómez Portugal, en el municipio de Jesús María."
         },
         {
           "numero": 4,
@@ -435,7 +435,7 @@
           "fecha_ingreso": "2017-02-15",
           "boletin_id": 10,
           "coord_valida": null,
-          "naturaleza_proyecto": "AMPLIACIÓN Y MODERNIZAZCIÓN DE LA AV. ABEALARDO LÓPEZ RODRÍGUEZ, EN EL MUNICIPIO DE AGUASCALIENTES. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS PUBLICACIÓN SMAE-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "AMPLIACIÓN Y MODERNIZAZCIÓN DE LA AV. ABEALARDO LÓPEZ RODRÍGUEZ, EN EL MUNICIPIO DE AGUASCALIENTES."
         },
         {
           "numero": 2,
@@ -526,7 +526,7 @@
           "fecha_ingreso": "2017-02-22",
           "boletin_id": 11,
           "coord_valida": null,
-          "naturaleza_proyecto": "CONSTRUCCIÓN DE UNA NAVE INDUSTRIAL PARA LA INSTALACIÓN DE LA EMPRESA GESTAMP AGUASCALIENTES, S.A. DE C.V. AMPLIACIÓN DE LAS INSTALACIONES EXISTENTES PARA LA UBICACIÓN DEL ÁREA DE ALMACENAMIENTO DE PRODUCTO TERMINADO; ALMACEN PROGRESIVO, UBICADO EN AV. JAPÓN 3 124, PARQUE INDUSTRIAL SAN FRANCISCO DE LOS ROMO, EN EL MUNICIPIO DE SAN FRANCISCO DE LOS ROMO. A T E N T A M E N T E PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS PUBLICACIÓN SMAE-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "CONSTRUCCIÓN DE UNA NAVE INDUSTRIAL PARA LA INSTALACIÓN DE LA EMPRESA GESTAMP AGUASCALIENTES, S.A. DE C.V. AMPLIACIÓN DE LAS INSTALACIONES EXISTENTES PARA LA UBICACIÓN DEL ÁREA DE ALMACENAMIENTO DE PRODUCTO TERMINADO; ALMACEN PROGRESIVO, UBICADO EN AV. JAPÓN 3 124, PARQUE INDUSTRIAL SAN FRANCISCO DE LOS ROMO, EN EL MUNICIPIO DE SAN FRANCISCO DE LOS ROMO. A T E N T A M E N T E."
         }
       ],
       "resolutivos_emitidos": [
@@ -1566,7 +1566,7 @@
           "fecha_resolutivo": "2017-06-05",
           "no_oficio_resolutivo": "SMAE-DIRA-0932-17",
           "boletin_id": 26,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental consiste en desarrollar un distribuidor vial que da preferencia de movilidad en todas las direcciones. Para el caso particular del sentido de circulación oriente-poniente sobre Tercer Anillo, la estructura se desarrolla desde la parte oriente con una rampa de ascenso de 147 m, posteriomente se mantiene elevada en una distancia de 555 m, seguidos de la rampa poniente de descenso desarrollada en 140 m de distancia, esta maniobra sirve para el movimiento de frente sobre tercer anillo rumbo a Jesús Maria, Ags. en una superficie aproximada de 88,400.00 m2. Ubicada en Av. Siglo XXI y la carretera 45 que va hacia Rincón de Romos y conexión con Zacatecas en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 13 DE JUNIO DE 2017 -"
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental consiste en desarrollar un distribuidor vial que da preferencia de movilidad en todas las direcciones. Para el caso particular del sentido de circulación oriente-poniente sobre Tercer Anillo, la estructura se desarrolla desde la parte oriente con una rampa de ascenso de 147 m, posteriomente se mantiene elevada en una distancia de 555 m, seguidos de la rampa poniente de descenso desarrollada en 140 m de distancia, esta maniobra sirve para el movimiento de frente sobre tercer anillo rumbo a Jesús Maria, Ags. en una superficie aproximada de 88,400.00 m2. Ubicada en Av. Siglo XXI y la carretera 45 que va hacia Rincón de Romos y conexión con Zacatecas en el municipio de Aguascalientes."
         },
         {
           "numero": 2,
@@ -5095,7 +5095,7 @@
           "fecha_ingreso": "2018-03-09",
           "boletin_id": 65,
           "coord_valida": null,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de una planta, que servirá específicamente de bodega de almacenamiento para productos de blancos para el hogar (edredones, fundas, colchas, sabanas, almohadas, cobertores, etc.), que serán empaquetadas en dicha bodega para su traslado a las tiendas donde serán posteriormente vendidas, a ubicarse en Av. Siglo XXI 1992, . PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 13 DE MARZO DE 2018 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de una planta, que servirá específicamente de bodega de almacenamiento para productos de blancos para el hogar (edredones, fundas, colchas, sabanas, almohadas, cobertores, etc.), que serán empaquetadas en dicha bodega para su traslado a las tiendas donde serán posteriormente vendidas, a ubicarse en Av. Siglo XXI 1992, ."
         }
       ],
       "resolutivos_emitidos": [
@@ -5301,7 +5301,7 @@
           "fecha_resolutivo": "2018-03-12",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/643/18",
           "boletin_id": 66,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la demolición de las instalaciones actuales del Centro de Salud y la construcción del nuevo Centro de Salud Jarillas, las instalaciones consistirán con las siguientes áreas: sala de espera, consultorios, farmacia y caja, servicios admon., vestidores y baños de enfermeras, séptico y aseo, habitación del médico, servicios sanitarios hombres y mujeres, servicios generales y bodega, ubicado en calle Matamoros s/n en el municipio de Asientos. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 20 DE MARZO DE 2018 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la demolición de las instalaciones actuales del Centro de Salud y la construcción del nuevo Centro de Salud Jarillas, las instalaciones consistirán con las siguientes áreas: sala de espera, consultorios, farmacia y caja, servicios admon., vestidores y baños de enfermeras, séptico y aseo, habitación del médico, servicios sanitarios hombres y mujeres, servicios generales y bodega, ubicado en calle Matamoros s/n en el municipio de Asientos."
         }
       ],
       "año": 2018,
@@ -6029,7 +6029,7 @@
           "fecha_resolutivo": "2018-04-30",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/1006/18",
           "boletin_id": 73,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la urbanización de 250 lotes habitacionales y comerciales dentro de un predio que cuenta con una superficie total de 53,071.47 m2 ubicado al oriente de la Ciudad de Aguascalientes, en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 8 DE MAYO DE 2018 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la urbanización de 250 lotes habitacionales y comerciales dentro de un predio que cuenta con una superficie total de 53,071.47 m2 ubicado al oriente de la Ciudad de Aguascalientes, en el municipio de Aguascalientes."
         }
       ],
       "año": 2018,
@@ -6223,7 +6223,7 @@
           "fecha_ingreso": "2018-05-16",
           "boletin_id": 75,
           "coord_valida": null,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en el almacenamiento de producto terminado (dulces y caramelos), ubicado en la calle Circuito Japón No. 104, en el Parque Industrial San Francisco en el municipio de San Francisco de los Romo. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 22 DE MAYO DE 2018 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en el almacenamiento de producto terminado (dulces y caramelos), ubicado en la calle Circuito Japón No. 104, en el Parque Industrial San Francisco en el municipio de San Francisco de los Romo."
         },
         {
           "numero": 4,
@@ -6328,7 +6328,7 @@
           "fecha_ingreso": "2018-05-24",
           "boletin_id": 76,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental y Estudio de Riesgo los cuales consisten en la operación del Hotel Fiesta Inn Aguascalientes, el cual se encuentra en un predio de una superficie de 7,3000 m2, el proyecto cuenta con una capacidad de 125 habitaciones divididas en dobles, sencillas y junior suite. La zona norte se encuentra construida en tres niveles, mientras que la del sur tiene una parte con dos niveles y otra zona es de un solo nivel, cuartos de máquinas y comedor, ubicada en Prados de Villasunción en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 29 DE MAYO DE 2018 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental y Estudio de Riesgo los cuales consisten en la operación del Hotel Fiesta Inn Aguascalientes, el cual se encuentra en un predio de una superficie de 7,3000 m2, el proyecto cuenta con una capacidad de 125 habitaciones divididas en dobles, sencillas y junior suite. La zona norte se encuentra construida en tres niveles, mientras que la del sur tiene una parte con dos niveles y otra zona es de un solo nivel, cuartos de máquinas y comedor, ubicada en Prados de Villasunción en el municipio de Aguascalientes."
         },
         {
           "numero": 2,
@@ -6489,7 +6489,7 @@
           "fecha_ingreso": "2018-05-30",
           "boletin_id": 77,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la ampliación de servicios de acopio, Co-procesamiento para realizar la recuperación de todo tipo de residuos sólidos urbanos y de manejo especial ferrosos y no ferrosos, ubicada en Boulevard Chichimeco # 2009, comunidad de San Antonio de los Horcones, en el municipio de Jesús María. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 5 DE JUNIO DE 2018 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la ampliación de servicios de acopio, Co-procesamiento para realizar la recuperación de todo tipo de residuos sólidos urbanos y de manejo especial ferrosos y no ferrosos, ubicada en Boulevard Chichimeco # 2009, comunidad de San Antonio de los Horcones, en el municipio de Jesús María."
         },
         {
           "numero": 3,
@@ -6594,7 +6594,7 @@
           "fecha_ingreso": "2018-06-05",
           "boletin_id": 78,
           "coord_valida": null,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la rehabilitación del firme de concretado existente y la colocación de la techumbre correspondiente, ubicada San Pedro en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 12 DE JUNIO DE 2018 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la rehabilitación del firme de concretado existente y la colocación de la techumbre correspondiente, ubicada San Pedro en el municipio de Aguascalientes."
         },
         {
           "numero": 2,
@@ -6743,7 +6743,7 @@
           "fecha_resolutivo": "2018-06-11",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/1367/18",
           "boletin_id": 79,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en realizar trabajos de extracción de tepetate, dentro del predio de uso agrícola, el cual tiene como superficie total de 10,000.00, la superficie propuesta para el proyecto es de 8.830.78 m2, ubicado en el Ejido Norias de Paso Hondo en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 19 DE JUNIO DE 2018 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en realizar trabajos de extracción de tepetate, dentro del predio de uso agrícola, el cual tiene como superficie total de 10,000.00, la superficie propuesta para el proyecto es de 8.830.78 m2, ubicado en el Ejido Norias de Paso Hondo en el municipio de Aguascalientes."
         },
         {
           "numero": 3,
@@ -7171,7 +7171,7 @@
           "fecha_ingreso": "2018-07-16",
           "boletin_id": 84,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la operación de un Centro de Acopio y separación de plásticos reciclables de origen po sindustrial, en donde las actividades principales son el acopio, separación, triturado, prensado y por ultimo su comercialización, ubicado en km. 1.6 de la Av. Héroe Inmortal en dirección a Los Arellano en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 24 DE JULIO DE 2018 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la operación de un Centro de Acopio y separación de plásticos reciclables de origen po sindustrial, en donde las actividades principales son el acopio, separación, triturado, prensado y por ultimo su comercialización, ubicado en km. 1.6 de la Av. Héroe Inmortal en dirección a Los Arellano en el municipio de Aguascalientes."
         },
         {
           "numero": 2,
@@ -7351,7 +7351,7 @@
           "fecha_resolutivo": "2018-07-24",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/1934/18",
           "boletin_id": 85,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en realizar trabajos de extracción de tepetate, dentro del predio de uso agrícola, el cual tiene como superficie total de 10,000.00, la superficie propuesta para el proyecto es de 8.830.78 m2, ubicado en el Ejido Norias de Paso Hondo en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 31 DE JULIO DE 2018 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en realizar trabajos de extracción de tepetate, dentro del predio de uso agrícola, el cual tiene como superficie total de 10,000.00, la superficie propuesta para el proyecto es de 8.830.78 m2, ubicado en el Ejido Norias de Paso Hondo en el municipio de Aguascalientes."
         },
         {
           "numero": 3,
@@ -7453,7 +7453,7 @@
           "fecha_ingreso": "2018-08-02",
           "boletin_id": 86,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la implementación de un corredor de 17.64 km de longitud con 27 puntos de ascenso y descenso dividido en 2 ejes, el cual será utilizado por 18 unidades de transporte de gas natural, de los cuales 10 unidades serán implementados en la ruta 41, que corre desde salida a San Luis potosí al penal, y la ruta 8 en la ruta 25, que corre de Ojocaliente a UTA, posteriormente se incluirán 30 unidades a diésel que se irán actualizando progresivamente a euro V y euro VI en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 7 DE AGOSTO DE 2018 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la implementación de un corredor de 17.64 km de longitud con 27 puntos de ascenso y descenso dividido en 2 ejes, el cual será utilizado por 18 unidades de transporte de gas natural, de los cuales 10 unidades serán implementados en la ruta 41, que corre desde salida a San Luis potosí al penal, y la ruta 8 en la ruta 25, que corre de Ojocaliente a UTA, posteriormente se incluirán 30 unidades a diésel que se irán actualizando progresivamente a euro V y euro VI en el municipio de Aguascalientes."
         },
         {
           "numero": 4,
@@ -7630,7 +7630,7 @@
           "fecha_resolutivo": "2017-08-07",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/2082/18",
           "boletin_id": 87,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la evaluación de los impactos generados por la operación de una empresa dedicada a la elaboración de estructuras metálicas, los productos realizados en las instalaciones son armadas bajo pedido, por lo que la producción varía y no se almacena materia prima o productos por periodos prolongados, ubicado en calle Agustín Mejía No. 302, Fracc. Nazario Ortiz Garza en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 14 DE AGOSTO DE 2018 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la evaluación de los impactos generados por la operación de una empresa dedicada a la elaboración de estructuras metálicas, los productos realizados en las instalaciones son armadas bajo pedido, por lo que la producción varía y no se almacena materia prima o productos por periodos prolongados, ubicado en calle Agustín Mejía No. 302, Fracc. Nazario Ortiz Garza en el municipio de Aguascalientes."
         },
         {
           "numero": 3,
@@ -7734,7 +7734,7 @@
           "fecha_resolutivo": "2018-08-13",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/2081/18",
           "boletin_id": 88,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la implementación de un corredor de 17.64 km de longitud con 27 puntos de ascenso y descenso dividido en 2 ejes, el cual será utilizado por 18 unidades de transporte de gas natural, de los cuales 10 unidades serán implementados en la ruta 41, que corre desde salida a San Luis potosí al penal, y la ruta 8 en la ruta 25, que corre de Ojocaliente a UTA, posteriormente se incluirán 30 unidades a diésel que se irán actualizando progresivamente a euro V y euro VI en el municipio de Aguascalientes. Y 914-6030, PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 21 DE AGOSTO DE 2018 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la implementación de un corredor de 17.64 km de longitud con 27 puntos de ascenso y descenso dividido en 2 ejes, el cual será utilizado por 18 unidades de transporte de gas natural, de los cuales 10 unidades serán implementados en la ruta 41, que corre desde salida a San Luis potosí al penal, y la ruta 8 en la ruta 25, que corre de Ojocaliente a UTA, posteriormente se incluirán 30 unidades a diésel que se irán actualizando progresivamente a euro V y euro VI en el municipio de Aguascalientes. Y 914-6030."
         },
         {
           "numero": 3,
@@ -7924,7 +7924,7 @@
           "fecha_ingreso": "2018-08-30",
           "boletin_id": 90,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la urbanización para la construcción del Fracc. Villa Loma Dorada II. La urbanización del predio contempla un total de 797 lotes, de los cuales 790 serán habitacionales unifamiliares, 3 lotes multifamiliares, 2 lotes de donación, uno destinado para el área de reforestación y la zona Federal del Afluente sin nombre del Arroyo Los Arellano, ubicado en lo que fue el Ejido Las Cumbres, al oriente de la Ciudad en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 4 DE SEPTIEMBRE DE 2018 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la urbanización para la construcción del Fracc. Villa Loma Dorada II. La urbanización del predio contempla un total de 797 lotes, de los cuales 790 serán habitacionales unifamiliares, 3 lotes multifamiliares, 2 lotes de donación, uno destinado para el área de reforestación y la zona Federal del Afluente sin nombre del Arroyo Los Arellano, ubicado en lo que fue el Ejido Las Cumbres, al oriente de la Ciudad en el municipio de Aguascalientes."
         },
         {
           "numero": 3,
@@ -8189,7 +8189,7 @@
           "fecha_resolutivo": "2018-09-10",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/2300/18",
           "boletin_id": 92,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de la cuarta etapa y ultima del Fracc. Villas de Don Antonio, esta fracción posee una superficie de escritura de 34,405.94 m2, en donde se considera la construcción de 71 lotes habitacionales, la mayoría de ella multifamiliares, ubicada al sur del Fracc. Villas de Nuestra Señora de la Asunción en el sector Nor-Oriente en el municipio de Aguascalientes. C.P. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 18 DE SEPTIEMBRE DE 2018 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de la cuarta etapa y ultima del Fracc. Villas de Don Antonio, esta fracción posee una superficie de escritura de 34,405.94 m2, en donde se considera la construcción de 71 lotes habitacionales, la mayoría de ella multifamiliares, ubicada al sur del Fracc. Villas de Nuestra Señora de la Asunción en el sector Nor-Oriente en el municipio de Aguascalientes. C.P."
         },
         {
           "numero": 3,
@@ -8770,7 +8770,7 @@
           "fecha_ingreso": "2018-10-26",
           "boletin_id": 98,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la urbanización y construcción de vivienda, en un predio rústico con una superficie total de 170,321.49 m2. El proyecto contará con 554 lotes, de los cuales 540 lotes son habitacionales y 13 lotes son comerciales, ubicado en la carretera estatal 45, casi esquina con Av. Siglo XXI en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 30 DE OCTUBRE DE 2018 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la urbanización y construcción de vivienda, en un predio rústico con una superficie total de 170,321.49 m2. El proyecto contará con 554 lotes, de los cuales 540 lotes son habitacionales y 13 lotes son comerciales, ubicado en la carretera estatal 45, casi esquina con Av. Siglo XXI en el municipio de Aguascalientes."
         }
       ],
       "resolutivos_emitidos": [
@@ -9066,7 +9066,7 @@
           "fecha_ingreso": "2018-11-15",
           "boletin_id": 101,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la urbanización de un predio de una superficie de 4,860.98 m2 que incluye tres vialidades interiores al perímetro del polígono; consiste en la introducción de servicios de agua potable, alcantarillado, electrificación, guarniciones, banquetas y pavimento, y posterior edificación de 16 edificios multifamiliares de tres niveles, ubicado el nororiente de la Ciudad en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 20 DE NOVIEMBRE DE 2018 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la urbanización de un predio de una superficie de 4,860.98 m2 que incluye tres vialidades interiores al perímetro del polígono; consiste en la introducción de servicios de agua potable, alcantarillado, electrificación, guarniciones, banquetas y pavimento, y posterior edificación de 16 edificios multifamiliares de tres niveles, ubicado el nororiente de la Ciudad en el municipio de Aguascalientes."
         }
       ],
       "resolutivos_emitidos": [
@@ -9275,7 +9275,7 @@
           "fecha_ingreso": "2018-12-06",
           "boletin_id": 104,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la producción de a partir de la fundición de aluminio como objeto primario elaborando lingotes en un área de la nave, ubicada en calle Pabellón de Arteaga No. 101, Parque Industrial Valle de Aguascalientes en el municipio de San Francisco de los Romo. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 11 DE DICIEMBRE DE 2018 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la producción de a partir de la fundición de aluminio como objeto primario elaborando lingotes en un área de la nave, ubicada en calle Pabellón de Arteaga No. 101, Parque Industrial Valle de Aguascalientes en el municipio de San Francisco de los Romo."
         },
         {
           "numero": 2,
@@ -9436,7 +9436,7 @@
           "fecha_resolutivo": "2018-12-14",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/03086/18",
           "boletin_id": 105,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de un fraccionamiento de tipo medio en el cual se tienen proyectados 44 lotes habitacionales, 1 lote de usos mixtos y 1 lote comercial, el lote habitacional es de 160 m2, el desarrollo cuenta con 6 privadas que se desarrollarán en 3 etapas, ubicado en calle López Mateos, . PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 18 DE DICIEMBRE DE 2018 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de un fraccionamiento de tipo medio en el cual se tienen proyectados 44 lotes habitacionales, 1 lote de usos mixtos y 1 lote comercial, el lote habitacional es de 160 m2, el desarrollo cuenta con 6 privadas que se desarrollarán en 3 etapas, ubicado en calle López Mateos, ."
         },
         {
           "numero": 3,
@@ -9768,7 +9768,7 @@
           "fecha_resolutivo": "2019-01-17",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/0032/19",
           "boletin_id": 109,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la urbanización, lotificación. Construcción de los servicios para albergar un condominio unifamiliar y multifamiliar, ubicado en boulevard Juan Pablo II km. 1 en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 22 DE ENERO DE 2019 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la urbanización, lotificación. Construcción de los servicios para albergar un condominio unifamiliar y multifamiliar, ubicado en boulevard Juan Pablo II km. 1 en el municipio de Aguascalientes."
         },
         {
           "numero": 2,
@@ -9987,7 +9987,7 @@
           "fecha_resolutivo": "2019-01-29",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/104/19",
           "boletin_id": 112,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la operación de un Centro de Acopio y separación de plásticos reciclables de origen posindustrial, en donde las actividades principales son el acopio, separación, triturado, prensado y por ultimo su comercialización, ubicado en km. 1.6 de la Av. Héroe Inmortal en dirección a Los Arellano en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 5 DE FEBRERO DE 2019 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la operación de un Centro de Acopio y separación de plásticos reciclables de origen posindustrial, en donde las actividades principales son el acopio, separación, triturado, prensado y por ultimo su comercialización, ubicado en km. 1.6 de la Av. Héroe Inmortal en dirección a Los Arellano en el municipio de Aguascalientes."
         },
         {
           "numero": 2,
@@ -10106,7 +10106,7 @@
           "fecha_ingreso": "2019-02-14",
           "boletin_id": 114,
           "coord_valida": null,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la extracción de material Tepetate, el cual servirá principalmente para uso en obras publicas cercanas (estatales y municipales) como lo es la ampliación de la carretera estatal No. 60, ubicado en el Ejido El Conejal, parcela 06-Z1-P 1/2 en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 19 DE FEBRERO DE 2019 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la extracción de material Tepetate, el cual servirá principalmente para uso en obras publicas cercanas (estatales y municipales) como lo es la ampliación de la carretera estatal No. 60, ubicado en el Ejido El Conejal, parcela 06-Z1-P 1/2 en el municipio de Aguascalientes."
         }
       ],
       "resolutivos_emitidos": [
@@ -10284,7 +10284,7 @@
           "fecha_ingreso": "2019-02-27",
           "boletin_id": 116,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la urbanización y desarrollo de un fraccionamiento en un predio rústico. Se pretende la construcción de un total de 489 lotes unifamiliares, 24 predios comerciales, comercial y habitacional, 1 lote multifamiliar, 2 lotes de donación y una zona de restricción por líneas de alta tensión de la CFE, ubicado al nororiente de la Ciudad a aproximadamente 6.8 km del centro de la Ciudad en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 5 DE MARZO DE 2019 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la urbanización y desarrollo de un fraccionamiento en un predio rústico. Se pretende la construcción de un total de 489 lotes unifamiliares, 24 predios comerciales, comercial y habitacional, 1 lote multifamiliar, 2 lotes de donación y una zona de restricción por líneas de alta tensión de la CFE, ubicado al nororiente de la Ciudad a aproximadamente 6.8 km del centro de la Ciudad en el municipio de Aguascalientes."
         }
       ],
       "resolutivos_emitidos": [
@@ -10778,7 +10778,7 @@
           "fecha_ingreso": "2019-04-12",
           "boletin_id": 122,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la fabricación de bolsas plásticas para ser utilizadas en cualquier ramo ya sea comercial, industrial y del hogar, ubicado en Av. Ferrocarril # 101, . PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 16 DE ABRIL DE 2019 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la fabricación de bolsas plásticas para ser utilizadas en cualquier ramo ya sea comercial, industrial y del hogar, ubicado en Av. Ferrocarril # 101, ."
         }
       ],
       "resolutivos_emitidos": [
@@ -10939,7 +10939,7 @@
           "fecha_ingreso": "2019-04-26",
           "boletin_id": 124,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de una nave industrial con una superficie total de 31,689.27 m2, y lo conforma la fusión de los lotes P1, P2, P3 y P4, de la manzana 1, ubicados en el Parque Industrial FINSA en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 30 DE ABRIL DE 2019 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de una nave industrial con una superficie total de 31,689.27 m2, y lo conforma la fusión de los lotes P1, P2, P3 y P4, de la manzana 1, ubicados en el Parque Industrial FINSA en el municipio de Aguascalientes."
         }
       ],
       "resolutivos_emitidos": [],
@@ -11028,7 +11028,7 @@
           "fecha_resolutivo": "2019-04-30",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/684/19",
           "boletin_id": 125,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la fabricación de concreto ubicado en Av. Boulevard Norte a Zacatecas Km 538, . PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 07 DE MAYO DE 2019 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la fabricación de concreto ubicado en Av. Boulevard Norte a Zacatecas Km 538, ."
         },
         {
           "numero": 5,
@@ -11117,7 +11117,7 @@
           "fecha_ingreso": "2019-05-08",
           "boletin_id": 126,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en realizar mantenimiento correctivo, ya que se necesita reforzar el área de talud poniente, ya que presenta agrietamientos el concreto lanzado existente, ubicado en Av. Circuito Norte 103, . PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 14 DE MAYO DE 2019 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en realizar mantenimiento correctivo, ya que se necesita reforzar el área de talud poniente, ya que presenta agrietamientos el concreto lanzado existente, ubicado en Av. Circuito Norte 103, ."
         }
       ],
       "resolutivos_emitidos": [
@@ -11193,7 +11193,7 @@
           "fecha_ingreso": "2019-05-16",
           "boletin_id": 127,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la urbanización de un predio el cual contempla un total de 444 lotes habitacionales horizontales, 2 lotes multifamiliar habitacional vertical, 8 lotes mixtos y 1 lote comercial ubicada en la carretera estatal 25 Aguascalientes-Loreto, Ejido La Guayana en el municipio de San Francisco de los Romo. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 21 DE MAYO DE 2019 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la urbanización de un predio el cual contempla un total de 444 lotes habitacionales horizontales, 2 lotes multifamiliar habitacional vertical, 8 lotes mixtos y 1 lote comercial ubicada en la carretera estatal 25 Aguascalientes-Loreto, Ejido La Guayana en el municipio de San Francisco de los Romo."
         },
         {
           "numero": 4,
@@ -11297,7 +11297,7 @@
           "fecha_ingreso": "2019-05-22",
           "boletin_id": 128,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la construcción de un complejo habitacional densidad b tipo medio, ubicado al norte de la Ciudad, sobre el lindero de la calle Montenegro/Paseos de la Soledad, en la . PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 28 DE MAYO DE 2019 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la construcción de un complejo habitacional densidad b tipo medio, ubicado al norte de la Ciudad, sobre el lindero de la calle Montenegro/Paseos de la Soledad, en la ."
         },
         {
           "numero": 2,
@@ -11712,7 +11712,7 @@
           "fecha_resolutivo": "2019-06-13",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/859/19",
           "boletin_id": 131,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la operación de un centro de acopio de Residuos de Manejo Especial, ubicada en Las Hadas en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 18 DE JUNIO DE 2019 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la operación de un centro de acopio de Residuos de Manejo Especial, ubicada en Las Hadas en el municipio de Aguascalientes."
         }
       ],
       "año": 2019,
@@ -11742,7 +11742,7 @@
           "fecha_ingreso": "2019-06-19",
           "boletin_id": 132,
           "coord_valida": null,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en realizar trabajos de extracción de arcilla o tierra para la elaboración de ladrillos y arena dentro de un predio que actualmente está siendo utilizado para el cultivo, ubicado en la parcela 26 Z 0 P 1/1, Ejido Loreto en el municipio de San Francisco de los Romo. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 25 DE JUNIO DE 2019 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en realizar trabajos de extracción de arcilla o tierra para la elaboración de ladrillos y arena dentro de un predio que actualmente está siendo utilizado para el cultivo, ubicado en la parcela 26 Z 0 P 1/1, Ejido Loreto en el municipio de San Francisco de los Romo."
         }
       ],
       "resolutivos_emitidos": [
@@ -12038,7 +12038,7 @@
           "fecha_ingreso": "2019-07-05",
           "boletin_id": 134,
           "coord_valida": null,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de 2 accesos en la carretera Estatal No. 36, San Isidro-Bajío de San José a la altura de los Km. 1+370 y 1+410 (entronque 3) en el municipio de El Llano. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 9 DE JULIO DE 2019 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de 2 accesos en la carretera Estatal No. 36, San Isidro-Bajío de San José a la altura de los Km. 1+370 y 1+410 (entronque 3) en el municipio de El Llano."
         },
         {
           "numero": 4,
@@ -12408,7 +12408,7 @@
           "fecha_ingreso": "2019-07-25",
           "boletin_id": 137,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de una nave industrial con una superficie de 29,628.80 m2, con una superficie total de construcción de 4,773.78 m2, constituida por 3,676.m2 de área de producción, contando con 25 cajones de estacionamiento, 1,096.90 m2 de área de oficinas, contando con 22 cajones de estacionamiento, ubicada en Av. Santa Fe, esq. Prof. J. Refugio Lara, Parque Industrial Santa Fe Tecno Park en el municipio de Jesús María. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 30 DE JULIO DE 2019 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de una nave industrial con una superficie de 29,628.80 m2, con una superficie total de construcción de 4,773.78 m2, constituida por 3,676.m2 de área de producción, contando con 25 cajones de estacionamiento, 1,096.90 m2 de área de oficinas, contando con 22 cajones de estacionamiento, ubicada en Av. Santa Fe, esq. Prof. J. Refugio Lara, Parque Industrial Santa Fe Tecno Park en el municipio de Jesús María."
         }
       ],
       "resolutivos_emitidos": [],
@@ -12702,7 +12702,7 @@
           "fecha_ingreso": "2019-08-13",
           "boletin_id": 140,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de una nave industrial con una superficie de 29,628.80 m2, con una superficie total de construcción de 4,773.78 m2, constituida por 3,676.m2 de área de producción, contando con 25 cajones de estacionamiento, 1,096.90 m2 de área de oficinas, contando con 22 cajones de estacionamiento, ubicada en Av. Santa Fe, esq. Prof. J. Refugio Lara, Parque Industrial Santa Fe Tecno Park en el municipio de Jesús María. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 20 DE AGOSTO DE 2019 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de una nave industrial con una superficie de 29,628.80 m2, con una superficie total de construcción de 4,773.78 m2, constituida por 3,676.m2 de área de producción, contando con 25 cajones de estacionamiento, 1,096.90 m2 de área de oficinas, contando con 22 cajones de estacionamiento, ubicada en Av. Santa Fe, esq. Prof. J. Refugio Lara, Parque Industrial Santa Fe Tecno Park en el municipio de Jesús María."
         },
         {
           "numero": 2,
@@ -12881,7 +12881,7 @@
           "fecha_ingreso": "2019-08-23",
           "boletin_id": 141,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la urbanización, construcción y ocupación de 2 torres departamentales en un predio total de 22,140.18 m2 ubicado en Av. Juan Pablo II en la . PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 27 DE AGOSTO DE 2019 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la urbanización, construcción y ocupación de 2 torres departamentales en un predio total de 22,140.18 m2 ubicado en Av. Juan Pablo II en la ."
         }
       ],
       "resolutivos_emitidos": [],
@@ -13194,7 +13194,7 @@
           "fecha_ingreso": "2019-09-20",
           "boletin_id": 145,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de instalaciones de una central de autobuses, el cual tendrá como principal finalidad dar servicios de transporte para la población de esta zona, ubicada en Av. Adolfo Ruíz Cortinez en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 24 DE SEPTIEMBRE DE 2019 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de instalaciones de una central de autobuses, el cual tendrá como principal finalidad dar servicios de transporte para la población de esta zona, ubicada en Av. Adolfo Ruíz Cortinez en el municipio de Aguascalientes."
         }
       ],
       "resolutivos_emitidos": [
@@ -13493,7 +13493,7 @@
           "fecha_ingreso": "2019-10-15",
           "boletin_id": 149,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en realizar trabajos de extracción y/o aprovechamiento de material pétreo específicamente tepetate dentro del predio que actualmente se encuentra en desuso, en casi la totalidad del predio, ubicado al sur poniente en el municipio de El Llano. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 22 DE OCTUBRE DE 2019 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en realizar trabajos de extracción y/o aprovechamiento de material pétreo específicamente tepetate dentro del predio que actualmente se encuentra en desuso, en casi la totalidad del predio, ubicado al sur poniente en el municipio de El Llano."
         },
         {
           "numero": 3,
@@ -13669,7 +13669,7 @@
           "fecha_ingreso": "2019-11-08",
           "boletin_id": 151,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la urbanización para la construcción del desarrollo Sendero Toscano, la urbanización del predio contempla un total de 443 lotes, de los cuales 424 serán habitacionales, 5 comercial, 1 de donación, 2 áreas verdes y uno considerado para vialidades, ubicado en la Av. Rodolfo Landeros Gallegos en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 12 DE NOVIEMBRE DE 2019 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la urbanización para la construcción del desarrollo Sendero Toscano, la urbanización del predio contempla un total de 443 lotes, de los cuales 424 serán habitacionales, 5 comercial, 1 de donación, 2 áreas verdes y uno considerado para vialidades, ubicado en la Av. Rodolfo Landeros Gallegos en el municipio de Aguascalientes."
         },
         {
           "numero": 2,
@@ -13803,7 +13803,7 @@
           "fecha_resolutivo": "2019-11-11",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/1818/19",
           "boletin_id": 152,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en el desarrollo habitacional el cual contará con 85 lotes habitacionales, 1 comercial, 2 lotes de donación y un lote de 3,232.89 m2 para uso vertical con el objeto inicial de adaptar el predio para la construcción de casas habitacionales de tipo popular en una superficie de 14,368.75 m2, ubicada al sur-poniente en el municipio de Jesús María. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 19 DE NOVIEMBRE DE 2019 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en el desarrollo habitacional el cual contará con 85 lotes habitacionales, 1 comercial, 2 lotes de donación y un lote de 3,232.89 m2 para uso vertical con el objeto inicial de adaptar el predio para la construcción de casas habitacionales de tipo popular en una superficie de 14,368.75 m2, ubicada al sur-poniente en el municipio de Jesús María."
         }
       ],
       "año": 2019,
@@ -13952,7 +13952,7 @@
           "fecha_resolutivo": "2019-11-25",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/1820/19",
           "boletin_id": 154,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de una nave industrial, que tiene como actividad principal la compra-venta, fabricación, transformación de toda clase de plásticos, en espacial aquellos para la conducción de fluidos gaseosos o líquidos (mangueras), ubicada en calle Filemón Alonso Muñoz No. 208-A, Ciudad Industrial en el municipio de Aguascalientes. - Acompañar al escrito copia de identificación para acreditar la personalidad y comprobante de domicilio para acreditar el lugar de notificaciones. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 03 DE DICIEMBRE DE 2019 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de una nave industrial, que tiene como actividad principal la compra-venta, fabricación, transformación de toda clase de plásticos, en espacial aquellos para la conducción de fluidos gaseosos o líquidos (mangueras), ubicada en calle Filemón Alonso Muñoz No. 208-A, Ciudad Industrial en el municipio de Aguascalientes. - Acompañar al escrito copia de identificación para acreditar la personalidad y comprobante de domicilio para acreditar el lugar de notificaciones."
         },
         {
           "numero": 3,
@@ -14101,7 +14101,7 @@
           "fecha_ingreso": "2019-12-13",
           "boletin_id": 156,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la recuperación del pavimento en un espesor de 37.0 cm. de la base hidráulica y la carpeta asfáltica actual, mediante el proceso de fresado con carga directa al camión de volteo a llevarse a cabo en tramo carretero federal libramiento sur poniente en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 17 DE DICIEMBRE DE 2019 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la recuperación del pavimento en un espesor de 37.0 cm. de la base hidráulica y la carpeta asfáltica actual, mediante el proceso de fresado con carga directa al camión de volteo a llevarse a cabo en tramo carretero federal libramiento sur poniente en el municipio de Aguascalientes."
         }
       ],
       "resolutivos_emitidos": [
@@ -14341,7 +14341,7 @@
           "fecha_ingreso": "2019-12-24",
           "boletin_id": 158,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción y operación de un Centro de Verificación, así como la construcción de un taller mecánico ubicado en la Av. Siglo XXI, No. 2012, localidad El Llano, Delegación Maravillas en el municipio de Jesús María. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 31 DE DICIEMBRE DE 2019 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción y operación de un Centro de Verificación, así como la construcción de un taller mecánico ubicado en la Av. Siglo XXI, No. 2012, localidad El Llano, Delegación Maravillas en el municipio de Jesús María."
         },
         {
           "numero": 5,
@@ -14521,7 +14521,7 @@
           "fecha_resolutivo": "2020-01-09",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/0007/2020",
           "boletin_id": 159,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la ampliación de una nave de producción en dos etapas (2020 y 2021) debido a la incorporación de nuevos procesos y por ende, nuevos productos. Adicional se hará la construcción de una planta de tratamiento de agua residual de proceso, ubicada en el Km 0.3 de la Carretera Maravillas a Jesús María, en el municipio de Jesús María, Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 14 DE ENERO DE 2020 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la ampliación de una nave de producción en dos etapas (2020 y 2021) debido a la incorporación de nuevos procesos y por ende, nuevos productos. Adicional se hará la construcción de una planta de tratamiento de agua residual de proceso, ubicada en el Km 0.3 de la Carretera Maravillas a Jesús María, en el municipio de Jesús María, Aguascalientes."
         }
       ],
       "año": 2020,
@@ -14671,7 +14671,7 @@
           "fecha_resolutivo": "2020-01-20",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/0138/2020",
           "boletin_id": 161,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de una zona habitacional seccionada en 49 lotes, ubicada entre Av. de los Maestros hacia el sur pasando la Av. Siglo XXI en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 28 DE ENERO DE 2020 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de una zona habitacional seccionada en 49 lotes, ubicada entre Av. de los Maestros hacia el sur pasando la Av. Siglo XXI en el municipio de Aguascalientes."
         },
         {
           "numero": 2,
@@ -15292,7 +15292,7 @@
           "fecha_ingreso": "2020-02-26",
           "boletin_id": 167,
           "coord_valida": null,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de naves o bodegas para el servicio logístico, cuyo objetivo será el almacenaje de productos, subproductos y/o materias primas, ubicada al margen derecho del km. 1.81 del entronque de las carreteras Peñuelas-Aeropuerto-Tanque de los Jimenez, localidad de Coyotitos en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 03 DE MARZO DE 2020 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de naves o bodegas para el servicio logístico, cuyo objetivo será el almacenaje de productos, subproductos y/o materias primas, ubicada al margen derecho del km. 1.81 del entronque de las carreteras Peñuelas-Aeropuerto-Tanque de los Jimenez, localidad de Coyotitos en el municipio de Aguascalientes."
         },
         {
           "numero": 3,
@@ -15381,7 +15381,7 @@
           "fecha_resolutivo": "2020-03-05",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/0858/2020",
           "boletin_id": 168,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la operación de una planta dedicada al reciclaje de plástico (polipropileno y polietileno), ubicada en Av. Benito Juárez Sur, sobre el km. 1.9, en el municipio de San Francisco de los Romo. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 10 DE MARZO DE 2020 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la operación de una planta dedicada al reciclaje de plástico (polipropileno y polietileno), ubicada en Av. Benito Juárez Sur, sobre el km. 1.9, en el municipio de San Francisco de los Romo."
         }
       ],
       "año": 2020,
@@ -15486,7 +15486,7 @@
           "fecha_resolutivo": "2020-03-10",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/0860/2020",
           "boletin_id": 169,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en el aprovechamiento y explotación de material pétreo denominado tepetate, ubicado en El Salto del Conejo, Tapias Viejas en el municipio de Jesús María. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 17 DE MARZO DE 2020 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en el aprovechamiento y explotación de material pétreo denominado tepetate, ubicado en El Salto del Conejo, Tapias Viejas en el municipio de Jesús María."
         }
       ],
       "año": 2020,
@@ -15592,7 +15592,7 @@
           "fecha_resolutivo": "2020-03-17",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/0863/2020",
           "boletin_id": 170,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de una torre de viviendas multifamiliares, con una superficie de terreno de 836,34 m2 y una superficie total de construcción de 2907.24 m2; con un total de 14 departamentos, estacionamiento, terrazas para los departamentos y dos áreas comunes, una de ellas es un gimnasio ubicada en calle Silos 624, Fracc. Villas de Montenegro en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 24 DE MARZO DE 2020 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de una torre de viviendas multifamiliares, con una superficie de terreno de 836,34 m2 y una superficie total de construcción de 2907.24 m2; con un total de 14 departamentos, estacionamiento, terrazas para los departamentos y dos áreas comunes, una de ellas es un gimnasio ubicada en calle Silos 624, Fracc. Villas de Montenegro en el municipio de Aguascalientes."
         }
       ],
       "año": 2020,
@@ -15711,7 +15711,7 @@
           "fecha_resolutivo": "2020-03-25",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/1069/2020",
           "boletin_id": 171,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en el acopio de residuos de manejo especial ferrosos y no ferrosos, remanentes y subproductos de post-consumo de empresas manufactureras, automotriz o de la industria de la industria de la transformación, ubicada boulevard el Chichimeco No. 1015 B, . PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 31 DE MARZO DE 2020 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en el acopio de residuos de manejo especial ferrosos y no ferrosos, remanentes y subproductos de post-consumo de empresas manufactureras, automotriz o de la industria de la industria de la transformación, ubicada boulevard el Chichimeco No. 1015 B, ."
         }
       ],
       "año": 2020,
@@ -15741,7 +15741,7 @@
           "fecha_ingreso": "2020-03-30",
           "boletin_id": 172,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción y operación de una nueva planta de tratamiento de aguas residuales físico-química/biológica aerobia, en su modalidad de aireación extendida, en la cual se llevará a cabo diversos procesos como cribado grueso y fino, desarenado, homogenizado, tratamientos físico-químico y biológico aerobio, clorado y filtrado ubicada en PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 14 DE ABRIL DE 2020 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción y operación de una nueva planta de tratamiento de aguas residuales físico-química/biológica aerobia, en su modalidad de aireación extendida, en la cual se llevará a cabo diversos procesos como cribado grueso y fino, desarenado, homogenizado, tratamientos físico-químico y biológico aerobio, clorado y filtrado ubicada en."
         },
         {
           "numero": 2,
@@ -16155,7 +16155,7 @@
           "fecha_resolutivo": "2020-05-05",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/1230/2020",
           "boletin_id": 176,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la urbanización y adecuación para desarrollar un proyecto habitacional, el cual cuenta con una superficie total de 89,414.00 m2, ubicado al sur-poniente en el municipio de Jesús María. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 12 DE MAYO DE 2020 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la urbanización y adecuación para desarrollar un proyecto habitacional, el cual cuenta con una superficie total de 89,414.00 m2, ubicado al sur-poniente en el municipio de Jesús María."
         },
         {
           "numero": 2,
@@ -16755,7 +16755,7 @@
           "fecha_ingreso": "2020-06-18",
           "boletin_id": 182,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental y Estudio de Riesgo los cuales consisten en la preparación del sitio, construcción y puesta en marcha de una tienda de autoservicio para la venta de bienes de consumo duraderos y perecederos, a ubicarse sobre la lateral izquierda de la carretera estatal 68, a 100 m pasando el acceso al Fracc. Vistas de Oriente y antes de la Comunidad Norias de Ojocaliente en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 23 DE JUNIO DE 2020 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental y Estudio de Riesgo los cuales consisten en la preparación del sitio, construcción y puesta en marcha de una tienda de autoservicio para la venta de bienes de consumo duraderos y perecederos, a ubicarse sobre la lateral izquierda de la carretera estatal 68, a 100 m pasando el acceso al Fracc. Vistas de Oriente y antes de la Comunidad Norias de Ojocaliente en el municipio de Aguascalientes."
         }
       ],
       "resolutivos_emitidos": [
@@ -16890,7 +16890,7 @@
           "fecha_resolutivo": "2020-06-22",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/1506/2020",
           "boletin_id": 183,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en el acopio para una correcta segregación y disposición a lugares autorizados de bolsa de plástico, PET, fleje, cajas de cartón y cartón, plástico duro, plásticos diversos, botes de aluminio, chatarra de acero, chatarra de aluminio, tarimas de madera y residuos de madera, ubicado en calle Frutilandia No. 202, Frac. Paseos de Aguascalientes, en el municipio de Jesús María. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 30 DE JUNIO DE 2020 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en el acopio para una correcta segregación y disposición a lugares autorizados de bolsa de plástico, PET, fleje, cajas de cartón y cartón, plástico duro, plásticos diversos, botes de aluminio, chatarra de acero, chatarra de aluminio, tarimas de madera y residuos de madera, ubicado en calle Frutilandia No. 202, Frac. Paseos de Aguascalientes, en el municipio de Jesús María."
         }
       ],
       "año": 2020,
@@ -16979,7 +16979,7 @@
           "fecha_resolutivo": "2020-06-30",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/1862/2020",
           "boletin_id": 184,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en terminar la extracción y comercialización del Banco de materiales y utilizar sus remanentes en la construcción complementaria y la operación para la elaboración de composta y tratamiento de aguas crudas no peligrosas, ubicado en el Ejido Margaritas en el municipio de San Francisco de los Romo. MARTES 21 DE JULIO DE 2020 Y 914-6030, PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 07 DE JULIO DE 2020 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en terminar la extracción y comercialización del Banco de materiales y utilizar sus remanentes en la construcción complementaria y la operación para la elaboración de composta y tratamiento de aguas crudas no peligrosas, ubicado en el Ejido Margaritas en el municipio de San Francisco de los Romo. MARTES 21 DE JULIO DE 2020 Y 914-6030."
         }
       ],
       "año": 2020,
@@ -17113,7 +17113,7 @@
           "fecha_resolutivo": "2020-07-07",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/1867/2020",
           "boletin_id": 185,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental que comprende la urbnización y adecuación para desarrollar un proyecto habitacional y comercial, en un predio que tiene un área de 9,653.46 m2, ubicada al surponiente de Aguascalientes en la Av. Paseos de las Garzas, municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 14 DE JULIO DE 2020 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental que comprende la urbnización y adecuación para desarrollar un proyecto habitacional y comercial, en un predio que tiene un área de 9,653.46 m2, ubicada al surponiente de Aguascalientes en la Av. Paseos de las Garzas, municipio de Aguascalientes."
         }
       ],
       "año": 2020,
@@ -17143,7 +17143,7 @@
           "fecha_resolutivo": "2020-07-13",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/1868/2020",
           "boletin_id": 186,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la extracción de arena y piedra en breña para ser procesada en planta lavadora y triturada, se encuentra aproximadamente a 40 cm de la superficie del suelo, ubicado en la parcela 62-Z-2-P-1/1 en el Ejido de Santiago en el municipio de Pabellón de Arteaga. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 21 DE JULIO DE 2020 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la extracción de arena y piedra en breña para ser procesada en planta lavadora y triturada, se encuentra aproximadamente a 40 cm de la superficie del suelo, ubicado en la parcela 62-Z-2-P-1/1 en el Ejido de Santiago en el municipio de Pabellón de Arteaga."
         }
       ],
       "año": 2020,
@@ -17188,7 +17188,7 @@
           "fecha_ingreso": "2020-07-23",
           "boletin_id": 187,
           "coord_valida": null,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la producción de derivados y fermentos lácteos específicamente quesos como: asadero, manchego y gouda, ubicada en calle Juan Soriano No.421, Fracc. Pintores Mexicanos en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 28 DE JULIO DE 2020 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la producción de derivados y fermentos lácteos específicamente quesos como: asadero, manchego y gouda, ubicada en calle Juan Soriano No.421, Fracc. Pintores Mexicanos en el municipio de Aguascalientes."
         }
       ],
       "resolutivos_emitidos": [
@@ -17250,7 +17250,7 @@
           "fecha_resolutivo": "2020-07-28",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/1985/2020",
           "boletin_id": 188,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la urbanización y desarrollo de un proyecto de conjunto condominal mixto habitacional urbano de tipo popular y comercial, ubicado en la zona sur del municipio de San Francisco de los Romo. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 04 DE AGOSTO DE 2020 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la urbanización y desarrollo de un proyecto de conjunto condominal mixto habitacional urbano de tipo popular y comercial, ubicado en la zona sur del municipio de San Francisco de los Romo."
         }
       ],
       "año": 2020,
@@ -17326,7 +17326,7 @@
           "fecha_resolutivo": "2020-08-14",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/1986/2020",
           "boletin_id": 190,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la recolección de madera y tarimas de desecho para reutilización sin tratamiento químico especial, ubicado en la Providencia Km 3,5 S/N, comunidad Peñuelas en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 18 DE AGOSTO DE 2020 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la recolección de madera y tarimas de desecho para reutilización sin tratamiento químico especial, ubicado en la Providencia Km 3,5 S/N, comunidad Peñuelas en el municipio de Aguascalientes."
         }
       ],
       "año": 2020,
@@ -17356,7 +17356,7 @@
           "fecha_ingreso": "2020-08-17",
           "boletin_id": 191,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en el desarrollo de viviendas de carácter medio y residencial “A”, ubicado sobre el lindero de la calle Paseo de San Telmo en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 25 DE AGOSTO DE 2020 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en el desarrollo de viviendas de carácter medio y residencial “A”, ubicado sobre el lindero de la calle Paseo de San Telmo en el municipio de Aguascalientes."
         },
         {
           "numero": 2,
@@ -17623,7 +17623,7 @@
           "fecha_resolutivo": "2020-08-24",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/2159/2020",
           "boletin_id": 192,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en el acopio para una correcta segregación y disposición a lugares autorizados de bolsa de plástico, PET, fleje, cajas de cartón y cartón, plástico duro, plásticos diversos, botes de aluminio, chatarra de acero, chatarra de aluminio, tarimas de madera y residuos de madera, ubicado en calle Frutilandia No. 202, Frac. Paseos de Aguascalientes, en el municipio de Jesús María. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 1 DE SEPTIEMBRE DE 2020 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en el acopio para una correcta segregación y disposición a lugares autorizados de bolsa de plástico, PET, fleje, cajas de cartón y cartón, plástico duro, plásticos diversos, botes de aluminio, chatarra de acero, chatarra de aluminio, tarimas de madera y residuos de madera, ubicado en calle Frutilandia No. 202, Frac. Paseos de Aguascalientes, en el municipio de Jesús María."
         },
         {
           "numero": 5,
@@ -17876,7 +17876,7 @@
           "fecha_resolutivo": "2020-09-07",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/2167/2020",
           "boletin_id": 194,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la explotación de una parcela que presentaba uso agrícola, para la obtención de tepetate. Se estima una capacidad de extracción de 3,000 a 5,000 m3 por mes dependiendo de la demanda del material en la región, ubicado aproximadamente a 0.6 km al este de la localidad El Saucillo en el municipio de Rincón de Romos. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 15 DE SEPTIEMBRE DE 2020 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la explotación de una parcela que presentaba uso agrícola, para la obtención de tepetate. Se estima una capacidad de extracción de 3,000 a 5,000 m3 por mes dependiendo de la demanda del material en la región, ubicado aproximadamente a 0.6 km al este de la localidad El Saucillo en el municipio de Rincón de Romos."
         },
         {
           "numero": 3,
@@ -17965,7 +17965,7 @@
           "fecha_ingreso": "2020-09-17",
           "boletin_id": 195,
           "coord_valida": null,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en locales comerciales de usos múltiples, contará con dos plantas, en la planta baja con 17 locales comerciales de diferentes dimensiones, 4 locales tipo isla, área de estacionamiento, un área para almacenamiento temporal de RSU, ubicado C. Aquiles Elourdy 1107, Fracc. del Valle San Pedro en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 22 DE SEPTIEMBRE DE 2020 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en locales comerciales de usos múltiples, contará con dos plantas, en la planta baja con 17 locales comerciales de diferentes dimensiones, 4 locales tipo isla, área de estacionamiento, un área para almacenamiento temporal de RSU, ubicado C. Aquiles Elourdy 1107, Fracc. del Valle San Pedro en el municipio de Aguascalientes."
         },
         {
           "numero": 5,
@@ -18203,7 +18203,7 @@
           "fecha_resolutivo": "2020-09-29",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/2423/2020",
           "boletin_id": 197,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la urbanización de un desarrollo habitacional, el cual se construirá en un polígono con una superficie total de 9,052.51 m2, ubicado al noroeste de la Ciudad de Aguascalientes en el municipio de Jesús María. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 06 DE OCTUBRE DE 2020 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la urbanización de un desarrollo habitacional, el cual se construirá en un polígono con una superficie total de 9,052.51 m2, ubicado al noroeste de la Ciudad de Aguascalientes en el municipio de Jesús María."
         },
         {
           "numero": 5,
@@ -18306,7 +18306,7 @@
           "fecha_resolutivo": "2020-10-05",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/2427/2020",
           "boletin_id": 198,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la extracción de tepetate dentro de dos parcelas, las cuales cuentan con una superficie de 6,854.097 m2 y 12,088.349 m2, haciendo en total una superficie de 18,942.444 m2, ubicado en el Ejido San José de Gracia en el municipio de San José de Gracia. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES,13 DE OCTUBRE DE 2020 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la extracción de tepetate dentro de dos parcelas, las cuales cuentan con una superficie de 6,854.097 m2 y 12,088.349 m2, haciendo en total una superficie de 18,942.444 m2, ubicado en el Ejido San José de Gracia en el municipio de San José de Gracia."
         },
         {
           "numero": 4,
@@ -18350,7 +18350,7 @@
           "fecha_ingreso": "2020-10-15",
           "boletin_id": 199,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la operación de un conjunto de sitios comerciales dedicados a la fabricación de ladrillo artesanal, el cual contempla un total 16 ladrilleras, las cuales comparten prácticamente las condiciones de operación y funcionamiento, así como la ubicación, se consideraron en conjunto, ubicada a un costado de la carretera federal 45 y atrás de la planta Nissan Mexicana en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 20 DE OCTUBRE DE 2020 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la operación de un conjunto de sitios comerciales dedicados a la fabricación de ladrillo artesanal, el cual contempla un total 16 ladrilleras, las cuales comparten prácticamente las condiciones de operación y funcionamiento, así como la ubicación, se consideraron en conjunto, ubicada a un costado de la carretera federal 45 y atrás de la planta Nissan Mexicana en el municipio de Aguascalientes."
         },
         {
           "numero": 2,
@@ -18606,7 +18606,7 @@
           "fecha_resolutivo": "2020-11-05",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/2550/2020",
           "boletin_id": 202,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consistirá en distribuir en un predio de 0.86928 has. Una serie de estructuras que proporcionarán los servicios básicos de operación del proyecto, ubicado al noreste de la Ciudad en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 10 DE NOVIEMBRE DE 2020 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consistirá en distribuir en un predio de 0.86928 has. Una serie de estructuras que proporcionarán los servicios básicos de operación del proyecto, ubicado al noreste de la Ciudad en el municipio de Aguascalientes."
         }
       ],
       "año": 2020,
@@ -18666,7 +18666,7 @@
           "fecha_resolutivo": "2020-11-10",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/2546/2020",
           "boletin_id": 203,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción y operación de un Centro de Verificación, así como la construcción de un taller mecánico, ubicado en la Av. Siglo XXI # 2012, Localidad El Llano en el municipio de Jesús María. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 17 DE NOVIEMBRE DE 2020 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción y operación de un Centro de Verificación, así como la construcción de un taller mecánico, ubicado en la Av. Siglo XXI # 2012, Localidad El Llano en el municipio de Jesús María."
         },
         {
           "numero": 3,
@@ -18992,7 +18992,7 @@
           "fecha_ingreso": "2020-12-09",
           "boletin_id": 207,
           "coord_valida": null,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la explotación de una parcela que presentaba un uso agrícola, para la obtención de tierra para la fabricación de ladrillo, ubicado aproximadamente a 0.5 km al este de la localidad Puerta del Muerto y a 0.4 km de la localidad El Chayote en el municipio de Rincón de Romos. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 15 DE DICIEMBRE DE 2020 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la explotación de una parcela que presentaba un uso agrícola, para la obtención de tierra para la fabricación de ladrillo, ubicado aproximadamente a 0.5 km al este de la localidad Puerta del Muerto y a 0.4 km de la localidad El Chayote en el municipio de Rincón de Romos."
         },
         {
           "numero": 3,
@@ -19273,7 +19273,7 @@
           "fecha_resolutivo": "2020-12-22",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/2840/2020",
           "boletin_id": 209,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en desarrollar actividades de acopio, reciclaje, reutilización, co-procesamiento y tratamiento de residuos de manejo especial de todo tipo, a ubicarse en la calle Laurel No. 139, Fracción A de la parcela No. 56 Z 1 P ½ del Ejido La Guayana, Puertecito de la Virgen en el municipio de San Francisco de los Romo. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 29 DE DICIEMBRE DE 2020 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en desarrollar actividades de acopio, reciclaje, reutilización, co-procesamiento y tratamiento de residuos de manejo especial de todo tipo, a ubicarse en la calle Laurel No. 139, Fracción A de la parcela No. 56 Z 1 P ½ del Ejido La Guayana, Puertecito de la Virgen en el municipio de San Francisco de los Romo."
         }
       ],
       "año": 2020,
@@ -19469,7 +19469,7 @@
           "fecha_resolutivo": "2021-01-20",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/0054/2021",
           "boletin_id": 212,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de un centro de acogida de enfermos terminales que será atendido por religiosas, además de atender otras necesidades de beneficencia como tener un banco de medicamentos y equipo ortopédico, centro de acopio para donaciones, un convento para las religiosas, un sitio para albergar a familias de enfermos, un centro de acogida infantil para niños abandonados, una capilla, dos salas funerarias, áreas verdes y estacionamiento, a ubicarse en Ferronales en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 26 DE ENERO DE 2021 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de un centro de acogida de enfermos terminales que será atendido por religiosas, además de atender otras necesidades de beneficencia como tener un banco de medicamentos y equipo ortopédico, centro de acopio para donaciones, un convento para las religiosas, un sitio para albergar a familias de enfermos, un centro de acogida infantil para niños abandonados, una capilla, dos salas funerarias, áreas verdes y estacionamiento, a ubicarse en Ferronales en el municipio de Aguascalientes."
         },
         {
           "numero": 2,
@@ -19888,7 +19888,7 @@
           "fecha_resolutivo": "2021-02-09",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/0187/2021",
           "boletin_id": 216,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la operación de un centro de acopio y co-procesamiento para la recuperación de todo tipo de residuos sólidos urbanos y de manejo espacial, a ubicarse en carretera panamericana Sur s/n km. 113.7, Parcela 111 F 1, Ejido de Peñuelas en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 16 DE FEBRERO DE 2021 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la operación de un centro de acopio y co-procesamiento para la recuperación de todo tipo de residuos sólidos urbanos y de manejo espacial, a ubicarse en carretera panamericana Sur s/n km. 113.7, Parcela 111 F 1, Ejido de Peñuelas en el municipio de Aguascalientes."
         },
         {
           "numero": 5,
@@ -19947,7 +19947,7 @@
           "fecha_ingreso": "2021-02-16",
           "boletin_id": 217,
           "coord_valida": false,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la fabricación de diferentes actividades de reafilado de piezas para empresas de diferentes giros mediante el empleo de maquinaria especializada, ubicada en carretera Panamericana norte, km. 14, nave 8 y 9, . Gómez Portugal, en el municipio de Jesús María. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 23 DE FEBRERO DE 2021 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la fabricación de diferentes actividades de reafilado de piezas para empresas de diferentes giros mediante el empleo de maquinaria especializada, ubicada en carretera Panamericana norte, km. 14, nave 8 y 9, . Gómez Portugal, en el municipio de Jesús María."
         },
         {
           "numero": 3,
@@ -20260,7 +20260,7 @@
           "fecha_resolutivo": "2021-03-01",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/0357/2021",
           "boletin_id": 219,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en realizar trabajos de extracción de arena y piedra en breña, dentro del predio de uso agrícola en solo una fracción de la propiedad, a ubicarse al oriente de la Ciudad, en el municipio de Aguascalientes. - Acompañar al escrito copia de identificación para acreditar la personalidad y comprobante de domicilio para acreditar el lugar de notificaciones. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 09 DE MARZO DE 2021 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en realizar trabajos de extracción de arena y piedra en breña, dentro del predio de uso agrícola en solo una fracción de la propiedad, a ubicarse al oriente de la Ciudad, en el municipio de Aguascalientes. - Acompañar al escrito copia de identificación para acreditar la personalidad y comprobante de domicilio para acreditar el lugar de notificaciones."
         },
         {
           "numero": 3,
@@ -20513,7 +20513,7 @@
           "fecha_ingreso": "2021-03-26",
           "boletin_id": 222,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste como principal finalidad dar servicios de transporte para la población de esta zona, ubicado en carretera Mex. 70 Ags. - SLP, . PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 30 DE MARZO DE 2021 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste como principal finalidad dar servicios de transporte para la población de esta zona, ubicado en carretera Mex. 70 Ags. - SLP, ."
         },
         {
           "numero": 2,
@@ -20957,7 +20957,7 @@
           "fecha_resolutivo": "2021-04-14",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/0719/2021",
           "boletin_id": 225,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción, instalación, operación y adecuación de una planta, la cual tendrá como operación industrial la fabricación y comercialización de poliestireno expandido para la construcción, ubicado en Av. Maquiladores, lote 2, manzana 7, en el Parque Industrial Chichimeco en el municipio de Jesús María. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 20 DE ABRIL DE 2021 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción, instalación, operación y adecuación de una planta, la cual tendrá como operación industrial la fabricación y comercialización de poliestireno expandido para la construcción, ubicado en Av. Maquiladores, lote 2, manzana 7, en el Parque Industrial Chichimeco en el municipio de Jesús María."
         }
       ],
       "año": 2021,
@@ -21661,7 +21661,7 @@
           "fecha_resolutivo": "2021-06-09",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/0950/2021",
           "boletin_id": 232,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de un Auto Hotel, el cual contará con un sótano, planta baja y planta alta, a ubicarse al norte de la Ciudad en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 15 DE JUNIO DE 2021 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de un Auto Hotel, el cual contará con un sótano, planta baja y planta alta, a ubicarse al norte de la Ciudad en el municipio de Aguascalientes."
         },
         {
           "numero": 5,
@@ -22061,7 +22061,7 @@
           "fecha_ingreso": "2021-07-08",
           "boletin_id": 236,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la operación de trasvase, envasado, almacenaje y logística de la recepción de ferrotolvas con resina de polietileno o PVC, ubicada en la . PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 13 DE JULIO DE 2021 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la operación de trasvase, envasado, almacenaje y logística de la recepción de ferrotolvas con resina de polietileno o PVC, ubicada en la ."
         }
       ],
       "resolutivos_emitidos": [
@@ -22552,7 +22552,7 @@
           "fecha_resolutivo": "2021-08-05",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/1226/2021",
           "boletin_id": 240,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de un estacionamiento privado para una tienda comercial, con una capacidad de 110 cajones, ubicada en el Blvd. Adolfo Ruíz Cortines en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 10 DE AGOSTO DE 2021 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de un estacionamiento privado para una tienda comercial, con una capacidad de 110 cajones, ubicada en el Blvd. Adolfo Ruíz Cortines en el municipio de Aguascalientes."
         }
       ],
       "año": 2021,
@@ -22848,7 +22848,7 @@
           "fecha_resolutivo": "2021-08-24",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/1346/2021",
           "boletin_id": 243,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de una nave industrial dentro del Parque Industrial FINSA, a base de estructura metálica, cubierta de lámina galvanizada con colchoneta aislante, muros de panel de concreto y piso de concreto de 15 cm., ubicado en el Circuito Enrique Olivares Santana en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 31 DE AGOSTO DE 2021 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de una nave industrial dentro del Parque Industrial FINSA, a base de estructura metálica, cubierta de lámina galvanizada con colchoneta aislante, muros de panel de concreto y piso de concreto de 15 cm., ubicado en el Circuito Enrique Olivares Santana en el municipio de Aguascalientes."
         },
         {
           "numero": 2,
@@ -23156,7 +23156,7 @@
           "fecha_resolutivo": "2021-09-01",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/1422/2021",
           "boletin_id": 245,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la operación y mantenimiento de un establecimiento (Centro de Acopio), dedicado a la recepción, acopio, almacenamiento temporal y coprocesamiento de residuos sólidos urbanos y de manejo especial, ubicada en el entronque de la Carretera Valladolid-Emiliano Zapata en el municipio de San Francisco de los Romo. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 14 DE SEPTIEMBRE DE 2021 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la operación y mantenimiento de un establecimiento (Centro de Acopio), dedicado a la recepción, acopio, almacenamiento temporal y coprocesamiento de residuos sólidos urbanos y de manejo especial, ubicada en el entronque de la Carretera Valladolid-Emiliano Zapata en el municipio de San Francisco de los Romo."
         },
         {
           "numero": 5,
@@ -23542,7 +23542,7 @@
           "fecha_ingreso": "2021-10-07",
           "boletin_id": 249,
           "coord_valida": null,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en el desarrollo y establecimiento de una clínica de atención médica y una torre de consultorio, acompañados de infraestructura y atención de servicios médicos, ubicado en la Av. Valle de Morcinique, esq. con calle Rio Morcinique (De los Olivos), Fracc. Canteras de Santa Imelda en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 12 DE OCTUBRE DE 2021 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en el desarrollo y establecimiento de una clínica de atención médica y una torre de consultorio, acompañados de infraestructura y atención de servicios médicos, ubicado en la Av. Valle de Morcinique, esq. con calle Rio Morcinique (De los Olivos), Fracc. Canteras de Santa Imelda en el municipio de Aguascalientes."
         },
         {
           "numero": 5,
@@ -23723,7 +23723,7 @@
           "fecha_resolutivo": "2021-10-19",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/1628/2021",
           "boletin_id": 251,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en el procesamiento y empacado de productos cárnicos de res y cerdo, ubicada en calle Jesús María Romo #138, Ciudad Industrial en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 26 DE OCTUBRE DE 2021 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en el procesamiento y empacado de productos cárnicos de res y cerdo, ubicada en calle Jesús María Romo #138, Ciudad Industrial en el municipio de Aguascalientes."
         },
         {
           "numero": 3,
@@ -24043,7 +24043,7 @@
           "fecha_ingreso": "2021-11-09",
           "boletin_id": 254,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de una nave industrial, ubicada en carretera No. 45 sur, en el km 12, al sur de la Ciudad de Aguascalientes, en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 16 DE NOVIEMBRE DE 2021 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de una nave industrial, ubicada en carretera No. 45 sur, en el km 12, al sur de la Ciudad de Aguascalientes, en el municipio de Aguascalientes."
         },
         {
           "numero": 2,
@@ -24355,7 +24355,7 @@
           "fecha_ingreso": "2021-11-23",
           "boletin_id": 256,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de un puente elevado con dos cuerpos de 420 m de longitud sobre la Av. Aguascalientes que albergarán cada uno 1 calzada superior de 7.0 m de ancho con 2 carriles de 3.5 m de circulación dando tránsito continuo a la Av. Aguascalientes en su trayecto de sur a norte, en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 30 DE NOVIEMBRE DE 2021 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de un puente elevado con dos cuerpos de 420 m de longitud sobre la Av. Aguascalientes que albergarán cada uno 1 calzada superior de 7.0 m de ancho con 2 carriles de 3.5 m de circulación dando tránsito continuo a la Av. Aguascalientes en su trayecto de sur a norte, en el municipio de Aguascalientes."
         },
         {
           "numero": 2,
@@ -24486,7 +24486,7 @@
           "fecha_ingreso": "2021-11-29",
           "boletin_id": 257,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la construcción y urbanización de vivienda como parte de un fraccionamiento habitacional de tipo popular, que se construirá por 184 predio habitacionales, 1 predio habitacional multifamiliar, áreas verdes y de donación, a ubicarse sobre una fracción de terreno rustico de lo que se identifica como La Loma de la Cañada al sur de la cabecera municipal de Jesús María. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 07 DE DICIEMBRE DE 2021 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la construcción y urbanización de vivienda como parte de un fraccionamiento habitacional de tipo popular, que se construirá por 184 predio habitacionales, 1 predio habitacional multifamiliar, áreas verdes y de donación, a ubicarse sobre una fracción de terreno rustico de lo que se identifica como La Loma de la Cañada al sur de la cabecera municipal de Jesús María."
         },
         {
           "numero": 2,
@@ -24962,7 +24962,7 @@
           "fecha_resolutivo": "2021-12-14",
           "no_oficio_resolutivo": "SSMAA/DGGyPA/2031/2021",
           "boletin_id": 259,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la preparación del sitio y construcción de un proyecto inmobiliario que comprende un total de seis torres de departamentos y dos predios comerciales, ubicado en la localidad y zona conocida como El Llano en el municipio de Jesús María. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 21 DE DICIEMBRE DE 2021 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la preparación del sitio y construcción de un proyecto inmobiliario que comprende un total de seis torres de departamentos y dos predios comerciales, ubicado en la localidad y zona conocida como El Llano en el municipio de Jesús María."
         }
       ],
       "año": 2021,
@@ -25054,7 +25054,7 @@
           "fecha_ingreso": "2022-01-10",
           "boletin_id": 262,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la explotación, aprovechamiento y proceso de materiales granulares (arena y grava), a ubicarse en Ex Hacienda La Primavera en el municipio de Calvillo. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 18 DE ENERO DE 2022 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la explotación, aprovechamiento y proceso de materiales granulares (arena y grava), a ubicarse en Ex Hacienda La Primavera en el municipio de Calvillo."
         },
         {
           "numero": 2,
@@ -25455,7 +25455,7 @@
           "fecha_resolutivo": "2022-02-08",
           "no_oficio_resolutivo": "SSMAA/DGGyEA/0242/2022",
           "boletin_id": 265,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la preparación del sitio y construcción de un proyecto inmobiliario que comprende un total de seis torres de departamentos y dos predios comerciales, ubicado en la localidad y zona conocida como El Llano en el municipio de Jesús María. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 15 DE FEBRERO DE 2022 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la preparación del sitio y construcción de un proyecto inmobiliario que comprende un total de seis torres de departamentos y dos predios comerciales, ubicado en la localidad y zona conocida como El Llano en el municipio de Jesús María."
         },
         {
           "numero": 3,
@@ -25766,7 +25766,7 @@
           "fecha_resolutivo": "2022-02-28",
           "no_oficio_resolutivo": "SSMAA/DGGyEA/0364/2022",
           "boletin_id": 268,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la instalación de una nave industrial en la cual se realizará la recuperación de subproductos de aluminio, así como la compra-venta de materiales ferrosos y no ferrosos generados principalmente por la industria, ubicada en la carretera Estatal No. 45 al Maguey, km 0-650, No. 800, Localidad de Jesús María, en el municipio de Jesús María. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 08 DE MARZO DE 2022 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la instalación de una nave industrial en la cual se realizará la recuperación de subproductos de aluminio, así como la compra-venta de materiales ferrosos y no ferrosos generados principalmente por la industria, ubicada en la carretera Estatal No. 45 al Maguey, km 0-650, No. 800, Localidad de Jesús María, en el municipio de Jesús María."
         },
         {
           "numero": 4,
@@ -26274,7 +26274,7 @@
           "fecha_resolutivo": "2022-04-04",
           "no_oficio_resolutivo": "SSMAA/DGGyEA/0525/2022",
           "boletin_id": 273,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de una Clínica de atención integral, ubicada Av. Poliducto, entre las calles Cristóbal de Torres y Andrés de la Torre, en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 12 DE ABRIL DE 2022 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de una Clínica de atención integral, ubicada Av. Poliducto, entre las calles Cristóbal de Torres y Andrés de la Torre, en el municipio de Aguascalientes."
         },
         {
           "numero": 2,
@@ -26436,7 +26436,7 @@
           "fecha_resolutivo": "2022-04-13",
           "no_oficio_resolutivo": "SSMAA/DGGyEA/0600/2022",
           "boletin_id": 274,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la preparación del sitio y construcción de una nave industrial dentro del perímetro del Parque Industrial El Vergel, ubicado al poniente, sobre el Blvd. Adolfo Ruíz Cortines en el Municipio de Aguascalientes. 4947 Y 4950 - Acompañar al escrito copia de identificación para acreditar la personalidad y comprobante de domicilio para acreditar el lugar de notificaciones. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 19 DE ABRIL DE 2022 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la preparación del sitio y construcción de una nave industrial dentro del perímetro del Parque Industrial El Vergel, ubicado al poniente, sobre el Blvd. Adolfo Ruíz Cortines en el Municipio de Aguascalientes. 4947 Y 4950 - Acompañar al escrito copia de identificación para acreditar la personalidad y comprobante de domicilio para acreditar el lugar de notificaciones."
         },
         {
           "numero": 4,
@@ -26774,7 +26774,7 @@
           "fecha_ingreso": "2022-05-10",
           "boletin_id": 278,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental consiste en la explotación, aprovechamiento y proceso de materiales granulares (arena y grava), ubicado en terrenos particulares de la Ex Hacienda La Primavera en el Municipio de Calvillo. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 17 DE MAYO DE 2022 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental consiste en la explotación, aprovechamiento y proceso de materiales granulares (arena y grava), ubicado en terrenos particulares de la Ex Hacienda La Primavera en el Municipio de Calvillo."
         },
         {
           "numero": 2,
@@ -27091,7 +27091,7 @@
           "fecha_resolutivo": "2022-05-20",
           "no_oficio_resolutivo": "SSMAA/DGGyEA/0855/2022",
           "boletin_id": 281,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en aprovechar las instalaciones preexistentes para un almacén de insumos mecánicos agrícolas y pecuarios, así como para armar equipos para el sector agroindustrial y oficinas administrativas, ubicado a la Fracción No. 17, de la sección Numero 4 de la Granja El Chacho del Ejido Los Pocitos en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 31 DE MAYO DE 2022 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en aprovechar las instalaciones preexistentes para un almacén de insumos mecánicos agrícolas y pecuarios, así como para armar equipos para el sector agroindustrial y oficinas administrativas, ubicado a la Fracción No. 17, de la sección Numero 4 de la Granja El Chacho del Ejido Los Pocitos en el municipio de Aguascalientes."
         },
         {
           "numero": 2,
@@ -27515,7 +27515,7 @@
           "fecha_ingreso": "2022-06-28",
           "boletin_id": 285,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en el desarrollo urbano de un terreno con uso actual rustico, que contempla 170 lotes habitacionales, ubicado en la Av. 1º. de Diciembre y Av. del Valle en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 05 DE JULIO DE 2022 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en el desarrollo urbano de un terreno con uso actual rustico, que contempla 170 lotes habitacionales, ubicado en la Av. 1º. de Diciembre y Av. del Valle en el municipio de Aguascalientes."
         },
         {
           "numero": 4,
@@ -27664,7 +27664,7 @@
           "fecha_resolutivo": "2022-07-04",
           "no_oficio_resolutivo": "SSMAA/DGGyEA/1107/2022",
           "boletin_id": 286,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la urbanización y construcción de viviendas, localizado al poniente de la Cabecera Municipal de Pabellón de Arteaga. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 12 DE JULIO DE 2022 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la urbanización y construcción de viviendas, localizado al poniente de la Cabecera Municipal de Pabellón de Arteaga."
         }
       ],
       "año": 2022,
@@ -27724,7 +27724,7 @@
           "fecha_ingreso": "2022-07-14",
           "boletin_id": 287,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental en la adecuación de un socavón para la disposición final de residuos industriales, a ubicarse en La Loma-Coyotes, parcela 6Z1, Ejido Cotorina (Coyotes) al suroeste de la Ciudad en el Municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 19 DE JULIO DE 2022 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental en la adecuación de un socavón para la disposición final de residuos industriales, a ubicarse en La Loma-Coyotes, parcela 6Z1, Ejido Cotorina (Coyotes) al suroeste de la Ciudad en el Municipio de Aguascalientes."
         }
       ],
       "resolutivos_emitidos": [
@@ -27812,7 +27812,7 @@
           "fecha_ingreso": "2022-07-21",
           "boletin_id": 288,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en realizar trabajos de extracción de arena y piedra dentro del predio de uso agrícola/desuso, en solo una fracción de la propiedad, ubicado en la localidad de Pabellón de Hidalgo en el municipio de Rincón de Romos. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 26 DE JULIO DE 2022 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en realizar trabajos de extracción de arena y piedra dentro del predio de uso agrícola/desuso, en solo una fracción de la propiedad, ubicado en la localidad de Pabellón de Hidalgo en el municipio de Rincón de Romos."
         },
         {
           "numero": 2,
@@ -27930,7 +27930,7 @@
           "fecha_ingreso": "2022-07-28",
           "boletin_id": 289,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de impacto Ambiental el cual consiste en la construcción de un conjunto habitacional que, conformado por un total de 350 lotes habitacionales, un área de usos común, área de vialidades, área verde, área comercial y de servicios para un pozo y de donación, ubicado al poniente de la Ciudad en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 02 DE AGOSTO DE 2022 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de impacto Ambiental el cual consiste en la construcción de un conjunto habitacional que, conformado por un total de 350 lotes habitacionales, un área de usos común, área de vialidades, área verde, área comercial y de servicios para un pozo y de donación, ubicado al poniente de la Ciudad en el municipio de Aguascalientes."
         },
         {
           "numero": 3,
@@ -28519,7 +28519,7 @@
           "fecha_ingreso": "2022-09-02",
           "boletin_id": 294,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la explotación de tepetate y arena que será utilizado en la construcción de inmuebles, ubicado dentro del Ejido La Luz, en el municipio de El Llano. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 06 DE SEPTIEMBRE DE 2022 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la explotación de tepetate y arena que será utilizado en la construcción de inmuebles, ubicado dentro del Ejido La Luz, en el municipio de El Llano."
         }
       ],
       "resolutivos_emitidos": [],
@@ -28625,7 +28625,7 @@
           "fecha_ingreso": "2022-09-12",
           "boletin_id": 296,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la urbanización y adecuación para desarrollar una torre habitacional, ubicada al poniente del municipio de Jesús María. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 20 DE SEPTIEMBRE DE 2022 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la urbanización y adecuación para desarrollar una torre habitacional, ubicada al poniente del municipio de Jesús María."
         },
         {
           "numero": 2,
@@ -28743,7 +28743,7 @@
           "fecha_ingreso": "2022-09-07",
           "boletin_id": 297,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de impacto Ambiental el cual consiste en la construcción de un desarrollo habitacional de tipo fraccionamiento habitacional urbano de tipo popular ubicado al sureste en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 27 DE SEPTIEMBRE DE 2022 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de impacto Ambiental el cual consiste en la construcción de un desarrollo habitacional de tipo fraccionamiento habitacional urbano de tipo popular ubicado al sureste en el municipio de Aguascalientes."
         },
         {
           "numero": 2,
@@ -28906,7 +28906,7 @@
           "fecha_ingreso": "2022-09-30",
           "boletin_id": 298,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual contempla el establecimiento de un fraccionamiento Mixtro Microproductivo, comercial y servicios (Parque Industrial), el cual se establecerá en un predio con una superficie total de 112,534.15 m2, comprendiendo 142 lotes microproductivos de 400 m2 de superficie; 2 áreas comerciales, 1 lote de donación, además de vialidades y áreas verdes, ubicado al sur de la Ciudad, en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 04 DE OCTUBRE DE 2022 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual contempla el establecimiento de un fraccionamiento Mixtro Microproductivo, comercial y servicios (Parque Industrial), el cual se establecerá en un predio con una superficie total de 112,534.15 m2, comprendiendo 142 lotes microproductivos de 400 m2 de superficie; 2 áreas comerciales, 1 lote de donación, además de vialidades y áreas verdes, ubicado al sur de la Ciudad, en el municipio de Aguascalientes."
         }
       ],
       "resolutivos_emitidos": [],
@@ -28967,7 +28967,7 @@
           "fecha_resolutivo": "2022-10-25",
           "no_oficio_resolutivo": "SSMAA/DGGyEA/0156/2022",
           "boletin_id": 299,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en un banco de materiales y planta de procesamiento y trituración, el cual se ubica en el Ejido Santiago, en el municipio de Pabellón de Arteaga. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 01 DE NOVIEMBRE DE 2022 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en un banco de materiales y planta de procesamiento y trituración, el cual se ubica en el Ejido Santiago, en el municipio de Pabellón de Arteaga."
         },
         {
           "numero": 3,
@@ -29011,7 +29011,7 @@
           "fecha_ingreso": "2022-10-03",
           "boletin_id": 300,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la adecuación y operación de una planta automatizada para la producción de concreto, ubicado en el interior de la parcela 7 Zona 1 Polígono 1 de 1 del Ejido San Luis de Letras en la Subdivisión predio 5, en el municipio de Pabellón de Arteaga. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 11 DE OCTUBRE DE 2022 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la adecuación y operación de una planta automatizada para la producción de concreto, ubicado en el interior de la parcela 7 Zona 1 Polígono 1 de 1 del Ejido San Luis de Letras en la Subdivisión predio 5, en el municipio de Pabellón de Arteaga."
         },
         {
           "numero": 2,
@@ -29284,7 +29284,7 @@
           "fecha_ingreso": "2022-11-11",
           "boletin_id": 304,
           "coord_valida": null,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción y operación de una torre multifamiliar y comercial de 6 niveles y 2 sótanos, que contendrán 47 departamentos, ubicado en la calle Bosque del Paraíso No. 112 de la localidad del Tepetates, en el predio 2 de la subdivisión de la parcela 1175 Z1 P2/2, del Ejido Jesús María, en el municipio de Jesús María. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 15 DE NOVIEMBRE DE 2022 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción y operación de una torre multifamiliar y comercial de 6 niveles y 2 sótanos, que contendrán 47 departamentos, ubicado en la calle Bosque del Paraíso No. 112 de la localidad del Tepetates, en el predio 2 de la subdivisión de la parcela 1175 Z1 P2/2, del Ejido Jesús María, en el municipio de Jesús María."
         }
       ],
       "resolutivos_emitidos": [
@@ -29446,7 +29446,7 @@
           "fecha_resolutivo": "2022-11-17",
           "no_oficio_resolutivo": "SSMAA/DGGyEA/0289/2022",
           "boletin_id": 305,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la adecuación y operación de una planta automatizada para la producción de concreto, ubicado en el interior de la parcela 7 Zona 1 Polígono 1 de 1 del Ejido San Luis de Letras en la Subdivisión predio 5, en el municipio de Pabellón de Arteaga. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 22 DE NOVIEMBRE DE 2022 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la adecuación y operación de una planta automatizada para la producción de concreto, ubicado en el interior de la parcela 7 Zona 1 Polígono 1 de 1 del Ejido San Luis de Letras en la Subdivisión predio 5, en el municipio de Pabellón de Arteaga."
         },
         {
           "numero": 4,
@@ -29504,7 +29504,7 @@
           "fecha_resolutivo": "2022-11-23",
           "no_oficio_resolutivo": "SSMAA/DGGyEA/0307/2022",
           "boletin_id": 306,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la ampliación de la nave industrial de la empresa Sistemas de ARNESES k&S Mexicana, Ubicada en la Av. Japón 126 Parque Industrial San Francisco de los Romo, en el municipio de San Francisco de los Romo. JOSÉ MARÍA CHÁVEZ NO. 1917 ESQUINA CON AV. SIGLO XXI, , , AGUASCALIENTES, AGS. TEL. 4947 Y 4950 PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 29 DE NOVIEMBRE DE 2022 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la ampliación de la nave industrial de la empresa Sistemas de ARNESES k&S Mexicana, Ubicada en la Av. Japón 126 Parque Industrial San Francisco de los Romo, en el municipio de San Francisco de los Romo. JOSÉ MARÍA CHÁVEZ NO. 1917 ESQUINA CON AV. SIGLO XXI, , , AGUASCALIENTES, AGS. TEL."
         }
       ],
       "año": 2022,
@@ -29838,7 +29838,7 @@
           "fecha_resolutivo": "2022-12-15",
           "no_oficio_resolutivo": "SSMAA/DGGyEA/0343/2022",
           "boletin_id": 310,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la modificación de una planta la cual requiere incrementar los procesos de producción, se instalarán nuevas líneas de producción para corte y costura de vestiduras automotriz, ubicada dentro del Parque Industrial FINSA en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 20 DE DICIEMBRE DE 2022 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la modificación de una planta la cual requiere incrementar los procesos de producción, se instalarán nuevas líneas de producción para corte y costura de vestiduras automotriz, ubicada dentro del Parque Industrial FINSA en el municipio de Aguascalientes."
         }
       ],
       "año": 2022,
@@ -30015,7 +30015,7 @@
           "fecha_ingreso": "2022-12-29",
           "boletin_id": 312,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en un sitio de disposición final de Residuos de Manejo Especial, ubicado a 3.4 km de la localidad San Vicente, en el municipio de Asientos. 4947 Y 4950 PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 03 DE ENERO DE 2023 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en un sitio de disposición final de Residuos de Manejo Especial, ubicado a 3.4 km de la localidad San Vicente, en el municipio de Asientos."
         },
         {
           "numero": 3,
@@ -30345,7 +30345,7 @@
           "fecha_resolutivo": "2023-01-06",
           "no_oficio_resolutivo": "SSMAA/DGGyEA/0213/2023",
           "boletin_id": 315,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en el acopio de residuos de manejo especial, en específico chatarra en general, a ubicarse en calle Nicolas Esparza Sustaita s/n, , en el municipio de Pabellón de Arteaga. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 24 DE ENERO DE 2023 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en el acopio de residuos de manejo especial, en específico chatarra en general, a ubicarse en calle Nicolas Esparza Sustaita s/n, , en el municipio de Pabellón de Arteaga."
         },
         {
           "numero": 4,
@@ -30404,7 +30404,7 @@
           "fecha_ingreso": "2023-01-24",
           "boletin_id": 316,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la construcción de una nave industrial donde se realizará la fabricación de tinacos, ubicada en calle J. Gómez Portugal, #101, , en el municipio de Jesús María. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 31 DE ENERO DE 2023 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la construcción de una nave industrial donde se realizará la fabricación de tinacos, ubicada en calle J. Gómez Portugal, #101, , en el municipio de Jesús María."
         },
         {
           "numero": 3,
@@ -30849,7 +30849,7 @@
           "fecha_ingreso": "2023-02-16",
           "boletin_id": 319,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la finalización de un desarrollo habitacional ubicado al norte de la Ciudad, en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 21 DE FEBRERO DE 2023 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la finalización de un desarrollo habitacional ubicado al norte de la Ciudad, en el municipio de Aguascalientes."
         },
         {
           "numero": 2,
@@ -31131,7 +31131,7 @@
           "fecha_ingreso": "2023-03-15",
           "boletin_id": 321,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la construcción de lotes urbanizados para un desarrollo habitacional y comercial en un predio de 92,198.86 m2, ubicado sobre Av. Siglo XXI en las proximidades del Club Necaxa, Jardines del Lago y Tahona Residencial, en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 21 DE MARZO DE 2023 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la construcción de lotes urbanizados para un desarrollo habitacional y comercial en un predio de 92,198.86 m2, ubicado sobre Av. Siglo XXI en las proximidades del Club Necaxa, Jardines del Lago y Tahona Residencial, en el municipio de Aguascalientes."
         },
         {
           "numero": 3,
@@ -31304,7 +31304,7 @@
           "fecha_ingreso": "2023-03-21",
           "boletin_id": 322,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de 24 unidades de vivienda (departamentos), ubicado en calle Miguel Guinchard No. 901, Int. 102, Cond. San Charbel, en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 28 DE MARZO DE 2023 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción de 24 unidades de vivienda (departamentos), ubicado en calle Miguel Guinchard No. 901, Int. 102, Cond. San Charbel, en el municipio de Aguascalientes."
         },
         {
           "numero": 2,
@@ -31394,7 +31394,7 @@
           "fecha_ingreso": "2023-03-31",
           "boletin_id": 323,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la construcción de una nave industrial donde se realizará la fabricación de tinacos, ubicada en calle J. Gómez Portugal, #101, , en el municipio de Jesús María. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 04 DE ABRIL DE 2023 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la construcción de una nave industrial donde se realizará la fabricación de tinacos, ubicada en calle J. Gómez Portugal, #101, , en el municipio de Jesús María."
         },
         {
           "numero": 3,
@@ -31529,7 +31529,7 @@
           "fecha_resolutivo": "2023-03-28",
           "no_oficio_resolutivo": "SSMAA/DGGyEA/0679/2023",
           "boletin_id": 324,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la operación de un Centro de acopio, reutilización, reciclaje, coprocesamiento y/o tratamiento de residuos de manejo especial para su comercialización, ubicada al suroeste de la Ciudad en el municipio de Aguascalientes. 4947 Y 4950 PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 11 DE ABRIL DE 2023 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la operación de un Centro de acopio, reutilización, reciclaje, coprocesamiento y/o tratamiento de residuos de manejo especial para su comercialización, ubicada al suroeste de la Ciudad en el municipio de Aguascalientes."
         },
         {
           "numero": 2,
@@ -31602,7 +31602,7 @@
           "fecha_ingreso": "2023-04-12",
           "boletin_id": 325,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la construcción de un tramo de una avenida subcolectora, ubicada entre la Avenida Siglo XXI y la Carretera 52, la cual será otro tramo de la Avenida Guadalupe González en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 18 DE ABRIL DE 2023 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la construcción de un tramo de una avenida subcolectora, ubicada entre la Avenida Siglo XXI y la Carretera 52, la cual será otro tramo de la Avenida Guadalupe González en el municipio de Aguascalientes."
         },
         {
           "numero": 3,
@@ -32540,7 +32540,7 @@
           "fecha_resolutivo": "2023-06-16",
           "no_oficio_resolutivo": "SSMAA/DGGyEA/1064/2023",
           "boletin_id": 334,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la construcción y urbanización de un predio de 16,880.39 m2 para la conformación de condominios habitacionales urbanos de tipo popular, en donde el predio en el que se planea llevar a cabo dicho fraccionamiento, se encuentra localizado al oriente de la ciudad de Aguascalientes, en el Municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 20 DE JUNIO DE 2023 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la construcción y urbanización de un predio de 16,880.39 m2 para la conformación de condominios habitacionales urbanos de tipo popular, en donde el predio en el que se planea llevar a cabo dicho fraccionamiento, se encuentra localizado al oriente de la ciudad de Aguascalientes, en el Municipio de Aguascalientes."
         },
         {
           "numero": 4,
@@ -32614,7 +32614,7 @@
           "fecha_resolutivo": "2023-05-19",
           "no_oficio_resolutivo": "SSMAA/DGGyEA/0910/2023",
           "boletin_id": 335,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la extracción y aprovechamiento de material pétreo específicamente tepetate, dentro de un predio el cual ya tiene antecedentes de operación, ubicado en el Ejido El Mezquite, en el municipio de San Francisco de los Romo. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 27 DE JUNIO DE 2023 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la extracción y aprovechamiento de material pétreo específicamente tepetate, dentro de un predio el cual ya tiene antecedentes de operación, ubicado en el Ejido El Mezquite, en el municipio de San Francisco de los Romo."
         },
         {
           "numero": 3,
@@ -32790,7 +32790,7 @@
           "fecha_ingreso": "2023-07-14",
           "boletin_id": 336,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en un centro de almacenamiento, mezclado, envasado y distribución de fertilizantes agrícolas, ubicado en el km. 2.380, carretera 22, en el Municipio de Rincón de Romos. 4947 Y 4950 PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 18 DE JULIO DE 2023 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en un centro de almacenamiento, mezclado, envasado y distribución de fertilizantes agrícolas, ubicado en el km. 2.380, carretera 22, en el Municipio de Rincón de Romos."
         }
       ],
       "resolutivos_emitidos": [],
@@ -32836,7 +32836,7 @@
           "fecha_ingreso": "2023-07-17",
           "boletin_id": 337,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la descripción de la operación de Molitec Steel México para la manufactura y troquelado de piezas metálicas de acero usando diferentes tipos de láminas, ubicada en Circuito Progreso # 118, Fraccionamiento Parque Industrial de Logística Automotriz en el Municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 25 DE JULIO DE 2023 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la descripción de la operación de Molitec Steel México para la manufactura y troquelado de piezas metálicas de acero usando diferentes tipos de láminas, ubicada en Circuito Progreso # 118, Fraccionamiento Parque Industrial de Logística Automotriz en el Municipio de Aguascalientes."
         },
         {
           "numero": 3,
@@ -33123,7 +33123,7 @@
           "fecha_resolutivo": "2023-08-08",
           "no_oficio_resolutivo": "OFICIO/DGGyEA/DIRA/1644/2023",
           "boletin_id": 340,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en realizar el proceso y mantenimiento de una ladrillera, la cual lleva a cabo la fabricación y venta de ladrillos, cuñas y listón, utilizadas en la industria de la construcción, ubicada en al nororiente de la Ciudad en el Municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MIÉRCOLES, 16 DE AGOSTO DE 2023 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en realizar el proceso y mantenimiento de una ladrillera, la cual lleva a cabo la fabricación y venta de ladrillos, cuñas y listón, utilizadas en la industria de la construcción, ubicada en al nororiente de la Ciudad en el Municipio de Aguascalientes."
         }
       ],
       "año": 2023,
@@ -33183,7 +33183,7 @@
           "fecha_ingreso": "2023-08-14",
           "boletin_id": 341,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la instalación de un complejo habitacional ubicado en la ciudad de Aguascalientes, al oriente de la ciudad en el lote 1 de la subdivisión de la parcela 15 del poblado Salto de Ojocaliente. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES, 22 DE AGOSTO DE 2023 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la instalación de un complejo habitacional ubicado en la ciudad de Aguascalientes, al oriente de la ciudad en el lote 1 de la subdivisión de la parcela 15 del poblado Salto de Ojocaliente."
         },
         {
           "numero": 4,
@@ -33275,7 +33275,7 @@
           "fecha_ingreso": "2023-08-29",
           "boletin_id": 343,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en realizar obras de preparación de terreno y construcción de obra civil, instalación de agua potable y energía eléctrica. El uso de las instalaciones será como centro comercial, con locales a ser alquilados, ya sea para el comercio o como oficinas, ubicado sobre la calle Benito Juárez Sur, . PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES 05 DE SEPTIEMBRE DE 2023 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en realizar obras de preparación de terreno y construcción de obra civil, instalación de agua potable y energía eléctrica. El uso de las instalaciones será como centro comercial, con locales a ser alquilados, ya sea para el comercio o como oficinas, ubicado sobre la calle Benito Juárez Sur, ."
         },
         {
           "numero": 2,
@@ -33321,7 +33321,7 @@
           "fecha_ingreso": "2023-09-07",
           "boletin_id": 344,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la operación de una nave industrial en la que se fabrican productos de hierro y acero de material para suplir piezas o crear refacciones que sustituyan las que están dañadas, ubicada en carretera a Loretito km. 4.7, Loretito en el municipio de San Francisco de los Romo. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES 12 DE SEPTIEMBRE DE 2023 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la operación de una nave industrial en la que se fabrican productos de hierro y acero de material para suplir piezas o crear refacciones que sustituyan las que están dañadas, ubicada en carretera a Loretito km. 4.7, Loretito en el municipio de San Francisco de los Romo."
         },
         {
           "numero": 2,
@@ -33574,7 +33574,7 @@
           "fecha_ingreso": "2023-09-18",
           "boletin_id": 346,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en construcción y posterior ocupación de viviendas tipo departamentos, para la consolidación de la zona, ubicado dentro del fraccionamiento denominado “Lomas del Gachupin” en el Municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES 26 DE SEPTIEMBRE DE 2023 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en construcción y posterior ocupación de viviendas tipo departamentos, para la consolidación de la zona, ubicado dentro del fraccionamiento denominado “Lomas del Gachupin” en el Municipio de Aguascalientes."
         },
         {
           "numero": 3,
@@ -33708,7 +33708,7 @@
           "fecha_ingreso": "2023-10-04",
           "boletin_id": 348,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la construcción de un complejo Mixto Multifamiliar y Comercial en Avenida Arroyo El Molino en Jesús María, conformado por 3 edificios, que se construirán en 3 fases, cada fase por edificio. La Fase 1 consiste en la construcción del Edificio 1, denominado Kova, conformado por 13 niveles, siendo el nivel más alto una terraza; con un total de 41 departamentos y 8 lotes comerciales, además de amenidades como espacio para mascotas, gimnasio, sala de lectura, área de juegos infantiles y área de trabajo común, ubicado en avenida Arroyo El Molino, número 421, localidad El Llano, en el Municipio de Jesús María. TEL. 4947 Y 4950 3.- Acompañar al escrito copia de identificación para acreditar la personalidad y comprobante de domicilio para acreditar el lugar de notificaciones. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES 10 DE OCTUBRE DE 2023 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la construcción de un complejo Mixto Multifamiliar y Comercial en Avenida Arroyo El Molino en Jesús María, conformado por 3 edificios, que se construirán en 3 fases, cada fase por edificio. La Fase 1 consiste en la construcción del Edificio 1, denominado Kova, conformado por 13 niveles, siendo el nivel más alto una terraza; con un total de 41 departamentos y 8 lotes comerciales, además de amenidades como espacio para mascotas, gimnasio, sala de lectura, área de juegos infantiles y área de trabajo común, ubicado en avenida Arroyo El Molino, número 421, localidad El Llano, en el Municipio de Jesús María. TEL. 4947 Y 4950 3.- Acompañar al escrito copia de identificación para acreditar la personalidad y comprobante de domicilio para acreditar el lugar de notificaciones."
         },
         {
           "numero": 3,
@@ -33784,7 +33784,7 @@
           "fecha_ingreso": "2023-10-12",
           "boletin_id": 349,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la operación de una planta para la producción de concreto premezclado, derivado de una mezcla física de cemento, agua, arena, grava y aditivos ubicado calle José Barba Alonso número 106 (antes Calle 4-E), en la Colonia Ciudad Industrial en el Municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES 17 DE OCTUBRE DE 2023 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la operación de una planta para la producción de concreto premezclado, derivado de una mezcla física de cemento, agua, arena, grava y aditivos ubicado calle José Barba Alonso número 106 (antes Calle 4-E), en la Colonia Ciudad Industrial en el Municipio de Aguascalientes."
         },
         {
           "numero": 3,
@@ -33906,7 +33906,7 @@
           "fecha_ingreso": "2023-10-25",
           "boletin_id": 351,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en el desarrollo y urbanización de un desarrollo habitacional densidad “D-C” y comercial tipo “A” estará conformado por 285 lotes habitacionales tipo unifamiliar, lotes comerciales con estacionamiento, áreas verdes, área de equipamiento, vialidades internas y áreas de donación, todo esto a realizarse en 10 etapas de construcción, el proyecto se desarrollará sobre un predio rústico del terreno denominado “El Pastor” que anteriormente se dedicaba a actividades de agricultura, ubicado al sur de la Carretera Federal número 25 Aguascalientes – Loreto, justo a la altura de la comunidad General José María Morelos y Pavón, en Antigua Hacienda Cañada Honda, en el Municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES 31 DE OCTUBRE DE 2023 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en el desarrollo y urbanización de un desarrollo habitacional densidad “D-C” y comercial tipo “A” estará conformado por 285 lotes habitacionales tipo unifamiliar, lotes comerciales con estacionamiento, áreas verdes, área de equipamiento, vialidades internas y áreas de donación, todo esto a realizarse en 10 etapas de construcción, el proyecto se desarrollará sobre un predio rústico del terreno denominado “El Pastor” que anteriormente se dedicaba a actividades de agricultura, ubicado al sur de la Carretera Federal número 25 Aguascalientes – Loreto, justo a la altura de la comunidad General José María Morelos y Pavón, en Antigua Hacienda Cañada Honda, en el Municipio de Aguascalientes."
         },
         {
           "numero": 4,
@@ -33967,7 +33967,7 @@
           "fecha_ingreso": "2023-10-30",
           "boletin_id": 352,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la operación y mantenimiento de una planta de pintura electroforético (E-Coat), ubicada en calle Plutarco Elías Calles, , en el municipio de Rincón de Romos. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES 07 DE NOVIEMBRE DE 2023 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la operación y mantenimiento de una planta de pintura electroforético (E-Coat), ubicada en calle Plutarco Elías Calles, , en el municipio de Rincón de Romos."
         },
         {
           "numero": 3,
@@ -34028,7 +34028,7 @@
           "fecha_ingreso": "2023-11-09",
           "boletin_id": 353,
           "coord_valida": null,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en un centro de almacenamiento, mezclado, envasado y distribución de fertilizantes agrícolas, ubicado en el km. 2.380, carretera 22, en el Municipio de Rincón de Romos. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES 14 DE NOVIEMBRE DE 2023 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en un centro de almacenamiento, mezclado, envasado y distribución de fertilizantes agrícolas, ubicado en el km. 2.380, carretera 22, en el Municipio de Rincón de Romos."
         },
         {
           "numero": 3,
@@ -34104,7 +34104,7 @@
           "fecha_ingreso": "2023-11-15",
           "boletin_id": 354,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en contar con un establecimiento que recupere, almacene y transforme materiales (residuos) con capacidad de reúso o reciclaje, que sean de utilidad o insumo de otras personas o procesos productivos, ubicado en Carretera a la Guayana Km 1.5, Letra “D”, en el municipio de San Francisco de los Romo. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES 21 DE NOVIEMBRE DE 2023 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en contar con un establecimiento que recupere, almacene y transforme materiales (residuos) con capacidad de reúso o reciclaje, que sean de utilidad o insumo de otras personas o procesos productivos, ubicado en Carretera a la Guayana Km 1.5, Letra “D”, en el municipio de San Francisco de los Romo."
         },
         {
           "numero": 4,
@@ -34452,7 +34452,7 @@
           "fecha_resolutivo": "2023-12-20",
           "no_oficio_resolutivo": "SSMAA/DGGyEA/1875/2023",
           "boletin_id": 358,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en, adecuar un terreno con una superficie de 20,000.00 m2 para un Proyecto de 3 etapas iniciando el mismo con la construcción de una nave industrial de 4,119.67 metros cuadrados, más un patio de maniobras, estacionamiento y áreas verdes de aproximadamente 2,750 metros cuadrados, sumando en su primera etapa 6,869.67 m2, ubicado en el lote P-12 de la manzana 03 del Parque Industrial Finsa Aguascalientes en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES 26 DE DICIEMBRE DE 2023 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en, adecuar un terreno con una superficie de 20,000.00 m2 para un Proyecto de 3 etapas iniciando el mismo con la construcción de una nave industrial de 4,119.67 metros cuadrados, más un patio de maniobras, estacionamiento y áreas verdes de aproximadamente 2,750 metros cuadrados, sumando en su primera etapa 6,869.67 m2, ubicado en el lote P-12 de la manzana 03 del Parque Industrial Finsa Aguascalientes en el municipio de Aguascalientes."
         }
       ],
       "año": 2023,
@@ -34497,7 +34497,7 @@
           "fecha_resolutivo": "2023-12-20",
           "no_oficio_resolutivo": "SSMAA/DGGyEA/1875/2023",
           "boletin_id": 360,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en, adecuar un terreno con una superficie de 20,000.00 m2 para un Proyecto de 3 etapas iniciando el mismo con la construcción de una nave industrial de 4,119.67 metros cuadrados, más un patio de maniobras, estacionamiento y áreas verdes de aproximadamente 2,750 metros cuadrados, sumando en su primera etapa 6,869.67 m2, ubicado en el lote P-12 de la manzana 03 del Parque Industrial Finsa Aguascalientes en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES 26 DE DICIEMBRE DE 2023 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en, adecuar un terreno con una superficie de 20,000.00 m2 para un Proyecto de 3 etapas iniciando el mismo con la construcción de una nave industrial de 4,119.67 metros cuadrados, más un patio de maniobras, estacionamiento y áreas verdes de aproximadamente 2,750 metros cuadrados, sumando en su primera etapa 6,869.67 m2, ubicado en el lote P-12 de la manzana 03 del Parque Industrial Finsa Aguascalientes en el municipio de Aguascalientes."
         }
       ],
       "año": 2023,
@@ -34527,7 +34527,7 @@
           "fecha_ingreso": "2023-12-26",
           "boletin_id": 361,
           "coord_valida": null,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en una nave de almacenamiento y oficinas logísticas, en la cual se realizarán actividades de almacenamiento general de depósito y otros servicios de almacenamiento general sin instalaciones especializadas, ubicado en el Parque Santa Fe Tecno Park en el municipio de Jesús María. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES 02 DE ENERO DE 2024 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en una nave de almacenamiento y oficinas logísticas, en la cual se realizarán actividades de almacenamiento general de depósito y otros servicios de almacenamiento general sin instalaciones especializadas, ubicado en el Parque Santa Fe Tecno Park en el municipio de Jesús María."
         },
         {
           "numero": 2,
@@ -34663,7 +34663,7 @@
           "fecha_ingreso": "2024-01-17",
           "boletin_id": 364,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la construcción de una nave industrial, ubicada en Boulevard El Chichimeco #5004 en el municipio de Jesús María. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES 23 DE ENERO DE 2024 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la construcción de una nave industrial, ubicada en Boulevard El Chichimeco #5004 en el municipio de Jesús María."
         },
         {
           "numero": 2,
@@ -34841,7 +34841,7 @@
           "fecha_ingreso": "2024-01-31",
           "boletin_id": 366,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la construcción de un desarrollo habitacional y comercial en un predio de 99,446 m2, se contempla la construcción de 508 lotes habitacionales y 7 lotes comerciales; además de 5 áreas de donación y vialidad, ubicado en la zona sur del municipio de San Francisco de los Romo. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES 06 DE FEBRERO DE 2024 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la construcción de un desarrollo habitacional y comercial en un predio de 99,446 m2, se contempla la construcción de 508 lotes habitacionales y 7 lotes comerciales; además de 5 áreas de donación y vialidad, ubicado en la zona sur del municipio de San Francisco de los Romo."
         },
         {
           "numero": 3,
@@ -35223,7 +35223,7 @@
           "fecha_ingreso": "2024-02-26",
           "boletin_id": 370,
           "coord_valida": true,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción en dos etapas de laboratorio y oficinas, siendo la primera etapa correspondiente al laboratorio y la segunda a las oficinas, ubicado en Av. Aguascalientes Sur #401, Ex Ejido Ojocaliente, en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES 05 DE MARZO DE 2024 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en la construcción en dos etapas de laboratorio y oficinas, siendo la primera etapa correspondiente al laboratorio y la segunda a las oficinas, ubicado en Av. Aguascalientes Sur #401, Ex Ejido Ojocaliente, en el municipio de Aguascalientes."
         },
         {
           "numero": 2,
@@ -35330,7 +35330,7 @@
           "fecha_resolutivo": "2024-01-10",
           "no_oficio_resolutivo": "SSMAA/DGGyEA/0050/2024",
           "boletin_id": 371,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual corresponde a un condominio habitacional el cual cuenta con 79 predios con medidas de 90 m2 en promedio zonificados alrededor del predio, en la parte superior cuenta con 01 lote de tipo multifamiliar, 01 predio comercial y al centro un área de uso común para uso de los condóminos, ubicado en el lote 1 de la subdivisión autorizada de la parcela 15 del poblado salto de Ojocaliente sobre a calle Av. Sotol, colindando al norte del desarrollo Molino del Reyen en el municipio de Aguascalientes. 4947 Y 4950 - Acompañar al escrito copia de identificación para acreditar la personalidad y comprobante de domicilio para acreditar el lugar de notificaciones. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES 12 DE MARZO DE 2024 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual corresponde a un condominio habitacional el cual cuenta con 79 predios con medidas de 90 m2 en promedio zonificados alrededor del predio, en la parte superior cuenta con 01 lote de tipo multifamiliar, 01 predio comercial y al centro un área de uso común para uso de los condóminos, ubicado en el lote 1 de la subdivisión autorizada de la parcela 15 del poblado salto de Ojocaliente sobre a calle Av. Sotol, colindando al norte del desarrollo Molino del Reyen en el municipio de Aguascalientes. 4947 Y 4950 - Acompañar al escrito copia de identificación para acreditar la personalidad y comprobante de domicilio para acreditar el lugar de notificaciones."
         },
         {
           "numero": 2,
@@ -35716,7 +35716,7 @@
           "fecha_ingreso": "2024-04-15",
           "boletin_id": 376,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la adecuación de una fracción de un terreno con una superficie de 57,318.54 m2 para la construcción y operación de la segunda etapa de la empresa Fundidora DDF México, ubicada en el lote P-02 de la manzana 02 del Parque Industrial Finsa, en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES 23 DE ABRIL DE 2024 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la adecuación de una fracción de un terreno con una superficie de 57,318.54 m2 para la construcción y operación de la segunda etapa de la empresa Fundidora DDF México, ubicada en el lote P-02 de la manzana 02 del Parque Industrial Finsa, en el municipio de Aguascalientes."
         },
         {
           "numero": 2,
@@ -35937,7 +35937,7 @@
           "fecha_ingreso": "2024-04-26",
           "boletin_id": 377,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la construcción de un complejo habitacional –Densidad B Tipo Medio, ubicada sobre el lindero de la calle Montenegro/Paseos de la Soledad, en la colonia Trojes de Alonso, en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES 30 DE ABRIL DE 2024 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la construcción de un complejo habitacional –Densidad B Tipo Medio, ubicada sobre el lindero de la calle Montenegro/Paseos de la Soledad, en la colonia Trojes de Alonso, en el municipio de Aguascalientes."
         }
       ],
       "resolutivos_emitidos": [],
@@ -36203,7 +36203,7 @@
           "fecha_ingreso": "2024-05-22",
           "boletin_id": 380,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la conformación de las terracerías en sus diferentes etapas de acuerdo al proyecto a desarrollar, el cual la normativa nos solicita calidades a nivel de subrasantes en sus terracerías con material de banco “tepetate”, en capas de 20 cm, ubicado en Av. Mahatma Gandhi sin número, esquina con Av. Benedicto XVI, Colonia Santa Gertrudis, Delegación Insurgentes en el municipio de Aguascalientes. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES 28 DE MAYO DE 2024 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la conformación de las terracerías en sus diferentes etapas de acuerdo al proyecto a desarrollar, el cual la normativa nos solicita calidades a nivel de subrasantes en sus terracerías con material de banco “tepetate”, en capas de 20 cm, ubicado en Av. Mahatma Gandhi sin número, esquina con Av. Benedicto XVI, Colonia Santa Gertrudis, Delegación Insurgentes en el municipio de Aguascalientes."
         },
         {
           "numero": 3,
@@ -36323,7 +36323,7 @@
           "fecha_ingreso": "2024-06-05",
           "boletin_id": 382,
           "coord_valida": null,
-          "naturaleza_proyecto": "Informe Preventivo el cual consiste en satisfacer la demanda de elementos para los sistemas de cinturones de protección de vehículos automotores y la construcción de autopartes, ubicada en la Calle Circuito Cerezos Sur 106, Fraccionamiento Parque Industrial San Francisco IV en el Municipio de San Francisco de los Romo. PROYECTOS INGRESADOS A IMPACTO AMBIENTAL Y EMISIÓN DE RESOLUTIVOS MARTES 11 DE JUNIO DE 2024 PUBLICACIÓN SSMAA-DIRA EN CUMPLIMIENTO A LO ESTABLECIDO EN EL ARTÍCULO 36, DE LA LEY DE PROTECCIÓN AMBIENTAL PARA EL ESTADO DE AGUASCALIENTES."
+          "naturaleza_proyecto": "Informe Preventivo el cual consiste en satisfacer la demanda de elementos para los sistemas de cinturones de protección de vehículos automotores y la construcción de autopartes, ubicada en la Calle Circuito Cerezos Sur 106, Fraccionamiento Parque Industrial San Francisco IV en el Municipio de San Francisco de los Romo."
         },
         {
           "numero": 4,

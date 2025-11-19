@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Plus, X, Download, RefreshCw } from 'lucide-react';
+import { Plus, X, Download, RefreshCw, Eye, EyeOff } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { coordinateValidator } from '@/lib/coordinate-validator';
 
@@ -198,6 +198,8 @@ export default function EmailGeneratorPage() {
   });
   const [bulletinId, setBulletinId] = useState('454');
   const [isLoading, setIsLoading] = useState(false);
+  const [apiKey, setApiKey] = useState('');
+  const [showApiKey, setShowApiKey] = useState(false);
   const previewIframeRef = useRef<HTMLIFrameElement | null>(null);
   const [previewHeight, setPreviewHeight] = useState<number>(1200);
 
@@ -795,7 +797,12 @@ export default function EmailGeneratorPage() {
   }
 
   const sendToWebhook = async (html: string) => {
-    const webhookUrl = 'https://hook.eu1.make.com/8tr7utbpyhsj2he46v8uvsr7pm6tmwjn';
+    const webhookUrl = 'https://hook.eu1.make.com/c2q0xyf1wdnankpdpugx7f8pgkkw4lxh';
+    
+    if (!apiKey) {
+      throw new Error('API Key de Make.com no configurada. Por favor, ingresa la API Key en el campo correspondiente.');
+    }
+
     const payload = {
       html: html,
       bulletin_id: bulletinId,
@@ -805,51 +812,21 @@ export default function EmailGeneratorPage() {
       timestamp: new Date().toISOString()
     };
 
-    console.log('🔄 Enviando al webhook:', webhookUrl);
-    console.log('📦 Payload:', { ...payload, html: html.substring(0, 100) + '...' });
+    const response = await fetch(webhookUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-make-apikey': apiKey,
+      },
+      body: JSON.stringify(payload)
+    });
 
-    try {
-      const response = await fetch(webhookUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify(payload)
-      });
-
-      console.log('📡 Respuesta del webhook:', {
-        status: response.status,
-        statusText: response.statusText,
-        headers: Object.fromEntries(response.headers.entries())
-      });
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('❌ Error del servidor:', errorText);
-        
-        if (response.status === 410) {
-          // Detectar diferentes mensajes de error 410
-          if (errorText.includes('Webhook is no longer active') || errorText.includes('no longer active')) {
-            throw new Error('El webhook de Make.com ya no está activo. Por favor, ve a Make.com y reactiva tu escenario o crea uno nuevo.');
-          } else {
-            throw new Error(`Escenario no activo en Make.com: ${errorText}`);
-          }
-        } else {
-          throw new Error(`HTTP error! status: ${response.status} - ${errorText}`);
-        }
-      }
-
-      const responseData = await response.text();
-      console.log('✅ Webhook enviado exitosamente:', responseData);
-      return true;
-    } catch (error) {
-      console.error('❌ Error completo enviando webhook:', {
-        message: error instanceof Error ? error.message : 'Error desconocido',
-        error: error
-      });
-      throw error;
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`Error ${response.status}: ${errorText || response.statusText}`);
     }
+
+    return true;
   };
 
   const copyHTML = async () => {
@@ -868,41 +845,12 @@ export default function EmailGeneratorPage() {
         description: "HTML copiado al portapapeles y enviado al webhook"
       });
     } catch (error) {
-      console.error('❌ Error en copyHTML:', error);
       const errorMessage = error instanceof Error ? error.message : 'Error desconocido';
-      
-      // Si falla el webhook, aún así copiar al portapapeles
-      try {
-        await navigator.clipboard.writeText(html);
-        console.log('⚠️ HTML copiado pero webhook falló');
-        
-        if (errorMessage.includes('Escenario no activo') || errorMessage.includes('ya no está activo') || errorMessage.includes('no longer active')) {
-          toast({
-            title: "⚠️ Webhook inactivo",
-            description: "HTML copiado al portapapeles. El webhook de Make.com está inactivo. Ve a Make.com y reactiva tu escenario o crea uno nuevo.",
-            variant: "destructive"
-          });
-        } else if (errorMessage.includes('CORS') || errorMessage.includes('Cross-Origin')) {
-          toast({
-            title: "⚠️ Problema de CORS",
-            description: "HTML copiado, pero el navegador bloquea el webhook. Usa 'Probar Webhook' para diagnóstico",
-            variant: "destructive"
-          });
-        } else {
-          toast({
-            title: "⚠️ Parcialmente exitoso",
-            description: `HTML copiado, pero webhook falló: ${errorMessage}. Revisa consola (F12)`,
-            variant: "destructive"
-          });
-        }
-      } catch (clipboardError) {
-        console.error('❌ Error también en portapapeles:', clipboardError);
-        toast({
-          title: "❌ Error completo",
-          description: `No se pudo copiar ni enviar: ${errorMessage}`,
-          variant: "destructive"
-        });
-      }
+      toast({
+        title: "Error",
+        description: errorMessage,
+        variant: "destructive"
+      });
     }
   };
 
@@ -923,7 +871,7 @@ export default function EmailGeneratorPage() {
                 <CardTitle>Cargar Boletín</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="flex gap-2">
+                <div className="flex gap-2" suppressHydrationWarning>
                   <div className="flex-1">
                     <Label htmlFor="bulletinId">ID del Boletín</Label>
                     <Input
@@ -1028,7 +976,7 @@ export default function EmailGeneratorPage() {
                 <CardTitle>Datos del Boletín</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-4">
+                <div className="space-y-4" suppressHydrationWarning>
                   <div>
                     <Label htmlFor="date">Fecha del Boletín</Label>
                     <Input
@@ -1049,10 +997,47 @@ export default function EmailGeneratorPage() {
               </CardContent>
             </Card>
 
+            <Card>
+              <CardHeader>
+                <CardTitle>Configuración de Make.com</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div>
+                    <Label htmlFor="apiKey">API Key de Make.com</Label>
+                    <div className="relative">
+                      <Input
+                        id="apiKey"
+                        type={showApiKey ? "text" : "password"}
+                        value={apiKey}
+                        onChange={(e) => setApiKey(e.target.value)}
+                        placeholder="Ingresa tu API Key de Make.com"
+                        className="pr-10"
+                      />
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="sm"
+                        className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+                        onClick={() => setShowApiKey(!showApiKey)}
+                      >
+                        {showApiKey ? (
+                          <EyeOff className="h-4 w-4 text-gray-500" />
+                        ) : (
+                          <Eye className="h-4 w-4 text-gray-500" />
+                        )}
+                      </Button>
+                    </div>
+                    <p className="text-xs text-gray-500 mt-1">
+                      La API Key se usa para autenticar las peticiones al webhook de Make.com
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
 
           </div>
             <div className="space-y-3 my-4">
-              
               <Button 
                 onClick={async () => {
                   const html = generateHTML();
@@ -1064,26 +1049,17 @@ export default function EmailGeneratorPage() {
                     });
                   } catch (error) {
                     const errorMessage = error instanceof Error ? error.message : 'Error desconocido';
-                    console.error('Error detallado:', error);
-                    
-                    if (errorMessage.includes('Escenario no activo') || errorMessage.includes('ya no está activo') || errorMessage.includes('no longer active')) {
-                      toast({
-                        title: "⚠️ Webhook inactivo",
-                        description: "El webhook de Make.com está inactivo. Ve a Make.com y reactiva tu escenario o crea uno nuevo.",
-                        variant: "destructive"
-                      });
-                    } else {
-                      toast({
-                        title: "Error al enviar webhook",
-                        description: `${errorMessage}. Revisa la consola (F12) para más detalles.`,
-                        variant: "destructive"
-                      });
-                    }
+                    toast({
+                      title: "Error al enviar",
+                      description: errorMessage,
+                      variant: "destructive"
+                    });
                   }
                 }}
                 variant="default" 
                 className="w-full" 
                 size="lg"
+                disabled={!apiKey}
               >
                 Enviar correo
               </Button>

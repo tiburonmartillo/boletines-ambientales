@@ -10,7 +10,7 @@ export function getStats(data: BoletinesData) {
   const tiposEstudio = new Set<string>()
 
   data.boletines.forEach((boletin) => {
-    boletin.proyectos_ingresados.forEach((p) => {
+    (boletin.proyectos_ingresados || []).forEach((p) => {
       if (p.municipio) municipios.add(p.municipio)
       if (p.giro) giros.add(p.giro)
       if (p.tipo_estudio) tiposEstudio.add(p.tipo_estudio)
@@ -101,7 +101,7 @@ export function getAllProyectos(
   data: BoletinesData,
 ): (Proyecto & { fecha_publicacion: string; boletin_url: string })[] {
   const proyectos = data.boletines.flatMap((boletin) =>
-    boletin.proyectos_ingresados.map((p) => ({
+    (boletin.proyectos_ingresados || []).map((p) => ({
       ...p,
       expediente: normalizeExpediente(p.expediente), // Normalizar expediente
       fecha_publicacion: boletin.fecha_publicacion,
@@ -178,7 +178,7 @@ export function getAllResolutivos(
   const proyectosConCoordenadas = getAllProyectos(data)
   
   const resolutivosConCoordenadas = data.boletines.flatMap((boletin) =>
-    boletin.resolutivos_emitidos.map((r) => {
+    (boletin.resolutivos_emitidos || []).map((r) => {
       // Normalizar expediente
       const expedienteNormalizado = normalizeExpediente(r.expediente)
       
@@ -237,7 +237,7 @@ export function getDistributionByMunicipio(data: BoletinesData) {
   const distribution: Record<string, number> = {}
 
   data.boletines.forEach((boletin) => {
-    boletin.proyectos_ingresados.forEach((p) => {
+    (boletin.proyectos_ingresados || []).forEach((p) => {
       if (p.municipio) {
         distribution[p.municipio] = (distribution[p.municipio] || 0) + 1
       }
@@ -253,7 +253,7 @@ export function getDistributionByGiro(data: BoletinesData) {
   const distribution: Record<string, number> = {}
 
   data.boletines.forEach((boletin) => {
-    boletin.proyectos_ingresados.forEach((p) => {
+    (boletin.proyectos_ingresados || []).forEach((p) => {
       if (p.giro) {
         distribution[p.giro] = (distribution[p.giro] || 0) + 1
       }

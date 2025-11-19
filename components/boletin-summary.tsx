@@ -108,7 +108,7 @@ export function BoletinSummary({
             <Divider sx={{ mb: 3, borderColor: '#e5e7eb' }} />
 
             {/* Lista de proyectos */}
-            {boletin.proyectos_ingresados.map((proyecto, index) => (
+            {(boletin.proyectos_ingresados || []).map((proyecto, index) => (
               <BoletinSummaryProject
                 key={`proyecto-${proyecto.expediente}`}
                 proyecto={proyecto}

@@ -1,4 +1,5 @@
-import type { BoletinesData, Proyecto, Resolutivo } from "./types"
+import type { BoletinesData, Proyecto, Resolutivo, Boletin } from "./types"
+import { calcularEstadoCumplimiento, obtenerAutoridad } from "./boletines-v2-utils"
 
 export function getStats(data: BoletinesData) {
   const totalBoletines = data.boletines.length
@@ -263,4 +264,85 @@ export function getDistributionByGiro(data: BoletinesData) {
   return Object.entries(distribution)
     .map(([giro, count]) => ({ giro, count }))
     .sort((a, b) => b.count - a.count)
+}
+
+/**
+ * Filtra boletines según los criterios especificados (V2)
+ * @param boletines - Array de boletines a filtrar
+ * @param filters - Objeto con los filtros a aplicar
+ * @returns Array de boletines filtrados
+ */
+export function filterBoletinesV2(
+  boletines: Boletin[],
+  filters: {
+    search?: string
+    año?: string
+    tipo?: string
+    autoridad?: string
+    municipio?: string
+    estadoCumplimiento?: string
+  }
+): Boletin[] {
+  return boletines.filter((boletin) => {
+    // Filtro de búsqueda (busca en id, fecha, secretario, director)
+    if (filters.search) {
+      const searchLower = filters.search.toLowerCase()
+      const matchesSearch =
+        boletin.id.toString().includes(searchLower) ||
+        boletin.fecha_publicacion?.toLowerCase().includes(searchLower) ||
+        boletin.secretario?.toLowerCase().includes(searchLower) ||
+        boletin.director?.toLowerCase().includes(searchLower) ||
+        // Buscar en proyectos
+        (boletin.proyectos_ingresados || []).some(
+          (p) =>
+            p.nombre_proyecto?.toLowerCase().includes(searchLower) ||
+            p.expediente?.toLowerCase().includes(searchLower) ||
+            p.municipio?.toLowerCase().includes(searchLower)
+        ) ||
+        // Buscar en resolutivos
+        (boletin.resolutivos_emitidos || []).some(
+          (r) =>
+            r.expediente?.toLowerCase().includes(searchLower) ||
+            r.municipio?.toLowerCase().includes(searchLower)
+        )
+
+      if (!matchesSearch) return false
+    }
+
+    // Filtro por año
+    if (filters.año && filters.año !== "all") {
+      const añoBoletin = boletin.año || new Date(boletin.fecha_publicacion).getFullYear()
+      if (añoBoletin.toString() !== filters.año) return false
+    }
+
+    // Filtro por tipo (tipo de estudio)
+    if (filters.tipo && filters.tipo !== "all") {
+      const tieneTipo =
+        (boletin.proyectos_ingresados || []).some((p) => p.tipo_estudio === filters.tipo) ||
+        (boletin.resolutivos_emitidos || []).some((r) => r.tipo_estudio === filters.tipo)
+      if (!tieneTipo) return false
+    }
+
+    // Filtro por autoridad
+    if (filters.autoridad && filters.autoridad !== "all") {
+      const autoridadBoletin = obtenerAutoridad(boletin)
+      if (autoridadBoletin !== filters.autoridad) return false
+    }
+
+    // Filtro por municipio
+    if (filters.municipio && filters.municipio !== "all") {
+      const tieneMunicipio =
+        (boletin.proyectos_ingresados || []).some((p) => p.municipio === filters.municipio) ||
+        (boletin.resolutivos_emitidos || []).some((r) => r.municipio === filters.municipio)
+      if (!tieneMunicipio) return false
+    }
+
+    // Filtro por estado de cumplimiento
+    if (filters.estadoCumplimiento && filters.estadoCumplimiento !== "all") {
+      const estado = calcularEstadoCumplimiento(boletin)
+      if (estado !== filters.estadoCumplimiento) return false
+    }
+
+    return true
+  })
 }

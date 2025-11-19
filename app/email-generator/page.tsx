@@ -829,7 +829,12 @@ export default function EmailGeneratorPage() {
         console.error('❌ Error del servidor:', errorText);
         
         if (response.status === 410) {
-          throw new Error(`Escenario no activo en Make.com: ${errorText}`);
+          // Detectar diferentes mensajes de error 410
+          if (errorText.includes('Webhook is no longer active') || errorText.includes('no longer active')) {
+            throw new Error('El webhook de Make.com ya no está activo. Por favor, ve a Make.com y reactiva tu escenario o crea uno nuevo.');
+          } else {
+            throw new Error(`Escenario no activo en Make.com: ${errorText}`);
+          }
         } else {
           throw new Error(`HTTP error! status: ${response.status} - ${errorText}`);
         }
@@ -871,10 +876,10 @@ export default function EmailGeneratorPage() {
         await navigator.clipboard.writeText(html);
         console.log('⚠️ HTML copiado pero webhook falló');
         
-        if (errorMessage.includes('Escenario no activo')) {
+        if (errorMessage.includes('Escenario no activo') || errorMessage.includes('ya no está activo') || errorMessage.includes('no longer active')) {
           toast({
-            title: "⚠️ Escenario inactivo",
-            description: "HTML copiado. Ve a Make.com y ACTIVA tu escenario para recibir webhooks",
+            title: "⚠️ Webhook inactivo",
+            description: "HTML copiado al portapapeles. El webhook de Make.com está inactivo. Ve a Make.com y reactiva tu escenario o crea uno nuevo.",
             variant: "destructive"
           });
         } else if (errorMessage.includes('CORS') || errorMessage.includes('Cross-Origin')) {
@@ -1061,10 +1066,10 @@ export default function EmailGeneratorPage() {
                     const errorMessage = error instanceof Error ? error.message : 'Error desconocido';
                     console.error('Error detallado:', error);
                     
-                    if (errorMessage.includes('Escenario no activo')) {
+                    if (errorMessage.includes('Escenario no activo') || errorMessage.includes('ya no está activo') || errorMessage.includes('no longer active')) {
                       toast({
-                        title: "⚠️ Escenario inactivo",
-                        description: "Ve a Make.com y ACTIVA tu escenario para recibir webhooks",
+                        title: "⚠️ Webhook inactivo",
+                        description: "El webhook de Make.com está inactivo. Ve a Make.com y reactiva tu escenario o crea uno nuevo.",
                         variant: "destructive"
                       });
                     } else {

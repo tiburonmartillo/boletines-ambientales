@@ -1,6 +1,15 @@
 import type { BoletinesData, Proyecto, Resolutivo, Boletin } from "./types"
 import { calcularEstadoCumplimiento, obtenerAutoridad } from "./boletines-v2-utils"
 
+export interface FilterOptions {
+  search?: string
+  municipioFilter?: string
+  tipoFilter?: string
+  yearFilter?: string
+  monthFilter?: string
+  activeTab?: string
+}
+
 export function getStats(data: BoletinesData) {
   const totalBoletines = data.boletines.length
   const totalProyectos = data.boletines.reduce((sum, b) => sum + b.cantidad_ingresados, 0)
@@ -345,4 +354,201 @@ export function filterBoletinesV2(
 
     return true
   })
+}
+
+/**
+ * Filtra proyectos según las opciones de filtro
+ */
+export function filterProyectos(
+  proyectos: (Proyecto & { fecha_publicacion: string; boletin_url: string })[],
+  options: FilterOptions
+): (Proyecto & { fecha_publicacion: string; boletin_url: string })[] {
+  return proyectos.filter((proyecto) => {
+    // Filtro de búsqueda
+    if (options.search) {
+      const searchLower = options.search.toLowerCase()
+      const matchesSearch =
+        proyecto.nombre_proyecto?.toLowerCase().includes(searchLower) ||
+        proyecto.expediente?.toLowerCase().includes(searchLower) ||
+        proyecto.promovente?.toLowerCase().includes(searchLower) ||
+        proyecto.municipio?.toLowerCase().includes(searchLower) ||
+        proyecto.giro?.toLowerCase().includes(searchLower)
+      
+      if (!matchesSearch) return false
+    }
+
+    // Filtro por municipio
+    if (options.municipioFilter && options.municipioFilter !== "all") {
+      if (proyecto.municipio !== options.municipioFilter) return false
+    }
+
+    // Filtro por tipo de estudio
+    if (options.tipoFilter && options.tipoFilter !== "all") {
+      if (proyecto.tipo_estudio !== options.tipoFilter) return false
+    }
+
+    // Filtro por año
+    if (options.yearFilter && options.yearFilter !== "all") {
+      const añoProyecto = new Date(proyecto.fecha_publicacion).getFullYear()
+      if (añoProyecto.toString() !== options.yearFilter) return false
+    }
+
+    return true
+  })
+}
+
+/**
+ * Filtra resolutivos según las opciones de filtro
+ */
+export function filterResolutivos(
+  resolutivos: (Resolutivo & { fecha_publicacion: string; boletin_url: string; coordenadas_x: number | null; coordenadas_y: number | null; boletin_ingreso_url: string | null })[],
+  options: FilterOptions
+): (Resolutivo & { fecha_publicacion: string; boletin_url: string; coordenadas_x: number | null; coordenadas_y: number | null; boletin_ingreso_url: string | null })[] {
+  return resolutivos.filter((resolutivo) => {
+    // Filtro de búsqueda
+    if (options.search) {
+      const searchLower = options.search.toLowerCase()
+      const matchesSearch =
+        resolutivo.nombre_proyecto?.toLowerCase().includes(searchLower) ||
+        resolutivo.expediente?.toLowerCase().includes(searchLower) ||
+        resolutivo.promovente?.toLowerCase().includes(searchLower) ||
+        resolutivo.municipio?.toLowerCase().includes(searchLower) ||
+        resolutivo.giro?.toLowerCase().includes(searchLower)
+      
+      if (!matchesSearch) return false
+    }
+
+    // Filtro por municipio
+    if (options.municipioFilter && options.municipioFilter !== "all") {
+      if (resolutivo.municipio !== options.municipioFilter) return false
+    }
+
+    // Filtro por tipo de estudio
+    if (options.tipoFilter && options.tipoFilter !== "all") {
+      if (resolutivo.tipo_estudio !== options.tipoFilter) return false
+    }
+
+    // Filtro por año
+    if (options.yearFilter && options.yearFilter !== "all") {
+      const añoResolutivo = new Date(resolutivo.fecha_publicacion).getFullYear()
+      if (añoResolutivo.toString() !== options.yearFilter) return false
+    }
+
+    return true
+  })
+}
+
+/**
+ * Obtiene datos de series temporales filtrados
+ */
+export function getFilteredTimeSeriesData(
+  proyectos: (Proyecto & { fecha_publicacion: string; boletin_url: string })[],
+  resolutivos: (Resolutivo & { fecha_publicacion: string; boletin_url: string; coordenadas_x: number | null; coordenadas_y: number | null; boletin_ingreso_url: string | null })[],
+  options: FilterOptions
+) {
+  const proyectosFiltrados = filterProyectos(proyectos, options)
+  const resolutivosFiltrados = filterResolutivos(resolutivos, options)
+
+  const meses = [
+    'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+    'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+  ]
+
+  const byMonth: Record<string, { fecha: string; proyectos: number; resolutivos: number }> = {}
+
+  // Procesar proyectos filtrados
+  proyectosFiltrados.forEach((proyecto) => {
+    if (!proyecto.fecha_publicacion) return
+    
+    const fecha = new Date(proyecto.fecha_publicacion)
+    const año = fecha.getFullYear()
+    const mes = fecha.getMonth() + 1
+    
+    if (isNaN(año) || isNaN(mes) || mes < 1 || mes > 12) return
+    
+    const key = `${año}-${String(mes).padStart(2, "0")}`
+    const fechaDisplay = `${año}-${meses[mes - 1]}`
+    
+    if (!byMonth[key]) {
+      byMonth[key] = {
+        fecha: fechaDisplay,
+        proyectos: 0,
+        resolutivos: 0,
+      }
+    }
+    byMonth[key].proyectos += 1
+  })
+
+  // Procesar resolutivos filtrados
+  resolutivosFiltrados.forEach((resolutivo) => {
+    if (!resolutivo.fecha_publicacion) return
+    
+    const fecha = new Date(resolutivo.fecha_publicacion)
+    const año = fecha.getFullYear()
+    const mes = fecha.getMonth() + 1
+    
+    if (isNaN(año) || isNaN(mes) || mes < 1 || mes > 12) return
+    
+    const key = `${año}-${String(mes).padStart(2, "0")}`
+    const fechaDisplay = `${año}-${meses[mes - 1]}`
+    
+    if (!byMonth[key]) {
+      byMonth[key] = {
+        fecha: fechaDisplay,
+        proyectos: 0,
+        resolutivos: 0,
+      }
+    }
+    byMonth[key].resolutivos += 1
+  })
+
+  return Object.values(byMonth).sort((a, b) => {
+    const [añoA, mesA] = a.fecha.split('-')
+    const [añoB, mesB] = b.fecha.split('-')
+    const mesIndexA = meses.indexOf(mesA)
+    const mesIndexB = meses.indexOf(mesB)
+    
+    if (añoA !== añoB) {
+      return parseInt(añoA) - parseInt(añoB)
+    }
+    return mesIndexA - mesIndexB
+  })
+}
+
+/**
+ * Obtiene estadísticas filtradas
+ */
+export function getFilteredStats(
+  proyectos: (Proyecto & { fecha_publicacion: string; boletin_url: string })[],
+  resolutivos: (Resolutivo & { fecha_publicacion: string; boletin_url: string; coordenadas_x: number | null; coordenadas_y: number | null; boletin_ingreso_url: string | null })[],
+  options: FilterOptions,
+  totalBoletines: number
+) {
+  const proyectosFiltrados = filterProyectos(proyectos, options)
+  const resolutivosFiltrados = filterResolutivos(resolutivos, options)
+
+  const municipios = new Set<string>()
+  const giros = new Set<string>()
+  const tiposEstudio = new Set<string>()
+
+  proyectosFiltrados.forEach((p) => {
+    if (p.municipio) municipios.add(p.municipio)
+    if (p.giro) giros.add(p.giro)
+    if (p.tipo_estudio) tiposEstudio.add(p.tipo_estudio)
+  })
+
+  resolutivosFiltrados.forEach((r) => {
+    if (r.municipio) municipios.add(r.municipio)
+    if (r.giro) giros.add(r.giro)
+    if (r.tipo_estudio) tiposEstudio.add(r.tipo_estudio)
+  })
+
+  return {
+    totalBoletines,
+    totalProyectos: proyectosFiltrados.length,
+    totalResolutivos: resolutivosFiltrados.length,
+    municipios: Array.from(municipios).sort(),
+    giros: Array.from(giros).sort(),
+    tiposEstudio: Array.from(tiposEstudio).sort(),
+  }
 }

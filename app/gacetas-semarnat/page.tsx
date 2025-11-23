@@ -38,15 +38,26 @@ function GacetasSEMARNATPageContent() {
   // Filtrar gacetas según búsqueda - debe estar antes de returns
   const filteredGacetas = useMemo(() => {
     if (!gacetas || gacetas.length === 0) return []
-    if (!searchQuery.trim()) return gacetas
     
-    const query = searchQuery.toLowerCase()
-    return gacetas.filter(gaceta => 
-      gaceta.resumen?.toLowerCase().includes(query) ||
-      gaceta.url.toLowerCase().includes(query) ||
-      gaceta.fecha_publicacion.includes(query) ||
-      gaceta.palabras_clave_encontradas.some(p => p.toLowerCase().includes(query))
-    )
+    let result = gacetas
+    
+    // Aplicar filtro de búsqueda si existe
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase()
+      result = gacetas.filter(gaceta => 
+        gaceta.resumen?.toLowerCase().includes(query) ||
+        gaceta.url.toLowerCase().includes(query) ||
+        gaceta.fecha_publicacion.includes(query) ||
+        gaceta.palabras_clave_encontradas.some(p => p.toLowerCase().includes(query))
+      )
+    }
+    
+    // Asegurar ordenamiento por fecha (más reciente primero)
+    return result.sort((a, b) => {
+      const dateA = new Date(a.fecha_publicacion).getTime()
+      const dateB = new Date(b.fecha_publicacion).getTime()
+      return dateB - dateA // Orden descendente (más reciente primero)
+    })
   }, [gacetas, searchQuery])
 
   // Paginación - debe estar antes de returns

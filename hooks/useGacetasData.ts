@@ -74,8 +74,14 @@ export function useGacetasData() {
 
         setData(jsonData)
 
-        // Procesar datos de gacetas
-        const gacetas = jsonData.analyses.filter(a => a.resumen !== null)
+        // Procesar datos de gacetas y ordenar por fecha (más reciente primero)
+        const gacetas = jsonData.analyses
+          .filter(a => a.resumen !== null)
+          .sort((a, b) => {
+            const dateA = new Date(a.fecha_publicacion).getTime()
+            const dateB = new Date(b.fecha_publicacion).getTime()
+            return dateB - dateA // Orden descendente (más reciente primero)
+          })
         
         // Extraer municipios mencionados en los resúmenes
         const municipiosSet = new Set<string>()

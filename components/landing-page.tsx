@@ -392,15 +392,24 @@ function DashboardSection() {
             </div>
 
             {/* CTA */}
-            <div className="pt-2 sm:pt-4">
+            <div className="pt-2 sm:pt-4 flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Link
                 href="/boletines-ssmaa"
-                className="inline-flex items-center gap-2 sm:gap-3 bg-[var(--color-accent)] text-white font-bold text-[16px] sm:text-[18px] px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-[var(--color-primary)] transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 active:scale-95 touch-manipulation"
+                className="inline-flex items-center justify-center gap-2 sm:gap-3 bg-[var(--color-accent)] text-white font-bold text-[16px] sm:text-[18px] px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-[var(--color-primary)] transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 active:scale-95 touch-manipulation"
               >
                 <svg className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                 </svg>
-                <span>Explorar Dashboard</span>
+                <span>Boletines SSMAA</span>
+              </Link>
+              <Link
+                href="/gacetas-semarnat"
+                className="inline-flex items-center justify-center gap-2 sm:gap-3 bg-[var(--brand-blue)] text-white font-bold text-[16px] sm:text-[18px] px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-[#1E3A8A] transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 active:scale-95 touch-manipulation"
+              >
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span>Gacetas SEMARNAT</span>
               </Link>
             </div>
           </div>

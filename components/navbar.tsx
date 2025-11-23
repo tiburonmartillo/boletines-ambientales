@@ -76,6 +76,7 @@ export function Navbar() {
     { id: 'contact', label: 'Contacto', href: '/#contact', type: 'section', group: 'secciones' },
     { id: 'dashboard', label: 'Suscripción', href: '/#dashboard', type: 'section', group: 'secciones' },
     { id: 'boletines', label: 'Boletines Ambientales', href: '/boletines-ssmaa', type: 'page', group: 'herramientas' },
+    { id: 'gacetas', label: 'Gacetas SEMARNAT', href: '/gacetas-semarnat', type: 'page', group: 'herramientas' },
     // { id: 'email-generator', label: 'Generador Email', href: '/email-generator', type: 'page', group: 'herramientas' }
   ], []);
 

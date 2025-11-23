@@ -184,7 +184,7 @@ export function MapModal({ coordenadas_x, coordenadas_y, expediente, nombre_proy
       </Button>
 
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4">
           {/* Overlay */}
           <div 
             className="absolute inset-0 bg-black opacity-75"
@@ -192,114 +192,119 @@ export function MapModal({ coordenadas_x, coordenadas_y, expediente, nombre_proy
           />
           
           {/* Modal */}
-          <div className="relative bg-white rounded-xl shadow-xl max-w-4xl w-full mx-4 max-h-[90vh] overflow-hidden">
-            {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-200">
-              <div>
-                <h2 className="text-xl font-semibold text-gray-900">Ubicación del Proyecto</h2>
-                <p className="text-sm text-gray-600 mt-1">{expediente} - {municipio}</p>
+          <div className="relative bg-white rounded-xl shadow-xl max-w-4xl w-full mx-2 sm:mx-4 max-h-[95vh] sm:max-h-[90vh] flex flex-col overflow-hidden">
+            {/* Header - Fixed */}
+            <div className="flex items-center justify-between p-3 sm:p-4 md:p-6 border-b border-gray-200 flex-shrink-0 bg-white z-10">
+              <div className="flex-1 min-w-0 pr-2">
+                <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Ubicación del Proyecto</h2>
+                <p className="text-xs sm:text-sm text-gray-600 mt-0.5 sm:mt-1">{expediente} - {municipio}</p>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
+                className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0 p-1"
+                aria-label="Cerrar"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
             
-            {/* Map Content */}
-            <div className="p-6">
-              <div className="mb-4">
-                <h3 className="font-medium text-gray-900">{nombre_proyecto}</h3>
-                <div className="text-sm text-gray-600 mt-2">
-                  <div><strong>Expediente:</strong> {expediente}</div>
-                  <div><strong>Promovente:</strong> {promovente || 'No disponible'}</div>
-                  <div><strong>Fecha de Ingreso:</strong> {fecha_ingreso ? new Date(fecha_ingreso).toLocaleDateString('es-ES', { 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
-                  }) : 'No disponible'}</div>
-                  <div><strong>Naturaleza del Proyecto:</strong> {naturaleza_proyecto || 'No disponible'}</div>
-                  <div><strong>Municipio:</strong> {municipio}</div>
-                  <div><strong>Coordenadas UTM:</strong> {coordenadas_x}, {coordenadas_y}</div>
-                  {coords && (
-                    <div><strong>Coordenadas Lat/Lng:</strong> {lat.toFixed(6)}, {lng.toFixed(6)}</div>
-                  )}
-                  {coords && (
-                    <div className="text-xs text-gray-500 mt-1">
-                      <strong>Precisión:</strong> Coordenadas procesadas con validación automática y conversión precisa cuando es necesario
+            {/* Map Content - Scrollable */}
+            <div 
+              className="flex-1 overflow-y-auto overscroll-contain relative" 
+              style={{ 
+                WebkitOverflowScrolling: 'touch',
+                minHeight: 0
+              }}
+            >
+              <div className="p-3 sm:p-4 md:p-6 pb-20 sm:pb-24">
+                <div className="mb-4">
+                  <h3 className="font-medium text-gray-900 text-sm sm:text-base">{nombre_proyecto}</h3>
+                  <div className="text-xs sm:text-sm text-gray-600 mt-2 space-y-1">
+                    <div><strong>Expediente:</strong> {expediente}</div>
+                    <div><strong>Promovente:</strong> {promovente || 'No disponible'}</div>
+                    <div><strong>Fecha de Ingreso:</strong> {fecha_ingreso ? new Date(fecha_ingreso).toLocaleDateString('es-ES', { 
+                      year: 'numeric', 
+                      month: 'long', 
+                      day: 'numeric' 
+                    }) : 'No disponible'}</div>
+                    <div><strong>Naturaleza del Proyecto:</strong> {naturaleza_proyecto || 'No disponible'}</div>
+                    <div><strong>Municipio:</strong> {municipio}</div>
+                    <div><strong>Coordenadas UTM:</strong> {coordenadas_x}, {coordenadas_y}</div>
+                    {coords && (
+                      <div><strong>Coordenadas Lat/Lng:</strong> {lat.toFixed(6)}, {lng.toFixed(6)}</div>
+                    )}
+                    {coords && (
+                      <div className="text-xs text-gray-500 mt-1">
+                       Coordenadas procesadas con validación automática y conversión precisa.
+                      </div>
+                    )}
+                  </div>
+                </div>
+                
+                <div className="h-64 sm:h-80 md:h-96">
+                  {coords ? (
+                    <div className="w-full h-full bg-gray-50 rounded-lg overflow-hidden border border-gray-200">
+                      <iframe
+                        src={`https://www.openstreetmap.org/export/embed.html?bbox=${lng-0.005},${lat-0.005},${lng+0.005},${lat+0.005}&layer=mapnik&marker=${lat},${lng}`}
+                        width="100%"
+                        height="100%"
+                        style={{ border: 'none' }}
+                        title="Mapa de ubicación del proyecto"
+                        allowFullScreen
+                      />
+                    </div>
+                  ) : (
+                    <div className="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="text-gray-600 mb-4">📍 Mapa de ubicación</div>
+                        <div className="text-sm text-gray-500 mb-4">
+                          UTM: {coordenadas_x}, {coordenadas_y}
+                        </div>
+                        <div className="text-sm text-red-500 mb-4">
+                          Error: No se pudieron convertir las coordenadas UTM
+                        </div>
+                      </div>
                     </div>
                   )}
                 </div>
               </div>
               
-              <div className="h-96">
-                {coords ? (
-                  <div className="w-full h-full bg-gray-50 rounded-lg overflow-hidden border border-gray-200">
-                    <iframe
-                      src={`https://www.openstreetmap.org/export/embed.html?bbox=${lng-0.005},${lat-0.005},${lng+0.005},${lat+0.005}&layer=mapnik&marker=${lat},${lng}`}
-                      width="100%"
-                      height="100%"
-                      style={{ border: 'none' }}
-                      title="Mapa de ubicación del proyecto"
-                      allowFullScreen
-                    />
-                  </div>
-                ) : (
-                  <div className="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="text-gray-600 mb-4">📍 Mapa de ubicación</div>
-                      <div className="text-sm text-gray-500 mb-4">
-                        UTM: {coordenadas_x}, {coordenadas_y}
-                      </div>
-                      <div className="text-sm text-red-500 mb-4">
-                        Error: No se pudieron convertir las coordenadas UTM
-                      </div>
-                    </div>
-                  </div>
-                )}
-                
-                {/* Botones para abrir mapas externos y consultar boletín */}
-                <div className="mt-4 flex flex-col sm:flex-row gap-3 justify-center">
+              {/* Floating Buttons - Always Visible */}
+              <div className="sticky bottom-2 left-0 right-0 flex justify-center z-20 px-4 pointer-events-none">
+                <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 pointer-events-auto w-full sm:w-auto max-w-sm sm:max-w-none">
+                  {/* Consultar Boletín - Full width on mobile, auto on desktop */}
                   {boletin_url && (
                     <button
                       onClick={() => window.open(boletin_url, '_blank', 'noopener,noreferrer')}
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-[#F97316] text-white rounded-full hover:bg-[#1E3A8A] transition-colors"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[#F97316] text-white rounded-full hover:bg-[#EA580C] transition-colors shadow-lg hover:shadow-xl text-sm sm:text-base"
                       title="Consultar boletín oficial"
                     >
                       📄 Consultar Boletín
                     </button>
                   )}
-                  <a
-                    href={`https://www.google.com/maps?q=${lat},${lng}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 border border-gray-200 bg-white text-gray-600 rounded-full hover:text-white hover:bg-gray-400 transition-colors"
-                  >
-                    Abrir en Google Maps
-                  </a>
-                  <a
-                    href={`https://maps.apple.com/?q=${lat},${lng}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 border border-gray-200 bg-white text-gray-600 rounded-full hover:text-white hover:bg-gray-400 transition-colors"
-                  >
-                    Abrir en Apple Maps
-                  </a>
+                  {/* Google Maps y Apple Maps - 50% each on mobile, auto on desktop */}
+                  <div className="flex gap-2 w-full sm:w-auto">
+                    <a
+                      href={`https://www.google.com/maps?q=${lat},${lng}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-200 bg-white text-gray-600 rounded-full hover:text-white hover:bg-gray-400 transition-colors shadow-lg hover:shadow-xl text-sm sm:text-base"
+                    >
+                      Google Maps
+                    </a>
+                    <a
+                      href={`https://maps.apple.com/?q=${lat},${lng}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-200 bg-white text-gray-600 rounded-full hover:text-white hover:bg-gray-400 transition-colors shadow-lg hover:shadow-xl text-sm sm:text-base"
+                    >
+                      Apple Maps
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-            
-            {/* Footer */}
-            <div className="flex justify-end p-6 border-t border-gray-200 bg-gray-50">
-              <button
-                onClick={() => setIsOpen(false)}
-                className="px-4 py-2 bg-gray-600 text-white rounded-full hover:bg-gray-700 transition-colors"
-              >
-                Cerrar
-              </button>
             </div>
           </div>
         </div>

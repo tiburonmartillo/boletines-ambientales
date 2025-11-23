@@ -137,20 +137,27 @@ export function BoletinSummaryProject({ proyecto, numero, tipo, staticMode = fal
           order: { xs: -1, lg: 0 }
         }}>
           {coordenadas_x && coordenadas_y ? (
-            <ClientOnlyMap
-              coordenadas_x={coordenadas_x}
-              coordenadas_y={coordenadas_y}
-              municipio={proyecto.municipio}
-              width={400}
-              height={300}
-              showLink={false}
-              staticMode={staticMode}
-            />
+            <Box sx={{ 
+              height: { xs: 150, sm: 200, md: 250 },
+              width: '100%',
+              overflow: 'hidden',
+              borderRadius: 1
+            }}>
+              <ClientOnlyMap
+                coordenadas_x={coordenadas_x}
+                coordenadas_y={coordenadas_y}
+                municipio={proyecto.municipio}
+                width={400}
+                height={staticMode ? 300 : undefined}
+                showLink={false}
+                staticMode={staticMode}
+              />
+            </Box>
           ) : (
             <Box
               sx={{
                 width: '100%',
-                height: 300,
+                height: { xs: 150, sm: 200, md: 250 },
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',

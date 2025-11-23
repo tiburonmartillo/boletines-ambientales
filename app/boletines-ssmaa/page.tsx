@@ -70,23 +70,56 @@ function BoletinesAmbientalesPageContent() {
       <Paper 
         elevation={0} 
         sx={{ 
-          mt: '80px', 
+          mt: { xs: '64px', sm: '80px' }, 
           bgcolor: 'background.paper',
           borderRadius: 0
         }}
       >
-        <Container maxWidth="xl" sx={{ py: 4 }}>
+        <Container maxWidth="xl" sx={{ py: { xs: 2, sm: 3, md: 4 }, px: { xs: 2, sm: 3, md: 4 } }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
             <Box>
-              <Typography variant="h4" component="h1" fontWeight="bold" color="text.primary">
+              <Typography 
+                variant="h4" 
+                component="h1" 
+                fontWeight="bold" 
+                color="text.primary"
+                sx={{ 
+                  fontSize: { xs: '1.5rem', sm: '2rem', md: '2.125rem' },
+                  lineHeight: { xs: 1.3, sm: 1.4 }
+                }}
+              >
                 Dashboard de Boletines Ambientales SSMAA
               </Typography>
-              <Typography variant="subtitle1" color="text.secondary" sx={{ mt: 0.5 }}>
+              <Typography 
+                variant="subtitle1" 
+                color="text.secondary" 
+                sx={{ 
+                  mt: { xs: 0.5, sm: 0.5 },
+                  fontSize: { xs: '0.875rem', sm: '1rem' },
+                  lineHeight: { xs: 1.5, sm: 1.6 }
+                }}
+              >
                 Visualización interactiva de los boletines ambientales publicados por la Secretaría de Medio Ambiente del Estado de Aguascalientes en:
               </Typography>
-              <Link href="https://www.aguascalientes.gob.mx/SSMAA/BoletinesSMA/usuario_webexplorer.asp" target="_blank">
-                <Typography variant="subtitle1" color="text.secondary" sx={{ mt: 0.5 }}>
-                https://www.aguascalientes.gob.mx/SSMAA/BoletinesSMA
+              <Link 
+                href="https://www.aguascalientes.gob.mx/SSMAA/BoletinesSMA/usuario_webexplorer.asp" 
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{ 
+                  display: 'inline-block',
+                  mt: { xs: 0.5, sm: 0.5 },
+                  wordBreak: 'break-all'
+                }}
+              >
+                <Typography 
+                  variant="subtitle1" 
+                  color="primary" 
+                  sx={{ 
+                    fontSize: { xs: '0.875rem', sm: '1rem' },
+                    textDecoration: 'underline'
+                  }}
+                >
+                  https://www.aguascalientes.gob.mx/SSMAA/BoletinesSMA
                 </Typography>
               </Link>
             </Box>
@@ -95,8 +128,8 @@ function BoletinesAmbientalesPageContent() {
       </Paper>
 
       {/* Main Content */}
-      <Container maxWidth="xl" sx={{ py: 4 }}>
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+      <Container maxWidth="xl" sx={{ py: { xs: 2, sm: 3, md: 4 }, px: { xs: 2, sm: 3, md: 4 } }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 2, sm: 3, md: 4 } }}>
 
           {/* Stats Cards */}
           <ErrorBoundary>
@@ -113,13 +146,21 @@ function BoletinesAmbientalesPageContent() {
             display: 'flex', 
             justifyContent: 'center', 
             alignItems: 'center',
-            py: 2,
-            px: 3,
+            py: { xs: 1.5, sm: 2 },
+            px: { xs: 2, sm: 3 },
             bgcolor: 'background.paper',
             borderRadius: 2,
             border: '1px solid rgba(30, 58, 138, 0.1)'
           }}>
-            <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'center' }}>
+            <Typography 
+              variant="body2" 
+              color="text.secondary" 
+              sx={{ 
+                textAlign: 'center',
+                fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                lineHeight: { xs: 1.4, sm: 1.5 }
+              }}
+            >
               Última actualización: {(() => {
                 try {
                   const date = new Date(metadata.lastUpdated)

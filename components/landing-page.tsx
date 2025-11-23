@@ -359,59 +359,57 @@ function DashboardSection() {
   const totalResolutivos = data ? data.boletines.reduce((sum: number, boletin: any) => sum + boletin.cantidad_resolutivos, 0) : 892;
 
   return (
-    <section id="dashboard" className="py-20 sm:py-28 lg:py-32 relative bg-[#f8f8f8]">
+    <section id="dashboard" className="py-12 sm:py-16 md:py-20 lg:py-28 relative bg-[#f8f8f8]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
           
           {/* Left: Content */}
-          <div className="space-y-8 lg:space-y-10">
-            <div className="space-y-6">
-              <h2 className="font-bold text-[40px] sm:text-[48px] lg:text-[56px] xl:text-[64px] leading-tight text-gray-700">
+          <div className="space-y-6 sm:space-y-8 lg:space-y-10 order-2 lg:order-1">
+            <div className="space-y-4 sm:space-y-6">
+              <h2 className="font-bold text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] xl:text-[64px] leading-tight text-gray-700">
                 Transparencia Ambiental
-                <span className="block text-[var(--color-accent)] mt-2">al Alcance</span>
+                <span className="block text-[var(--color-accent)] mt-1 sm:mt-2">al Alcance</span>
               </h2>
-              <p className="text-[18px] sm:text-[20px] lg:text-[22px] text-gray-700/80 leading-relaxed max-w-lg">
+              <p className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] text-gray-700/80 leading-relaxed max-w-lg">
                 Accede a información pública sobre proyectos ambientales en Aguascalientes. Visualiza, analiza y consulta datos oficiales de manera sencilla.
               </p>
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 gap-6 pt-6">
-              <div className="space-y-2">
-                <div className="text-[48px] sm:text-[56px] lg:text-[64px] font-bold text-[var(--color-accent)]">
+            <div className="grid grid-cols-2 gap-4 sm:gap-6 pt-4 sm:pt-6">
+              <div className="space-y-1 sm:space-y-2">
+                <div className="text-[36px] sm:text-[48px] md:text-[56px] lg:text-[64px] font-bold text-[var(--color-accent)] leading-none">
                   {loading ? '...' : totalProyectos.toLocaleString()}
                 </div>
-                <div className="text-[14px] sm:text-[16px] text-gray-600">Proyectos Registrados</div>
+                <div className="text-[12px] sm:text-[14px] md:text-[16px] text-gray-600 leading-tight">Proyectos Registrados</div>
               </div>
-              <div className="space-y-2">
-                <div className="text-[48px] sm:text-[56px] lg:text-[64px] font-bold text-[var(--brand-blue)]">
+              <div className="space-y-1 sm:space-y-2">
+                <div className="text-[36px] sm:text-[48px] md:text-[56px] lg:text-[64px] font-bold text-[var(--brand-blue)] leading-none">
                   {loading ? '...' : totalResolutivos.toLocaleString()}
                 </div>
-                <div className="text-[14px] sm:text-[16px] text-gray-600">Resolutivos Emitidos</div>
+                <div className="text-[12px] sm:text-[14px] md:text-[16px] text-gray-600 leading-tight">Resolutivos Emitidos</div>
               </div>
             </div>
 
             {/* CTA */}
-            <div className="pt-4">
+            <div className="pt-2 sm:pt-4">
               <Link
                 href="/boletines-ssmaa"
-                className="inline-flex items-center gap-3 bg-[var(--color-accent)] text-white font-bold text-[18px] px-8 py-4 rounded-full hover:bg-[var(--color-primary)] transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105"
+                className="inline-flex items-center gap-2 sm:gap-3 bg-[var(--color-accent)] text-white font-bold text-[16px] sm:text-[18px] px-6 sm:px-8 py-3 sm:py-4 rounded-full hover:bg-[var(--color-primary)] transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 active:scale-95 touch-manipulation"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                 </svg>
-                Explorar Dashboard
+                <span>Explorar Dashboard</span>
               </Link>
             </div>
-
-            {/* Mini suscripción integrada */}
           </div>
 
           {/* Right: Illustration */}
-          <div className="relative lg:pl-8">
+          <div className="relative lg:pl-8 order-1 lg:order-2">
             <div className="relative">
               {/* Illustration container */}
-              <div className="relative bg-white rounded-3xl p-8 lg:p-12 border border-gray-200 shadow-sm">
+              <div className="relative bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border border-gray-200 shadow-sm">
                 <Image
                   src="/assets/FloatDoodle.png"
                   alt="Personas analizando datos ambientales"
@@ -422,10 +420,10 @@ function DashboardSection() {
                 />
               </div>
               
-              {/* Floating badge */}
-              <div className="absolute -bottom-4 -right-4 bg-[var(--color-accent)] text-white rounded-2xl p-4 shadow-xl transform rotate-3 hover:rotate-6 transition-transform">
-                <div className="text-sm font-medium">100% Gratis</div>
-                <div className="text-xs opacity-90">Acceso público</div>
+              {/* Floating badge - oculto en móvil muy pequeño */}
+              <div className="hidden sm:block absolute -bottom-4 -right-4 bg-[var(--color-accent)] text-white rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-xl transform rotate-3 hover:rotate-6 transition-transform">
+                <div className="text-xs sm:text-sm font-medium">100% Gratis</div>
+                <div className="text-[10px] sm:text-xs opacity-90">Acceso público</div>
               </div>
             </div>
           </div>
@@ -433,58 +431,62 @@ function DashboardSection() {
         </div>
 
         {/* Minimal features */}
-        <div className="my-20 lg:mt-24 pt-12 border-t border-gray-200">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div className="space-y-3">
-              <div className="w-12 h-12 mx-auto bg-white rounded-xl border border-gray-200 flex items-center justify-center">
-                <svg className="w-6 h-6 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="mt-12 sm:mt-16 lg:mt-20 lg:mt-24 pt-8 sm:pt-12 border-t border-gray-200">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 text-center">
+            <div className="space-y-2 sm:space-y-3">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto bg-white rounded-lg sm:rounded-xl border border-gray-200 flex items-center justify-center">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               </div>
-              <div className="text-[14px] text-gray-700">Búsqueda Inteligente</div>
+              <div className="text-[12px] sm:text-[14px] text-gray-700 leading-tight">Búsqueda Inteligente</div>
             </div>
-            <div className="space-y-3">
-              <div className="w-12 h-12 mx-auto bg-white rounded-xl border border-gray-200 flex items-center justify-center">
-                <svg className="w-6 h-6 text-[var(--brand-blue)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="space-y-2 sm:space-y-3">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto bg-white rounded-lg sm:rounded-xl border border-gray-200 flex items-center justify-center">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-[var(--brand-blue)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
               </div>
-              <div className="text-[14px] text-gray-700">Visualización Clara</div>
+              <div className="text-[12px] sm:text-[14px] text-gray-700 leading-tight">Visualización Clara</div>
             </div>
-            <div className="space-y-3">
-              <div className="w-12 h-12 mx-auto bg-white rounded-xl border border-gray-200 flex items-center justify-center">
-                <svg className="w-6 h-6 text-[var(--brand-green)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="space-y-2 sm:space-y-3">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto bg-white rounded-lg sm:rounded-xl border border-gray-200 flex items-center justify-center">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-[var(--brand-green)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 </svg>
               </div>
-              <div className="text-[14px] text-gray-700">Mapas Interactivos</div>
+              <div className="text-[12px] sm:text-[14px] text-gray-700 leading-tight">Mapas Interactivos</div>
             </div>
-            <div className="space-y-3">
-              <div className="w-12 h-12 mx-auto bg-white rounded-xl border border-gray-200 flex items-center justify-center">
-                <svg className="w-6 h-6 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="space-y-2 sm:space-y-3">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto bg-white rounded-lg sm:rounded-xl border border-gray-200 flex items-center justify-center">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </div>
-              <div className="text-[14px] text-gray-700">Descarga de Datos</div>
+              <div className="text-[12px] sm:text-[14px] text-gray-700 leading-tight">Descarga de Datos</div>
             </div>
           </div>
         </div>
-                      <div className="mt-8 bg-white rounded-2xl p-5 sm:p-6 border border-[var(--border)]/80 shadow-lg">
-                        <h3 className="font-bold text-[18px] sm:text-[20px] text-[var(--color-primary)] text-center mb-2">
-                          ¿Quieres recibir el resumen semanal del boletín?
-                        </h3>
-                        <p className="text-[14px] sm:text-[16px] text-gray-700/80 text-center">
-                          Suscríbete gratis y recibe en tu correo los proyectos ingresados y los resolutivos emitidos, una vez por semana.
-                        </p>
-                        <div className="mt-4 text-center">
-                          <a
-                            href="https://www.notion.so/adnags/29c2b8101e5c80fdbd89f8c03728e80d"
-                            className="inline-block px-6 py-3 rounded-full font-bold text-[16px] bg-[var(--color-accent)] text-white hover:bg-[var(--color-primary)] transition-colors"
-                          >
-                            Suscribirme al resumen semanal
-                          </a>
-                        </div>
-                      </div>
+        
+        {/* Sección de suscripción */}
+        <div className="mt-6 sm:mt-8 bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-[var(--border)]/80 shadow-lg">
+          <h3 className="font-bold text-[16px] sm:text-[18px] md:text-[20px] text-[var(--color-primary)] text-center mb-2 sm:mb-3">
+            ¿Quieres recibir el resumen semanal del boletín?
+          </h3>
+          <p className="text-[13px] sm:text-[14px] md:text-[16px] text-gray-700/80 text-center mb-4 sm:mb-5 leading-relaxed px-2">
+            Suscríbete gratis y recibe en tu correo los proyectos ingresados y los resolutivos emitidos, una vez por semana.
+          </p>
+          <div className="text-center">
+            <a
+              href="https://www.notion.so/adnags/29c2b8101e5c80fdbd89f8c03728e80d"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-bold text-[14px] sm:text-[16px] bg-[var(--color-accent)] text-white hover:bg-[var(--color-primary)] transition-colors active:scale-95 touch-manipulation"
+            >
+              Suscribirme al resumen semanal
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

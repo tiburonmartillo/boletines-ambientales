@@ -99,10 +99,18 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
   const [yearFilter, setYearFilter] = useState<string>("all")
   const [monthFilter, setMonthFilter] = useState<string>("all")
   const [showMobileFilters, setShowMobileFilters] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+  
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 600)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
   
   // Estados para paginación
   const [page, setPage] = useState(0)
-  const [rowsPerPage, setRowsPerPage] = useState(25)
+  const [rowsPerPage, setRowsPerPage] = useState(10)
   
   // Estados para modal de ubicación
   const [selectedItem, setSelectedItem] = useState<any>(null)
@@ -378,13 +386,26 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
 
   return (
     <StyledCard elevation={0}>
-      <CardContent sx={{ p: 4 }}>
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+      <CardContent sx={{ p: { xs: 2, sm: 3, md: 4 } }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 2, sm: 3 } }}>
           <Box>
-            <Typography variant="h6" component="h3" fontWeight="semibold" color="text.primary">
+            <Typography 
+              variant="h6" 
+              component="h3" 
+              fontWeight="semibold" 
+              color="text.primary"
+              sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }}
+            >
               Tabla de proyectos ingresados y resolutivos emitidos
             </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
+            <Typography 
+              variant="body2" 
+              color="text.secondary" 
+              sx={{ 
+                mt: { xs: 0.5, sm: 0.5 },
+                fontSize: { xs: '0.75rem', sm: '0.875rem' }
+              }}
+            >
               Explora los proyectos ambientales y sus resolutivos correspondientes
             </Typography>
           </Box>
@@ -398,10 +419,17 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
           </Box>
 
           {/* Filtros */}
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 1.5, sm: 2 } }}>
             {/* Desktop */}
             <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 2, flexWrap: 'wrap' }}>
-              <TextField label="Buscar" value={search} onChange={(e) => setSearch(e.target.value)} size="small" placeholder="Buscar..." sx={{ minWidth: 200 }} />
+              <TextField 
+                label="Buscar" 
+                value={search} 
+                onChange={(e) => setSearch(e.target.value)} 
+                size="small" 
+                placeholder="Buscar..." 
+                sx={{ minWidth: 200 }} 
+              />
               <FormControl size="small" sx={{ minWidth: 120 }}>
                 <InputLabel>Municipio</InputLabel>
                 <Select value={municipioFilter} label="Municipio" onChange={(e) => setMunicipioFilter(e.target.value)}>
@@ -442,16 +470,54 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
 
             {/* Mobile */}
             <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
-              <TextField label="Buscar" value={search} onChange={(e) => setSearch(e.target.value)} size="small" placeholder="Buscar..." sx={{ flex: 1, minWidth: 200 }} />
-              <IconButton onClick={() => setShowMobileFilters(!showMobileFilters)} color="primary" sx={{ border: '1px solid', borderColor: 'primary.main', borderRadius: 1 }}>
-                <FilterList />
-              </IconButton>
-              <Button variant="contained" color="error" onClick={clearFilters} size="small" sx={{ minWidth: 'auto', px: 2, height: '40px' }}>Limpiar</Button>
+              <TextField 
+                label="Buscar" 
+                value={search} 
+                onChange={(e) => setSearch(e.target.value)} 
+                size="small" 
+                placeholder="Buscar..." 
+                sx={{ flex: 1, minWidth: { xs: '100%', sm: 200 } }} 
+              />
+              <Box sx={{ display: 'flex', gap: 1, width: { xs: '100%', sm: 'auto' }, mt: { xs: 1, sm: 0 } }}>
+                <IconButton 
+                  onClick={() => setShowMobileFilters(!showMobileFilters)} 
+                  color="primary" 
+                  sx={{ 
+                    border: '1px solid', 
+                    borderColor: 'primary.main', 
+                    borderRadius: 1,
+                    flex: { xs: 1, sm: 'none' }
+                  }}
+                >
+                  <FilterList />
+                </IconButton>
+                <Button 
+                  variant="contained" 
+                  color="error" 
+                  onClick={clearFilters} 
+                  size="small" 
+                  sx={{ 
+                    minWidth: 'auto', 
+                    px: { xs: 2, sm: 2 }, 
+                    height: '40px',
+                    flex: { xs: 1, sm: 'none' }
+                  }}
+                >
+                  Limpiar
+                </Button>
+              </Box>
             </Box>
 
             {showMobileFilters && (
-              <Box sx={{ display: { xs: 'block', md: 'none' }, p: 2, border: '1px solid', borderColor: 'divider', borderRadius: 1, bgcolor: 'background.paper' }}>
-                <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 2 }}>
+              <Box sx={{ 
+                display: { xs: 'block', md: 'none' }, 
+                p: { xs: 1.5, sm: 2 }, 
+                border: '1px solid', 
+                borderColor: 'divider', 
+                borderRadius: 1, 
+                bgcolor: 'background.paper' 
+              }}>
+                <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' }, gap: { xs: 1.5, sm: 2 } }}>
                   <FormControl fullWidth size="small">
                     <InputLabel>Municipio</InputLabel>
                     <Select value={municipioFilter} label="Municipio" onChange={(e) => setMunicipioFilter(e.target.value)}>
@@ -493,34 +559,42 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
           </Box>
 
           {/* Tabla */}
-          <TableContainer component={Paper} elevation={0} sx={{ border: '1px solid rgba(0, 0, 0, 0.1)' }}>
-            <Table>
+          <TableContainer 
+            component={Paper} 
+            elevation={0} 
+            sx={{ 
+              border: '1px solid rgba(0, 0, 0, 0.1)',
+              overflowX: 'auto',
+              WebkitOverflowScrolling: 'touch'
+            }}
+          >
+            <Table sx={{ minWidth: { xs: 800, md: 'auto' } }}>
               <TableHead>
                 <TableRow sx={{ bgcolor: 'rgba(30, 58, 138, 0.05)' }}>
                   {activeTab === "proyectos" ? (
                     <>
-                      <TableCell sx={{ fontWeight: 'bold' }}>Expediente</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>Nombre del Proyecto</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>Promovente</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>Municipio</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>Giro</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>Tipo Estudio</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>Fecha Ingreso</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>Ubicación</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>Boletín</TableCell>
+                      <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>Expediente</TableCell>
+                      <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, minWidth: { xs: 150, sm: 'auto' } }}>Nombre del Proyecto</TableCell>
+                      <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, maxWidth: { xs: 100, sm: 150, md: 180 } }}>Promovente</TableCell>
+                      <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>Municipio</TableCell>
+                      <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, maxWidth: { xs: 80, sm: 120, md: 150 }, whiteSpace: 'nowrap' }}>Giro</TableCell>
+                      <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, maxWidth: { xs: 100, sm: 140, md: 180 }, whiteSpace: 'nowrap' }}>Tipo Estudio</TableCell>
+                      <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>Fecha Ingreso</TableCell>
+                      <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>Ubicación</TableCell>
+                      <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>Boletín</TableCell>
                     </>
                   ) : (
                     <>
-                      <TableCell sx={{ fontWeight: 'bold' }}>No. Oficio</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>Expediente</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>Nombre del Proyecto</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>Promovente</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>Fecha Ingreso</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>Fecha Resolutivo</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>Municipio</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>Ubicación</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>Boletín Ingreso</TableCell>
-                      <TableCell sx={{ fontWeight: 'bold' }}>Boletín</TableCell>
+                      <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>No. Oficio</TableCell>
+                      <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>Expediente</TableCell>
+                      <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, minWidth: { xs: 150, sm: 'auto' } }}>Nombre del Proyecto</TableCell>
+                      <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, maxWidth: { xs: 100, sm: 150, md: 180 } }}>Promovente</TableCell>
+                      <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>Fecha Ingreso</TableCell>
+                      <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>Fecha Resolutivo</TableCell>
+                      <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>Municipio</TableCell>
+                      <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>Ubicación</TableCell>
+                      <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>Boletín Ingreso</TableCell>
+                      <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>Boletín</TableCell>
                     </>
                   )}
                 </TableRow>
@@ -540,29 +614,65 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
                         outline: highlight === proyecto.expediente ? '2px solid rgba(2, 57, 35, 0.35)' : 'none'
                       }}
                     >
-                      <TableCell>{proyecto.expediente || 'N/A'}</TableCell>
-                      <TableCell>{proyecto.nombre_proyecto || 'N/A'}</TableCell>
-                      <TableCell>{proyecto.promovente || 'N/A'}</TableCell>
-                      <TableCell>{proyecto.municipio || 'N/A'}</TableCell>
-                      <TableCell>{proyecto.giro || 'N/A'}</TableCell>
-                      <TableCell>{proyecto.tipo_estudio || 'N/A'}</TableCell>
-                      <TableCell>{proyecto.fecha_ingreso || 'N/A'}</TableCell>
-                      <TableCell>
+                      <TableCell sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>{proyecto.expediente || 'N/A'}</TableCell>
+                      <TableCell sx={{ 
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' }, 
+                        maxWidth: { xs: 150, sm: 'none' },
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis'
+                      }}>
+                        {proyecto.nombre_proyecto || 'N/A'}
+                      </TableCell>
+                      <TableCell sx={{ 
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' }, 
+                        maxWidth: { xs: 100, sm: 150, md: 180 },
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        whiteSpace: 'nowrap'
+                      }}>
+                        {proyecto.promovente || 'N/A'}
+                      </TableCell>
+                      <TableCell sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>{proyecto.municipio || 'N/A'}</TableCell>
+                      <TableCell sx={{ 
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' }, 
+                        maxWidth: { xs: 80, sm: 120, md: 150 },
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        whiteSpace: 'nowrap'
+                      }}>
+                        {proyecto.giro || 'N/A'}
+                      </TableCell>
+                      <TableCell sx={{ 
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' }, 
+                        maxWidth: { xs: 100, sm: 140, md: 180 },
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        whiteSpace: 'nowrap'
+                      }}>
+                        {proyecto.tipo_estudio || 'N/A'}
+                      </TableCell>
+                      <TableCell sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>{proyecto.fecha_ingreso || 'N/A'}</TableCell>
+                      <TableCell sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>
                         {proyecto.coordenadas_x && proyecto.coordenadas_y ? (
-                          <Chip label="📍 Ver ubicación" size="small" color="primary" variant="outlined" sx={{ cursor: 'pointer' }} />
+                          <Chip label="📍 Ver ubicación" size="small" color="primary" variant="outlined" sx={{ cursor: 'pointer', fontSize: { xs: '0.65rem', sm: '0.75rem' } }} />
                         ) : (
-                          <Chip label="Sin coordenadas" size="small" variant="outlined" sx={{ color: 'text.secondary' }} />
+                          <Chip label="Sin coordenadas" size="small" variant="outlined" sx={{ color: 'text.secondary', fontSize: { xs: '0.65rem', sm: '0.75rem' } }} />
                         )}
                       </TableCell>
-                      <TableCell>
-                        <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
-                          {proyecto.boletin_url ? (
-                            <Button size="small" color="primary" onClick={(e) => { e.stopPropagation(); window.open(proyecto.boletin_url, '_blank', 'noopener,noreferrer') }} sx={{ minWidth: 'auto', px: 1 }}>Consultar boletín</Button>
-                          ) : (
-                            <Chip label="Sin URL" size="small" variant="outlined" sx={{ color: 'text.secondary' }} />
-                          )}
-                          <Button size="small" variant="outlined" color="secondary" onClick={(e) => { e.stopPropagation(); handleBoletinSummary(proyecto) }} sx={{ minWidth: 'auto', px: 1 }}>📋 Resumen</Button>
-                        </Box>
+                      <TableCell sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>
+                        <Button 
+                          size="small" 
+                          variant="outlined" 
+                          color="secondary" 
+                          onClick={(e) => { e.stopPropagation(); handleBoletinSummary(proyecto) }} 
+                          sx={{ 
+                            minWidth: 'auto', 
+                            px: { xs: 0.5, sm: 1 },
+                            fontSize: { xs: '0.65rem', sm: '0.875rem' }
+                          }}
+                        >
+                          {isMobile ? '📋' : '📋 Resumen'}
+                        </Button>
                       </TableCell>
                     </TableRow>
                   ))
@@ -577,36 +687,68 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
                         '&:hover': { backgroundColor: resolutivo.coordenadas_x && resolutivo.coordenadas_y ? 'rgba(0, 0, 0, 0.04)' : 'inherit' }
                       }}
                     >
-                      <TableCell>{resolutivo.no_oficio_resolutivo || 'N/A'}</TableCell>
-                      <TableCell>{resolutivo.expediente || 'N/A'}</TableCell>
-                      <TableCell>{resolutivo.nombre_proyecto || 'N/A'}</TableCell>
-                      <TableCell>{resolutivo.promovente || 'N/A'}</TableCell>
-                      <TableCell>{resolutivo.fecha_ingreso || 'N/A'}</TableCell>
-                      <TableCell>{resolutivo.fecha_resolutivo || 'N/A'}</TableCell>
-                      <TableCell>{resolutivo.municipio || 'N/A'}</TableCell>
-                      <TableCell>
+                      <TableCell sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>{resolutivo.no_oficio_resolutivo || 'N/A'}</TableCell>
+                      <TableCell sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>{resolutivo.expediente || 'N/A'}</TableCell>
+                      <TableCell sx={{ 
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' }, 
+                        maxWidth: { xs: 150, sm: 'none' },
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis'
+                      }}>
+                        {resolutivo.nombre_proyecto || 'N/A'}
+                      </TableCell>
+                      <TableCell sx={{ 
+                        fontSize: { xs: '0.75rem', sm: '0.875rem' }, 
+                        maxWidth: { xs: 100, sm: 150, md: 180 },
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        whiteSpace: 'nowrap'
+                      }}>
+                        {resolutivo.promovente || 'N/A'}
+                      </TableCell>
+                      <TableCell sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>{resolutivo.fecha_ingreso || 'N/A'}</TableCell>
+                      <TableCell sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>{resolutivo.fecha_resolutivo || 'N/A'}</TableCell>
+                      <TableCell sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>{resolutivo.municipio || 'N/A'}</TableCell>
+                      <TableCell sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>
                         {resolutivo.coordenadas_x && resolutivo.coordenadas_y ? (
-                          <Chip label="📍 Ver ubicación" size="small" color="primary" variant="outlined" sx={{ cursor: 'pointer' }} />
+                          <Chip label="📍 Ver ubicación" size="small" color="primary" variant="outlined" sx={{ cursor: 'pointer', fontSize: { xs: '0.65rem', sm: '0.75rem' } }} />
                         ) : (
-                          <Chip label="Sin coordenadas" size="small" variant="outlined" sx={{ color: 'text.secondary' }} />
+                          <Chip label="Sin coordenadas" size="small" variant="outlined" sx={{ color: 'text.secondary', fontSize: { xs: '0.65rem', sm: '0.75rem' } }} />
                         )}
                       </TableCell>
-                      <TableCell>
+                      <TableCell sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>
                         {resolutivo.boletin_ingreso_url ? (
-                          <Button size="small" variant="outlined" color="success" onClick={(e) => { e.stopPropagation(); window.open(resolutivo.boletin_ingreso_url, '_blank', 'noopener,noreferrer') }} sx={{ minWidth: 'auto', px: 1 }}>📄 Ingreso</Button>
+                          <Button 
+                            size="small" 
+                            variant="outlined" 
+                            color="success" 
+                            onClick={(e) => { e.stopPropagation(); window.open(resolutivo.boletin_ingreso_url, '_blank', 'noopener,noreferrer') }} 
+                            sx={{ 
+                              minWidth: 'auto', 
+                              px: { xs: 0.5, sm: 1 },
+                              fontSize: { xs: '0.65rem', sm: '0.875rem' }
+                            }}
+                          >
+                            {isMobile ? '📄' : '📄 Ingreso'}
+                          </Button>
                         ) : (
-                          <Chip label="Sin URL" size="small" variant="outlined" sx={{ color: 'text.secondary' }} />
+                          <Chip label="Sin URL" size="small" variant="outlined" sx={{ color: 'text.secondary', fontSize: { xs: '0.65rem', sm: '0.75rem' } }} />
                         )}
                       </TableCell>
-                      <TableCell>
-                        <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
-                          {resolutivo.boletin_url ? (
-                            <Button size="small" color="primary" onClick={(e) => { e.stopPropagation(); window.open(resolutivo.boletin_url, '_blank', 'noopener,noreferrer') }} sx={{ minWidth: 'auto', px: 1 }}>Consultar boletín</Button>
-                          ) : (
-                            <Chip label="Sin URL" size="small" variant="outlined" sx={{ color: 'text.secondary' }} />
-                          )}
-                          <Button size="small" variant="outlined" color="secondary" onClick={(e) => { e.stopPropagation(); handleBoletinSummary(resolutivo) }} sx={{ minWidth: 'auto', px: 1 }}>📋 Resumen</Button>
-                        </Box>
+                      <TableCell sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>
+                        <Button 
+                          size="small" 
+                          variant="outlined" 
+                          color="secondary" 
+                          onClick={(e) => { e.stopPropagation(); handleBoletinSummary(resolutivo) }} 
+                          sx={{ 
+                            minWidth: 'auto', 
+                            px: { xs: 0.5, sm: 1 },
+                            fontSize: { xs: '0.65rem', sm: '0.875rem' }
+                          }}
+                        >
+                          {isMobile ? '📋' : '📋 Resumen'}
+                        </Button>
                       </TableCell>
                     </TableRow>
                   ))
@@ -625,7 +767,40 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
             onRowsPerPageChange={handleChangeRowsPerPage}
             labelRowsPerPage="Filas por página:"
             labelDisplayedRows={({ from, to, count }) => `${from}-${to} de ${count !== -1 ? count : `más de ${to}`}`}
+            sx={{
+              '& .MuiTablePagination-toolbar': {
+                flexWrap: 'wrap',
+                gap: { xs: 1, sm: 0 }
+              },
+              '& .MuiTablePagination-selectLabel, & .MuiTablePagination-displayedRows': {
+                fontSize: { xs: '0.75rem', sm: '0.875rem' }
+              }
+            }}
           />
+
+          {/* Iframe de Notion */}
+          <Box sx={{ 
+            mt: 4,
+            borderRadius: 2,
+            overflow: 'hidden',
+            border: '1px solid rgba(30, 58, 138, 0.1)',
+            width: '100%'
+          }}>
+            <iframe 
+              src="https://adnags.notion.site/ebd/29c2b8101e5c80fdbd89f8c03728e80d" 
+              width="100%" 
+              height="900"
+              frameBorder="0"
+              allowFullScreen
+              scrolling="no"
+              style={{ 
+                display: 'block',
+                minHeight: '600px',
+                overflow: 'hidden'
+              }}
+              title="Formulario de suscripción al boletín semanal"
+            />
+          </Box>
         </Box>
       </CardContent>
       {selectedItem && (

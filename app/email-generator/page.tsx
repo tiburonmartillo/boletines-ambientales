@@ -196,7 +196,7 @@ export default function EmailGeneratorPage() {
     projects: [],
     resolutions: []
   });
-  const [bulletinId, setBulletinId] = useState('454');
+  const [bulletinId, setBulletinId] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [apiKey, setApiKey] = useState('');
   const [showApiKey, setShowApiKey] = useState(false);

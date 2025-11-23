@@ -216,16 +216,59 @@ export function ProjectsMap({ proyectos, onSelectExpediente }: ProjectsMapProps)
   const leafletMapRef = useRef<any>(null)
   const markersLayerRef = useRef<any>(null)
   const [query, setQuery] = useState("")
+  const [visibleBounds, setVisibleBounds] = useState<any>(null)
+  const [currentZoom, setCurrentZoom] = useState<number>(9)
 
+  // Pre-procesar todos los proyectos con sus coordenadas convertidas y ordenarlos por fecha
+  const proyectosProcesados = useMemo(() => {
+    const proyectosOrdenados = [...(proyectos || [])].sort((a, b) => {
+      const fechaA = a.fecha_ingreso ? new Date(a.fecha_ingreso).getTime() : 0
+      const fechaB = b.fecha_ingreso ? new Date(b.fecha_ingreso).getTime() : 0
+      return fechaB - fechaA // Orden descendente (más reciente primero)
+    })
+    
+    return proyectosOrdenados
+      .map(p => {
+        const coords = convertToLatLong(p.coordenadas_x, p.coordenadas_y)
+        if (!coords) return null
+        return {
+          ...p,
+          lat: coords.lat,
+          lng: coords.lng
+        }
+      })
+      .filter((p): p is Proyecto & { lat: number; lng: number } => p !== null)
+  }, [proyectos])
+
+  // Filtrar proyectos basándose en búsqueda, bounds visibles y zoom
   const items = useMemo(() => {
+    // Aplicar filtro de búsqueda primero
     const q = query.toLowerCase()
-    return (proyectos || []).filter(p => {
+    let filtrados = proyectosProcesados.filter(p => {
       const promovente = (p.promovente || "").toLowerCase()
       const expediente = (p.expediente || "").toLowerCase()
       const nombre = (p.nombre_proyecto || "").toLowerCase()
       return promovente.includes(q) || expediente.includes(q) || nombre.includes(q)
     })
-  }, [proyectos, query])
+
+    // Si hay zoom suficiente y bounds visibles, filtrar por área visible
+    // Zoom mínimo de 9 para mostrar marcadores (evita sobrecarga en vista inicial)
+    if (currentZoom >= 9 && visibleBounds) {
+      filtrados = filtrados.filter(p => {
+        try {
+          return visibleBounds.contains([p.lat, p.lng])
+        } catch {
+          return false
+        }
+      })
+    } else if (currentZoom < 9) {
+      // Si el zoom es muy bajo, no mostrar marcadores
+      return []
+    }
+
+    // Limitar a 50 proyectos máximo para evitar sobrecarga
+    return filtrados.slice(0, 50)
+  }, [proyectosProcesados, query, visibleBounds, currentZoom])
 
   useEffect(() => {
     if (!ready || !mapRef.current || typeof window === "undefined") return
@@ -253,19 +296,46 @@ export function ProjectsMap({ proyectos, onSelectExpediente }: ProjectsMapProps)
       }).addTo(leafletMapRef.current)
       
       markersLayerRef.current = L.layerGroup().addTo(leafletMapRef.current)
+
+      // Actualizar bounds visibles cuando el mapa se mueve o hace zoom
+      const updateVisibleBounds = () => {
+        if (!leafletMapRef.current) return
+        const bounds = leafletMapRef.current.getBounds()
+        const zoom = leafletMapRef.current.getZoom()
+        setVisibleBounds(bounds)
+        setCurrentZoom(zoom)
+      }
+
+      // Escuchar eventos de movimiento y zoom
+      leafletMapRef.current.on('moveend', updateVisibleBounds)
+      leafletMapRef.current.on('zoomend', updateVisibleBounds)
+      
+      // Actualizar bounds iniciales
+      updateVisibleBounds()
+
+      // Cleanup al desmontar
+      return () => {
+        if (leafletMapRef.current) {
+          leafletMapRef.current.off('moveend', updateVisibleBounds)
+          leafletMapRef.current.off('zoomend', updateVisibleBounds)
+        }
+      }
     }
   }, [ready])
 
   useEffect(() => {
-    if (!ready || !markersLayerRef.current || !items || items.length === 0) return
+    if (!ready || !markersLayerRef.current) return
     const L = (window as any).L
     if (!L) return
+    
     markersLayerRef.current.clearLayers()
+    
+    if (!items || items.length === 0) return
+
     const bounds: any[] = []
     items.forEach(p => {
-      if (!p || !p.expediente) return
-      const coords = convertToLatLong(p.coordenadas_x, p.coordenadas_y)
-      if (!coords) return
+      if (!p || !p.expediente || !('lat' in p) || !('lng' in p)) return
+      
       // Escapar HTML para prevenir XSS
       const nombreProyecto = String(p.nombre_proyecto || 'Sin nombre').replace(/</g, '&lt;').replace(/>/g, '&gt;')
       const expediente = String(p.expediente || 'N/A').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -277,54 +347,40 @@ export function ProjectsMap({ proyectos, onSelectExpediente }: ProjectsMapProps)
           <div style="font-size:12px;opacity:.8">Promovente: ${promovente}</div>
         </div>`
       try {
-        const marker = L.marker([coords.lat, coords.lng]).bindTooltip(html, { direction: 'top' })
+        const marker = L.marker([p.lat, p.lng]).bindTooltip(html, { direction: 'top' })
         marker.on('click', () => {
           if (onSelectExpediente && p.expediente) onSelectExpediente(p.expediente)
         })
         marker.addTo(markersLayerRef.current)
-        bounds.push([coords.lat, coords.lng])
+        bounds.push([p.lat, p.lng])
       } catch (error) {
         // Ignorar errores al crear marcadores individuales
       }
     })
-    if (bounds.length > 0 && leafletMapRef.current) {
-      // Límites del estado de Aguascalientes
-      const boundsAgs = L.latLngBounds(
-        [21.5, -102.8],  // Suroeste
-        [22.5, -101.7]   // Noreste
-      )
-      const markersBounds = L.latLngBounds(bounds)
-      
-      // Si los marcadores están dentro de Aguascalientes, usar sus bounds
-      // Si no, ajustar para que estén dentro de los límites del estado
-      let finalBounds = markersBounds
-      if (!boundsAgs.contains(markersBounds)) {
-        // Ajustar los bounds para que estén dentro de Aguascalientes
-        const sw = markersBounds.getSouthWest()
-        const ne = markersBounds.getNorthEast()
-        const agsSw = boundsAgs.getSouthWest()
-        const agsNe = boundsAgs.getNorthEast()
-        
-        // Limitar las coordenadas a los límites del estado
-        const latMin = Math.max(sw.lat, agsSw.lat)
-        const latMax = Math.min(ne.lat, agsNe.lat)
-        const lngMin = Math.max(sw.lng, agsSw.lng)
-        const lngMax = Math.min(ne.lng, agsNe.lng)
-        
-        finalBounds = L.latLngBounds([latMin, lngMin], [latMax, lngMax])
-      }
-      
-      leafletMapRef.current.fitBounds(finalBounds, { padding: [30, 30], maxZoom: 12 })
-    }
-  }, [items, ready])
+  }, [items, ready, onSelectExpediente])
 
   return (
     <Card elevation={0} sx={{ borderRadius: '12px', border: '1px solid rgba(30,58,138,.1)' }}>
-      <CardContent sx={{ p: 3 }}>
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+      <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 1.5, sm: 2 } }}>
           <Box>
-            <Typography variant="h6" fontWeight="semibold">Mapa de proyectos ingresados</Typography>
-            <Typography variant="body2" color="text.secondary">Pasa el cursor sobre un marcador para ver detalles. Usa la búsqueda para filtrar por promovente, expediente o nombre del proyecto.</Typography>
+            <Typography 
+              variant="h6" 
+              fontWeight="semibold"
+              sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }}
+            >
+              Mapa de proyectos ingresados
+            </Typography>
+            <Typography 
+              variant="body2" 
+              color="text.secondary"
+              sx={{ 
+                fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                mt: { xs: 0.5, sm: 0.5 }
+              }}
+            >
+              Haz zoom en una zona para ver las ubicaciones de proyectos. Los marcadores aparecen cuando el nivel de zoom es suficiente (zoom 9 o mayor). Se muestran hasta 50 ubicaciones visibles en el área actual. Pasa el cursor sobre un marcador para ver detalles. Usa la búsqueda para filtrar por promovente, expediente o nombre del proyecto.
+            </Typography>
           </Box>
           <TextField 
             label="Buscar en el mapa" 
@@ -332,8 +388,18 @@ export function ProjectsMap({ proyectos, onSelectExpediente }: ProjectsMapProps)
             value={query} 
             onChange={(e) => setQuery(e.target.value)} 
             placeholder="promovente, expediente, nombre..."
+            sx={{ width: '100%' }}
           />
-          <Box sx={{ height: 520, borderRadius: 2, overflow: 'hidden', position: 'relative', zIndex: 0 }} className="adna-map">
+          <Box 
+            sx={{ 
+              height: { xs: 300, sm: 400, md: 520 }, 
+              borderRadius: 2, 
+              overflow: 'hidden', 
+              position: 'relative', 
+              zIndex: 0 
+            }} 
+            className="adna-map"
+          >
             <div ref={mapRef} style={{ width: '100%', height: '100%' }} />
           </Box>
         </Box>

@@ -1,9 +1,8 @@
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { Button } from './ui/button'
 import { BoletinSummary } from './boletin-summary'
-import { generateBoletinPDFWithHtml2pdf } from '@/lib/pdf-generator'
 import { Boletin } from '@/lib/types'
 import { formatearFechaCorta } from '@/lib/boletin-utils'
 
@@ -14,22 +13,6 @@ interface BoletinModalProps {
 }
 
 export function BoletinModal({ boletin, isOpen, onClose }: BoletinModalProps) {
-  const [isGeneratingPDF, setIsGeneratingPDF] = useState(false)
-
-  const handleDownloadPDF = async () => {
-    if (!boletin) return
-    
-    try {
-      setIsGeneratingPDF(true)
-      // Usar html2pdf.js como método único
-      await generateBoletinPDFWithHtml2pdf('boletin-summary', `Resumen-Boletin-SSMAA-${boletin.id}.pdf`)
-    } catch (err) {
-      console.error('Error al generar PDF:', err)
-      alert('Error al generar el PDF. Por favor, intenta de nuevo.')
-    } finally {
-      setIsGeneratingPDF(false)
-    }
-  }
 
   // Manejar escape key
   useEffect(() => {
@@ -56,7 +39,7 @@ export function BoletinModal({ boletin, isOpen, onClose }: BoletinModalProps) {
   return (
     <>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4">
           {/* Overlay */}
           <div 
             className="absolute inset-0 bg-black opacity-75"
@@ -64,14 +47,14 @@ export function BoletinModal({ boletin, isOpen, onClose }: BoletinModalProps) {
           />
           
           {/* Modal */}
-          <div className="relative bg-white rounded-xl shadow-xl max-w-6xl w-full mx-4 max-h-[95vh] overflow-hidden">
-            {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-200">
-              <div>
-                <h2 className="text-xl font-semibold text-gray-900">
+          <div className="relative bg-white rounded-xl shadow-xl max-w-6xl w-full h-[95vh] sm:h-[90vh] flex flex-col overflow-hidden">
+            {/* Header - Fixed */}
+            <div className="flex items-center justify-between p-3 sm:p-4 md:p-6 border-b border-gray-200 flex-shrink-0 bg-white z-10">
+              <div className="flex-1 min-w-0 pr-2">
+                <h2 className="text-lg sm:text-xl font-semibold text-gray-900 truncate">
                   Resumen Boletín #{boletin.id}
                 </h2>
-                <p className="text-sm text-gray-600 mt-1">
+                <p className="text-xs sm:text-sm text-gray-600 mt-0.5 sm:mt-1">
                   {boletin.fecha_publicacion ? 
                     formatearFechaCorta(boletin.fecha_publicacion) : 'Fecha no disponible'
                   }
@@ -79,17 +62,24 @@ export function BoletinModal({ boletin, isOpen, onClose }: BoletinModalProps) {
               </div>
               <button
                 onClick={onClose}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
+                className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0 p-1"
+                aria-label="Cerrar"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
             
-            {/* Content */}
-            <div className="overflow-y-auto max-h-[calc(95vh-140px)]">
-              <div className="p-6">
+            {/* Content - Scrollable */}
+            <div 
+              className="flex-1 overflow-y-auto overscroll-contain relative" 
+              style={{ 
+                WebkitOverflowScrolling: 'touch',
+                minHeight: 0
+              }}
+            >
+              <div className="p-3 sm:p-4 md:p-6 pb-20 sm:pb-24">
                 <BoletinSummary
                   boletin={boletin}
                   showPrintButton={false}
@@ -97,38 +87,19 @@ export function BoletinModal({ boletin, isOpen, onClose }: BoletinModalProps) {
                   staticMode={false}
                 />
               </div>
-            </div>
-            
-            {/* Footer - Fixed at bottom */}
-            <div className="flex justify-between items-center p-6 border-t border-gray-200 bg-gray-50 sticky bottom-0">
-              <Button
-                variant="outline"
-                onClick={onClose}
-                className="border-gray-300 text-gray-600 hover:text-gray-800 hover:bg-gray-100"
-              >
-                Cerrar
-              </Button>
               
-              <div className="flex gap-3">
-                {boletin.url && (
+              {/* Floating Button - Always Visible */}
+              {boletin.url && (
+                <div className="sticky bottom-4 left-0 right-0 flex justify-center z-20 px-4 pointer-events-none">
                   <Button
-                    variant="outline"
+                    variant="default"
                     onClick={() => window.open(boletin.url, '_blank', 'noopener,noreferrer')}
-                    className="border-[#F97316] text-[#F97316] hover:bg-[#FFF7ED]"
+                    className="bg-[#F97316] hover:bg-[#EA580C] text-white px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base shadow-lg hover:shadow-xl transition-all pointer-events-auto"
                   >
                     📄 Consultar Boletín Original
                   </Button>
-                )}
-                
-                <Button
-                  variant="default"
-                  onClick={handleDownloadPDF}
-                  disabled={isGeneratingPDF}
-                  className="bg-[#F97316] hover:bg-[#EA580C] text-white"
-                >
-                  {isGeneratingPDF ? 'Generando PDF...' : '📋 Descargar PDF'}
-                </Button>
-              </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

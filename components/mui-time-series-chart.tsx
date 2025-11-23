@@ -48,24 +48,44 @@ export const MuiTimeSeriesChart = memo(function MuiTimeSeriesChart({
 
   return (
     <StyledCard elevation={0}>
-      <CardContent sx={{ p: 4 }}>
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+      <CardContent sx={{ p: { xs: 2, sm: 3, md: 4 } }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 2, sm: 3 } }}>
           <Box>
-            <Typography variant="h6" component="h3" fontWeight="semibold" color="text.primary">
+            <Typography 
+              variant="h6" 
+              component="h3" 
+              fontWeight="semibold" 
+              color="text.primary"
+              sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }}
+            >
               Tendencia Temporal
             </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
+            <Typography 
+              variant="body2" 
+              color="text.secondary" 
+              sx={{ 
+                mt: { xs: 0.5, sm: 0.5 },
+                fontSize: { xs: '0.75rem', sm: '0.875rem' }
+              }}
+            >
               Evolución de proyectos ingresados y resolutivos emitidos en el tiempo
             </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+            <Typography 
+              variant="body2" 
+              color="text.secondary" 
+              sx={{ 
+                mt: { xs: 0.5, sm: 1 },
+                fontSize: { xs: '0.75rem', sm: '0.875rem' }
+              }}
+            >
               Haz clic en cualquier punto de la gráfica para filtrar por esa fecha
             </Typography>
           </Box>
           
           <Box sx={{ 
             width: '100%', 
-            height: { xs: '300px', sm: '350px', md: '400px' },
-            minHeight: '300px'
+            height: { xs: '250px', sm: '300px', md: '350px', lg: '400px' },
+            minHeight: '250px'
           }}>
             <LineChart
               dataset={chartData}

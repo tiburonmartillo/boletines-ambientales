@@ -34119,7 +34119,7 @@
           "fecha_ingreso": "2023-11-17",
           "boletin_id": 354,
           "coord_valida": true,
-          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la construcción y edificación de un proyecto habitacional multifamiliar y comercial, ubicado al norte del Fracc. Tres Arroyos, en el municipio de Jesús María."
+          "naturaleza_proyecto": "Manifiesto de Impacto Ambiental el cual consiste en la prolongación de una vialidad ya existente, se prevé la vialidad como continuidad de Avenida Canal Interceptor, ubicada sobre Av. Alameda y Siglo XIX, en el municipio de Aguascalientes."
         }
       ],
       "resolutivos_emitidos": [],
@@ -41314,7 +41314,7 @@
           "nombre_proyecto": "ALMACEN ISEWAN",
           "naturaleza_proyecto": "Almacenamiento de Materiales y Componentes (Resinas, telas, materiales para ensamble, productos de limpieza, etc.), utilizados para la fabricación de autopartes en las Plantas 1.0 y 2.0",
           "giro": "INDUSTRIAL",
-          "municipio": "San Francisco de los Romo",
+          "municipio": "SAN FRANCISCO DE LOS ROMO",
           "coordenadas_x": 780348.77,
           "coordenadas_y": 2440304.07,
           "expediente": "SSMAA-DIRA-2826-2025",
@@ -41358,7 +41358,7 @@
           "nombre_proyecto": "ARBOLADA RESIDENCIAL",
           "naturaleza_proyecto": null,
           "giro": "HABITACIONAL",
-          "municipio": "RINCON DE ROMOS",
+          "municipio": "RINCON DE ROMO",
           "expediente": "SSMAA-DIRA-2792-2025",
           "fecha_ingreso": "2025-06-26",
           "fecha_resolutivo": "2025-10-20",
@@ -41372,7 +41372,7 @@
           "nombre_proyecto": "AMAYA",
           "naturaleza_proyecto": null,
           "giro": "HABITACIONAL",
-          "municipio": "JESUS MARIA",
+          "municipio": "JESÚS MARÍA",
           "expediente": "SSMAA-DIRA-2795-2025",
           "fecha_ingreso": "2025-07-01",
           "fecha_resolutivo": "2025-09-11",
@@ -41386,7 +41386,7 @@
           "nombre_proyecto": "CONJUTO CONDOMINAL MIXTO HABITACIONAL Y COMERCIAL ARYA",
           "naturaleza_proyecto": null,
           "giro": "HABITACIONAL",
-          "municipio": "JESUS MARIA",
+          "municipio": "JESÚS MARÍA",
           "expediente": "SSMAA-DIRA-2783-2025",
           "fecha_ingreso": "2025-06-05",
           "fecha_resolutivo": "2025-10-28",
@@ -41414,7 +41414,7 @@
           "nombre_proyecto": "AXTRANA RECIDENCIAL",
           "naturaleza_proyecto": null,
           "giro": "HABITACIONAL",
-          "municipio": "JESUS MARIA",
+          "municipio": "JESÚS MARÍA",
           "expediente": "SSMAA-DIRA2781-2026",
           "fecha_ingreso": "2025-06-03",
           "fecha_resolutivo": "2025-10-29",
@@ -41494,14 +41494,14 @@
           "nombre_proyecto": "CONDOMINIO MIXTO HABITACIONAL URBANO AMARA",
           "naturaleza_proyecto": "El proyecto contempla la urbanización de un condominio mixto habitacional en un predio de 30,505.48 m2. Se contempla la construcción de 97 lotes habitaciones con vivienda, además de áreas verdes, áreas de uso común áreas de donación, área de reserva y vialidades.",
           "giro": "HABITACIONAL",
-          "municipio": "JESUS MARIA",
+          "municipio": "JESÚS MARÍA",
           "coordenadas_x": 2429072.17,
           "coordenadas_y": 773870.22,
           "expediente": "SSMAA- DIRA-2832-2025",
           "fecha_ingreso": "2025-11-13",
           "boletin_id": 457
         }
-      ]
+      ], "resolutivos_emitidos": []
     }
     ],
   "metadata": {

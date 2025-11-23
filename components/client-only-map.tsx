@@ -303,13 +303,13 @@ export function ClientOnlyMap({
 
   // Para la modal, usar iframe como en la modal de ubicación
   return (
-    <Box sx={{ width: '100%', height }}>
-      <div className="w-full h-full bg-gray-50 rounded-lg overflow-hidden border border-gray-200">
+    <Box sx={{ width: '100%', height: height || '100%', minHeight: height || 200 }}>
+      <div className="w-full h-full bg-gray-50 rounded-lg overflow-hidden border border-gray-200" style={{ height: '100%' }}>
         <iframe
           src={`https://www.openstreetmap.org/export/embed.html?bbox=${lng-0.005},${lat-0.005},${lng+0.005},${lat+0.005}&layer=mapnik&marker=${lat},${lng}`}
           width="100%"
           height="100%"
-          style={{ border: 'none' }}
+          style={{ border: 'none', minHeight: height || 200 }}
           title="Mapa de ubicación del proyecto"
           allowFullScreen
         />

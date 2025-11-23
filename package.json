@@ -64,6 +64,7 @@
     "react-dom": "^19",
     "react-hook-form": "^7.60.0",
     "react-leaflet": "^5.0.0",
+    "react-markdown": "^10.1.0",
     "react-resizable-panels": "^2.1.7",
     "recharts": "^2.13.5",
     "sonner": "^1.7.4",

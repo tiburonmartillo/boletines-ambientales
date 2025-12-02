@@ -1,8 +1,8 @@
 {
   "metadata": {
     "created": "2025-11-13T17:31:21.190436",
-    "last_updated": "2025-11-23T02:57:34.733876",
-    "total_analyzed": 33,
+    "last_updated": "2025-12-02T08:45:52.565674",
+    "total_analyzed": 35,
     "year": 2025,
     "combined": true
   },
@@ -403,6 +403,33 @@
         7
       ],
       "resumen": null
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2003/gaceta_1-03.pdf",
+      "año": 2003,
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [
+        "Aguascalientes",
+        "Ags"
+      ],
+      "paginas": [
+        1,
+        7,
+        12
+      ],
+      "resumen": "AGS 01AG2002E0002 - C.F.E.: Línea transmisión eléctrica Aguascalientes Potencia-San Juan de los Lagos. Modalidad MIA-Particular. Ingreso 04-Jun-02. Resolución 25-Nov-02.\n\nAGS 01AG2002V0003 - SCT: Libramiento Aguascalientes (km 570+000 a km 580+000 AT = km 80+000 AD) y km 125+000 carretera Zacatecas-Aguascalientes. Modalidad MIA-Regional. Ingreso 28-Nov-02.\n\nAGS 01AG2002AD004 - Ejido \"El Aurero\": Proyecto \"El Aurero\". Modalidad MIA-Particular. Ingreso 08-Ago-02. Resolución 13-Nov-02."
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2025/gaceta_0054-25.pdf",
+      "año": 2025,
+      "fecha_publicacion": "2025-11-27",
+      "palabras_clave_encontradas": [
+        "Aguascalientes"
+      ],
+      "paginas": [
+        4
+      ],
+      "resumen": "Aguascalientes: Proyecto Libramiento Tanque de Los Jiménez (Clave 01AG2021VD050), promovido por Gobierno del Estado de Aguascalientes. Modalidad Trámite Unificado B. Fecha ingreso 16/DIC/21, resolución 15/OCT/25. Vigencia: 2 años y 50 años."
     }
   ]
 }

@@ -197,13 +197,14 @@ export default function EmailGeneratorPage() {
     resolutions: []
   });
   const [bulletinId, setBulletinId] = useState('');
+  const [bulletinUrl, setBulletinUrl] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [apiKey, setApiKey] = useState('');
   const [showApiKey, setShowApiKey] = useState(false);
   const previewIframeRef = useRef<HTMLIFrameElement | null>(null);
   const [previewHeight, setPreviewHeight] = useState<number>(1200);
 
-  const previewHtml = useMemo(() => generateHTML(), [bulletinData]);
+  const previewHtml = useMemo(() => generateHTML(), [bulletinData, bulletinUrl]);
   const [hasAttemptedLoad, setHasAttemptedLoad] = useState(false);
 
   const fetchBulletinData = async (id: string) => {
@@ -355,6 +356,11 @@ export default function EmailGeneratorPage() {
       });
       
       console.log('Transformed data:', transformedData);
+      
+      // Guardar la URL del boletín (usar el campo url si existe, o construirla)
+      const bulletinUrlValue = bulletin.url || `https://adn-a.org/boletines-ssmaa/resumen/${id}`;
+      setBulletinUrl(bulletinUrlValue);
+      
       setBulletinData(transformedData);
       toast({
         title: "Éxito",
@@ -749,7 +755,8 @@ export default function EmailGeneratorPage() {
                         </td>
                     </tr>
                     
-                    <!-- CTA: Ver más boletines/proyectos/resolutivos -->
+                    <!-- CTA: Ver boletín completo -->
+                    ${bulletinUrl ? `
                     <tr>
                         <td style="padding: 10px 15px 0 15px;">
                             <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background: #ffffff; border-radius: 10px; border: 1px solid #e6e6e6;">
@@ -761,15 +768,24 @@ export default function EmailGeneratorPage() {
                                     </td>
                                 </tr>
                                 <tr>
+                                <td style="padding: 0 16px 16px 16px; text-align: center;">
+                                <a href="https://adn-a.org/boletines-ssmaa/" target="_blank" style="display: block; width: 100%; max-width: 520px; margin: 0 auto; padding: 12px 16px; background-color: #ff8d28; color: white; text-decoration: none; border-radius: 9999px; font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; text-align: center; cursor: pointer; border: 1px solid #000000;">
+                                Ver más en adn-a.org
+                                </a>
+                                </td>
+                                </tr>
+                                <tr>
                                     <td style="padding: 0 16px 16px 16px; text-align: center;">
-                                        <a href="https://adn-a.org/boletines-ssmaa/" target="_blank" style="display: block; width: 100%; max-width: 520px; margin: 0 auto; padding: 12px 16px; background-color: #ff8d28; color: white; text-decoration: none; border-radius: 9999px; font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; text-align: center; cursor: pointer; border: 1px solid #000000;">
-                                            Ver más en adn-a.org
+                                        <a href="${bulletinUrl}" target="_blank" style="display: block; width: 100%; max-width: 520px; margin: 0 auto; padding: 12px 16px; background-color:rgb(40, 83, 255); color: white; text-decoration: none; border-radius: 9999px; font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; text-align: center; cursor: pointer; border: 1px solid #000000;">
+                                            Ver boletín original
                                         </a>
                                     </td>
                                 </tr>
-                            </table>
+                                </table>
                         </td>
                     </tr>
+                    ` : ''}
+                 
                     
                     <!-- Footer -->
                    

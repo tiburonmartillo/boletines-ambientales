@@ -8,9 +8,13 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 
 interface GacetaAnalysis {
   url: string
+  año: number
   fecha_publicacion: string
   palabras_clave_encontradas: string[]
   paginas: number[]
+  secciones?: string[]
+  proyectos_ingresados?: any[] | null
+  resolutivos_emitidos?: any[] | null
   resumen: string | null
 }
 
@@ -42,11 +46,26 @@ export function GacetaModal({ gaceta, isOpen, onClose }: GacetaModalProps) {
 
   if (!gaceta || !isOpen) return null
 
-  const fechaFormateada = new Date(gaceta.fecha_publicacion).toLocaleDateString('es-MX', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
+  // Verificar si la fecha es solo año (formato YYYY-01-01) o una fecha completa
+  const fechaFormateada = (() => {
+    try {
+      const fecha = new Date(gaceta.fecha_publicacion)
+      // Si la fecha es el 1 de enero, probablemente es solo el año
+      if (fecha.getMonth() === 0 && fecha.getDate() === 1) {
+        // Verificar si es el mismo año que gaceta.año
+        if (fecha.getFullYear() === gaceta.año) {
+          return `Año ${gaceta.año}`
+        }
+      }
+      return fecha.toLocaleDateString('es-MX', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      })
+    } catch {
+      return `Año ${gaceta.año}`
+    }
+  })()
 
   return (
     <Box

@@ -32,8 +32,8 @@ function GacetasSEMARNATPageContent() {
   const gacetas = processedData?.gacetas || []
   const metadata = processedData?.metadata
   
-  // Obtener año de los datos
-  const year = data?.metadata?.year || new Date().getFullYear()
+  // Obtener rango de años de los datos
+  const yearRange = data?.metadata?.year_range || `${new Date().getFullYear()}`
 
   // Filtrar gacetas según búsqueda - debe estar antes de returns
   const filteredGacetas = useMemo(() => {
@@ -47,15 +47,15 @@ function GacetasSEMARNATPageContent() {
       result = gacetas.filter(gaceta => 
         gaceta.resumen?.toLowerCase().includes(query) ||
         gaceta.url.toLowerCase().includes(query) ||
-        gaceta.fecha_publicacion.includes(query) ||
+        (gaceta.fecha_publicacion && gaceta.fecha_publicacion.toLowerCase().includes(query)) ||
         gaceta.palabras_clave_encontradas.some(p => p.toLowerCase().includes(query))
       )
     }
     
     // Asegurar ordenamiento por fecha (más reciente primero)
     return result.sort((a, b) => {
-      const dateA = new Date(a.fecha_publicacion).getTime()
-      const dateB = new Date(b.fecha_publicacion).getTime()
+      const dateA = a.fecha_publicacion ? new Date(a.fecha_publicacion).getTime() : 0
+      const dateB = b.fecha_publicacion ? new Date(b.fecha_publicacion).getTime() : 0
       return dateB - dateA // Orden descendente (más reciente primero)
     })
   }, [gacetas, searchQuery])
@@ -195,7 +195,7 @@ function GacetasSEMARNATPageContent() {
             <MuiGacetasStats
               totalGacetas={stats.totalGacetas}
               municipios={stats.municipios.length}
-              year={year}
+              yearRange={yearRange}
             />
           </ErrorBoundary>
 
@@ -321,11 +321,22 @@ function GacetasSEMARNATPageContent() {
                               }}
                             >
                               <TableCell sx={{ fontSize: '0.875rem' }}>
-                                {new Date(gaceta.fecha_publicacion).toLocaleDateString('es-MX', {
-                                  year: 'numeric',
-                                  month: 'short',
-                                  day: 'numeric'
-                                })}
+                                {(() => {
+                                  try {
+                                    const fecha = new Date(gaceta.fecha_publicacion)
+                                    // Si la fecha es el 1 de enero, probablemente es solo el año
+                                    if (fecha.getMonth() === 0 && fecha.getDate() === 1 && fecha.getFullYear() === gaceta.año) {
+                                      return `Año ${gaceta.año}`
+                                    }
+                                    return fecha.toLocaleDateString('es-MX', {
+                                      year: 'numeric',
+                                      month: 'short',
+                                      day: 'numeric'
+                                    })
+                                  } catch {
+                                    return `Año ${gaceta.año}`
+                                  }
+                                })()}
                               </TableCell>
                               <TableCell>
                                 <Link 
@@ -451,11 +462,22 @@ function GacetasSEMARNATPageContent() {
                             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
                               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
                                 <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.75rem' }}>
-                                  {new Date(gaceta.fecha_publicacion).toLocaleDateString('es-MX', {
-                                    year: 'numeric',
-                                    month: 'short',
-                                    day: 'numeric'
-                                  })}
+                                  {(() => {
+                                    try {
+                                      const fecha = new Date(gaceta.fecha_publicacion)
+                                      // Si la fecha es el 1 de enero, probablemente es solo el año
+                                      if (fecha.getMonth() === 0 && fecha.getDate() === 1 && fecha.getFullYear() === gaceta.año) {
+                                        return `Año ${gaceta.año}`
+                                      }
+                                      return fecha.toLocaleDateString('es-MX', {
+                                        year: 'numeric',
+                                        month: 'short',
+                                        day: 'numeric'
+                                      })
+                                    } catch {
+                                      return `Año ${gaceta.año}`
+                                    }
+                                  })()}
                                 </Typography>
                               </Box>
                               

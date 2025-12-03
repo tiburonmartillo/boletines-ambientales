@@ -57,10 +57,10 @@ function StatsCard({ title, value, description, trend }: StatsCardProps) {
 interface MuiGacetasStatsProps {
   totalGacetas: number
   municipios: number
-  year: number
+  yearRange: string
 }
 
-export function MuiGacetasStats({ totalGacetas, municipios, year }: MuiGacetasStatsProps) {
+export function MuiGacetasStats({ totalGacetas, municipios, yearRange }: MuiGacetasStatsProps) {
   return (
     <Box sx={{ display: 'grid', gridTemplateColumns: { xs: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }, gap: 3 }}>
       <StatsCard 
@@ -74,9 +74,9 @@ export function MuiGacetasStats({ totalGacetas, municipios, year }: MuiGacetasSt
         description="Municipios mencionados"
       />
       <StatsCard 
-        title="Año" 
-        value={year} 
-        description="Año de análisis" 
+        title="Rango de Años" 
+        value={yearRange} 
+        description="Período de análisis" 
       />
     </Box>
   )

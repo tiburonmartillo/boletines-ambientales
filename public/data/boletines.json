@@ -41450,7 +41450,8 @@
           "boletin_id": 456
         }
       ]
-    },{
+    },
+    {
       "id": 457,
       "secretario": "LIC. SARAHI MACIAS ALICEA",
       "director": "Luis Medina Hernández",
@@ -41501,9 +41502,36 @@
           "fecha_ingreso": "2025-11-13",
           "boletin_id": 457
         }
-      ], "resolutivos_emitidos": []
+      ],
+      "resolutivos_emitidos": []
+    },
+    {
+      "proyectos_ingresados": [
+        {
+          "numero": 1,
+          "tipo_estudio": "MIA",
+          "promovente": "CEMENTOS Y CONCRETOS NACIONALES S.A DE C.V",
+          "nombre_proyecto": "BANCO DE EXTRACCION DE MATERIALES CLAVELLINAS",
+          "naturaleza_proyecto": "EXPLOTACION DE CORRECTOR DE SILICE PARA LA OBTENCION DE MATERIA PRIMA PARA LA ELABORACION DE CEMENTO",
+          "giro": "INDUSTRIAL",
+          "municipio": "ACIENSOS",
+          "coordenadas_x": 790872.0,
+          "coordenadas_y": 2445399.0,
+          "expediente": "SSMAA-DIRA-2835-2025",
+          "fecha_ingreso": "2025-11-28"
+        }
+      ],
+      "resolutivos_emitidos": [],
+      "secretario": "LIC. SARAHI MACIAS ALICEA",
+      "cantidad_ingresados": 1,
+      "filename": "https://www.aguascalientes.gob.mx/SSMAA/BoletinesSMA/Repositorio/2025/12%20Diciembre/BOLETIN48-2025_2%20DE%20DICIEMBRE_DEL2412_2812.pdf",
+      "fecha_publicacion": "2025-12-02",
+      "director": "T.S.U. LUIS MEDINA HERNÁNDEZ",
+      "cantidad_resolutivos": 0,
+      "id": 458,
+      "url": "https://www.aguascalientes.gob.mx/SSMAA/BoletinesSMA/Repositorio/2025/12%20Diciembre/BOLETIN48-2025_2%20DE%20DICIEMBRE_DEL2412_2812.pdf"
     }
-    ],
+  ],
   "metadata": {
     "total_boletines": 457,
     "archivos_procesados": 15,

@@ -357,8 +357,8 @@ export default function EmailGeneratorPage() {
       
       console.log('Transformed data:', transformedData);
       
-      // Guardar la URL del boletín (usar el campo url si existe, o construirla)
-      const bulletinUrlValue = bulletin.url || `https://adn-a.org/boletines-ssmaa/resumen/${id}`;
+      // Guardar la URL del boletín (usar el campo url o filename del boletín)
+      const bulletinUrlValue = bulletin.url || bulletin.filename || '';
       setBulletinUrl(bulletinUrlValue);
       
       setBulletinData(transformedData);

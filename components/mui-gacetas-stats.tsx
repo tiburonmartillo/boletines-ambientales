@@ -58,11 +58,13 @@ interface MuiGacetasStatsProps {
   totalGacetas: number
   municipios: number
   yearRange: string
+  totalProyectos?: number
+  totalResolutivos?: number
 }
 
-export function MuiGacetasStats({ totalGacetas, municipios, yearRange }: MuiGacetasStatsProps) {
+export function MuiGacetasStats({ totalGacetas, municipios, yearRange, totalProyectos, totalResolutivos }: MuiGacetasStatsProps) {
   return (
-    <Box sx={{ display: 'grid', gridTemplateColumns: { xs: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }, gap: 3 }}>
+    <Box sx={{ display: 'grid', gridTemplateColumns: { xs: 'repeat(2, 1fr)', sm: 'repeat(3, 1fr)', md: 'repeat(5, 1fr)' }, gap: 3 }}>
       <StatsCard 
         title="Gacetas Analizadas" 
         value={totalGacetas.toLocaleString()} 
@@ -73,6 +75,20 @@ export function MuiGacetasStats({ totalGacetas, municipios, yearRange }: MuiGace
         value={municipios}
         description="Municipios mencionados"
       />
+      {totalProyectos !== undefined && (
+        <StatsCard 
+          title="Proyectos" 
+          value={totalProyectos.toLocaleString()} 
+          description="Proyectos ingresados" 
+        />
+      )}
+      {totalResolutivos !== undefined && (
+        <StatsCard 
+          title="Resolutivos" 
+          value={totalResolutivos.toLocaleString()} 
+          description="Resolutivos emitidos" 
+        />
+      )}
       <StatsCard 
         title="Rango de Años" 
         value={yearRange} 

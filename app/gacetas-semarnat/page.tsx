@@ -1,25 +1,17 @@
 "use client"
 
-import { useState, useEffect, useMemo } from "react"
-import { Box, Container, Typography, Paper, CircularProgress, Alert, Link, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TablePagination, Chip, TextField, InputAdornment, Card, CardContent, Button } from "@mui/material"
-import ReactMarkdown from "react-markdown"
+import { useState, useEffect } from "react"
+import { Box, Container, Typography, CircularProgress, Alert, Link, Paper } from "@mui/material"
 import { MuiGacetasStats } from "@/components/mui-gacetas-stats"
 import { ErrorBoundary } from "@/components/error-boundary"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { MuiThemeProvider } from "@/components/mui-theme-provider"
 import { useGacetasData } from "@/hooks/useGacetasData"
-import { GacetaModal } from "@/components/gaceta-modal"
-import SearchIcon from "@mui/icons-material/Search"
-import VisibilityIcon from "@mui/icons-material/Visibility"
+import { MuiGacetasProjectsTable } from "@/components/mui-gacetas-projects-table"
 
 function GacetasSEMARNATPageContent() {
   const [mounted, setMounted] = useState(false)
-  const [page, setPage] = useState(0)
-  const [rowsPerPage, setRowsPerPage] = useState(10)
-  const [searchQuery, setSearchQuery] = useState("")
-  const [selectedGaceta, setSelectedGaceta] = useState<any | null>(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
   
   const { processedData, loading, error, data } = useGacetasData()
 
@@ -28,64 +20,12 @@ function GacetasSEMARNATPageContent() {
 
   // Extraer datos de forma segura (puede ser null)
   const stats = processedData?.stats
-  const timeSeriesData = processedData?.timeSeriesData || []
-  const gacetas = processedData?.gacetas || []
+  const proyectos = processedData?.proyectos || []
+  const resolutivos = processedData?.resolutivos || []
   const metadata = processedData?.metadata
   
   // Obtener rango de años de los datos
   const yearRange = data?.metadata?.year_range || `${new Date().getFullYear()}`
-
-  // Filtrar gacetas según búsqueda - debe estar antes de returns
-  const filteredGacetas = useMemo(() => {
-    if (!gacetas || gacetas.length === 0) return []
-    
-    let result = gacetas
-    
-    // Aplicar filtro de búsqueda si existe
-    if (searchQuery.trim()) {
-      const query = searchQuery.toLowerCase()
-      result = gacetas.filter(gaceta => 
-        gaceta.resumen?.toLowerCase().includes(query) ||
-        gaceta.url.toLowerCase().includes(query) ||
-        (gaceta.fecha_publicacion && gaceta.fecha_publicacion.toLowerCase().includes(query)) ||
-        gaceta.palabras_clave_encontradas.some(p => p.toLowerCase().includes(query))
-      )
-    }
-    
-    // Asegurar ordenamiento por fecha (más reciente primero)
-    return result.sort((a, b) => {
-      const dateA = a.fecha_publicacion ? new Date(a.fecha_publicacion).getTime() : 0
-      const dateB = b.fecha_publicacion ? new Date(b.fecha_publicacion).getTime() : 0
-      return dateB - dateA // Orden descendente (más reciente primero)
-    })
-  }, [gacetas, searchQuery])
-
-  // Paginación - debe estar antes de returns
-  const paginatedGacetas = useMemo(() => {
-    const start = page * rowsPerPage
-    return filteredGacetas.slice(start, start + rowsPerPage)
-  }, [filteredGacetas, page, rowsPerPage])
-
-
-  // Handlers - funciones normales, no hooks
-  const handleChangePage = (_event: unknown, newPage: number) => {
-    setPage(newPage)
-  }
-
-  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setRowsPerPage(parseInt(event.target.value, 10))
-    setPage(0)
-  }
-
-  const handleOpenModal = (gaceta: any) => {
-    setSelectedGaceta(gaceta)
-    setIsModalOpen(true)
-  }
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false)
-    setSelectedGaceta(null)
-  }
 
   // Ahora sí, los returns condicionales
   if (!mounted) {
@@ -196,6 +136,8 @@ function GacetasSEMARNATPageContent() {
               totalGacetas={stats.totalGacetas}
               municipios={stats.municipios.length}
               yearRange={yearRange}
+              totalProyectos={stats.totalProyectos}
+              totalResolutivos={stats.totalResolutivos}
             />
           </ErrorBoundary>
 
@@ -235,403 +177,42 @@ function GacetasSEMARNATPageContent() {
             </Typography>
           </Box>
 
-          {/* Gacetas Table */}
+          {/* Projects and Resolutions Table */}
           <ErrorBoundary>
-            <Paper elevation={0} sx={{ borderRadius: '12px', border: '1px solid rgba(30, 58, 138, 0.1)' }}>
-              <Box sx={{ p: { xs: 2, sm: 3, md: 4 } }}>
-                <Box sx={{ mb: 3 }}>
-                  <Typography 
-                    variant="h6" 
-                    component="h3" 
-                    fontWeight="semibold" 
-                    color="text.primary"
-                    sx={{ fontSize: { xs: '1rem', sm: '1.25rem' }, mb: 1 }}
-                  >
-                    Gacetas Analizadas
-                  </Typography>
-                  <Typography 
-                    variant="body2" 
-                    color="text.secondary"
-                    sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}
-                  >
-                    Lista de gacetas ecológicas con análisis de contenido
-                  </Typography>
-                </Box>
-
-                {/* Search */}
-                <TextField
-                  fullWidth
-                  placeholder="Buscar por resumen, URL, fecha o palabras clave..."
-                  value={searchQuery}
-                  onChange={(e) => {
-                    setSearchQuery(e.target.value)
-                    setPage(0)
-                  }}
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <SearchIcon sx={{ color: 'text.secondary' }} />
-                      </InputAdornment>
-                    ),
-                  }}
-                  sx={{ mb: 3 }}
-                />
-
-                {/* Table - Desktop */}
-                <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-                  <TableContainer sx={{ maxHeight: '600px', overflowX: 'auto' }}>
-                    <Table stickyHeader>
-                      <TableHead>
-                        <TableRow>
-                          <TableCell sx={{ fontWeight: 'bold', fontSize: '0.875rem', minWidth: 120 }}>
-                            Fecha
-                          </TableCell>
-                          <TableCell sx={{ fontWeight: 'bold', fontSize: '0.875rem', minWidth: 200 }}>
-                            URL
-                          </TableCell>
-                          <TableCell sx={{ fontWeight: 'bold', fontSize: '0.875rem', minWidth: 300 }}>
-                            Resumen
-                          </TableCell>
-                          <TableCell sx={{ fontWeight: 'bold', fontSize: '0.875rem', minWidth: 150 }}>
-                            Palabras Clave
-                          </TableCell>
-                          <TableCell sx={{ fontWeight: 'bold', fontSize: '0.875rem', width: 120 }}>
-                            Acciones
-                          </TableCell>
-                        </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {paginatedGacetas.length === 0 ? (
-                          <TableRow>
-                            <TableCell colSpan={5} align="center" sx={{ py: 4 }}>
-                              <Typography variant="body2" color="text.secondary">
-                                No se encontraron gacetas que coincidan con la búsqueda
-                              </Typography>
-                            </TableCell>
-                          </TableRow>
-                        ) : (
-                          paginatedGacetas.map((gaceta, index) => (
-                            <TableRow 
-                              key={`${gaceta.url}-${index}`} 
-                              hover
-                              onClick={() => handleOpenModal(gaceta)}
-                              sx={{ 
-                                cursor: 'pointer',
-                                '&:hover': { bgcolor: 'action.hover' }
-                              }}
-                            >
-                              <TableCell sx={{ fontSize: '0.875rem' }}>
-                                {(() => {
-                                  try {
-                                    const fecha = new Date(gaceta.fecha_publicacion)
-                                    // Si la fecha es el 1 de enero, probablemente es solo el año
-                                    if (fecha.getMonth() === 0 && fecha.getDate() === 1 && fecha.getFullYear() === gaceta.año) {
-                                      return `Año ${gaceta.año}`
-                                    }
-                                    return fecha.toLocaleDateString('es-MX', {
-                                      year: 'numeric',
-                                      month: 'short',
-                                      day: 'numeric'
-                                    })
-                                  } catch {
-                                    return `Año ${gaceta.año}`
-                                  }
-                                })()}
-                              </TableCell>
-                              <TableCell>
-                                <Link 
-                                  href={gaceta.url} 
-                                  target="_blank" 
-                                  rel="noopener noreferrer"
-                                  onClick={(e) => e.stopPropagation()}
-                                  sx={{ 
-                                    wordBreak: 'break-all',
-                                    fontSize: '0.875rem',
-                                    color: 'primary.main',
-                                    '&:hover': { textDecoration: 'underline' }
-                                  }}
-                                >
-                                  Ver gaceta
-                                </Link>
-                              </TableCell>
-                              <TableCell sx={{ maxWidth: 400 }}>
-                                <Box
-                                  sx={{ 
-                                    overflow: 'hidden',
-                                    display: '-webkit-box',
-                                    WebkitLineClamp: 2,
-                                    WebkitBoxOrient: 'vertical',
-                                    fontSize: '0.875rem',
-                                    lineHeight: 1.5,
-                                    '& p': {
-                                      margin: 0,
-                                      fontSize: '0.875rem',
-                                      lineHeight: 1.5
-                                    },
-                                    '& ul, & ol': {
-                                      margin: 0,
-                                      paddingLeft: '1.2em',
-                                      fontSize: '0.875rem'
-                                    },
-                                    '& li': {
-                                      fontSize: '0.875rem',
-                                      lineHeight: 1.5
-                                    },
-                                    '& strong': {
-                                      fontWeight: 600
-                                    }
-                                  }}
-                                >
-                                  {gaceta.resumen ? (
-                                    <ReactMarkdown>{gaceta.resumen}</ReactMarkdown>
-                                  ) : (
-                                    <Typography variant="body2" sx={{ fontSize: '0.875rem' }}>
-                                      Sin resumen disponible
-                                    </Typography>
-                                  )}
-                                </Box>
-                              </TableCell>
-                              <TableCell>
-                                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                                  {gaceta.palabras_clave_encontradas.slice(0, 2).map((palabra, idx) => (
-                                    <Chip 
-                                      key={idx}
-                                      label={palabra}
-                                      size="small"
-                                      sx={{ fontSize: '0.75rem' }}
-                                    />
-                                  ))}
-                                  {gaceta.palabras_clave_encontradas.length > 2 && (
-                                    <Chip 
-                                      label={`+${gaceta.palabras_clave_encontradas.length - 2}`}
-                                      size="small"
-                                      sx={{ fontSize: '0.75rem' }}
-                                    />
-                                  )}
-                                </Box>
-                              </TableCell>
-                              <TableCell>
-                                <Button
-                                  size="small"
-                                  variant="outlined"
-                                  startIcon={<VisibilityIcon />}
-                                  onClick={(e) => {
-                                    e.stopPropagation()
-                                    handleOpenModal(gaceta)
-                                  }}
-                                  sx={{ fontSize: '0.75rem' }}
-                                >
-                                  Ver
-                                </Button>
-                              </TableCell>
-                            </TableRow>
-                          ))
-                        )}
-                      </TableBody>
-                    </Table>
-                  </TableContainer>
-                </Box>
-
-                {/* Cards - Mobile */}
-                <Box sx={{ display: { xs: 'block', md: 'none' } }}>
-                  {paginatedGacetas.length === 0 ? (
-                    <Box sx={{ py: 4, textAlign: 'center' }}>
-                      <Typography variant="body2" color="text.secondary">
-                        No se encontraron gacetas que coincidan con la búsqueda
-                      </Typography>
-                    </Box>
-                  ) : (
-                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                      {paginatedGacetas.map((gaceta, index) => (
-                        <Card 
-                          key={`${gaceta.url}-${index}`} 
-                          elevation={0} 
-                          onClick={() => handleOpenModal(gaceta)}
-                          sx={{ 
-                            border: '1px solid rgba(30, 58, 138, 0.1)', 
-                            borderRadius: 2,
-                            cursor: 'pointer',
-                            transition: 'all 0.2s ease-in-out',
-                            '&:hover': { 
-                              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
-                              borderColor: 'primary.main'
-                            }
-                          }}
-                        >
-                          <CardContent sx={{ p: 2 }}>
-                            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
-                              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
-                                <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.75rem' }}>
-                                  {(() => {
-                                    try {
-                                      const fecha = new Date(gaceta.fecha_publicacion)
-                                      // Si la fecha es el 1 de enero, probablemente es solo el año
-                                      if (fecha.getMonth() === 0 && fecha.getDate() === 1 && fecha.getFullYear() === gaceta.año) {
-                                        return `Año ${gaceta.año}`
-                                      }
-                                      return fecha.toLocaleDateString('es-MX', {
-                                        year: 'numeric',
-                                        month: 'short',
-                                        day: 'numeric'
-                                      })
-                                    } catch {
-                                      return `Año ${gaceta.año}`
-                                    }
-                                  })()}
-                                </Typography>
-                              </Box>
-                              
-                              <Box
-                                sx={{ 
-                                  fontSize: '0.875rem',
-                                  lineHeight: 1.6,
-                                  display: '-webkit-box',
-                                  WebkitLineClamp: 3,
-                                  WebkitBoxOrient: 'vertical',
-                                  overflow: 'hidden',
-                                  '& p': {
-                                    margin: 0,
-                                    fontSize: '0.875rem',
-                                    lineHeight: 1.6
-                                  },
-                                  '& ul, & ol': {
-                                    margin: 0,
-                                    paddingLeft: '1.2em',
-                                    fontSize: '0.875rem'
-                                  },
-                                  '& li': {
-                                    fontSize: '0.875rem',
-                                    lineHeight: 1.6
-                                  },
-                                  '& strong': {
-                                    fontWeight: 600
-                                  }
-                                }}
-                              >
-                                {gaceta.resumen ? (
-                                  <ReactMarkdown>{gaceta.resumen}</ReactMarkdown>
-                                ) : (
-                                  <Typography variant="body2" sx={{ fontSize: '0.875rem' }}>
-                                    Sin resumen disponible
-                                  </Typography>
-                                )}
-                              </Box>
-
-                              {gaceta.palabras_clave_encontradas.length > 0 && (
-                                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                                  {gaceta.palabras_clave_encontradas.slice(0, 3).map((palabra, idx) => (
-                                    <Chip 
-                                      key={idx}
-                                      label={palabra}
-                                      size="small"
-                                      sx={{ fontSize: '0.65rem', height: 20 }}
-                                    />
-                                  ))}
-                                  {gaceta.palabras_clave_encontradas.length > 3 && (
-                                    <Chip 
-                                      label={`+${gaceta.palabras_clave_encontradas.length - 3}`}
-                                      size="small"
-                                      sx={{ fontSize: '0.65rem', height: 20 }}
-                                    />
-                                  )}
-                                </Box>
-                              )}
-
-                              <Box sx={{ display: 'flex', gap: 1, pt: 1 }}>
-                                <Button
-                                  size="small"
-                                  variant="outlined"
-                                  startIcon={<VisibilityIcon />}
-                                  onClick={(e) => {
-                                    e.stopPropagation()
-                                    handleOpenModal(gaceta)
-                                  }}
-                                  sx={{ fontSize: '0.75rem', flex: 1 }}
-                                >
-                                  Ver Resumen
-                                </Button>
-                                <Button
-                                  size="small"
-                                  variant="contained"
-                                  href={gaceta.url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  onClick={(e) => e.stopPropagation()}
-                                  sx={{ fontSize: '0.75rem', flex: 1 }}
-                                >
-                                  Ver Gaceta
-                                </Button>
-                              </Box>
-                            </Box>
-                          </CardContent>
-                        </Card>
-                      ))}
-                    </Box>
-                  )}
-                </Box>
-
-                {/* Pagination */}
-                <TablePagination
-                  component="div"
-                  count={filteredGacetas.length}
-                  page={page}
-                  onPageChange={handleChangePage}
-                  rowsPerPage={rowsPerPage}
-                  onRowsPerPageChange={handleChangeRowsPerPage}
-                  rowsPerPageOptions={[5, 10, 25, 50]}
-                  labelRowsPerPage="Filas por página:"
-                  labelDisplayedRows={({ from, to, count }) => `${from}-${to} de ${count}`}
-                  sx={{ 
-                    borderTop: '1px solid rgba(0, 0, 0, 0.12)',
-                    mt: 2,
-                    '& .MuiTablePagination-toolbar': {
-                      flexWrap: 'wrap',
-                      gap: 1,
-                      px: { xs: 0, sm: 2 }
-                    },
-                    '& .MuiTablePagination-selectLabel, & .MuiTablePagination-displayedRows': {
-                      fontSize: { xs: '0.75rem', sm: '0.875rem' }
-                    }
-                  }}
-                />
-
-                {/* Iframe de Notion */}
-                <Box sx={{ 
-                  mt: 4,
-                  borderRadius: 2,
-                  overflow: 'hidden',
-                  border: '1px solid rgba(30, 58, 138, 0.1)',
-                  width: '100%'
-                }}>
-                  <iframe 
-                    src="https://adnags.notion.site/ebd/29c2b8101e5c80fdbd89f8c03728e80d" 
-                    width="100%" 
-                    height="900"
-                    frameBorder="0"
-                    allowFullScreen
-                    scrolling="no"
-                    style={{ 
-                      display: 'block',
-                      minHeight: '600px',
-                      overflow: 'hidden'
-                    }}
-                    title="Formulario de suscripción al boletín semanal"
-                  />
-                </Box>
-              </Box>
-            </Paper>
+            <MuiGacetasProjectsTable
+              proyectos={proyectos}
+              resolutivos={resolutivos}
+              municipios={stats?.municipios || []}
+            />
           </ErrorBoundary>
+
+          {/* Iframe de Notion */}
+          <Box sx={{ 
+            mt: 4,
+            borderRadius: 2,
+            overflow: 'hidden',
+            border: '1px solid rgba(30, 58, 138, 0.1)',
+            width: '100%'
+          }}>
+            <iframe 
+              src="https://adnags.notion.site/ebd/29c2b8101e5c80fdbd89f8c03728e80d" 
+              width="100%" 
+              height="900"
+              frameBorder="0"
+              allowFullScreen
+              scrolling="no"
+              style={{ 
+                display: 'block',
+                minHeight: '600px',
+                overflow: 'hidden'
+              }}
+              title="Formulario de suscripción al boletín semanal"
+            />
+          </Box>
         </Box>
       </Container>
 
       <Footer />
-
-      {/* Modal de Gaceta */}
-      <GacetaModal
-        gaceta={selectedGaceta}
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-      />
     </Box>
   )
 }

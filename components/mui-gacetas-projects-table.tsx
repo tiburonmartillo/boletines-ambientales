@@ -300,7 +300,7 @@ export function MuiGacetasProjectsTable({ proyectos, resolutivos, municipios }: 
                           {item.fecha_ingreso || 'N/A'}
                         </TableCell>
                         <TableCell sx={{ fontSize: '0.875rem', whiteSpace: 'nowrap' }}>
-                          {item.fecha_resolucion || 'N/A'}
+                          {(item as ResolutivoGacetaProcessed).fecha_resolucion || 'N/A'}
                         </TableCell>
                         <TableCell sx={{ fontSize: '0.875rem' }}>
                           {(item as ResolutivoGacetaProcessed).gaceta_ingreso_url ? (

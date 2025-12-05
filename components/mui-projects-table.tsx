@@ -120,6 +120,78 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
   // Hook para modal de boletín con routing
   const { isOpen: isBoletinModalOpen, selectedBoletin, openModal: openBoletinModal, closeModal: closeBoletinModal } = useBoletinModal()
 
+  // Estado para almacenar datos de boletines
+  const [boletinesData, setBoletinesData] = useState<any[]>([])
+  const [boletinesLoaded, setBoletinesLoaded] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  // Evitar hidratación: solo renderizar contenido dependiente de datos asíncronos después de montar
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  // Cargar datos de boletines al montar el componente
+  useEffect(() => {
+    if (!mounted) return
+    
+    const loadBoletines = async () => {
+      try {
+        const response = await fetch('/data/boletines.json')
+        const data = await response.json()
+        setBoletinesData(data.boletines || [])
+        setBoletinesLoaded(true)
+      } catch (error) {
+        console.error('Error cargando datos de boletines:', error)
+        setBoletinesLoaded(true) // Marcar como cargado incluso si hay error
+      }
+    }
+    loadBoletines()
+  }, [mounted])
+
+  // Función para formatear fecha de manera consistente (sin depender de localización del servidor)
+  const formatFecha = (fechaStr: string): string => {
+    if (!fechaStr) return 'Sin fecha'
+    
+    try {
+      const fecha = new Date(fechaStr)
+      if (isNaN(fecha.getTime())) return 'Sin fecha'
+      
+      // Formatear de manera consistente sin depender de localización
+      const meses = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic']
+      const dia = fecha.getDate()
+      const mes = meses[fecha.getMonth()]
+      const año = fecha.getFullYear()
+      
+      return `${dia} ${mes} ${año}`
+    } catch {
+      return 'Sin fecha'
+    }
+  }
+
+  // Función para obtener el resumen del boletín
+  const getBoletinResumen = (boletinId: number): string => {
+    // Durante SSR o antes de que se monte el componente, devolver un placeholder consistente
+    // para evitar diferencias entre servidor y cliente
+    if (!mounted || !boletinesLoaded) {
+      return 'Cargando...'
+    }
+    
+    const boletin = boletinesData.find((b: any) => b.id === boletinId)
+    if (!boletin) return 'Boletín no encontrado'
+    
+    const fecha = formatFecha(boletin.fecha_publicacion)
+    const proyectos = boletin.cantidad_ingresados || 0
+    const resolutivos = boletin.cantidad_resolutivos || 0
+    
+    return `${fecha} • ${proyectos} proyectos • ${resolutivos} resolutivos`
+  }
+
+  // Función para obtener el boletín completo
+  const getBoletin = (boletinId: number) => {
+    if (!mounted || !boletinesLoaded) return null
+    return boletinesData.find((b: any) => b.id === boletinId)
+  }
+
   // Aplicar filtros externos cuando cambien
   useEffect(() => {
     if (selectedDate) {
@@ -160,36 +232,6 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
     if (item.coordenadas_x && item.coordenadas_y) {
       setSelectedItem(item)
       setIsMapModalOpen(true)
-    }
-  }
-
-  const handleBoletinSummary = async (item: any) => {
-    try {
-      const response = await fetch('/data/boletines.json')
-      const data = await response.json()
-      const boletin = data.boletines.find((b: any) => b.id === item.boletin_id)
-      if (boletin) {
-        openBoletinModal(boletin)
-      } else {
-        const boletinData = {
-          id: item.boletin_id,
-          fecha_publicacion: item.fecha_publicacion,
-          boletin_url: item.boletin_url,
-          proyectos_ingresados: [],
-          resolutivos_emitidos: []
-        }
-        openBoletinModal(boletinData as any)
-      }
-    } catch (error) {
-      console.error('Error cargando datos del boletín:', error)
-      const boletinData = {
-        id: item.boletin_id,
-        fecha_publicacion: item.fecha_publicacion,
-        boletin_url: item.boletin_url,
-        proyectos_ingresados: [],
-        resolutivos_emitidos: []
-      }
-      openBoletinModal(boletinData as any)
     }
   }
 
@@ -581,6 +623,7 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
                       <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, maxWidth: { xs: 100, sm: 140, md: 180 }, whiteSpace: 'nowrap' }}>Tipo Estudio</TableCell>
                       <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>Fecha Ingreso</TableCell>
                       <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>Ubicación</TableCell>
+                      <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>Resumen del Boletín</TableCell>
                       <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>Boletín</TableCell>
                     </>
                   ) : (
@@ -593,6 +636,7 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
                       <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>Fecha Resolutivo</TableCell>
                       <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>Municipio</TableCell>
                       <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>Ubicación</TableCell>
+                      <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>Resumen del Boletín</TableCell>
                       <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>Boletín Ingreso</TableCell>
                       <TableCell sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>Boletín</TableCell>
                     </>
@@ -659,20 +703,47 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
                           <Chip label="Sin coordenadas" size="small" variant="outlined" sx={{ color: 'text.secondary', fontSize: { xs: '0.65rem', sm: '0.75rem' } }} />
                         )}
                       </TableCell>
+                      <TableCell 
+                        sx={{ 
+                          fontSize: { xs: '0.7rem', sm: '0.875rem' }, 
+                          maxWidth: { xs: 200, sm: 300 },
+                          cursor: 'pointer',
+                          color: 'primary.main',
+                          '&:hover': { 
+                            backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                            textDecoration: 'underline'
+                          }
+                        }}
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          const boletin = getBoletin(proyecto.boletin_id)
+                          if (boletin) {
+                            openBoletinModal(boletin)
+                          }
+                        }}
+                      >
+                        <Tooltip title="Haz clic para ver el resumen completo del boletín" arrow>
+                          <Box component="span" sx={{ display: 'block' }}>
+                            {getBoletinResumen(proyecto.boletin_id)}
+                          </Box>
+                        </Tooltip>
+                      </TableCell>
                       <TableCell sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>
-                        <Button 
-                          size="small" 
-                          variant="outlined" 
-                          color="secondary" 
-                          onClick={(e) => { e.stopPropagation(); handleBoletinSummary(proyecto) }} 
-                          sx={{ 
-                            minWidth: 'auto', 
-                            px: { xs: 0.5, sm: 1 },
-                            fontSize: { xs: '0.65rem', sm: '0.875rem' }
-                          }}
-                        >
-                          {isMobile ? '📋' : '📋 Resumen'}
-                        </Button>
+                        {proyecto.boletin_url && (
+                          <Button 
+                            size="small" 
+                            variant="outlined" 
+                            color="primary" 
+                            onClick={(e) => { e.stopPropagation(); window.open(proyecto.boletin_url, '_blank', 'noopener,noreferrer') }} 
+                            sx={{ 
+                              minWidth: 'auto', 
+                              px: { xs: 0.5, sm: 1 },
+                              fontSize: { xs: '0.65rem', sm: '0.875rem' }
+                            }}
+                          >
+                            {isMobile ? '📄' : '📄 Ver'}
+                          </Button>
+                        )}
                       </TableCell>
                     </TableRow>
                   ))
@@ -716,6 +787,31 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
                           <Chip label="Sin coordenadas" size="small" variant="outlined" sx={{ color: 'text.secondary', fontSize: { xs: '0.65rem', sm: '0.75rem' } }} />
                         )}
                       </TableCell>
+                      <TableCell 
+                        sx={{ 
+                          fontSize: { xs: '0.7rem', sm: '0.875rem' }, 
+                          maxWidth: { xs: 200, sm: 300 },
+                          cursor: 'pointer',
+                          color: 'primary.main',
+                          '&:hover': { 
+                            backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                            textDecoration: 'underline'
+                          }
+                        }}
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          const boletin = getBoletin(resolutivo.boletin_id)
+                          if (boletin) {
+                            openBoletinModal(boletin)
+                          }
+                        }}
+                      >
+                        <Tooltip title="Haz clic para ver el resumen completo del boletín" arrow>
+                          <Box component="span" sx={{ display: 'block' }}>
+                            {getBoletinResumen(resolutivo.boletin_id)}
+                          </Box>
+                        </Tooltip>
+                      </TableCell>
                       <TableCell sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>
                         {resolutivo.boletin_ingreso_url ? (
                           <Button 
@@ -736,19 +832,21 @@ export function MuiProjectsTable({ proyectos, resolutivos, municipios, giros, ti
                         )}
                       </TableCell>
                       <TableCell sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' }, whiteSpace: 'nowrap' }}>
-                        <Button 
-                          size="small" 
-                          variant="outlined" 
-                          color="secondary" 
-                          onClick={(e) => { e.stopPropagation(); handleBoletinSummary(resolutivo) }} 
-                          sx={{ 
-                            minWidth: 'auto', 
-                            px: { xs: 0.5, sm: 1 },
-                            fontSize: { xs: '0.65rem', sm: '0.875rem' }
-                          }}
-                        >
-                          {isMobile ? '📋' : '📋 Resumen'}
-                        </Button>
+                        {resolutivo.boletin_url && (
+                          <Button 
+                            size="small" 
+                            variant="outlined" 
+                            color="primary" 
+                            onClick={(e) => { e.stopPropagation(); window.open(resolutivo.boletin_url, '_blank', 'noopener,noreferrer') }} 
+                            sx={{ 
+                              minWidth: 'auto', 
+                              px: { xs: 0.5, sm: 1 },
+                              fontSize: { xs: '0.65rem', sm: '0.875rem' }
+                            }}
+                          >
+                            {isMobile ? '📄' : '📄 Ver'}
+                          </Button>
+                        )}
                       </TableCell>
                     </TableRow>
                   ))

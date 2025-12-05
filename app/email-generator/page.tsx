@@ -538,6 +538,10 @@ export default function EmailGeneratorPage() {
   // };
 
   function generateHTML() {
+    // Usar la URL del boletín tal como está almacenada
+    // Las URLs en el JSON ya están correctamente codificadas
+    const normalizedBulletinUrl = bulletinUrl || '';
+    
     const projectsHTML = bulletinData.projects.map(project => `
       <tr>
         <td style="padding: 10px 5px;">
@@ -776,7 +780,7 @@ export default function EmailGeneratorPage() {
                                 </tr>
                                 <tr>
                                     <td style="padding: 0 16px 16px 16px; text-align: center;">
-                                        <a href="${bulletinUrl}" target="_blank" style="display: block; width: 100%; max-width: 520px; margin: 0 auto; padding: 12px 16px; background-color:rgb(40, 83, 255); color: white; text-decoration: none; border-radius: 9999px; font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; text-align: center; cursor: pointer; border: 1px solid #000000;">
+                                        <a href="${normalizedBulletinUrl}" target="_blank" rel="noopener noreferrer" style="display: block; width: 100%; max-width: 520px; margin: 0 auto; padding: 12px 16px; background-color:rgb(40, 83, 255); color: white; text-decoration: none; border-radius: 9999px; font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; text-align: center; cursor: pointer; border: 1px solid #000000;">
                                             Ver boletín original
                                         </a>
                                     </td>
@@ -1109,6 +1113,21 @@ export default function EmailGeneratorPage() {
                     }}
                   />
                 </div>
+                {bulletinUrl && (
+                  <div className="mt-4 pt-4 border-t">
+                    <Label className="text-sm font-medium text-gray-700 mb-2 block">
+                      URL del Boletín:
+                    </Label>
+                    <a
+                      href={bulletinUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-blue-600 hover:text-blue-800 hover:underline break-all block"
+                    >
+                      {bulletinUrl}
+                    </a>
+                  </div>
+                )}
               </CardContent>
             </Card>
           </div>

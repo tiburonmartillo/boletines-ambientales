@@ -19,13 +19,12 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Paper,
   Chip,
   TablePagination,
   Button,
   Tooltip
 } from "@mui/material"
-import { FilterList, Clear, OpenInNew } from "@mui/icons-material"
+import { Clear, OpenInNew } from "@mui/icons-material"
 import { styled } from "@mui/material/styles"
 import type { ProyectoGacetaProcessed, ResolutivoGacetaProcessed } from "@/hooks/useGacetasData"
 
@@ -53,6 +52,32 @@ export function MuiGacetasProjectsTable({ proyectos, resolutivos, municipios }: 
 
   const currentData = activeTab === "proyectos" ? proyectos : resolutivos
 
+  // Crear mapa de resolutivos por proyecto_ingresado_id y por clave para búsqueda rápida
+  const resolutivosPorProyectoId = useMemo(() => {
+    const mapa = new Map<number, ResolutivoGacetaProcessed[]>()
+    resolutivos.forEach(resolutivo => {
+      if (resolutivo.proyecto_ingresado_id) {
+        if (!mapa.has(resolutivo.proyecto_ingresado_id)) {
+          mapa.set(resolutivo.proyecto_ingresado_id, [])
+        }
+        mapa.get(resolutivo.proyecto_ingresado_id)!.push(resolutivo)
+      }
+    })
+    return mapa
+  }, [resolutivos])
+
+  const resolutivosPorClave = useMemo(() => {
+    const mapa = new Map<string, ResolutivoGacetaProcessed[]>()
+    resolutivos.forEach(resolutivo => {
+      const clave = resolutivo.clave
+      if (!mapa.has(clave)) {
+        mapa.set(clave, [])
+      }
+      mapa.get(clave)!.push(resolutivo)
+    })
+    return mapa
+  }, [resolutivos])
+
   // Filtrar datos
   const filteredData = useMemo(() => {
     let result = currentData
@@ -75,11 +100,31 @@ export function MuiGacetasProjectsTable({ proyectos, resolutivos, municipios }: 
     }
 
     return result.sort((a, b) => {
-      const dateA = new Date(a.fecha_publicacion).getTime()
-      const dateB = new Date(b.fecha_publicacion).getTime()
+      // Para proyectos ingresados, ordenar por fecha_publicacion (gaceta) o fecha_ingreso
+      // Para resolutivos, ordenar por fecha_resolucion o fecha_publicacion
+      let dateA: number
+      let dateB: number
+      
+      if (activeTab === "proyectos") {
+        // Para proyectos: usar fecha_publicacion (gaceta) como principal, fecha_ingreso como fallback
+        const fechaA = a.fecha_publicacion || a.fecha_ingreso || ''
+        const fechaB = b.fecha_publicacion || b.fecha_ingreso || ''
+        dateA = new Date(fechaA).getTime()
+        dateB = new Date(fechaB).getTime()
+      } else {
+        // Para resolutivos: usar fecha_resolucion como principal, fecha_publicacion como fallback
+        const resolutivoA = a as ResolutivoGacetaProcessed
+        const resolutivoB = b as ResolutivoGacetaProcessed
+        const fechaA = resolutivoA.fecha_resolucion || resolutivoA.fecha_publicacion || resolutivoA.fecha_ingreso || ''
+        const fechaB = resolutivoB.fecha_resolucion || resolutivoB.fecha_publicacion || resolutivoB.fecha_ingreso || ''
+        dateA = new Date(fechaA).getTime()
+        dateB = new Date(fechaB).getTime()
+      }
+      
+      // Ordenar de más reciente a más antigua (descendente)
       return dateB - dateA
     })
-  }, [currentData, search, municipioFilter])
+  }, [currentData, search, municipioFilter, activeTab])
 
   // Paginación
   const paginatedData = useMemo(() => {
@@ -219,6 +264,9 @@ export function MuiGacetasProjectsTable({ proyectos, resolutivos, municipios }: 
                     <TableCell sx={{ fontWeight: 'bold', fontSize: '0.875rem' }}>
                       Fecha Gaceta
                     </TableCell>
+                    <TableCell sx={{ fontWeight: 'bold', fontSize: '0.875rem' }}>
+                      Resolutivos
+                    </TableCell>
                   </>
                 ) : (
                   <>
@@ -241,7 +289,7 @@ export function MuiGacetasProjectsTable({ proyectos, resolutivos, municipios }: 
             <TableBody>
               {paginatedData.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={activeTab === "proyectos" ? 7 : 8} align="center" sx={{ py: 4 }}>
+                  <TableCell colSpan={activeTab === "proyectos" ? 8 : 8} align="center" sx={{ py: 4 }}>
                     <Typography variant="body2" color="text.secondary">
                       No se encontraron {activeTab === "proyectos" ? "ingresados" : "resolutivos"} que coincidan con los filtros
                     </Typography>
@@ -293,6 +341,54 @@ export function MuiGacetasProjectsTable({ proyectos, resolutivos, municipios }: 
                             day: 'numeric'
                           })}
                         </TableCell>
+                        <TableCell sx={{ fontSize: '0.875rem' }}>
+                          {(() => {
+                            const proyectoItem = item as ProyectoGacetaProcessed
+                            const resolutivosRelacionados = 
+                              resolutivosPorProyectoId.get(proyectoItem.id_db) || 
+                              resolutivosPorClave.get(proyectoItem.clave) || 
+                              []
+                            
+                            if (resolutivosRelacionados.length === 0) {
+                              return (
+                                <Chip label="Sin resolutivos" size="small" variant="outlined" sx={{ fontSize: '0.75rem' }} />
+                              )
+                            }
+                            
+                            return (
+                              <Tooltip 
+                                title={
+                                  <Box>
+                                    <Typography variant="caption" sx={{ display: 'block', mb: 0.5, fontWeight: 'bold' }}>
+                                      Resolutivos relacionados ({resolutivosRelacionados.length}):
+                                    </Typography>
+                                    {resolutivosRelacionados.map((res, idx) => {
+                                      const fechaResolucion = res.fecha_resolucion 
+                                        ? new Date(res.fecha_resolucion).toLocaleDateString('es-MX', {
+                                            year: 'numeric',
+                                            month: 'short',
+                                            day: 'numeric'
+                                          })
+                                        : 'N/A'
+                                      return (
+                                        <Typography key={idx} variant="caption" sx={{ display: 'block' }}>
+                                          • {fechaResolucion}
+                                        </Typography>
+                                      )
+                                    })}
+                                  </Box>
+                                }
+                              >
+                                <Chip 
+                                  label={`${resolutivosRelacionados.length} resolutivo${resolutivosRelacionados.length > 1 ? 's' : ''}`}
+                                  size="small" 
+                                  color="success"
+                                  sx={{ fontSize: '0.75rem', cursor: 'help' }}
+                                />
+                              </Tooltip>
+                            )
+                          })()}
+                        </TableCell>
                       </>
                     ) : (
                       <>
@@ -303,24 +399,47 @@ export function MuiGacetasProjectsTable({ proyectos, resolutivos, municipios }: 
                           {(item as ResolutivoGacetaProcessed).fecha_resolucion || 'N/A'}
                         </TableCell>
                         <TableCell sx={{ fontSize: '0.875rem' }}>
-                          {(item as ResolutivoGacetaProcessed).gaceta_ingreso_url ? (
-                            <Tooltip title="Ver gaceta donde se ingresó el proyecto">
-                              <Button
-                                size="small"
-                                variant="outlined"
-                                color="success"
-                                onClick={(e) => {
-                                  e.stopPropagation()
-                                  window.open((item as ResolutivoGacetaProcessed).gaceta_ingreso_url!, '_blank', 'noopener,noreferrer')
-                                }}
-                                sx={{ minWidth: 'auto', px: 1, fontSize: '0.75rem' }}
-                              >
-                                📄 Ingreso
-                              </Button>
-                            </Tooltip>
-                          ) : (
-                            <Chip label="Sin vínculo" size="small" variant="outlined" sx={{ fontSize: '0.75rem' }} />
-                          )}
+                          {(() => {
+                            const resolutivoItem = item as ResolutivoGacetaProcessed
+                            if (resolutivoItem.gaceta_ingreso_url) {
+                              return (
+                                <Tooltip 
+                                  title={
+                                    <Box>
+                                      <Typography variant="caption" sx={{ display: 'block', fontWeight: 'bold' }}>
+                                        Proyecto relacionado encontrado
+                                      </Typography>
+                                      <Typography variant="caption" sx={{ display: 'block' }}>
+                                        Clave: {resolutivoItem.clave}
+                                      </Typography>
+                                      <Typography variant="caption" sx={{ display: 'block', mt: 0.5 }}>
+                                        Consultar gaceta de ingreso
+                                      </Typography>
+                                    </Box>
+                                  }
+                                >
+                                  <Button
+                                    size="small"
+                                    variant="outlined"
+                                    color="success"
+                                    onClick={(e) => {
+                                      e.stopPropagation()
+                                      window.open(resolutivoItem.gaceta_ingreso_url!, '_blank', 'noopener,noreferrer')
+                                    }}
+                                    sx={{ minWidth: 'auto', px: 1, fontSize: '0.75rem' }}
+                                  >
+                                    📄 Ingreso
+                                  </Button>
+                                </Tooltip>
+                              )
+                            } else {
+                              return (
+                                <Tooltip title="No se encontró el proyecto ingresado relacionado para este resolutivo">
+                                  <Chip label="Sin vínculo" size="small" variant="outlined" sx={{ fontSize: '0.75rem' }} />
+                                </Tooltip>
+                              )
+                            }
+                          })()}
                         </TableCell>
                       </>
                     )}
@@ -335,7 +454,7 @@ export function MuiGacetasProjectsTable({ proyectos, resolutivos, municipios }: 
                         }}
                         sx={{ fontSize: '0.75rem' }}
                       >
-                        Ver Gaceta
+                        Consultar Gaceta
                       </Button>
                     </TableCell>
                   </TableRow>

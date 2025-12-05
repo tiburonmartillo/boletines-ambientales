@@ -1,7 +1,48 @@
 import { useState, useEffect } from 'react'
 
+// Interfaz para un registro individual en analisis_completo.registros
+export interface RegistroGaceta {
+  id: string
+  clave_proyecto: string
+  tipo_registro: string
+  seccion_documento: string
+  entidad: string
+  municipio: string
+  proyecto_nombre: string
+  promovente: string
+  modalidad: string
+  tipo_proyecto: string
+  fecha_ingreso: string | null
+  fecha_resolucion: string | null
+  estatus: string | null
+  vigencia: {
+    construccion_anios: number | null
+    operacion_anios: number | null
+    texto_completo: string | null
+  } | null
+  superficie: {
+    total_m2: number | null
+    total_hectareas: number | null
+    cambio_uso_suelo_m2: number | null
+    cambio_uso_suelo_hectareas: number | null
+  } | null
+  vegetacion: {
+    tipo: string | null
+    remocion: string | null
+  } | null
+  ubicacion_especifica: string | null
+  descripcion: string | null
+  cambio_uso_suelo: boolean | null
+  areas_forestales: boolean | null
+  observaciones: string | null
+  id_db: number
+  proyecto_ingresado_id: number | null
+  resolutivos_ids: number[]
+  gaceta_id: string
+}
+
 export interface ProyectoIngresado {
-  numero: number
+  id_db: number
   entidad: string
   municipio: string
   clave: string
@@ -13,7 +54,7 @@ export interface ProyectoIngresado {
 }
 
 export interface ResolutivoEmitido {
-  numero: number
+  id_db: number
   entidad: string
   municipio: string
   clave: string
@@ -23,17 +64,35 @@ export interface ResolutivoEmitido {
   fecha_ingreso: string
   fecha_resolucion: string
   vigencia?: string
+  proyecto_ingresado_id: number | null
+}
+
+export interface AnalisisCompleto {
+  gaceta: {
+    numero: string
+    fecha_publicacion: string
+    anio: number
+  }
+  resumen: {
+    total_registros: number
+    proyectos_ingresados: number
+    resolutivos_emitidos: number
+    tramites_unificados: number
+    consultas_publicas: number
+    hectareas_totales: number
+  }
+  registros: RegistroGaceta[]
 }
 
 export interface GacetaAnalysis {
   url: string
   año: number
+  gaceta_id: string
   fecha_publicacion: string | null
   palabras_clave_encontradas: string[]
   paginas: number[]
-  secciones: string[]
-  proyectos_ingresados: ProyectoIngresado[] | null
-  resolutivos_emitidos: ResolutivoEmitido[] | null
+  secciones: string[] | null
+  analisis_completo: AnalisisCompleto | null
   resumen: string | null
 }
 
@@ -56,6 +115,7 @@ export interface ProcessedGacetaAnalysis extends Omit<GacetaAnalysis, 'fecha_pub
 export interface ProyectoGacetaProcessed extends ProyectoIngresado {
   fecha_publicacion: string
   gaceta_url: string
+  resolutivos_ids?: number[] // IDs de resolutivos relacionados
 }
 
 // Interfaz para resolutivos procesados con vínculo al proyecto de ingreso
@@ -127,12 +187,14 @@ export function useGacetasData() {
         // Procesar datos de gacetas y ordenar por fecha (más reciente primero)
         // Crear una fecha normalizada para cada gaceta (usar fecha_publicacion o año como fallback)
         const gacetasNormalizadas = jsonData.analyses
-          .filter(a => a.resumen !== null)
+          .filter(a => a.resumen !== null && a.analisis_completo !== null)
           .map(gaceta => {
             // Normalizar fecha_publicacion: si es null, usar el 1 de enero del año
             let fechaNormalizada: string
             if (gaceta.fecha_publicacion) {
               fechaNormalizada = gaceta.fecha_publicacion
+            } else if (gaceta.analisis_completo?.gaceta?.fecha_publicacion) {
+              fechaNormalizada = gaceta.analisis_completo.gaceta.fecha_publicacion
             } else {
               // Usar el año como fallback (1 de enero del año)
               fechaNormalizada = `${gaceta.año}-01-01`
@@ -148,26 +210,31 @@ export function useGacetasData() {
             return dateB - dateA // Orden descendente (más reciente primero)
           })
         
-        // Extraer municipios de proyectos_ingresados y resolutivos_emitidos
-        const municipiosSet = new Set<string>()
+        // Crear un mapa de id_db a registros para vincular proyectos con resolutivos
+        const registrosPorId = new Map<number, { registro: RegistroGaceta; gacetaUrl: string; fechaPublicacion: string }>()
         
+        // Primera pasada: recolectar todos los registros y crear el mapa
         jsonData.analyses.forEach(gaceta => {
-          // Extraer municipios de proyectos ingresados
-          if (gaceta.proyectos_ingresados && Array.isArray(gaceta.proyectos_ingresados)) {
-            gaceta.proyectos_ingresados.forEach(proyecto => {
-              if (proyecto.municipio) {
-                municipiosSet.add(proyecto.municipio)
-              }
+          if (gaceta.analisis_completo?.registros) {
+            const fechaNormalizada = gaceta.fecha_publicacion || 
+              gaceta.analisis_completo.gaceta?.fecha_publicacion || 
+              `${gaceta.año}-01-01`
+            
+            gaceta.analisis_completo.registros.forEach(registro => {
+              registrosPorId.set(registro.id_db, {
+                registro,
+                gacetaUrl: gaceta.url,
+                fechaPublicacion: fechaNormalizada
+              })
             })
           }
-          
-          // Extraer municipios de resolutivos emitidos
-          if (gaceta.resolutivos_emitidos && Array.isArray(gaceta.resolutivos_emitidos)) {
-            gaceta.resolutivos_emitidos.forEach(resolutivo => {
-              if (resolutivo.municipio) {
-                municipiosSet.add(resolutivo.municipio)
-              }
-            })
+        })
+
+        // Extraer municipios de todos los registros
+        const municipiosSet = new Set<string>()
+        registrosPorId.forEach(({ registro }) => {
+          if (registro.municipio) {
+            municipiosSet.add(registro.municipio)
           }
         })
 
@@ -183,17 +250,32 @@ export function useGacetasData() {
           .map(([fecha, count]) => ({ fecha, gacetas: count }))
           .sort((a, b) => a.fecha.localeCompare(b.fecha))
 
-        // Procesar todos los proyectos ingresados
+        // Procesar todos los proyectos ingresados desde analisis_completo.registros
         const proyectos: ProyectoGacetaProcessed[] = []
         jsonData.analyses.forEach(gaceta => {
-          if (gaceta.proyectos_ingresados && Array.isArray(gaceta.proyectos_ingresados)) {
-            const fechaNormalizada = gaceta.fecha_publicacion || `${gaceta.año}-01-01`
-            gaceta.proyectos_ingresados.forEach(proyecto => {
-              proyectos.push({
-                ...proyecto,
-                fecha_publicacion: fechaNormalizada,
-                gaceta_url: gaceta.url
-              })
+          if (gaceta.analisis_completo?.registros) {
+            const fechaNormalizada = gaceta.fecha_publicacion || 
+              gaceta.analisis_completo.gaceta?.fecha_publicacion || 
+              `${gaceta.año}-01-01`
+            
+            gaceta.analisis_completo.registros.forEach(registro => {
+              // Incluir proyectos ingresados y trámites unificados en la tabla de proyectos
+              if (registro.tipo_registro === 'proyecto_ingresado' || registro.tipo_registro === 'tramite_unificado') {
+                proyectos.push({
+                  id_db: registro.id_db,
+                  entidad: registro.entidad,
+                  municipio: registro.municipio,
+                  clave: registro.clave_proyecto,
+                  promovente: registro.promovente,
+                  proyecto: registro.proyecto_nombre,
+                  modalidad: registro.modalidad,
+                  fecha_ingreso: registro.fecha_ingreso || '',
+                  descripcion: registro.descripcion || undefined,
+                  fecha_publicacion: fechaNormalizada,
+                  gaceta_url: gaceta.url,
+                  resolutivos_ids: registro.resolutivos_ids || []
+                })
+              }
             })
           }
         })
@@ -201,18 +283,57 @@ export function useGacetasData() {
         // Procesar todos los resolutivos emitidos y vincularlos con proyectos
         const resolutivos: ResolutivoGacetaProcessed[] = []
         jsonData.analyses.forEach(gaceta => {
-          if (gaceta.resolutivos_emitidos && Array.isArray(gaceta.resolutivos_emitidos)) {
-            const fechaNormalizada = gaceta.fecha_publicacion || `${gaceta.año}-01-01`
-            gaceta.resolutivos_emitidos.forEach(resolutivo => {
-              // Buscar el proyecto correspondiente por clave
-              const proyectoRelacionado = proyectos.find(p => p.clave === resolutivo.clave)
-              
-              resolutivos.push({
-                ...resolutivo,
-                fecha_publicacion: fechaNormalizada,
-                gaceta_url: gaceta.url,
-                gaceta_ingreso_url: proyectoRelacionado?.gaceta_url || null
-              })
+          if (gaceta.analisis_completo?.registros) {
+            const fechaNormalizada = gaceta.fecha_publicacion || 
+              gaceta.analisis_completo.gaceta?.fecha_publicacion || 
+              `${gaceta.año}-01-01`
+            
+            gaceta.analisis_completo.registros.forEach(registro => {
+              if (registro.tipo_registro === 'resolutivo_emitido') {
+                // Buscar el proyecto relacionado usando proyecto_ingresado_id primero, luego por clave
+                let proyectoRelacionado: ProyectoGacetaProcessed | null = null
+                let gacetaIngresoUrl: string | null = null
+                
+                if (registro.proyecto_ingresado_id) {
+                  // Primero buscar por id_db en proyectos ya procesados
+                  proyectoRelacionado = proyectos.find(p => p.id_db === registro.proyecto_ingresado_id) || null
+                  
+                  // Si no se encontró en proyectos procesados, buscar en el mapa de registros
+                  if (!proyectoRelacionado) {
+                    const registroProyecto = registrosPorId.get(registro.proyecto_ingresado_id)
+                    if (registroProyecto && registroProyecto.registro.tipo_registro === 'proyecto_ingresado') {
+                      gacetaIngresoUrl = registroProyecto.gacetaUrl
+                    }
+                  } else {
+                    gacetaIngresoUrl = proyectoRelacionado.gaceta_url
+                  }
+                }
+                
+                // Si no se encontró por id_db, intentar por clave_proyecto
+                if (!proyectoRelacionado && !gacetaIngresoUrl) {
+                  proyectoRelacionado = proyectos.find(p => p.clave === registro.clave_proyecto) || null
+                  if (proyectoRelacionado) {
+                    gacetaIngresoUrl = proyectoRelacionado.gaceta_url
+                  }
+                }
+                
+                resolutivos.push({
+                  id_db: registro.id_db,
+                  entidad: registro.entidad,
+                  municipio: registro.municipio,
+                  clave: registro.clave_proyecto,
+                  promovente: registro.promovente,
+                  proyecto: registro.proyecto_nombre,
+                  modalidad: registro.modalidad,
+                  fecha_ingreso: registro.fecha_ingreso || '',
+                  fecha_resolucion: registro.fecha_resolucion || '',
+                  vigencia: registro.vigencia?.texto_completo || undefined,
+                  proyecto_ingresado_id: registro.proyecto_ingresado_id,
+                  fecha_publicacion: fechaNormalizada,
+                  gaceta_url: gaceta.url,
+                  gaceta_ingreso_url: gacetaIngresoUrl
+                })
+              }
             })
           }
         })

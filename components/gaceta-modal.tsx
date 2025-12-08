@@ -1,7 +1,7 @@
 "use client"
 
-import { useEffect, useState } from 'react'
-import { Box, Typography, Button, IconButton, Paper, Divider, Chip, Grid, CircularProgress, Alert, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material"
+import React, { useEffect, useState } from 'react'
+import { Box, Typography, Button, IconButton, Paper, Divider, Chip, CircularProgress, Alert, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material"
 import ReactMarkdown from "react-markdown"
 import CloseIcon from '@mui/icons-material/Close'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
@@ -261,7 +261,7 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
           <Box sx={{ p: { xs: 2, sm: 3 }, pb: { xs: 10, sm: 12 } }}>
             {/* Información del Registro Seleccionado */}
             {registro && (
-              <>
+              <Box>
                 <Box sx={{ mb: 4 }}>
                   <Typography
                     variant="h6"
@@ -271,17 +271,17 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
                     Información del Registro
                   </Typography>
                   
-                  <Grid container spacing={2}>
-                    <Grid item xs={12} md={6}>
+                  <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 2 }}>
+                    <Box>
                       <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
                         Clave del Proyecto
                       </Typography>
                       <Typography variant="body2" fontWeight="medium" sx={{ mb: 2 }}>
                         {registro.clave_proyecto || 'N/A'}
                       </Typography>
-                    </Grid>
+                    </Box>
                     
-                    <Grid item xs={12} md={6}>
+                    <Box>
                       <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
                         Tipo de Registro
                       </Typography>
@@ -294,64 +294,64 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
                         color={registro.tipo_registro === 'resolutivo_emitido' ? 'success' : 'primary'}
                         sx={{ mb: 2 }}
                       />
-                    </Grid>
+                    </Box>
                     
-                    <Grid item xs={12}>
+                    <Box sx={{ gridColumn: { xs: 'span 1', md: 'span 2' } }}>
                       <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
                         Nombre del Proyecto
                       </Typography>
                       <Typography variant="body2" sx={{ mb: 2 }}>
                         {registro.proyecto_nombre || 'N/A'}
                       </Typography>
-                    </Grid>
+                    </Box>
                     
-                    <Grid item xs={12} md={6}>
+                    <Box>
                       <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
                         Promovente
                       </Typography>
                       <Typography variant="body2" sx={{ mb: 2 }}>
                         {registro.promovente || 'N/A'}
                       </Typography>
-                    </Grid>
+                    </Box>
                     
-                    <Grid item xs={12} md={6}>
+                    <Box>
                       <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
                         Modalidad
                       </Typography>
                       <Typography variant="body2" sx={{ mb: 2 }}>
                         {registro.modalidad || 'N/A'}
                       </Typography>
-                    </Grid>
+                    </Box>
                     
-                    <Grid item xs={12} md={4}>
+                    <Box>
                       <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
                         Entidad
                       </Typography>
                       <Typography variant="body2" sx={{ mb: 2 }}>
                         {registro.entidad || 'N/A'}
                       </Typography>
-                    </Grid>
+                    </Box>
                     
-                    <Grid item xs={12} md={4}>
+                    <Box>
                       <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
                         Municipio
                       </Typography>
                       <Typography variant="body2" sx={{ mb: 2 }}>
                         {registro.municipio || 'N/A'}
                       </Typography>
-                    </Grid>
+                    </Box>
                     
-                    <Grid item xs={12} md={4}>
+                    <Box>
                       <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
                         Tipo de Proyecto
                       </Typography>
                       <Typography variant="body2" sx={{ mb: 2 }}>
                         {registro.tipo_proyecto || 'N/A'}
                       </Typography>
-                    </Grid>
+                    </Box>
                     
                     {registro.fecha_ingreso && (
-                      <Grid item xs={12} md={6}>
+                      <Box>
                         <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
                           Fecha de Ingreso
                         </Typography>
@@ -362,11 +362,11 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
                             day: 'numeric'
                           })}
                         </Typography>
-                      </Grid>
+                      </Box>
                     )}
                     
                     {registro.fecha_resolucion && (
-                      <Grid item xs={12} md={6}>
+                      <Box>
                         <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
                           Fecha de Resolución
                         </Typography>
@@ -377,11 +377,11 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
                             day: 'numeric'
                           })}
                         </Typography>
-                      </Grid>
+                      </Box>
                     )}
                     
                     {registro.estatus && (
-                      <Grid item xs={12} md={6}>
+                      <Box>
                         <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
                           Estatus
                         </Typography>
@@ -391,22 +391,22 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
                           color={registro.estatus === 'autorizado' ? 'success' : 'default'}
                           sx={{ mb: 2 }}
                         />
-                      </Grid>
+                      </Box>
                     )}
                     
                     {registro.vigencia?.texto_completo && (
-                      <Grid item xs={12} md={6}>
+                      <Box>
                         <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
                           Vigencia
                         </Typography>
                         <Typography variant="body2" sx={{ mb: 2 }}>
                           {registro.vigencia.texto_completo}
                         </Typography>
-                      </Grid>
+                      </Box>
                     )}
                     
                     {registro.superficie && (registro.superficie.total_hectareas || registro.superficie.cambio_uso_suelo_hectareas) && (
-                      <Grid item xs={12} md={6}>
+                      <Box>
                         <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
                           Superficie
                         </Typography>
@@ -416,11 +416,11 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
                             <span> (Cambio de uso: {registro.superficie.cambio_uso_suelo_hectareas} ha)</span>
                           )}
                         </Typography>
-                      </Grid>
+                      </Box>
                     )}
                     
                     {registro.vegetacion?.tipo && (
-                      <Grid item xs={12} md={6}>
+                      <Box>
                         <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
                           Vegetación
                         </Typography>
@@ -428,22 +428,22 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
                           {registro.vegetacion.tipo}
                           {registro.vegetacion.remocion && ` - Remoción: ${registro.vegetacion.remocion}`}
                         </Typography>
-                      </Grid>
+                      </Box>
                     )}
                     
                     {registro.ubicacion_especifica && (
-                      <Grid item xs={12}>
+                      <Box sx={{ gridColumn: { xs: 'span 1', md: 'span 2' } }}>
                         <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
                           Ubicación Específica
                         </Typography>
                         <Typography variant="body2" sx={{ mb: 2 }}>
                           {registro.ubicacion_especifica}
                         </Typography>
-                      </Grid>
+                      </Box>
                     )}
                     
                     {registro.descripcion && (
-                      <Grid item xs={12}>
+                      <Box sx={{ gridColumn: { xs: 'span 1', md: 'span 2' } }}>
                         <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
                           Descripción
                         </Typography>
@@ -457,9 +457,9 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
                         >
                           {registro.descripcion}
                         </Typography>
-                      </Grid>
+                      </Box>
                     )}
-                  </Grid>
+                  </Box>
                 </Box>
                 
                 <Divider sx={{ my: 3 }} />
@@ -519,9 +519,9 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
                           >
                             Documentos Disponibles
                           </Typography>
-                          <Grid container spacing={2}>
+                          <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(3, 1fr)' }, gap: 2 }}>
                             {semarnatData.resumen && (
-                              <Grid item xs={12} sm={4}>
+                              <Box>
                                 <Button
                                   fullWidth
                                   variant="outlined"
@@ -603,10 +603,10 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
                                 >
                                   {loadingPdf['resumen'] ? 'Cargando...' : 'Resumen PDF'}
                                 </Button>
-                              </Grid>
+                              </Box>
                             )}
                             {semarnatData.estudio && (
-                              <Grid item xs={12} sm={4}>
+                              <Box>
                                 <Button
                                   fullWidth
                                   variant="outlined"
@@ -688,10 +688,10 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
                                 >
                                   {loadingPdf['estudio'] ? 'Cargando...' : 'Estudio PDF'}
                                 </Button>
-                              </Grid>
+                              </Box>
                             )}
                             {semarnatData.resolutivo && (
-                              <Grid item xs={12} sm={4}>
+                              <Box>
                                 <Button
                                   fullWidth
                                   variant="outlined"
@@ -773,9 +773,9 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
                                 >
                                   {loadingPdf['resolutivo'] ? 'Cargando...' : 'Resolutivo PDF'}
                                 </Button>
-                              </Grid>
+                              </Box>
                             )}
-                          </Grid>
+                          </Box>
                           
                           {/* Mostrar respuestas JSON de los PDFs */}
                           {Object.keys(pdfResponseData).length > 0 && (
@@ -830,80 +830,78 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
                           Sin documentos disponibles
                         </Alert>
                       )}
-                      
-                      {/* Historial del Trámite */}
-                      <Box sx={{ mb: 4 }}>
-                        <Typography
-                          variant="h6"
-                          fontWeight="semibold"
-                          sx={{ mb: 2, fontSize: { xs: '1rem', sm: '1.25rem' } }}
-                        >
-                          Historial del Trámite
-                        </Typography>
-                        
-                        {loadingHistorial && (
-                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, py: 2 }}>
-                            <CircularProgress size={20} />
-                            <Typography variant="body2" color="text.secondary">
-                              Cargando historial...
-                            </Typography>
-                          </Box>
-                        )}
-                        
-                        {errorHistorial && (
-                          <Alert severity="warning" sx={{ mb: 2 }}>
-                            {errorHistorial}
-                          </Alert>
-                        )}
-                        
-                        {/* Mostrar historial si existe en cualquier formato */}
-                        {(historialData?.historial && Array.isArray(historialData.historial) && historialData.historial.length > 0) || 
-                         (Array.isArray(historialData) && historialData.length > 0) ? (
-                          <TableContainer component={Paper} variant="outlined" sx={{ maxHeight: '400px' }}>
-                            <Table stickyHeader size="small">
-                              <TableHead>
-                                <TableRow>
-                                  <TableCell sx={{ fontWeight: 'bold', fontSize: '0.875rem' }}>
-                                    No.
-                                  </TableCell>
-                                  <TableCell sx={{ fontWeight: 'bold', fontSize: '0.875rem' }}>
-                                    Fecha
-                                  </TableCell>
-                                  <TableCell sx={{ fontWeight: 'bold', fontSize: '0.875rem' }}>
-                                    Descripción de la Situación
-                                  </TableCell>
-                                </TableRow>
-                              </TableHead>
-                              <TableBody>
-                                {(historialData?.historial || (Array.isArray(historialData) ? historialData : [])).map((item: any, index: number) => (
-                                  <TableRow key={index} hover>
-                                    <TableCell sx={{ fontSize: '0.875rem', width: '60px' }}>
-                                      {index + 1}
-                                    </TableCell>
-                                    <TableCell sx={{ fontSize: '0.875rem', whiteSpace: 'nowrap' }}>
-                                      {item.historialFechaTurn || item.fecha || item.historialFecha || 'N/A'}
-                                    </TableCell>
-                                    <TableCell sx={{ fontSize: '0.875rem' }}>
-                                      {item.descipcionSituacion || item.descripcion || item.situacion || item.descpicionSituacion || 'N/A'}
-                                    </TableCell>
-                                  </TableRow>
-                                ))}
-                              </TableBody>
-                            </Table>
-                          </TableContainer>
-                        ) : historialData && !errorHistorial && historialData.mensaje === 'error' && !historialData.historial ? (
-                          // Solo mostrar mensaje si realmente no hay historial y mensaje es "error"
-                          <Alert severity="info">
-                            No hay historial disponible para este trámite.
-                          </Alert>
-                        ) : null}
-                      </Box>
                     </Box>
                   )}
+                  
+                  {/* Historial del Trámite */}
+                  <Box sx={{ mb: 4 }}>
+                    <Typography
+                      variant="h6"
+                      fontWeight="semibold"
+                      sx={{ mb: 2, fontSize: { xs: '1rem', sm: '1.25rem' } }}
+                    >
+                      Historial del Trámite
+                    </Typography>
+                    
+                    {loadingHistorial && (
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, py: 2 }}>
+                        <CircularProgress size={20} />
+                        <Typography variant="body2" color="text.secondary">
+                          Cargando historial...
+                        </Typography>
+                      </Box>
+                    )}
+                    
+                    {errorHistorial && (
+                      <Alert severity="warning" sx={{ mb: 2 }}>
+                        {errorHistorial}
+                      </Alert>
+                    )}
+                    
+                    {/* Mostrar historial si existe en cualquier formato */}
+                    {(historialData?.historial && Array.isArray(historialData.historial) && historialData.historial.length > 0) || 
+                     (Array.isArray(historialData) && historialData.length > 0) ? (
+                      <TableContainer component={Paper} variant="outlined" sx={{ maxHeight: '400px' }}>
+                        <Table stickyHeader size="small">
+                          <TableHead>
+                            <TableRow>
+                              <TableCell sx={{ fontWeight: 'bold', fontSize: '0.875rem' }}>
+                                No.
+                              </TableCell>
+                              <TableCell sx={{ fontWeight: 'bold', fontSize: '0.875rem' }}>
+                                Fecha
+                              </TableCell>
+                              <TableCell sx={{ fontWeight: 'bold', fontSize: '0.875rem' }}>
+                                Descripción de la Situación
+                              </TableCell>
+                            </TableRow>
+                          </TableHead>
+                          <TableBody>
+                            {(historialData?.historial || (Array.isArray(historialData) ? historialData : [])).map((item: any, index: number) => (
+                              <TableRow key={index} hover>
+                                <TableCell sx={{ fontSize: '0.875rem', width: '60px' }}>
+                                  {index + 1}
+                                </TableCell>
+                                <TableCell sx={{ fontSize: '0.875rem', whiteSpace: 'nowrap' }}>
+                                  {item.historialFechaTurn || item.fecha || item.historialFecha || 'N/A'}
+                                </TableCell>
+                                <TableCell sx={{ fontSize: '0.875rem' }}>
+                                  {item.descipcionSituacion || item.descripcion || item.situacion || item.descpicionSituacion || 'N/A'}
+                                </TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                        </Table>
+                      </TableContainer>
+                    ) : historialData && !errorHistorial && historialData.mensaje === 'error' && !historialData.historial ? (
+                      // Solo mostrar mensaje si realmente no hay historial y mensaje es "error"
+                      <Alert severity="info">
+                        No hay historial disponible para este trámite.
+                      </Alert>
+                    ) : null}
+                  </Box>
                 </Box>
-                
-                <Divider sx={{ my: 3 }} />
-              </>
+              </Box>
             )}
 
             {/* Palabras Clave */}

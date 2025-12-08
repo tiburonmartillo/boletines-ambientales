@@ -1,16 +1,15 @@
 # Sample workflow for building and deploying a Next.js site to GitHub Pages
 #
-# To get started with Next.js see: https://nextjs.org/docs/getting-started
+# DESACTIVADO: Este proyecto ahora se despliega en Vercel que soporta API routes
+# GitHub Pages solo soporta sitios estáticos y no puede ejecutar serverless functions
 #
 name: Deploy Next.js site to Pages
 
 on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+  # Desactivado - usar Vercel para despliegue
+  workflow_dispatch: # Solo ejecución manual para builds de prueba si es necesario
+  # push:
+  #   branches: ["main"]
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:

@@ -1,10 +1,14 @@
 name: Deploy to GitHub Pages
 
+# DESACTIVADO: Este proyecto ahora se despliega en Vercel que soporta API routes
+# GitHub Pages solo soporta sitios estáticos y no puede ejecutar serverless functions
+
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  workflow_dispatch: # Solo ejecución manual para permitir builds de prueba si es necesario
+  # push:
+  #   branches: [ main ]
+  # pull_request:
+  #   branches: [ main ]
 
 jobs:
   build-and-deploy:

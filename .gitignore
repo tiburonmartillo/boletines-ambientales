@@ -44,3 +44,8 @@ next-env.d.ts
 
 # OS
 Thumbs.db
+
+# Backup files
+* copy.json
+*.backup
+*.bak

@@ -57,13 +57,23 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
         setSemarnatData(null)
 
         try {
-          const response = await fetch('/api/semarnat-proyecto', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ clave: registro.clave_proyecto })
-          })
+          // Llamada directa al API de SEMARNAT desde el cliente
+          const response = await fetch(
+            'https://apps1.semarnat.gob.mx/ws-bitacora-tramite/proyectos/search-files',
+            {
+              method: 'POST',
+              headers: {
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0) Gecko/20100101 Firefox/145.0',
+                'Accept': 'application/json, text/plain, */*',
+                'Accept-Language': 'en-US,en;q=0.5',
+                'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzZW1hcm5hdEpXVCIsInN1YiI6IlVzdWFyaW97c2VnVXN1YXJpb3NJZDoxLHNlZ1VzdWFyaW9zTm9tYnJlVXN1YXJpbzogJ2FuYV9vbHZlcmFfc2FyZ2F6bycsc2VnVXN1YXJpb3NQYXNzd29yZDogJyQyYSQxMCRqb21vU2JCT0VycWhoWmU3cEFER2J1WjA4ZDhhUUpucEk0dkhOZU9ScVZjbFRtNWJYZUFHQyd9IiwiYXV0aG9yaXRpZXMiOlsic2FyZ2F6byJdLCJpYXQiOjE2NTk5NDEyODZ9.qd17vj3iTjaGnB8w8wq4Eb-44o_2Zcy-x1o8vF9WvRmYGYupShpLaYXK8vL7FxxXy5MDIlOIhnTCQL-rpUw_ow',
+                'Content-Type': 'application/json',
+                'Origin': 'https://app.semarnat.gob.mx',
+                'Referer': 'https://app.semarnat.gob.mx/',
+              },
+              body: JSON.stringify({ clave: registro.clave_proyecto })
+            }
+          )
 
           const data: SemarnatApiResponse = await response.json()
 
@@ -89,14 +99,24 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
         setHistorialData(null)
 
         try {
-          const response = await fetch('/api/semarnat-historial', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            // Usar el id del registro como numBitacora (puede estar en formato diferente a clave_proyecto)
-            body: JSON.stringify({ numBitacora: registro.id || registro.clave_proyecto })
-          })
+          // Llamada directa al API de SEMARNAT desde el cliente
+          const response = await fetch(
+            'https://apps1.semarnat.gob.mx/ws-bitacora-tramite/historial/search-historial-bitacora',
+            {
+              method: 'POST',
+              headers: {
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0) Gecko/20100101 Firefox/145.0',
+                'Accept': 'application/json, text/plain, */*',
+                'Accept-Language': 'en-US,en;q=0.5',
+                'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzZW1hcm5hdEpXVCIsInN1YiI6IlVzdWFyaW97c2VnVXN1YXJpb3NJZDoxLHNlZ1VzdWFyaW9zTm9tYnJlVXN1YXJpbzogJ2FuYV9vbHZlcmFfc2FyZ2F6bycsc2VnVXN1YXJpb3NQYXNzd29yZDogJyQyYSQxMCRqb21vU2JCT0VycWhoWmU3cEFER2J1WjA4ZDhhUUpucEk0dkhOZU9ScVZjbFRtNWJYZUFHQyd9IiwiYXV0aG9yaXRpZXMiOlsic2FyZ2F6byJdLCJpYXQiOjE2NTk5NDEyODZ9.qd17vj3iTjaGnB8w8wq4Eb-44o_2Zcy-x1o8vF9WvRmYGYupShpLaYXK8vL7FxxXy5MDIlOIhnTCQL-rpUw_ow',
+                'Content-Type': 'application/json',
+                'Origin': 'https://app.semarnat.gob.mx',
+                'Referer': 'https://app.semarnat.gob.mx/',
+              },
+              // Usar el id del registro como numBitacora (puede estar en formato diferente a clave_proyecto)
+              body: JSON.stringify({ numBitacora: registro.id || registro.clave_proyecto })
+            }
+          )
 
           const data = await response.json()
 
@@ -531,14 +551,22 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
                                   onClick={async () => {
                                     setLoadingPdf(prev => ({ ...prev, resumen: true }))
                                     try {
-                                      // Hacer petición POST para obtener el PDF
-                                      const response = await fetch('/api/semarnat-pdf', {
-                                        method: 'POST',
-                                        headers: {
-                                          'Content-Type': 'text/plain',
-                                        },
-                                        body: semarnatData.resumen
-                                      })
+                                      // Hacer petición POST directa al API de SEMARNAT para obtener el PDF
+                                      const response = await fetch(
+                                        'https://apps1.semarnat.gob.mx/ws-bitacora-tramite/proyectos/archivopdf',
+                                        {
+                                          method: 'POST',
+                                          headers: {
+                                            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0) Gecko/20100101 Firefox/145.0',
+                                            'Accept': 'application/json, text/plain, */*',
+                                            'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzZW1hcm5hdEpXVCIsInN1YiI6IlVzdWFyaW97c2VnVXN1YXJpb3NJZDoxLHNlZ1VzdWFyaW9zTm9tYnJlVXN1YXJpbzogJ2FuYV9vbHZlcmFfc2FyZ2F6bycsc2VnVXN1YXJpb3NQYXNzd29yZDogJyQyYSQxMCRqb21vU2JCT0VycWhoWmU3cEFER2J1WjA4ZDhhUUpucEk0dkhOZU9ScVZjbFRtNWJYZUFHQyd9IiwiYXV0aG9yaXRpZXMiOlsic2FyZ2F6byJdLCJpYXQiOjE2NTk5NDEyODZ9.qd17vj3iTjaGnB8w8wq4Eb-44o_2Zcy-x1o8vF9WvRmYGYupShpLaYXK8vL7FxxXy5MDIlOIhnTCQL-rpUw_ow',
+                                            'Content-Type': 'text/plain',
+                                            'Origin': 'https://app.semarnat.gob.mx',
+                                            'Referer': 'https://app.semarnat.gob.mx/',
+                                          },
+                                          body: semarnatData.resumen
+                                        }
+                                      )
 
                                       if (response.ok) {
                                         const contentType = response.headers.get('content-type')

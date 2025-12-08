@@ -6,7 +6,8 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "enrich:gacetas": "node scripts/enrich-gacetas-with-semarnat.js"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

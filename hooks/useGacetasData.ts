@@ -39,6 +39,8 @@ export interface RegistroGaceta {
   proyecto_ingresado_id: number | null
   resolutivos_ids: number[]
   gaceta_id: string
+  semarnat_data?: any | null // Datos del API de SEMARNAT (search-files)
+  semarnat_historial?: any | null // Historial del API de SEMARNAT (search-historial-bitacora)
 }
 
 export interface ProyectoIngresado {

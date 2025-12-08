@@ -61,23 +61,23 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
   }, [registro, registroId, registroClave])
 
   // Procesar datos SEMARNAT desde el registro (memoizado)
-  const semarnatData = registro?.semarnat_data
+  const registroSemarnatData = registro?.semarnat_data
   const semarnatDataFromRegistro = useMemo(() => {
-    if (!semarnatData) return null
+    if (!registroSemarnatData) return null
     
-    if (semarnatData.error) {
-      return { error: semarnatData.error, data: null }
+    if (registroSemarnatData.error) {
+      return { error: registroSemarnatData.error, data: null }
     }
     
-    if (semarnatData.mensaje === 'error' && 
-        !semarnatData.resumen && 
-        !semarnatData.estudio && 
-        !semarnatData.resolutivo) {
-      return { error: semarnatData.detalle || 'Error en datos de SEMARNAT', data: null }
+    if (registroSemarnatData.mensaje === 'error' && 
+        !registroSemarnatData.resumen && 
+        !registroSemarnatData.estudio && 
+        !registroSemarnatData.resolutivo) {
+      return { error: registroSemarnatData.detalle || 'Error en datos de SEMARNAT', data: null }
     }
     
-    return { error: null, data: semarnatData }
-  }, [semarnatData])
+    return { error: null, data: registroSemarnatData }
+  }, [registroSemarnatData])
 
   // Procesar historial desde el registro (memoizado)
   const semarnatHistorial = registro?.semarnat_historial

@@ -48,13 +48,17 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
     }
   }, [isOpen, onClose])
 
-  // Cargar información de SEMARNAT desde los datos del registro (ya enriquecido en el JSON)
+  // Cargar información de SEMARNAT cuando se selecciona un registro
+  // Primero intentar desde el JSON enriquecido, luego desde API como fallback
   useEffect(() => {
-    if (isOpen && registro) {
-      // Los datos ya están en el registro desde el JSON enriquecido
+    if (isOpen && registro?.clave_proyecto) {
+      // Si el registro ya tiene datos enriquecidos en el JSON, usarlos
       if (registro.semarnat_data) {
         if (registro.semarnat_data.error) {
           setErrorSemarnat(registro.semarnat_data.error)
+          setSemarnatData(null)
+        } else if (registro.semarnat_data.mensaje === 'error' && !registro.semarnat_data.resumen && !registro.semarnat_data.estudio && !registro.semarnat_data.resolutivo) {
+          setErrorSemarnat(registro.semarnat_data.detalle || 'Error en datos de SEMARNAT')
           setSemarnatData(null)
         } else {
           setSemarnatData(registro.semarnat_data)
@@ -62,26 +66,97 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
         }
         setLoadingSemarnat(false)
       } else {
-        // Si no hay datos en el registro, intentar cargar desde API como fallback
-        setLoadingSemarnat(true)
-        setErrorSemarnat('Datos de SEMARNAT no disponibles en este registro')
-        setSemarnatData(null)
-        setLoadingSemarnat(false)
+        // Si no hay datos en el JSON, hacer llamada a la API route
+        const fetchSemarnatData = async () => {
+          setLoadingSemarnat(true)
+          setErrorSemarnat(null)
+          setSemarnatData(null)
+
+          try {
+            const response = await fetch('/api/semarnat-proyecto', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ clave: registro.clave_proyecto })
+            })
+
+            const data: SemarnatApiResponse = await response.json()
+
+            if (!response.ok || data.error) {
+              setErrorSemarnat(data.error || 'Error al cargar información de SEMARNAT')
+              setSemarnatData(null)
+            } else {
+              setSemarnatData(data)
+              setErrorSemarnat(null)
+            }
+          } catch (error) {
+            console.error('Error fetching SEMARNAT data:', error)
+            setErrorSemarnat('Error al conectar con el servicio de SEMARNAT')
+            setSemarnatData(null)
+          } finally {
+            setLoadingSemarnat(false)
+          }
+        }
+
+        fetchSemarnatData()
       }
 
+      // Historial: primero desde JSON, luego desde API
       if (registro.semarnat_historial) {
-        if (registro.semarnat_historial.error && !registro.semarnat_historial.historial && !Array.isArray(registro.semarnat_historial)) {
-          setErrorHistorial(registro.semarnat_historial.error)
+        const tieneHistorial = (registro.semarnat_historial.historial && Array.isArray(registro.semarnat_historial.historial) && registro.semarnat_historial.historial.length > 0) ||
+                               (Array.isArray(registro.semarnat_historial) && registro.semarnat_historial.length > 0)
+        
+        if (tieneHistorial) {
+          setHistorialData(registro.semarnat_historial)
+          setErrorHistorial(null)
+        } else if (registro.semarnat_historial.error || (registro.semarnat_historial.mensaje === 'error' && !tieneHistorial)) {
+          setErrorHistorial(registro.semarnat_historial.detalle || registro.semarnat_historial.error || 'No hay historial disponible')
+          setHistorialData(null)
         } else {
           setHistorialData(registro.semarnat_historial)
           setErrorHistorial(null)
         }
         setLoadingHistorial(false)
       } else {
-        // Si no hay historial en el registro
-        setLoadingHistorial(false)
-        setHistorialData(null)
-        setErrorHistorial(null)
+        // Si no hay historial en el JSON, hacer llamada a la API route
+        const fetchHistorialData = async () => {
+          setLoadingHistorial(true)
+          setErrorHistorial(null)
+          setHistorialData(null)
+
+          try {
+            const response = await fetch('/api/semarnat-historial', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ numBitacora: registro.id || registro.clave_proyecto })
+            })
+
+            const data = await response.json()
+
+            if (!response.ok) {
+              setErrorHistorial('Error al cargar el historial')
+              setHistorialData(null)
+            } else {
+              setHistorialData(data)
+              if (data.error && !data.historial && !Array.isArray(data.historial)) {
+                setErrorHistorial(data.error)
+              } else {
+                setErrorHistorial(null)
+              }
+            }
+          } catch (error) {
+            console.error('Error fetching historial data:', error)
+            setErrorHistorial('Error al conectar con el servicio de historial')
+            setHistorialData(null)
+          } finally {
+            setLoadingHistorial(false)
+          }
+        }
+
+        fetchHistorialData()
       }
     } else {
       // Limpiar datos cuando se cierra el modal o no hay registro
@@ -94,7 +169,7 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
       setErrorHistorial(null)
       setLoadingHistorial(false)
     }
-  }, [isOpen, registro])
+  }, [isOpen, registro?.clave_proyecto, registro?.id])
 
   if (!gaceta || !isOpen) return null
 
@@ -488,22 +563,14 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
                                   onClick={async () => {
                                     setLoadingPdf(prev => ({ ...prev, resumen: true }))
                                     try {
-                                      // Hacer petición POST directa al API de SEMARNAT para obtener el PDF
-                                      const response = await fetch(
-                                        'https://apps1.semarnat.gob.mx/ws-bitacora-tramite/proyectos/archivopdf',
-                                        {
-                                          method: 'POST',
-                                          headers: {
-                                            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0) Gecko/20100101 Firefox/145.0',
-                                            'Accept': 'application/json, text/plain, */*',
-                                            'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzZW1hcm5hdEpXVCIsInN1YiI6IlVzdWFyaW97c2VnVXN1YXJpb3NJZDoxLHNlZ1VzdWFyaW9zTm9tYnJlVXN1YXJpbzogJ2FuYV9vbHZlcmFfc2FyZ2F6bycsc2VnVXN1YXJpb3NQYXNzd29yZDogJyQyYSQxMCRqb21vU2JCT0VycWhoWmU3cEFER2J1WjA4ZDhhUUpucEk0dkhOZU9ScVZjbFRtNWJYZUFHQyd9IiwiYXV0aG9yaXRpZXMiOlsic2FyZ2F6byJdLCJpYXQiOjE2NTk5NDEyODZ9.qd17vj3iTjaGnB8w8wq4Eb-44o_2Zcy-x1o8vF9WvRmYGYupShpLaYXK8vL7FxxXy5MDIlOIhnTCQL-rpUw_ow',
-                                            'Content-Type': 'text/plain',
-                                            'Origin': 'https://app.semarnat.gob.mx',
-                                            'Referer': 'https://app.semarnat.gob.mx/',
-                                          },
-                                          body: semarnatData.resumen
-                                        }
-                                      )
+                                      // Hacer petición POST a la API route para obtener el PDF
+                                      const response = await fetch('/api/semarnat-pdf', {
+                                        method: 'POST',
+                                        headers: {
+                                          'Content-Type': 'text/plain',
+                                        },
+                                        body: semarnatData.resumen
+                                      })
 
                                       if (response.ok) {
                                         const contentType = response.headers.get('content-type')

@@ -29,7 +29,11 @@ function GacetasSEMARNATPageContent() {
 
   // Ahora sí, los returns condicionales
   if (!mounted) {
-    return null
+    return (
+      <Box sx={{ minHeight: '100vh', bgcolor: 'background.default', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <CircularProgress />
+      </Box>
+    )
   }
 
   // Mostrar loading mientras carga
@@ -41,6 +45,9 @@ function GacetasSEMARNATPageContent() {
           <Typography variant="h6" color="text.primary" sx={{ mb: 2 }}>
             Cargando datos de gacetas...
           </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Esto puede tardar unos momentos...
+          </Typography>
         </Box>
       </Box>
     )
@@ -48,13 +55,16 @@ function GacetasSEMARNATPageContent() {
 
   if (error || !processedData || !stats) {
     return (
-      <Box sx={{ minHeight: '100vh', bgcolor: 'background.default', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <Box sx={{ minHeight: '100vh', bgcolor: 'background.default', display: 'flex', alignItems: 'center', justifyContent: 'center', p: 2 }}>
         <Alert severity="error" sx={{ maxWidth: 600 }}>
           <Typography variant="h6" gutterBottom>
             Error al cargar los datos
           </Typography>
-          <Typography variant="body2">
+          <Typography variant="body2" component="pre" sx={{ mt: 2, whiteSpace: 'pre-wrap', fontSize: '0.75rem' }}>
             {error || "No se pudieron cargar los datos de gacetas. Por favor, intenta de nuevo más tarde."}
+          </Typography>
+          <Typography variant="body2" sx={{ mt: 2 }}>
+            Verifica que el archivo JSON esté disponible en: <code>/data/gacetas_semarnat_analizadas.json</code>
           </Typography>
         </Alert>
       </Box>

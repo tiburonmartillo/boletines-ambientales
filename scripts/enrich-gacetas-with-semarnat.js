@@ -16,19 +16,27 @@ const DELAY_BETWEEN_REQUESTS = 800; // ms
 
 // Headers para las peticiones
 const getHeaders = () => ({
-  'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0) Gecko/20100101 Firefox/145.0',
   'Accept': 'application/json, text/plain, */*',
-  'Accept-Language': 'en-US,en;q=0.5',
+  'Accept-Language': 'en-US,en;q=0.9',
   'Authorization': AUTH_TOKEN,
+  'Connection': 'keep-alive',
   'Content-Type': 'application/json',
+  'DNT': '1',
   'Origin': 'https://app.semarnat.gob.mx',
   'Referer': 'https://app.semarnat.gob.mx/',
+  'Sec-Fetch-Dest': 'empty',
+  'Sec-Fetch-Mode': 'cors',
+  'Sec-Fetch-Site': 'same-site',
+  'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36',
+  'sec-ch-ua': '"Not_A Brand";v="99", "Chromium";v="142"',
+  'sec-ch-ua-mobile': '?0',
+  'sec-ch-ua-platform': '"macOS"',
 });
 
 // Función para delay
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-// Función para obtener datos del proyecto
+// Función para obtener archivos del proyecto (search-files)
 async function fetchSemarnatData(clave) {
   try {
     const response = await fetch(
@@ -37,6 +45,78 @@ async function fetchSemarnatData(clave) {
         method: 'POST',
         headers: getHeaders(),
         body: JSON.stringify({ clave })
+      }
+    );
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      return { error: `HTTP ${response.status}`, details: errorText };
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return { error: error.message || 'Error desconocido' };
+  }
+}
+
+// Función para obtener datos del proyecto (search-proyecto)
+async function fetchProyectoData(clave) {
+  try {
+    const response = await fetch(
+      `${SEMARNAT_BASE_URL}/proyectos/search-proyecto`,
+      {
+        method: 'POST',
+        headers: getHeaders(),
+        body: JSON.stringify({ clave })
+      }
+    );
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      return { error: `HTTP ${response.status}`, details: errorText };
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return { error: error.message || 'Error desconocido' };
+  }
+}
+
+// Función para obtener datos de la bitácora (search-bitacora)
+async function fetchBitacoraData(numBitacora) {
+  try {
+    const response = await fetch(
+      `${SEMARNAT_BASE_URL}/bitacoras/search-bitacora`,
+      {
+        method: 'POST',
+        headers: getHeaders(),
+        body: JSON.stringify({ numBitacora })
+      }
+    );
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      return { error: `HTTP ${response.status}`, details: errorText };
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return { error: error.message || 'Error desconocido' };
+  }
+}
+
+// Función para obtener proyecto asociado a bitácora (search-proyecto-bitacora)
+async function fetchProyectoBitacoraData(numBitacora) {
+  try {
+    const response = await fetch(
+      `${SEMARNAT_BASE_URL}/proyectos/search-proyecto-bitacora`,
+      {
+        method: 'POST',
+        headers: getHeaders(),
+        body: JSON.stringify({ numBitacora })
       }
     );
 
@@ -83,9 +163,15 @@ async function enrichGacetas() {
   
   let totalRegistros = 0;
   let registrosProcesados = 0;
-  let registrosConData = 0;
+  let registrosConFiles = 0;
+  let registrosConProyecto = 0;
+  let registrosConBitacora = 0;
+  let registrosConProyectoBitacora = 0;
   let registrosConHistorial = 0;
-  let erroresData = 0;
+  let erroresFiles = 0;
+  let erroresProyecto = 0;
+  let erroresBitacora = 0;
+  let erroresProyectoBitacora = 0;
   let erroresHistorial = 0;
 
   // Contar registros totales
@@ -115,48 +201,106 @@ async function enrichGacetas() {
       const progress = `[${registrosProcesados}/${totalRegistros}]`;
       console.log(`  ${progress} Registro: ${registro.id || registro.clave_proyecto || 'sin ID'}`);
 
-      // Si ya tiene los datos, verificar si necesita actualización
-      const tieneData = registro.semarnat_data !== undefined;
+      // Verificar qué datos ya tiene el registro
+      const tieneFiles = registro.semarnat_data !== undefined;
+      const tieneProyecto = registro.semarnat_proyecto !== undefined;
+      const tieneBitacora = registro.semarnat_bitacora !== undefined;
+      const tieneProyectoBitacora = registro.semarnat_proyecto_bitacora !== undefined;
       const tieneHistorial = registro.semarnat_historial !== undefined;
 
-      // Obtener datos del proyecto si tiene clave_proyecto
-      if (registro.clave_proyecto && !tieneData) {
-        console.log(`    🔍 Obteniendo datos del proyecto para: ${registro.clave_proyecto}`);
+      // 1. Obtener archivos del proyecto (search-files) si tiene clave_proyecto
+      if (registro.clave_proyecto && !tieneFiles) {
+        console.log(`    🔍 [Files] Obteniendo archivos para: ${registro.clave_proyecto}`);
         const data = await fetchSemarnatData(registro.clave_proyecto);
         
         if (data.error) {
-          console.log(`    ❌ Error al obtener datos: ${data.error}`);
+          console.log(`    ❌ [Files] Error: ${data.error}`);
           registro.semarnat_data = { error: data.error, details: data.details || null };
-          erroresData++;
+          erroresFiles++;
         } else {
-          console.log(`    ✅ Datos obtenidos exitosamente`);
+          console.log(`    ✅ [Files] Archivos obtenidos exitosamente`);
           registro.semarnat_data = data;
-          registrosConData++;
+          registrosConFiles++;
         }
-
         await delay(DELAY_BETWEEN_REQUESTS);
-      } else if (tieneData) {
-        console.log(`    ⏭️  Datos ya existentes, omitiendo...`);
+      } else if (tieneFiles) {
+        console.log(`    ⏭️  [Files] Ya existente, omitiendo...`);
       }
 
-      // Obtener historial si tiene id
+      // 2. Obtener datos del proyecto (search-proyecto) si tiene clave_proyecto
+      if (registro.clave_proyecto && !tieneProyecto) {
+        console.log(`    🔍 [Proyecto] Obteniendo datos del proyecto para: ${registro.clave_proyecto}`);
+        const proyectoData = await fetchProyectoData(registro.clave_proyecto);
+        
+        if (proyectoData.error) {
+          console.log(`    ❌ [Proyecto] Error: ${proyectoData.error}`);
+          registro.semarnat_proyecto = { error: proyectoData.error, details: proyectoData.details || null };
+          erroresProyecto++;
+        } else {
+          console.log(`    ✅ [Proyecto] Datos obtenidos exitosamente`);
+          registro.semarnat_proyecto = proyectoData;
+          registrosConProyecto++;
+        }
+        await delay(DELAY_BETWEEN_REQUESTS);
+      } else if (tieneProyecto) {
+        console.log(`    ⏭️  [Proyecto] Ya existente, omitiendo...`);
+      }
+
+      // 3. Obtener datos de la bitácora (search-bitacora) si tiene id
+      if (registro.id && !tieneBitacora) {
+        console.log(`    🔍 [Bitácora] Obteniendo datos de bitácora para: ${registro.id}`);
+        const bitacoraData = await fetchBitacoraData(registro.id);
+        
+        if (bitacoraData.error) {
+          console.log(`    ❌ [Bitácora] Error: ${bitacoraData.error}`);
+          registro.semarnat_bitacora = { error: bitacoraData.error, details: bitacoraData.details || null };
+          erroresBitacora++;
+        } else {
+          console.log(`    ✅ [Bitácora] Datos obtenidos exitosamente`);
+          registro.semarnat_bitacora = bitacoraData;
+          registrosConBitacora++;
+        }
+        await delay(DELAY_BETWEEN_REQUESTS);
+      } else if (tieneBitacora) {
+        console.log(`    ⏭️  [Bitácora] Ya existente, omitiendo...`);
+      }
+
+      // 4. Obtener proyecto asociado a bitácora (search-proyecto-bitacora) si tiene id
+      if (registro.id && !tieneProyectoBitacora) {
+        console.log(`    🔍 [Proyecto-Bitácora] Obteniendo proyecto-bitácora para: ${registro.id}`);
+        const proyectoBitacoraData = await fetchProyectoBitacoraData(registro.id);
+        
+        if (proyectoBitacoraData.error) {
+          console.log(`    ❌ [Proyecto-Bitácora] Error: ${proyectoBitacoraData.error}`);
+          registro.semarnat_proyecto_bitacora = { error: proyectoBitacoraData.error, details: proyectoBitacoraData.details || null };
+          erroresProyectoBitacora++;
+        } else {
+          console.log(`    ✅ [Proyecto-Bitácora] Datos obtenidos exitosamente`);
+          registro.semarnat_proyecto_bitacora = proyectoBitacoraData;
+          registrosConProyectoBitacora++;
+        }
+        await delay(DELAY_BETWEEN_REQUESTS);
+      } else if (tieneProyectoBitacora) {
+        console.log(`    ⏭️  [Proyecto-Bitácora] Ya existente, omitiendo...`);
+      }
+
+      // 5. Obtener historial (search-historial-bitacora) si tiene id
       if (registro.id && !tieneHistorial) {
-        console.log(`    🔍 Obteniendo historial para: ${registro.id}`);
+        console.log(`    🔍 [Historial] Obteniendo historial para: ${registro.id}`);
         const historial = await fetchHistorial(registro.id);
         
         if (historial.error) {
-          console.log(`    ❌ Error al obtener historial: ${historial.error}`);
+          console.log(`    ❌ [Historial] Error: ${historial.error}`);
           registro.semarnat_historial = { error: historial.error, details: historial.details || null };
           erroresHistorial++;
         } else {
-          console.log(`    ✅ Historial obtenido exitosamente`);
+          console.log(`    ✅ [Historial] Historial obtenido exitosamente`);
           registro.semarnat_historial = historial;
           registrosConHistorial++;
         }
-
         await delay(DELAY_BETWEEN_REQUESTS);
       } else if (tieneHistorial) {
-        console.log(`    ⏭️  Historial ya existente, omitiendo...`);
+        console.log(`    ⏭️  [Historial] Ya existente, omitiendo...`);
       }
 
       // Guardar progreso cada 10 registros
@@ -168,12 +312,21 @@ async function enrichGacetas() {
   }
 
   // Actualizar metadata
+  if (!jsonData.metadata) {
+    jsonData.metadata = {};
+  }
   jsonData.metadata.last_enriched = new Date().toISOString();
   jsonData.metadata.enrichment_stats = {
     total_registros: totalRegistros,
-    registros_con_data: registrosConData,
+    registros_con_files: registrosConFiles,
+    registros_con_proyecto: registrosConProyecto,
+    registros_con_bitacora: registrosConBitacora,
+    registros_con_proyecto_bitacora: registrosConProyectoBitacora,
     registros_con_historial: registrosConHistorial,
-    errores_data: erroresData,
+    errores_files: erroresFiles,
+    errores_proyecto: erroresProyecto,
+    errores_bitacora: erroresBitacora,
+    errores_proyecto_bitacora: erroresProyectoBitacora,
     errores_historial: erroresHistorial
   };
 
@@ -185,10 +338,17 @@ async function enrichGacetas() {
   console.log(`\n✅ Proceso completado!\n`);
   console.log(`📊 Estadísticas:`);
   console.log(`   Total de registros: ${totalRegistros}`);
-  console.log(`   Registros con datos SEMARNAT: ${registrosConData}`);
+  console.log(`   Registros con archivos (search-files): ${registrosConFiles}`);
+  console.log(`   Registros con datos proyecto (search-proyecto): ${registrosConProyecto}`);
+  console.log(`   Registros con datos bitácora (search-bitacora): ${registrosConBitacora}`);
+  console.log(`   Registros con proyecto-bitácora (search-proyecto-bitacora): ${registrosConProyectoBitacora}`);
   console.log(`   Registros con historial: ${registrosConHistorial}`);
-  console.log(`   Errores al obtener datos: ${erroresData}`);
-  console.log(`   Errores al obtener historial: ${erroresHistorial}`);
+  console.log(`\n❌ Errores:`);
+  console.log(`   Errores archivos: ${erroresFiles}`);
+  console.log(`   Errores proyecto: ${erroresProyecto}`);
+  console.log(`   Errores bitácora: ${erroresBitacora}`);
+  console.log(`   Errores proyecto-bitácora: ${erroresProyectoBitacora}`);
+  console.log(`   Errores historial: ${erroresHistorial}`);
 }
 
 // Ejecutar script

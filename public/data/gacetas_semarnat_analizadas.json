@@ -1,8 +1,8 @@
 {
   "metadata": {
     "created": "2025-12-05T13:26:27.924186",
-    "last_updated": "2025-12-05T13:48:48.227727",
-    "total_analyzed": 327,
+    "last_updated": "2025-12-08T15:37:37.927016",
+    "total_analyzed": 390,
     "year_range": "2020-2025",
     "last_enriched": "2025-12-08T19:36:01.622Z",
     "enrichment_stats": {
@@ -11,6 +11,13 @@
       "registros_con_historial": 90,
       "errores_data": 0,
       "errores_historial": 0
+    },
+    "last_enrichment": "2025-12-08T15:37:37.925193",
+    "enrichment_config": {
+      "skip_existing": true,
+      "force_update": false,
+      "update_if_older_than_days": null,
+      "delay_ms": 750.0
     }
   },
   "analyses": [
@@ -78,7 +85,7 @@
             "areas_forestales": null,
             "observaciones": null,
             "id_db": 1,
-            "proyecto_ingresado_id": null,
+            "proyecto_ingresado_id": 102,
             "resolutivos_ids": [],
             "gaceta_id": "47-20",
             "semarnat_data": {
@@ -481,7 +488,7 @@
             "areas_forestales": null,
             "observaciones": null,
             "id_db": 5,
-            "proyecto_ingresado_id": null,
+            "proyecto_ingresado_id": 109,
             "resolutivos_ids": [],
             "gaceta_id": "036-20",
             "semarnat_data": {
@@ -530,7 +537,7 @@
             "areas_forestales": null,
             "observaciones": null,
             "id_db": 6,
-            "proyecto_ingresado_id": null,
+            "proyecto_ingresado_id": 95,
             "resolutivos_ids": [],
             "gaceta_id": "036-20",
             "semarnat_data": {
@@ -1476,7 +1483,7 @@
             "areas_forestales": null,
             "observaciones": null,
             "id_db": 12,
-            "proyecto_ingresado_id": null,
+            "proyecto_ingresado_id": 112,
             "resolutivos_ids": [],
             "gaceta_id": "001-20",
             "semarnat_data": {
@@ -11610,6 +11617,4232 @@
         ]
       },
       "resumen": "Análisis completo: 2 registros encontrados, 1 proyectos ingresados"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_63-19.pdf",
+      "año": 2019,
+      "gaceta_id": "63-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_62-19.pdf",
+      "año": 2019,
+      "gaceta_id": "62-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_61-19.pdf",
+      "año": 2019,
+      "gaceta_id": "61-19",
+      "fecha_publicacion": "2019-12-11",
+      "palabras_clave_encontradas": [
+        "Aguascalientes"
+      ],
+      "paginas": [
+        4
+      ],
+      "secciones": null,
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "61-19",
+          "fecha_publicacion": "2019-12-12",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 0,
+          "proyectos_ingresados": 0,
+          "resolutivos_emitidos": 0,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 0.0
+        },
+        "registros": []
+      },
+      "resumen": "No se encontraron registros de Aguascalientes en esta gaceta"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_60-19.pdf",
+      "año": 2019,
+      "gaceta_id": "60-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_59-19.pdf",
+      "año": 2019,
+      "gaceta_id": "59-19",
+      "fecha_publicacion": "2019-11-29",
+      "palabras_clave_encontradas": [
+        "Aguascalientes"
+      ],
+      "paginas": [
+        4
+      ],
+      "secciones": [
+        "Resolutivos emitidos"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "59-19",
+          "fecha_publicacion": "2019-12-05",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 2,
+          "proyectos_ingresados": 0,
+          "resolutivos_emitidos": 2,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 0.0
+        },
+        "registros": [
+          {
+            "id": "01AG2019E0025",
+            "clave_proyecto": "01AG2019E0025",
+            "tipo_registro": "resolutivo_emitido",
+            "seccion_documento": "Resolutivos emitidos DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "FOTOVOLTAICA SAN BARTOLO",
+            "promovente": "MIRE-GMI CAPITAL SPV-5, S.A. DE C.V.",
+            "modalidad": "MIA REGIONAL",
+            "tipo_proyecto": "energia",
+            "fecha_ingreso": "2019-04-17",
+            "fecha_resolucion": "2019-11-28",
+            "estatus": "autorizado",
+            "vigencia": {
+              "construccion_anios": 17,
+              "operacion_anios": 25,
+              "texto_completo": "17 MESES 25 AÑOS"
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": null,
+            "cambio_uso_suelo": null,
+            "areas_forestales": null,
+            "observaciones": null,
+            "id_db": 91,
+            "proyecto_ingresado_id": 126,
+            "resolutivos_ids": [],
+            "gaceta_id": "59-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2019/01AG2019E0025.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019E0025.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019E0025.pdf",
+              "_fetched_at": "2025-12-08T15:36:17.756883"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:36:18.559654"
+            }
+          },
+          {
+            "id": "01AG2019E0031",
+            "clave_proyecto": "01AG2019E0031",
+            "tipo_registro": "resolutivo_emitido",
+            "seccion_documento": "Resolutivos emitidos DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "PROYECTO SOLAR FOTOVOLTAICO PF PROTÓN I – 100 MW",
+            "promovente": "PF PROTON I, S. A. P. I. DE C. V.",
+            "modalidad": "MIA REGIONAL",
+            "tipo_proyecto": "energia",
+            "fecha_ingreso": "2019-06-20",
+            "fecha_resolucion": "2019-12-02",
+            "estatus": "autorizado",
+            "vigencia": {
+              "construccion_anios": 18,
+              "operacion_anios": 25,
+              "texto_completo": "18 MESES 25 AÑOS"
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": null,
+            "cambio_uso_suelo": null,
+            "areas_forestales": null,
+            "observaciones": null,
+            "id_db": 92,
+            "proyecto_ingresado_id": 114,
+            "resolutivos_ids": [],
+            "gaceta_id": "59-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2019/01AG2019E0031.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019E0031.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019E0031.pdf",
+              "_fetched_at": "2025-12-08T15:36:19.355383"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:36:20.149866"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 2 registros encontrados, 2 resolutivos emitidos"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_58-19.pdf",
+      "año": 2019,
+      "gaceta_id": "58-19",
+      "fecha_publicacion": "2019-11-27",
+      "palabras_clave_encontradas": [
+        "Aguascalientes",
+        "Ags"
+      ],
+      "paginas": [
+        7
+      ],
+      "secciones": [
+        "Proyectos ingresados"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "58-19",
+          "fecha_publicacion": "2019-11-27",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 2,
+          "proyectos_ingresados": 2,
+          "resolutivos_emitidos": 0,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 0.1844443
+        },
+        "registros": [
+          {
+            "id": "01AG2019HD053",
+            "clave_proyecto": "01AG2019HD053",
+            "tipo_registro": "proyecto_ingresado",
+            "seccion_documento": "Proyectos Ingresados Oficinas de Representación",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "OBRAS EN ZONA FEDERAL EN ARROYO MORELOS",
+            "promovente": "ENERGIA Y SERVICIOS TERRA, S.A. DE C.V.",
+            "modalidad": "MIA PARTICULAR",
+            "tipo_proyecto": "vialidad",
+            "fecha_ingreso": "2019-11-07",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": 1844.443,
+              "total_hectareas": 0.1844443,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": "LAS OBRAS A EVALUAR EN MATERIA DE IMPACTO AMBIENTAL CONSISTEN EN LA CONSTRUCCION DE INFRAESTRUCTURA UBICADA EN LA ZONA FEDERAL DEL ARROYO MORELOS TALES COMO MURO DE MAMPOSTERÍA Y UNA CALLE VEHICULAR O VIALIDAD. SE PRETENDE REALIZARLAS DENTRO DE LA ZONA FEDERAL EN UNA SUPERFICIE DE 1,201.118 METROS CUADRADOS PARA LA VIALIDAD Y LA ZONA DE MURO DE MAMPOSTERIA OCUPA UNA SUPERFICIE DE 643.325 METROS CUADRADOS Y UNA LONGITUD DE 223.51 METROS. CON UNA OCUPACION TOTAL DE ZONA FEDERAL DE 1844.443 METROS CUADRADOS",
+            "cambio_uso_suelo": null,
+            "areas_forestales": null,
+            "observaciones": null,
+            "id_db": 93,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [],
+            "gaceta_id": "58-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": null,
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019HD053.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019HD053.pdf",
+              "_fetched_at": "2025-12-08T15:36:20.949389"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:36:21.748715"
+            }
+          },
+          {
+            "id": "01AG2019HD054",
+            "clave_proyecto": "01AG2019HD054",
+            "tipo_registro": "proyecto_ingresado",
+            "seccion_documento": "Proyectos Ingresados Oficinas de Representación",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "JESUS MARIA",
+            "proyecto_nombre": "OBRAS EN ZONA FEDERAL INSTITUTO TEPEYAC",
+            "promovente": "P100 CAPITAL",
+            "modalidad": "MIA PARTICULAR",
+            "tipo_proyecto": "vialidad",
+            "fecha_ingreso": "2019-11-07",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": "EL PROYECTO CONSISTE EN LA CONSTRUCCION DE INFRAESTRUCTURA SOBRE LA ZONA FEDERAL ASOCIADA AL ARROYO LA YERBABUENA A LA ALTURA DE LA COMUNIDAD DE SANDOVALES EN EL MUNICIPIO DE JESUS MARIA AGS, TAL COMO LAVADEROS, TUBERIAS Y REGISTRO SANITARIO.",
+            "cambio_uso_suelo": null,
+            "areas_forestales": null,
+            "observaciones": null,
+            "id_db": 94,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [],
+            "gaceta_id": "58-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": null,
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019HD054.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019HD054.pdf",
+              "_fetched_at": "2025-12-08T15:36:22.553211"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:36:23.360346"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 2 registros encontrados, 2 proyectos ingresados"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_57-19.pdf",
+      "año": 2019,
+      "gaceta_id": "57-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_56-19.pdf",
+      "año": 2019,
+      "gaceta_id": "056-19",
+      "fecha_publicacion": "2019-11-13",
+      "palabras_clave_encontradas": [
+        "Aguascalientes"
+      ],
+      "paginas": [
+        2,
+        4
+      ],
+      "secciones": [
+        "Proyectos ingresados",
+        "Resolutivos emitidos"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "056-19",
+          "fecha_publicacion": "2019-11-14",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 2,
+          "proyectos_ingresados": 1,
+          "resolutivos_emitidos": 1,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 0.0
+        },
+        "registros": [
+          {
+            "id": "01AG2019UD052",
+            "clave_proyecto": "01AG2019UD052",
+            "tipo_registro": "proyecto_ingresado",
+            "seccion_documento": "Proyectos Ingresados DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "PABELLON DE ARTEAGA",
+            "proyecto_nombre": "PUENTE SOBRE EL RIO PABELLÓN, KM 2+970 DEL CAMINO EMILIANO ZAPATA - SAN LUIS DE LETRAS",
+            "promovente": "SECRETARIA DE COMUNICACIONES Y TRANSPORTES CENTRO SCT AGUASCALIENTES",
+            "modalidad": "MIA PARTICULAR",
+            "tipo_proyecto": "vialidad",
+            "fecha_ingreso": "2019-11-07",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": "EL PROYECTO CONSISTE EN LA CONSTRUCCIÓN DE UN PUENTE VEHICULAR CON UN CUERPO CON UNA CALZADA DE 8.0 M, DOS CARRILES DE CIRCULACIÓN (DE 4 M CADA UNO), DE ANCHO DE DOS CLAROS DE 12.50 M Y UNA LONGITUD TOTAL DE 28 M SOBRE EL RIÓ PABELLÓN.",
+            "cambio_uso_suelo": false,
+            "areas_forestales": false,
+            "observaciones": null,
+            "id_db": 95,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [
+              6
+            ],
+            "gaceta_id": "056-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2019/01AG2019UD052.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019UD052.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019UD052.pdf",
+              "_fetched_at": "2025-12-08T15:36:24.162213"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:36:24.960899"
+            }
+          },
+          {
+            "id": "01AG2019E0026",
+            "clave_proyecto": "01AG2019E0026",
+            "tipo_registro": "resolutivo_emitido",
+            "seccion_documento": "Resolutivos emitidos DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "PARQUE FOTOVOLTAICO CAÑADA HONDA",
+            "promovente": "NEXT ENERGY DEL CENTRO, S. DE R. L. DE C. V.",
+            "modalidad": "MIA REGIONAL",
+            "tipo_proyecto": "energia",
+            "fecha_ingreso": "2019-05-02",
+            "fecha_resolucion": "2019-11-12",
+            "estatus": "autorizado",
+            "vigencia": {
+              "construccion_anios": 1,
+              "operacion_anios": 25,
+              "texto_completo": "12 MESES, 25 AÑOS"
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": null,
+            "cambio_uso_suelo": false,
+            "areas_forestales": false,
+            "observaciones": null,
+            "id_db": 96,
+            "proyecto_ingresado_id": 121,
+            "resolutivos_ids": [],
+            "gaceta_id": "056-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2019/01AG2019E0026.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019E0026.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019E0026.pdf",
+              "_fetched_at": "2025-12-08T15:36:25.762811"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:36:26.555552"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 2 registros encontrados, 1 proyectos ingresados, 1 resolutivos emitidos"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_55-19.pdf",
+      "año": 2019,
+      "gaceta_id": "55-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_54-19.pdf",
+      "año": 2019,
+      "gaceta_id": "54-19",
+      "fecha_publicacion": "2019-10-30",
+      "palabras_clave_encontradas": [
+        "Aguascalientes",
+        "Ags"
+      ],
+      "paginas": [
+        5,
+        7
+      ],
+      "secciones": [
+        "Cambio de uso de suelo",
+        "Proyectos ingresados"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "54-19",
+          "fecha_publicacion": "2019-10-31",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 6,
+          "proyectos_ingresados": 4,
+          "resolutivos_emitidos": 1,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 0.0
+        },
+        "registros": [
+          {
+            "id": "01AG2019HD026",
+            "clave_proyecto": "01AG2019HD026",
+            "tipo_registro": "resolutivo_emitido",
+            "seccion_documento": "Resolutivos emitidos DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "CONSTRUCCIÓN DEL PASO A DESNIVEL EN AV. AGS-AV. MARIANO HIDALGO, INCLUYE COLECTOR PLUVIAL",
+            "promovente": "GOBIERNO DEL ESTADO DE AGUASCALIENTES",
+            "modalidad": "MIA PARTICULAR",
+            "tipo_proyecto": "vialidad",
+            "fecha_ingreso": "2019-04-22",
+            "fecha_resolucion": "2019-09-26",
+            "estatus": "autorizado",
+            "vigencia": {
+              "construccion_anios": 3,
+              "operacion_anios": 25,
+              "texto_completo": "36 MESES 25 AÑOS"
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": null,
+            "cambio_uso_suelo": null,
+            "areas_forestales": null,
+            "observaciones": null,
+            "id_db": 97,
+            "proyecto_ingresado_id": 115,
+            "resolutivos_ids": [],
+            "gaceta_id": "54-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2019/01AG2019HD026.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019HD026.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019HD026.pdf",
+              "_fetched_at": "2025-12-08T15:36:27.350920"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:36:28.147758"
+            }
+          },
+          {
+            "id": "01AG2019HD047",
+            "clave_proyecto": "01AG2019HD047",
+            "tipo_registro": "proyecto_ingresado",
+            "seccion_documento": "Proyectos ingresados Oficinas de Representación",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "JESUS MARIA",
+            "proyecto_nombre": "CONSTRUCCIÓN DE PUENTE VEHÍCULAR SOBRE EL ARROYO YERBABUENA Y OBRAS ACCESORIAS EN EL TRAMO DEL CONDOMINIO ST ANGELO RESIDENCE",
+            "promovente": "GRUPO TERRANZA, S.A. DE C.V.",
+            "modalidad": "MIA PARTICULAR",
+            "tipo_proyecto": "vialidad",
+            "fecha_ingreso": "2019-09-30",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": "CONSTRUCCION DE PUENTE VEHICULAR SOBRE EL ARROYO YERBABUENA Y OBRAS ACCESORIAS EN EL TRAMO DEL CONDOMINIO ST ANGELO RESIDENCE. LOS OBJETIVOS DE LA OBRA SON A) LA CONFORMACIÓN DEL CAUCE DEL ARROYO B) LIMPIEZA DEL ARROYO Y C) PROVEER DE INFRAESTRUCTURA ADECUADA EN EL ARROYO PARA LOS SERVICIOS DE LOS HABITANTES DE LA ZONA CONURBADA.",
+            "cambio_uso_suelo": null,
+            "areas_forestales": null,
+            "observaciones": null,
+            "id_db": 98,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [],
+            "gaceta_id": "54-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": null,
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019HD047.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019HD047.pdf",
+              "_fetched_at": "2025-12-08T15:36:29.200144"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:36:30.005511"
+            }
+          },
+          {
+            "id": "01AG2019HD048",
+            "clave_proyecto": "01AG2019HD048",
+            "tipo_registro": "proyecto_ingresado",
+            "seccion_documento": "Proyectos ingresados Oficinas de Representación",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "CALVILLO",
+            "proyecto_nombre": "BANCO DE MATERIALES PÉTREOS EL JAGÜEY",
+            "promovente": "ARMANDO LOERA LOPEZ",
+            "modalidad": "MIA PARTICULAR",
+            "tipo_proyecto": "mineria",
+            "fecha_ingreso": "2019-10-09",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": "EL PROYECTO CONSISTE EN EL ESTABLECIMIENTO Y OPERACIÓN DE UN BANCO DE MATERIALES PARA LA EXTRACCIÓN DE ARENA Y GRAVA \"EN GREÑA\" DE UN TRAMO DEL RÍO LA LABOR Y UN TRAMO DE SU AFLUENTE DENOMINADO ARROYO EL JAGÜEY, ASÍ COMO EL RECUPERAR LA SECCIÓN TRANSVERSAL DEL CAUCE DE LOS MISMOS. EL RÍO SE ENCUENTRA UBICADO EN EL MUNICIPIO DE CALVILLO, AGUASCALIENTES. TENIENDO UN APROVECHAMIENTO DE 1.1 KM A LO LARGO DEL RÍO LA LABOR Y 2.0 KM SOBRE EL ARROYO EL JAGÜEY PARA UNA EXTRACCIÓN APROXIMADA DE 10,000 METROS CÚBICOS DE MATERIAL EN TODA EL ÁREA DEL PROYECTO.",
+            "cambio_uso_suelo": null,
+            "areas_forestales": null,
+            "observaciones": null,
+            "id_db": 99,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [],
+            "gaceta_id": "54-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": null,
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019HD048.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019HD048.pdf",
+              "_fetched_at": "2025-12-08T15:36:30.809388"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:36:31.608623"
+            }
+          },
+          {
+            "id": "01AG2019HD050",
+            "clave_proyecto": "01AG2019HD050",
+            "tipo_registro": "proyecto_ingresado",
+            "seccion_documento": "Proyectos ingresados Oficinas de Representación",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "OBRAS EN ZONA FEDERAL EN ARROYO SIN NOMBRE, CONDOMINIO MANGATA",
+            "promovente": "DESARROLLOS Y CONSTRUCCIONES DEL CENTRO S.A. DE C.V.",
+            "modalidad": "MIA PARTICULAR",
+            "tipo_proyecto": "vialidad",
+            "fecha_ingreso": "2019-10-16",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": "EL PROYECTO CONSISTE EN LA CONSTRUCCIÓN DE DIVERSAS OBRAS A DESARROLLARSE EN UN ARROYO SIN NOMBRE QUE SE UBICA AL INTERIOR DEL FRACCIONAMIENTO MANGATA Y CONSISTEN EN LA CONSTRUCCIÓN DE OBRAS EN LA ZONA FEDERAL DEL ARROYO SIN NOMBRE TALES COMO 3 PUENTES, 3 OBRAS DE ZAMPEADO, 1 SECCIÓN DE MUROL DE CONTENCIÓN, 3 LAVADEROS 2 SECCIONES DE TROTAPISTA, 4 CAIMANES, 1 SECCIÓN DE BANQUETA, 2 POZOS DE VISITA, SECCIONES DE UN COLECTOR SANITARIO (3 COLECTORES) Y SECCIONES DE COLECTOR DE AGUA POTABLE (3 COLECTORES).",
+            "cambio_uso_suelo": null,
+            "areas_forestales": null,
+            "observaciones": null,
+            "id_db": 100,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [],
+            "gaceta_id": "54-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": null,
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019HD050.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019HD050.pdf",
+              "_fetched_at": "2025-12-08T15:36:32.420116"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:36:33.214238"
+            }
+          },
+          {
+            "id": "01AG2019UD051",
+            "clave_proyecto": "01AG2019UD051",
+            "tipo_registro": "proyecto_ingresado",
+            "seccion_documento": "Proyectos ingresados Oficinas de Representación",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "PUENTE PEATONAL EN EL FRACCIONAMIENTO GRAN NATURA",
+            "promovente": "DESARROLLADORA RANMAN S.A. DE C.V.",
+            "modalidad": "MIA PARTICULAR",
+            "tipo_proyecto": "vialidad",
+            "fecha_ingreso": "2019-10-21",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": 43.55,
+              "total_hectareas": 0.004355,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": "CONSTRUCCION DE UN PUENTE PEATONAL SOBRE EL ARROYO LAS VIBORAS PARA EL EQUIPAMIENTO URBANO DEL FRACCIONAMIENTO GRAN NATURA EN EL MUNICIPIO DE AGUASCALIENTES, AGS. EL PUENTE PEATONAL CONTARÁ CON UNA SUPERFICIE DE 43.55 METROS CUADRADOS PRESENTANDO UNA LONGITUD DE 14.5 METROS Y 3 METROS DE ANCHO.",
+            "cambio_uso_suelo": null,
+            "areas_forestales": null,
+            "observaciones": null,
+            "id_db": 101,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [],
+            "gaceta_id": "54-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": null,
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019UD051.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019UD051.pdf",
+              "_fetched_at": "2025-12-08T15:36:34.016456"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:36:34.808965"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 6 registros encontrados, 4 proyectos ingresados, 1 resolutivos emitidos"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_53-19.pdf",
+      "año": 2019,
+      "gaceta_id": "53-19",
+      "fecha_publicacion": "2019-10-23",
+      "palabras_clave_encontradas": [
+        "Aguascalientes"
+      ],
+      "paginas": [
+        2
+      ],
+      "secciones": [
+        "Proyectos ingresados"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "53-19",
+          "fecha_publicacion": "2019-10-24",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 1,
+          "proyectos_ingresados": 1,
+          "resolutivos_emitidos": 0,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 0.0
+        },
+        "registros": [
+          {
+            "id": "01AG2019HD049",
+            "clave_proyecto": "01AG2019HD049",
+            "tipo_registro": "proyecto_ingresado",
+            "seccion_documento": "Proyectos Ingresados DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "SAN JOSE DE GRACIA",
+            "proyecto_nombre": "CONSTRUCCIÓN DE LÍNEA DE CONDUCCIÓN, REBOMBEO Y TANQUE ELEVADO LA CONGOJA, SAN JOSÉ DE GRACIA",
+            "promovente": "GOBIERNO DEL ESTADO DE AGUASCALIENTES",
+            "modalidad": "MIA PARTICULAR",
+            "tipo_proyecto": "hidraulico",
+            "fecha_ingreso": "2019-10-15",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": "Comunidad La Congoja, San José de Gracia, dentro de las ANP Estatal Sierra Fría y Federal Distrito de Riego 001",
+            "descripcion": "Consiste en la construcción de una línea de conducción de agua potable, estación de rebombeo y tanque elevado con capacidad de 40 m3 de capacidad y 10 metros de altura, todo ello en la comunidad La Congoja, San José de Gracia, ubicado dentro de las ANP Estatal Sierra Fría y Federal Distrito de Riego 001. La línea de conducción tendrá una longitud de 8,133.79 m y diámetro de 10.16 cm (4 pulgadas), equipamiento electromecánico en un pozo profundo existente y en el tanque de rebombeo, se colocará un tanque metálico elevado para el almacenamiento y distribución del agua. También incluirá una caseta de cloración e instalaciones eléctricas de media tensión.",
+            "cambio_uso_suelo": null,
+            "areas_forestales": null,
+            "observaciones": null,
+            "id_db": 102,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [
+              1
+            ],
+            "gaceta_id": "53-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2019/01AG2019HD049.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019HD049.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019HD049.pdf",
+              "_fetched_at": "2025-12-08T15:36:35.610079"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:36:36.404366"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 1 registros encontrados, 1 proyectos ingresados"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_52-19.pdf",
+      "año": 2019,
+      "gaceta_id": "52-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_51-19.pdf",
+      "año": 2019,
+      "gaceta_id": "51-19",
+      "fecha_publicacion": "2019-10-09",
+      "palabras_clave_encontradas": [
+        "Aguascalientes"
+      ],
+      "paginas": [
+        3
+      ],
+      "secciones": [
+        "Resolutivos emitidos"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "51-19",
+          "fecha_publicacion": "2019-10-10",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 1,
+          "proyectos_ingresados": 0,
+          "resolutivos_emitidos": 1,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 0.0
+        },
+        "registros": [
+          {
+            "id": "01AG2019V0018",
+            "clave_proyecto": "01AG2019V0018",
+            "tipo_registro": "resolutivo_emitido",
+            "seccion_documento": "Resolutivos emitidos DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "CALVILLO",
+            "proyecto_nombre": "LA PANADERA - EL TEMAZCAL, TRAMO LA PANADERA - LA LABOR DEL KM. 0+000 AL KM. 13+500, A SECCIÓN TIPO A2, EN EL ESTADO DE AGUASCALIENTES.",
+            "promovente": "SECRETARIA DE COMUNICACIONES Y TRANSPORTES CENTRO SCT AGUASCALIENTES",
+            "modalidad": "MIA REGIONAL",
+            "tipo_proyecto": "vialidad",
+            "fecha_ingreso": "2019-02-22",
+            "fecha_resolucion": "2019-08-30",
+            "estatus": "autorizado",
+            "vigencia": {
+              "construccion_anios": 10,
+              "operacion_anios": 25,
+              "texto_completo": "10 AÑOS, 25 AÑOS"
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": null,
+            "cambio_uso_suelo": null,
+            "areas_forestales": null,
+            "observaciones": null,
+            "id_db": 103,
+            "proyecto_ingresado_id": 136,
+            "resolutivos_ids": [],
+            "gaceta_id": "51-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2019/01AG2019V0018.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019V0018.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019V0018.pdf",
+              "_fetched_at": "2025-12-08T15:36:37.196725"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:36:37.989699"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 1 registros encontrados, 1 resolutivos emitidos"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_50-19.pdf",
+      "año": 2019,
+      "gaceta_id": "50-19",
+      "fecha_publicacion": "2019-10-02",
+      "palabras_clave_encontradas": [
+        "Aguascalientes"
+      ],
+      "paginas": [
+        6
+      ],
+      "secciones": [
+        "Proyectos ingresados"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "50-19",
+          "fecha_publicacion": "2019-10-03",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 1,
+          "proyectos_ingresados": 1,
+          "resolutivos_emitidos": 0,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 0.0
+        },
+        "registros": [
+          {
+            "id": "01AG2019HD041",
+            "clave_proyecto": "01AG2019HD041",
+            "tipo_registro": "proyecto_ingresado",
+            "seccion_documento": "Proyectos Ingresados Oficinas de Representación",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "REHABILITACIÓN DEL CAUCE Y MANTENIMIENTO DE OBRAS SOBRE UN TRAMO DE LA ZONA FEDERAL DEL ARROYO LA HACIENDA DE SAN NICOLÁS",
+            "promovente": "CADAQUÉS RESIDENCIAL, S.A.P.I. DE C.V.",
+            "modalidad": "MIA PARTICULAR",
+            "tipo_proyecto": "hidraulico",
+            "fecha_ingreso": "2019-07-29",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": "EL PROYECTO CONSISTE EN LA REHABILITACIÓN DEL CAUCE Y MANTENIMIENTO DE OBRAS SOBRE UN TRAMO DE LA ZONA FEDERAL DEL ARROYO LA HACIENDA DE SAN NICOLÁS. UBICADO EN EL MUNICIPIO DE AGUASCALIENTES, ESTADO DE AGUASCALIENTES. LA LONGITUD DEL TRAMO DEL ARROYO DONDE SE PRETENDE EJECUTAR EL PROYECTO ES DE APROXIMADAMENTE 500 METROS.",
+            "cambio_uso_suelo": false,
+            "areas_forestales": false,
+            "observaciones": null,
+            "id_db": 104,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [],
+            "gaceta_id": "50-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": null,
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019HD041.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019HD041.pdf",
+              "_fetched_at": "2025-12-08T15:36:38.779467"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:36:39.575974"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 1 registros encontrados, 1 proyectos ingresados"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_49-19.pdf",
+      "año": 2019,
+      "gaceta_id": "49-19",
+      "fecha_publicacion": "2019-09-25",
+      "palabras_clave_encontradas": [
+        "Aguascalientes"
+      ],
+      "paginas": [
+        11
+      ],
+      "secciones": [
+        "Cambio de uso de suelo"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "49-19",
+          "fecha_publicacion": "2019-09-25",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 1,
+          "proyectos_ingresados": 0,
+          "resolutivos_emitidos": 1,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 0.0
+        },
+        "registros": [
+          {
+            "id": "01AG2018FD002",
+            "clave_proyecto": "01AG2018FD002",
+            "tipo_registro": "resolutivo_emitido",
+            "seccion_documento": "Resolutivos emitidos Oficinas de Representación",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "FRACCIONAMIENTO LOS COBOS",
+            "promovente": "BANCO INTERACCIONES S A",
+            "modalidad": "MIA PARTICULAR",
+            "tipo_proyecto": "habitacional",
+            "fecha_ingreso": "2018-01-09",
+            "fecha_resolucion": "2019-08-23",
+            "estatus": null,
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": "NO APLICA"
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": null,
+            "cambio_uso_suelo": null,
+            "areas_forestales": null,
+            "observaciones": null,
+            "id_db": 105,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [],
+            "gaceta_id": "49-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": null,
+              "estudio": "/edoc/documentos/ags/estudios/2018/01AG2018FD002.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2018/01AG2018FD002.pdf",
+              "_fetched_at": "2025-12-08T15:36:40.372950"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:36:41.176907"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 1 registros encontrados, 1 resolutivos emitidos"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_48-19.pdf",
+      "año": 2019,
+      "gaceta_id": "48-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_47-19.pdf",
+      "año": 2019,
+      "gaceta_id": "47-19",
+      "fecha_publicacion": "2019-09-11",
+      "palabras_clave_encontradas": [
+        "Aguascalientes"
+      ],
+      "paginas": [
+        3,
+        4
+      ],
+      "secciones": [
+        "Resolutivos emitidos"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "47-19",
+          "fecha_publicacion": "2019-09-11",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 2,
+          "proyectos_ingresados": 0,
+          "resolutivos_emitidos": 2,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 0.0
+        },
+        "registros": [
+          {
+            "id": "01AG2019HD024",
+            "clave_proyecto": "01AG2019HD024",
+            "tipo_registro": "resolutivo_emitido",
+            "seccion_documento": "Resolutivos DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "COLECTOR PLUVIAL DEL PASO A DESNIVEL DE AV. AGUASCALIENTES CON AV. ANTIGUO CAMINO A SAN IGNACIO",
+            "promovente": "GOBIERNO DEL ESTADO DE AGUASCALIENTES",
+            "modalidad": "MIA PARTICULAR",
+            "tipo_proyecto": "hidraulico",
+            "fecha_ingreso": "2019-04-16",
+            "fecha_resolucion": "2019-08-15",
+            "estatus": "autorizado",
+            "vigencia": {
+              "construccion_anios": 1,
+              "operacion_anios": 25,
+              "texto_completo": "1 AÑO, 25 AÑOS"
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": null,
+            "cambio_uso_suelo": null,
+            "areas_forestales": null,
+            "observaciones": null,
+            "id_db": 106,
+            "proyecto_ingresado_id": 127,
+            "resolutivos_ids": [],
+            "gaceta_id": "47-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2019/01AG2019HD024.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019HD024.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019HD024.pdf",
+              "_fetched_at": "2025-12-08T15:36:41.976751"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:36:42.772541"
+            }
+          },
+          {
+            "id": "01AG2019UD021",
+            "clave_proyecto": "01AG2019UD021",
+            "tipo_registro": "resolutivo_emitido",
+            "seccion_documento": "Resolutivos DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "CONSTRUCCION DE PUENTE VEHICULAR SOBRE ARROYO LA HACIENDA EN ACCESO A LA UNIVERSIDAD METROPOLITANA DE AGUASCALIENTES",
+            "promovente": "GOBIERNO DEL ESTADO DE AGUASCALIENTES",
+            "modalidad": "MIA PARTICULAR",
+            "tipo_proyecto": "vialidad",
+            "fecha_ingreso": "2019-03-19",
+            "fecha_resolucion": "2019-08-23",
+            "estatus": "autorizado",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": 25,
+              "texto_completo": "10 MESES, 25 AÑOS"
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": null,
+            "cambio_uso_suelo": null,
+            "areas_forestales": null,
+            "observaciones": null,
+            "id_db": 107,
+            "proyecto_ingresado_id": 119,
+            "resolutivos_ids": [],
+            "gaceta_id": "47-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": null,
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019UD021.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019UD021.pdf",
+              "_fetched_at": "2025-12-08T15:36:43.578070"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:36:44.378714"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 2 registros encontrados, 2 resolutivos emitidos"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_46-19.pdf",
+      "año": 2019,
+      "gaceta_id": "46-19",
+      "fecha_publicacion": "2019-09-04",
+      "palabras_clave_encontradas": [
+        "Aguascalientes"
+      ],
+      "paginas": [
+        2,
+        4
+      ],
+      "secciones": [
+        "Proyectos ingresados",
+        "Resolutivos emitidos"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "46-19",
+          "fecha_publicacion": "2019-09-04",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 1,
+          "proyectos_ingresados": 1,
+          "resolutivos_emitidos": 0,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 109.09
+        },
+        "registros": [
+          {
+            "id": "14JA2019E0095",
+            "clave_proyecto": "14JA2019E0095",
+            "tipo_registro": "proyecto_ingresado",
+            "seccion_documento": "Proyectos Ingresados DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "ECOPARQUE SOLAR AGUASCALIENTES II",
+            "promovente": "ECOPARQUE SOLAR AGUASCALIENTES II, S.A.P.I DE C.V.",
+            "modalidad": "MIA REGIONAL",
+            "tipo_proyecto": "energia",
+            "fecha_ingreso": "2019-09-04",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": 1090900,
+              "total_hectareas": 109.09,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": "vegetación secundaria arbustiva de pastizal natural",
+              "remocion": "total"
+            },
+            "ubicacion_especifica": null,
+            "descripcion": "La empresa Ecoparque Solar Aguascalientes II, S.A.P.I de C.V., sometió al procedimiento de evaluación de impacto ambiental a través de una MIA-R el proyecto denominado Ecoparque Solar Aguascalientes II que consiste en la preparación, construcción, operación y mantenimiento de un parque fotovoltaico, el cual requiere de un área de paneles solares conformado por aproximadamente 315,840 módulos policristalinos de 380 WP, para generar 90 MWAC en el punto de interconexión y una capacidad máxima de generación de 120 MWAC, 30 estaciones de media tensión, red subterránea de media tensión, inversores tipo string, carriles de aceleración y desaceleración, caminos internos, se elevadora e instalaciones temporales, el polígono total tiene una superficie de 264.58 ha, se encuentra ubicado en dos municipios, pertenecientes a los estados de Aguascalientes y Jalisco. En el estado de Aguascalientes, se encuentra en el municipio de Aguascalientes donde ocupará una superficie de 109.09 ha y dentro del estado de Jalisco en el municipio de Encarnación de Díaz en un área de 155.19 ha, de la superficie total 113.20 ha presentan vegetación secundaria arbustiva de pastizal natural la cual requiere ser desmontada.",
+            "cambio_uso_suelo": true,
+            "areas_forestales": false,
+            "observaciones": null,
+            "id_db": 108,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [],
+            "gaceta_id": "46-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": null,
+              "estudio": "/edoc/documentos/jal/estudios/2019/14JA2019E0095.pdf",
+              "resolutivo": null,
+              "_fetched_at": "2025-12-08T15:36:45.185250"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:36:45.983254"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 1 registros encontrados, 1 proyectos ingresados"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_45-19.pdf",
+      "año": 2019,
+      "gaceta_id": "45-19",
+      "fecha_publicacion": "2019-08-28",
+      "palabras_clave_encontradas": [
+        "Aguascalientes"
+      ],
+      "paginas": [
+        3,
+        4
+      ],
+      "secciones": [
+        "Cambio de uso de suelo",
+        "Proyectos ingresados"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "45-19",
+          "fecha_publicacion": "2019-08-29",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 0,
+          "proyectos_ingresados": 0,
+          "resolutivos_emitidos": 0,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 0.0
+        },
+        "registros": []
+      },
+      "resumen": "No se encontraron registros de Aguascalientes en esta gaceta"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_44-19.pdf",
+      "año": 2019,
+      "gaceta_id": "44-19",
+      "fecha_publicacion": "2019-08-21",
+      "palabras_clave_encontradas": [
+        "Aguascalientes"
+      ],
+      "paginas": [
+        2,
+        3
+      ],
+      "secciones": [
+        "Proyectos ingresados",
+        "Resolutivos emitidos"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "44-19",
+          "fecha_publicacion": "2019-08-22",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 2,
+          "proyectos_ingresados": 1,
+          "resolutivos_emitidos": 1,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 0.0
+        },
+        "registros": [
+          {
+            "id": "01AG2019HD042",
+            "clave_proyecto": "01AG2019HD042",
+            "tipo_registro": "proyecto_ingresado",
+            "seccion_documento": "Proyectos Ingresados DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "JESUS MARIA",
+            "proyecto_nombre": "CONSTRUCCIÓN DE COLECTOR SANITARIO EN LA ZONA CONURBADA DE JESÚS MARÍA - TEPETATES –MARAVILLAS",
+            "promovente": "GOBIERNO DEL ESTADO DE AGUASCALIENTES",
+            "modalidad": "MIA PARTICULAR",
+            "tipo_proyecto": "hidraulico",
+            "fecha_ingreso": "2019-08-14",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": "CONSTRUCCIÓN DE UN COLECTOR SANITARIO DISEÑADO PARA UN GASTO PROMEDIO DE 86.94 LPS, CON UNA LONGITUD DE 6,840.64 M CON TUBERÍAS DE PVC, PAD Y CONCRETO REFORZADO CON DIÁMETROS DE 0.25, 0.45, 0.61, 0.71 Y 0.91 M, PARA CAPTURAR Y CONDUCIR DESCARGAS DE AGUAS RESIDUALES A UNA PLATA DE TRATAMIENTO. SE CONSTRUIRÁN 88 POZOS TIPO ESPECIALES, 52 DE TIPO COMÚN, UN POZO CAJA, UN POZO UNIÓN TIPO I, 1 POZO UNIÓN CAJA TIPO II Y 1 POZO CAJA CON CAÍDA ESCALONADA. LOS ANCHOS DE LA ZANJA SERÁN DE 0.80 M, 1.10 M, 1.30 M, 1.5 M Y 1.70 M CON PROFUNDIDAD VARIABLE.",
+            "cambio_uso_suelo": false,
+            "areas_forestales": false,
+            "observaciones": null,
+            "id_db": 109,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [
+              5
+            ],
+            "gaceta_id": "44-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": null,
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019HD042.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019HD042.pdf",
+              "_fetched_at": "2025-12-08T15:36:46.777188"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:36:47.571395"
+            }
+          },
+          {
+            "id": "01AG2018ID017",
+            "clave_proyecto": "01AG2018ID017",
+            "tipo_registro": "resolutivo_emitido",
+            "seccion_documento": "Resolutivos DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "IMHAPARK",
+            "promovente": "INDUSTRIA MEXICANA DEL HIERRO Y EL ACERO S.A. DE C.V.",
+            "modalidad": "MIA PARTICULAR",
+            "tipo_proyecto": "industrial",
+            "fecha_ingreso": "2018-07-04",
+            "fecha_resolucion": "2019-07-31",
+            "estatus": "autorizado",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": "NO APLICA"
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": null,
+            "cambio_uso_suelo": false,
+            "areas_forestales": false,
+            "observaciones": null,
+            "id_db": 110,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [],
+            "gaceta_id": "44-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": null,
+              "estudio": "/edoc/documentos/ags/estudios/2018/01AG2018ID017.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2018/01AG2018ID017.pdf",
+              "_fetched_at": "2025-12-08T15:36:48.373496"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:36:49.178695"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 2 registros encontrados, 1 proyectos ingresados, 1 resolutivos emitidos"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_43-19.pdf",
+      "año": 2019,
+      "gaceta_id": "43-19",
+      "fecha_publicacion": "2019-08-14",
+      "palabras_clave_encontradas": [
+        "Aguascalientes"
+      ],
+      "paginas": [
+        2
+      ],
+      "secciones": [
+        "Proyectos ingresados"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "43-19",
+          "fecha_publicacion": "2019-08-15",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 0,
+          "proyectos_ingresados": 0,
+          "resolutivos_emitidos": 0,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 0.0
+        },
+        "registros": []
+      },
+      "resumen": "No se encontraron registros de Aguascalientes en esta gaceta"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_42-19.pdf",
+      "año": 2019,
+      "gaceta_id": "42-19",
+      "fecha_publicacion": "2019-08-07",
+      "palabras_clave_encontradas": [
+        "Aguascalientes"
+      ],
+      "paginas": [
+        9
+      ],
+      "secciones": [
+        "Cambio de uso de suelo"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "42-19",
+          "fecha_publicacion": "2019-08-07",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 1,
+          "proyectos_ingresados": 0,
+          "resolutivos_emitidos": 0,
+          "tramites_unificados": 1,
+          "consultas_publicas": 0,
+          "hectareas_totales": 11.13755
+        },
+        "registros": [
+          {
+            "id": "01/MA-0063/07/19",
+            "clave_proyecto": "01/MA-0063/07/19",
+            "tipo_registro": "tramite_unificado",
+            "seccion_documento": "Trámites Unificados de Cambio de Uso de Suelo y/o Aprovechamiento Forestal",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "CALVILLO",
+            "proyecto_nombre": "PLANTACIÓN COMERCIAL MEZCAL INTRUSO",
+            "promovente": "MEZCAL INTRUSO, S.A. DE C.V.",
+            "modalidad": "DTU.-MODALIDAD A",
+            "tipo_proyecto": "forestal",
+            "fecha_ingreso": "2019-07-18",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": 111375.5,
+              "total_hectareas": 11.13755,
+              "cambio_uso_suelo_m2": 111375.5,
+              "cambio_uso_suelo_hectareas": 11.13755
+            },
+            "vegetacion": {
+              "tipo": "matorral xerófilo crasicaule y matorral subtropical",
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": "Se solicita una superficie para cambio de uso de suelo en terrenos forestales de 11-13-75.5 hectáreas correspondientes a vegetación de matorral xerófilo crasicaule y matorral subtropical para el desarrollo de un proyecto de plantación forestal comercial de mezcal. El proyecto pretende desarrollarse en el municipio de Calvillo Aguascalientes.",
+            "cambio_uso_suelo": true,
+            "areas_forestales": true,
+            "observaciones": null,
+            "id_db": 111,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [],
+            "gaceta_id": "42-19",
+            "semarnat_data": {
+              "mensaje": "error",
+              "detalle": null,
+              "_fetched_at": "2025-12-08T15:36:49.970126"
+            },
+            "semarnat_historial": {
+              "mensaje": "success",
+              "historial": [
+                {
+                  "hitorialConsecutivo": "01/MA-0063/07/19",
+                  "historialFechaTurn": "18-07-2019",
+                  "descipcionSituacion": "RECEPCION DEL TRAMITE EN VENTANILLA"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0063/07/19",
+                  "historialFechaTurn": "19-07-2019",
+                  "descipcionSituacion": "ENVIO AL AREA CORRESPONDIENTE"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0063/07/19",
+                  "historialFechaTurn": "08-08-2019",
+                  "descipcionSituacion": "RECEPCION DEL TRAMITE EN EL AREA CORRESPONDIENTE"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0063/07/19",
+                  "historialFechaTurn": "08-08-2019",
+                  "descipcionSituacion": "INTEGRACION DE EXPEDIENTE"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0063/07/19",
+                  "historialFechaTurn": "08-08-2019",
+                  "descipcionSituacion": "EVALUACION"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0063/07/19",
+                  "historialFechaTurn": "08-08-2019",
+                  "descipcionSituacion": "ENVIO DE OFICIO DE DATOS DE CALIDAD PARA RUBRICA"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0063/07/19",
+                  "historialFechaTurn": "08-08-2019",
+                  "descipcionSituacion": "OFICIO DE CALIDAD DE DATOS TURNADO PARA FIRMAR"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0063/07/19",
+                  "historialFechaTurn": "08-08-2019",
+                  "descipcionSituacion": "OFICIO DE CALIDAD DE DATOS TURNADO AL ECC PARA ENTREGA"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0063/07/19",
+                  "historialFechaTurn": "30-10-2019",
+                  "descipcionSituacion": "SUSPENDIDO EN POR SOLICITUD DE CALIDAD DE DATOS"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0063/07/19",
+                  "historialFechaTurn": "09-01-2020",
+                  "descipcionSituacion": "TRAMITE CON OFICIO DE CALIDAD DE DATOS ATENDIDO Y TURNADO AL AREA CORRESPONDIENTE"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0063/07/19",
+                  "historialFechaTurn": "18-02-2020",
+                  "descipcionSituacion": "EVALUACION"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0063/07/19",
+                  "historialFechaTurn": "12-03-2020",
+                  "descipcionSituacion": "REQUERIMIENTO DE PAGO AL FONDO FORESTAL MEXICANO TURNADO AL ECC"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0063/07/19",
+                  "historialFechaTurn": "04-06-2020",
+                  "descipcionSituacion": "REQUERIMIENTO DE PAGO AL FONDO FORESTAL MEXICANO EN EL ECC"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0063/07/19",
+                  "historialFechaTurn": "04-06-2020",
+                  "descipcionSituacion": "REQUERIMIENTO DE PAGO AL FONDO FORESTAL MEXICANO"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0063/07/19",
+                  "historialFechaTurn": "01-10-2020",
+                  "descipcionSituacion": "RECEPCION DEL PAGO AL FONDO FORESTAL MEXICANO Y TURNADO AL AREA CORRESPONDIENTE"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0063/07/19",
+                  "historialFechaTurn": "01-10-2020",
+                  "descipcionSituacion": "EVALUACION"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0063/07/19",
+                  "historialFechaTurn": "01-10-2020",
+                  "descipcionSituacion": "ELABORACION DE PROPUESTA DE RESOLUCION"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0063/07/19",
+                  "historialFechaTurn": "01-10-2020",
+                  "descipcionSituacion": "ENVIO DE DICTAMEN PARA RUBRICA"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0063/07/19",
+                  "historialFechaTurn": "01-10-2020",
+                  "descipcionSituacion": "ENVIO DEL DICTAMEN RUBRICADO PARA FIRMA"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0063/07/19",
+                  "historialFechaTurn": "01-10-2020",
+                  "descipcionSituacion": "RESOLUTIVO FIRMADO Y RESUELTO"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0063/07/19",
+                  "historialFechaTurn": "01-10-2020",
+                  "descipcionSituacion": "RECEPCION DE RESOLUTIVO EN EL ECC PARA SU ENTREGA"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0063/07/19",
+                  "historialFechaTurn": "05-11-2020",
+                  "descipcionSituacion": "NOTIFICACION AL PROMOVENTE O GESTOR"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0063/07/19",
+                  "historialFechaTurn": "05-11-2020",
+                  "descipcionSituacion": "RESOLUTIVO ENTREGADO AL PROMOVENTE O GESTOR, TRAMITE CONCLUIDO"
+                }
+              ],
+              "_fetched_at": "2025-12-08T15:36:50.779694"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 1 registros encontrados"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_41-19.pdf",
+      "año": 2019,
+      "gaceta_id": "41-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_40-19.pdf",
+      "año": 2019,
+      "gaceta_id": "40-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_39-19.pdf",
+      "año": 2019,
+      "gaceta_id": "39-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_38-19.pdf",
+      "año": 2019,
+      "gaceta_id": "38-19",
+      "fecha_publicacion": "2019-07-17",
+      "palabras_clave_encontradas": [
+        "Aguascalientes"
+      ],
+      "paginas": [
+        1
+      ],
+      "secciones": [
+        "Proyectos ingresados"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "38-19",
+          "fecha_publicacion": "2019-07-17",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 1,
+          "proyectos_ingresados": 1,
+          "resolutivos_emitidos": 0,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 0.0
+        },
+        "registros": [
+          {
+            "id": "01AG2019HD031",
+            "clave_proyecto": "01AG2019HD031",
+            "tipo_registro": "proyecto_ingresado",
+            "seccion_documento": "Proyectos ingresados DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "PABELLON DE ARTEAGA",
+            "proyecto_nombre": "CONSTRUCCION DE PUENTE PEATONAL COMUNIDAD EMILIANO ZAPATA",
+            "promovente": "GOBIERNO DEL ESTADO DE AGUASCALIENTES",
+            "modalidad": "MIA PARTICULAR",
+            "tipo_proyecto": "vialidad",
+            "fecha_ingreso": "2019-06-06",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": "EL PROYECTO CONSISTE EN UNA OBRA CIVIL QUE CRUCE EL CAUCE DEL ARROYO SANTIAGO A TRAVÉS DE LA CONSTRUCCIÓN DE UN PUENTE PEATONAL DE 31.40M DE LONGITUD Y 3.41 M DE ALTURA; COMPUESTO POR UN CLARO DE 21.54 M DE LONGITUD, Y ACCESOS DE 1.55M DE ANCHO, LOS CUALES CONTARAN CON RAMPAS Y ESCALERAS EN SUS DOS EXTREMOS PARA FACILITAR SU ACCESO.",
+            "cambio_uso_suelo": false,
+            "areas_forestales": false,
+            "observaciones": null,
+            "id_db": 112,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [
+              12
+            ],
+            "gaceta_id": "38-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": null,
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019HD031.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019HD031.pdf",
+              "_fetched_at": "2025-12-08T15:36:51.585275"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:36:52.378771"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 1 registros encontrados, 1 proyectos ingresados"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_37-19.pdf",
+      "año": 2019,
+      "gaceta_id": "37-19",
+      "fecha_publicacion": "2019-07-10",
+      "palabras_clave_encontradas": [
+        "Aguascalientes"
+      ],
+      "paginas": [
+        5
+      ],
+      "secciones": [
+        "Proyectos ingresados"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "37-19",
+          "fecha_publicacion": "2019-07-10",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 1,
+          "proyectos_ingresados": 1,
+          "resolutivos_emitidos": 0,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 0.0
+        },
+        "registros": [
+          {
+            "id": "01AG2019HD032",
+            "clave_proyecto": "01AG2019HD032",
+            "tipo_registro": "proyecto_ingresado",
+            "seccion_documento": "Proyectos Ingresados Oficinas de Representación",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "CALVILLO",
+            "proyecto_nombre": "BANCO DE MATERIALES PÉTREOS LA MURALLA RÍO MEZQUITILLOS",
+            "promovente": "ISMAEL MACIAS DE LOERA",
+            "modalidad": "MIA PARTICULAR",
+            "tipo_proyecto": "mineria",
+            "fecha_ingreso": "2019-06-24",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": "EL PROYECTO CONSISTE EN EL ESTABLECIMIENTO Y OPERACION DE UN BANCO DE MATERIALES PARA LA EXTRACCION DE ARENA Y GRAVA EN GREÑA DE UN TRAMO DEL RIO MEZQUITILLOS AFLUENTE DEL RIO LA LABOR CALVILLO AGUASCALIENTES.",
+            "cambio_uso_suelo": null,
+            "areas_forestales": null,
+            "observaciones": null,
+            "id_db": 113,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [],
+            "gaceta_id": "37-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2019/01AG2019HD032.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019HD032.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019HD032.pdf",
+              "_fetched_at": "2025-12-08T15:36:53.181500"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:36:53.984326"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 1 registros encontrados, 1 proyectos ingresados"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_36-19.pdf",
+      "año": 2019,
+      "gaceta_id": "36-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_35-19.pdf",
+      "año": 2019,
+      "gaceta_id": "35-19",
+      "fecha_publicacion": "2019-06-26",
+      "palabras_clave_encontradas": [
+        "Aguascalientes"
+      ],
+      "paginas": [
+        1
+      ],
+      "secciones": [
+        "Proyectos ingresados"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "35-19",
+          "fecha_publicacion": "2019-06-26",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 1,
+          "proyectos_ingresados": 1,
+          "resolutivos_emitidos": 0,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 286.6029
+        },
+        "registros": [
+          {
+            "id": "01AG2019E0031",
+            "clave_proyecto": "01AG2019E0031",
+            "tipo_registro": "proyecto_ingresado",
+            "seccion_documento": "Proyectos Ingresados DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "PROYECTO SOLAR FOTOVOLTAICO PF PROTÓN I – 100 MW",
+            "promovente": "PF PROTON I, S. A. P. I. DE C. V.",
+            "modalidad": "MIA REGIONAL",
+            "tipo_proyecto": "energia",
+            "fecha_ingreso": "2019-06-20",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": 2866029,
+              "total_hectareas": 286.6029,
+              "cambio_uso_suelo_m2": 882343,
+              "cambio_uso_suelo_hectareas": 88.2343
+            },
+            "vegetacion": {
+              "tipo": "pastizal natural",
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": "El proyecto consiste en la construcción y puesta en operación de un parque de paneles solares (planta fotovoltaica), en un predio que cuenta con una superficie total de 286.6029 ha, incluyendo el cambio de uso de suelo únicamente en una extensión de 88.2343 ha que sustentan vegetación de pastizal natural, con una capacidad instalada de generación de 100 MW, evacuando la energía generada a través de una interconexión a la red nacional de transmisión por medio de una apertura de línea de 230 kV de 0.580 km aproximadamente, proveniente de la subestación propia de la planta, que se encargará de elevar la tensión de generación al nivel de tensión de la subestación propiedad de CFE.",
+            "cambio_uso_suelo": true,
+            "areas_forestales": null,
+            "observaciones": null,
+            "id_db": 114,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [
+              92
+            ],
+            "gaceta_id": "35-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2019/01AG2019E0031.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019E0031.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019E0031.pdf",
+              "_fetched_at": "2025-12-08T15:36:54.783852"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:36:55.586824"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 1 registros encontrados, 1 proyectos ingresados"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_34-19.pdf",
+      "año": 2019,
+      "gaceta_id": "34-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_33-19.pdf",
+      "año": 2019,
+      "gaceta_id": "33-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_32-19.pdf",
+      "año": 2019,
+      "gaceta_id": "032-19",
+      "fecha_publicacion": "2019-06-12",
+      "palabras_clave_encontradas": [
+        "Aguascalientes",
+        "Ags"
+      ],
+      "paginas": [
+        1,
+        4
+      ],
+      "secciones": [
+        "Proyectos ingresados"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "032-19",
+          "fecha_publicacion": "2019-06-13",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 2,
+          "proyectos_ingresados": 2,
+          "resolutivos_emitidos": 0,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 0.0
+        },
+        "registros": [
+          {
+            "id": "01AG2019HD026",
+            "clave_proyecto": "01AG2019HD026",
+            "tipo_registro": "proyecto_ingresado",
+            "seccion_documento": "Proyectos Ingresados DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "CONSTRUCCIÓN DEL PASO A DESNIVEL EN AV. AGS-AV. MARIANO HIDALGO, INCLUYE COLECTOR PLUVIAL",
+            "promovente": "GOBIERNO DEL ESTADO DE AGUASCALIENTES",
+            "modalidad": "MIA PARTICULAR",
+            "tipo_proyecto": "vialidad",
+            "fecha_ingreso": "2019-04-22",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": 15000,
+              "total_hectareas": 1.5,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": "EL PROYECTO ES PROMOVIDO POR EL GOBIERNO DEL ESTADO DE AGUASCALIENTES Y CONSISTE EN LA CONSTRUCCION DE UN NUEVO PASO A DESNIVEL, DANDO CONTINUIDAD A LA AV. AGUASCALIENTES CON 4 CARRILES DE CIRCULACION CONTINUA Y UN RAMAL TAMBIEN A DESNIVEL DE AV. MARIANO HIDALGO A AV. AGUASCALIENTES PONIENTE CON UNA LONGITUD DE 15,000M2. SE INCLUYE ADEMAS, UN COLECTOR PLUVIAL DE UNA SUPERFICIE DE 847M, EN EL MUNICIPIO DE AGUASCALIENTES, ESTADO DE AGUASCALIENTES.",
+            "cambio_uso_suelo": false,
+            "areas_forestales": false,
+            "observaciones": null,
+            "id_db": 115,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [
+              97
+            ],
+            "gaceta_id": "032-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2019/01AG2019HD026.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019HD026.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019HD026.pdf",
+              "_fetched_at": "2025-12-08T15:36:56.388329"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:36:57.190047"
+            }
+          },
+          {
+            "id": "01AG2019HD030",
+            "clave_proyecto": "01AG2019HD030",
+            "tipo_registro": "proyecto_ingresado",
+            "seccion_documento": "Proyectos Ingresados Oficinas de Representación",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "CANAL PLUVIAL RESIDENCIAL LAS PLAZAS",
+            "promovente": "RESIDENCIAL LAS PLAZAS, S.A. DE C.V.",
+            "modalidad": "MIA PARTICULAR",
+            "tipo_proyecto": "hidraulico",
+            "fecha_ingreso": "2019-05-28",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": 7640.6,
+              "total_hectareas": 0.76406,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": "LA OBRA A EVALUAR EN MATERIA DE IMPACTO AMBIENTAL CONSISTE EN LA CONSTRUCCIÓN DE UN ZAMPEADO Y LA NIVELACIÓN Y DESAZOLVE DE UNA SECCIÓN DE LA ZONA FEDERAL DEL CANAL SIN NOMBRE, LA CUAL COLINDA CON RESIDENCIAL LAS PLAZAS. EL ZAMPEADO OCUPARÁ UNA SUPERFICIE DE 212 M2, Y SE DESAZOLVARÁ Y NIVELARÁ 7,428.6 M2, CORRESPONDIENTE A LA ZONA FEDERAL DESDE EL LÍMITE DEL DESARROLLO RESIDENCIAL LAS PLAZAS HASTA EL CRUCE DEL CANAL CON LAS VÍAS FÉRREAS.",
+            "cambio_uso_suelo": false,
+            "areas_forestales": false,
+            "observaciones": null,
+            "id_db": 116,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [],
+            "gaceta_id": "032-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": null,
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019HD030.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019HD030.pdf",
+              "_fetched_at": "2025-12-08T15:36:57.989699"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:36:58.787827"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 2 registros encontrados, 2 proyectos ingresados"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_31-19.pdf",
+      "año": 2019,
+      "gaceta_id": "31-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_30-19.pdf",
+      "año": 2019,
+      "gaceta_id": "30-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_29-19.pdf",
+      "año": 2019,
+      "gaceta_id": "29-19",
+      "fecha_publicacion": "2019-06-05",
+      "palabras_clave_encontradas": [
+        "Aguascalientes"
+      ],
+      "paginas": [
+        2
+      ],
+      "secciones": [
+        "Cambio de uso de suelo"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "29-19",
+          "fecha_publicacion": "2019-06-06",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 1,
+          "proyectos_ingresados": 0,
+          "resolutivos_emitidos": 0,
+          "tramites_unificados": 1,
+          "consultas_publicas": 0,
+          "hectareas_totales": 15.0258
+        },
+        "registros": [
+          {
+            "id": "01AG2019H0030",
+            "clave_proyecto": "01AG2019H0030",
+            "tipo_registro": "tramite_unificado",
+            "seccion_documento": "Trámites Unificados DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "DISPOSICION FINAL DE LOS LODOS PROVENIENTES DE LA PLANTA DE TRATAMIENTO DE AGUAS RESIDUALES DE AGUASCALIENTES EN UN MONORELLENO",
+            "promovente": "INSTITUTO DEL AGUA DEL ESTADO",
+            "modalidad": "DTU. MODALIDAD B",
+            "tipo_proyecto": "hidraulico",
+            "fecha_ingreso": "2019-05-31",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": 150258,
+              "total_hectareas": 15.0258,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": "matorral espinoso crasicaule",
+              "remocion": "total"
+            },
+            "ubicacion_especifica": null,
+            "descripcion": "El proyecto es promovido por el Instituto del Agua del Estado y consiste en la remoción de vegetación forestal en una superficie de 15.0258 ha de matorral espinoso crasicaule, para la construcción de un monorelleno para la disposición final de lodos provenientes de la planta de tratamiento de aguas residuales, biodigestión de lodos y cogeneración de energía limpia con esquema de autoconsumo, la disposición de los lodos oscilará entre las 51 y 99 ton/día. Así mismo incluye la construcción de tres pasos-puente tipo alcantarilla en la zona federal y cauce del arroyo La Trinidad. El proyecto se desarrollará en un predio con una superficie de 34.9 ha en el municipio de Aguascalientes, estado de Aguascalientes.",
+            "cambio_uso_suelo": true,
+            "areas_forestales": true,
+            "observaciones": null,
+            "id_db": 117,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [],
+            "gaceta_id": "29-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2019/01AG2019H0030.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019H0030.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019H0030.pdf",
+              "_fetched_at": "2025-12-08T15:36:59.583864"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:37:00.383539"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 1 registros encontrados"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_28-19.pdf",
+      "año": 2019,
+      "gaceta_id": "28-19",
+      "fecha_publicacion": "2019-05-29",
+      "palabras_clave_encontradas": [
+        "Aguascalientes"
+      ],
+      "paginas": [
+        2
+      ],
+      "secciones": [
+        "Resolutivos emitidos"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "28-19",
+          "fecha_publicacion": "2019-05-29",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 1,
+          "proyectos_ingresados": 0,
+          "resolutivos_emitidos": 1,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 0.0
+        },
+        "registros": [
+          {
+            "id": "01AG2018E0040",
+            "clave_proyecto": "01AG2018E0040",
+            "tipo_registro": "resolutivo_emitido",
+            "seccion_documento": "Resolutivos DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "AGUASCALIENTES SUR II",
+            "promovente": "SOLAR DE LA SIERRA, S.A.P.I. DE C.V.",
+            "modalidad": "MIA REGIONAL",
+            "tipo_proyecto": "energia",
+            "fecha_ingreso": "2018-11-09",
+            "fecha_resolucion": "2019-05-21",
+            "estatus": "autorizado",
+            "vigencia": {
+              "construccion_anios": 2,
+              "operacion_anios": 30,
+              "texto_completo": "24 MESES 30 AÑOS"
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": null,
+            "cambio_uso_suelo": null,
+            "areas_forestales": null,
+            "observaciones": null,
+            "id_db": 118,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [],
+            "gaceta_id": "28-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2018/01AG2018E0040.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2018/01AG2018E0040.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2018/01AG2018E0040.pdf",
+              "_fetched_at": "2025-12-08T15:37:01.190514"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:37:01.982701"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 1 registros encontrados, 1 resolutivos emitidos"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_27-19.pdf",
+      "año": 2019,
+      "gaceta_id": "27-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_26-19.pdf",
+      "año": 2019,
+      "gaceta_id": "26-19",
+      "fecha_publicacion": "2019-05-15",
+      "palabras_clave_encontradas": [
+        "Aguascalientes"
+      ],
+      "paginas": [
+        1,
+        3
+      ],
+      "secciones": [
+        "Proyectos ingresados",
+        "Resolutivos emitidos"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "26-19",
+          "fecha_publicacion": "2019-05-15",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 2,
+          "proyectos_ingresados": 1,
+          "resolutivos_emitidos": 1,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 0.0
+        },
+        "registros": [
+          {
+            "id": "01AG2019UD021",
+            "clave_proyecto": "01AG2019UD021",
+            "tipo_registro": "proyecto_ingresado",
+            "seccion_documento": "Proyectos Ingresados DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "CONSTRUCCION DE PUENTE VEHICULAR SOBRE ARROYO LA HACIENDA EN ACCESO A LA UNIVERSIDAD METROPOLITANA DE AGUASCALIENTES MPIO DE AGUASCALIENTES",
+            "promovente": "GOBIERNO DEL ESTADO DE AGUASCALIENTES",
+            "modalidad": "MIA PARTICULAR",
+            "tipo_proyecto": "vialidad",
+            "fecha_ingreso": "2019-03-19",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": 1784.79,
+              "total_hectareas": 0.178479,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": "EL PROYECTO CONSISTE EN LA CONSTRUCCIÓN DE UNA OBRA CIVIL PARA CRUZAR EL ARROYO DENOMINADO LA HACIENDA, TENDRÁ DOS CALZADAS DE CIRCULACIÓN DE 8 M CADA UNA PARA UN ANCHO TOTAL DE 20 M, UN CLARO DE 35 M, ALTURA DE 6.50 M Y UNA SUPERFICIE DE 1,784.79 METROS CUADRADOS, TAMBIÉN CONTAR CON 4 LAVADEROS DE CONCRETO PARA LA CONDUCCIÓN DE AGUAS PLUVIALES.NO REQUIERE DEL CAMBIO DE USO DE SUELO DE ÁREAS FORESTALES.",
+            "cambio_uso_suelo": false,
+            "areas_forestales": false,
+            "observaciones": null,
+            "id_db": 119,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [
+              107
+            ],
+            "gaceta_id": "26-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": null,
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019UD021.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019UD021.pdf",
+              "_fetched_at": "2025-12-08T15:37:02.799280"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:37:03.602937"
+            }
+          },
+          {
+            "id": "01AG2019E0001",
+            "clave_proyecto": "01AG2019E0001",
+            "tipo_registro": "resolutivo_emitido",
+            "seccion_documento": "Resolutivos DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "EL LLANO",
+            "proyecto_nombre": "PLANTA FOTOVOLTAICA ALTEN AGUASCALIENTES DE 99 MW",
+            "promovente": "ALTEN ENERGIAS RENOVABLES MEXICO OCHO, S. A. DE C. V.",
+            "modalidad": "MIA REGIONAL",
+            "tipo_proyecto": "energia",
+            "fecha_ingreso": "2019-01-18",
+            "fecha_resolucion": "2019-04-16",
+            "estatus": "autorizado",
+            "vigencia": {
+              "construccion_anios": 1,
+              "operacion_anios": 30,
+              "texto_completo": "18 MESES 30 AÑOS"
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": null,
+            "cambio_uso_suelo": null,
+            "areas_forestales": null,
+            "observaciones": null,
+            "id_db": 120,
+            "proyecto_ingresado_id": 139,
+            "resolutivos_ids": [],
+            "gaceta_id": "26-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2019/01AG2019E0001.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019E0001.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019E0001.pdf",
+              "_fetched_at": "2025-12-08T15:37:04.410892"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:37:05.206352"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 2 registros encontrados, 1 proyectos ingresados, 1 resolutivos emitidos"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_25-19.pdf",
+      "año": 2019,
+      "gaceta_id": "25-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_24-19.pdf",
+      "año": 2019,
+      "gaceta_id": "24-19",
+      "fecha_publicacion": "2019-05-08",
+      "palabras_clave_encontradas": [
+        "Aguascalientes"
+      ],
+      "paginas": [
+        1,
+        4
+      ],
+      "secciones": [
+        "Proyectos ingresados"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "24-19",
+          "fecha_publicacion": "2019-05-08",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 2,
+          "proyectos_ingresados": 2,
+          "resolutivos_emitidos": 0,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 130.5686
+        },
+        "registros": [
+          {
+            "id": "01AG2019E0026",
+            "clave_proyecto": "01AG2019E0026",
+            "tipo_registro": "proyecto_ingresado",
+            "seccion_documento": "Proyectos Ingresados DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "PARQUE FOTOVOLTAICO CAÑADA HONDA",
+            "promovente": "NEXT ENERGY DEL CENTRO, S. DE R. L. DE C. V.",
+            "modalidad": "MIA REGIONAL",
+            "tipo_proyecto": "energia",
+            "fecha_ingreso": "2019-05-02",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": 1305686,
+              "total_hectareas": 130.5686,
+              "cambio_uso_suelo_m2": 810799,
+              "cambio_uso_suelo_hectareas": 81.0799
+            },
+            "vegetacion": {
+              "tipo": "matorral crasicaule",
+              "remocion": "total"
+            },
+            "ubicacion_especifica": "Ejido Cañada Honda, Municipio de Aguascalientes, Estado de Aguascalientes",
+            "descripcion": "El proyecto Parque Fotovoltaico Cañada Honda consiste en la preparación, construcción, instalación, operación y mantenimiento de un parque solar el cual comprende la instalación de 60,480 módulos mono cristalinos fotovoltaicos y 192 inversores de tipo string, con la capacidad suficiente para generar 20.16 MW nominales, subestación elevadora, red de media tensión, línea de transmisión de 115 KV de aproximadamente 4.6 km de longitud, asimismo el proyecto demanda de caminos internos, el polígono total donde pretende instalarse el parque tiene una extensión de 130.5686 ha de las cuales 81.0799 ha sustentan vegetación de matorral crasicaule que requiere ser removida.",
+            "cambio_uso_suelo": true,
+            "areas_forestales": true,
+            "observaciones": null,
+            "id_db": 121,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [
+              96
+            ],
+            "gaceta_id": "24-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2019/01AG2019E0026.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019E0026.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019E0026.pdf",
+              "_fetched_at": "2025-12-08T15:37:06.005296"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:37:06.803607"
+            }
+          },
+          {
+            "id": "01AG2019ID025",
+            "clave_proyecto": "01AG2019ID025",
+            "tipo_registro": "proyecto_ingresado",
+            "seccion_documento": "Proyectos Ingresados Oficinas de Representación",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "PLANTA MIXING",
+            "promovente": "COOPER STANDARD AUTOMOTIVE SERVICES, S. DE R.L. DE C.V.",
+            "modalidad": "INFORME PREVENTIVO",
+            "tipo_proyecto": "industrial",
+            "fecha_ingreso": "2019-04-17",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": "Instalación de una planta para la elaboración de hule sintético. La planta Cooper-Standard Automotive Services S. de R.L. de C.V. se encargará de la fabricación de compuestos de hule de diferentes composiciones.",
+            "cambio_uso_suelo": false,
+            "areas_forestales": false,
+            "observaciones": null,
+            "id_db": 122,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [],
+            "gaceta_id": "24-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": null,
+              "estudio": null,
+              "resolutivo": null,
+              "_fetched_at": "2025-12-08T15:37:07.600137"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:37:08.399148"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 2 registros encontrados, 2 proyectos ingresados"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_23-19.pdf",
+      "año": 2019,
+      "gaceta_id": "23-19",
+      "fecha_publicacion": "2019-04-30",
+      "palabras_clave_encontradas": [
+        "Aguascalientes"
+      ],
+      "paginas": [
+        1,
+        3
+      ],
+      "secciones": [
+        "Proyectos ingresados",
+        "Cambio de uso de suelo"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "23-19",
+          "fecha_publicacion": "2019-04-30",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 3,
+          "proyectos_ingresados": 1,
+          "resolutivos_emitidos": 2,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 7.2958
+        },
+        "registros": [
+          {
+            "id": "01AG2019E0023",
+            "clave_proyecto": "01AG2019E0023",
+            "tipo_registro": "proyecto_ingresado",
+            "seccion_documento": "Proyectos Ingresados DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "PABELLON DE ARTEAGA",
+            "proyecto_nombre": "INSTALACION, OPERACION Y MANTENIMIENTO DE UNA PLANTA DE GENERACION DE ELECTRICIDAD DE CICLO SIMPLE DE 200 MW",
+            "promovente": "ULTRA ENERGIA DE MEXICO, S. R. L. DE C.V.",
+            "modalidad": "MIA PARTICULAR",
+            "tipo_proyecto": "energia",
+            "fecha_ingreso": "2019-04-12",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": 72958,
+              "total_hectareas": 7.2958,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": "EL PROYECTO CONTEMPLA CONSTRUIR Y OPERAR UNA PLANTA DE GENERACIÓN ELÉCTRICA DE CICLO SIMPLE, CON UNA CAPACIDAD MÁXIMA DE 204.215 MW. ESTA CENTRAL ELÉCTRICA CONTEMPLA APROXIMADAMENTE 34,016 M2 DE CONSTRUCCIÓN SOBRE UN PREDIO DE 72,958 M2 UBICADO EN EL MUNICIPIO DE PABELLÓN DE ARTEAGA, ESTADO DE AGUASCALIENTES. ADICIONALMENTE SE INSTALARÁ UNA SUBESTACIÓN DE ELEVACIÓN, UNA SUBESTACIÓN DE MANIOBRAS Y UNA LÍNEA DE TRANSMISIÓN ELÉCTRICA DENTRO DEL MISMO PREDIO DEL PROYECTO.",
+            "cambio_uso_suelo": null,
+            "areas_forestales": null,
+            "observaciones": null,
+            "id_db": 123,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [],
+            "gaceta_id": "23-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2019/01AG2019E0023.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019E0023.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019E0023.pdf",
+              "_fetched_at": "2025-12-08T15:37:09.196223"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:37:09.997874"
+            }
+          },
+          {
+            "id": "01AG2018E0042",
+            "clave_proyecto": "01AG2018E0042",
+            "tipo_registro": "resolutivo_emitido",
+            "seccion_documento": "Resolutivos emitidos DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "PARQUE SOLAR LOS CUERVOS",
+            "promovente": "PARQUE SOLAR LOS CUERVOS S, DE R.L. DE C.V.",
+            "modalidad": "MIA REGIONAL",
+            "tipo_proyecto": "energia",
+            "fecha_ingreso": "2018-12-03",
+            "fecha_resolucion": "2019-04-26",
+            "estatus": "autorizado",
+            "vigencia": {
+              "construccion_anios": 1.5,
+              "operacion_anios": 25,
+              "texto_completo": "18 MESES 25 AÑOS"
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": null,
+            "cambio_uso_suelo": null,
+            "areas_forestales": null,
+            "observaciones": null,
+            "id_db": 124,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [],
+            "gaceta_id": "23-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2018/01AG2018E0042.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2018/01AG2018E0042.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2018/01AG2018E0042.pdf",
+              "_fetched_at": "2025-12-08T15:37:10.801270"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:37:11.592816"
+            }
+          },
+          {
+            "id": "01AG2019E0019",
+            "clave_proyecto": "01AG2019E0019",
+            "tipo_registro": "resolutivo_emitido",
+            "seccion_documento": "Resolutivos emitidos DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "FOTOVOLTAICA SAN BARTOLO",
+            "promovente": "MIRE-GMI CAPITAL SPV-5, S.A. DE C.V.",
+            "modalidad": "MIA REGIONAL",
+            "tipo_proyecto": "energia",
+            "fecha_ingreso": "2019-02-27",
+            "fecha_resolucion": "2019-04-26",
+            "estatus": "autorizado",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": "NO APLICA"
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": null,
+            "cambio_uso_suelo": null,
+            "areas_forestales": null,
+            "observaciones": null,
+            "id_db": 125,
+            "proyecto_ingresado_id": 135,
+            "resolutivos_ids": [],
+            "gaceta_id": "23-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2019/01AG2019E0019.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019E0019.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019E0019.pdf",
+              "_fetched_at": "2025-12-08T15:37:12.393464"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:37:13.194889"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 3 registros encontrados, 1 proyectos ingresados, 2 resolutivos emitidos"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_22-19.pdf",
+      "año": 2019,
+      "gaceta_id": "22-19",
+      "fecha_publicacion": "2019-04-24",
+      "palabras_clave_encontradas": [
+        "Aguascalientes"
+      ],
+      "paginas": [
+        1,
+        3
+      ],
+      "secciones": [
+        "Proyectos ingresados",
+        "Cambio de uso de suelo"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "22-19",
+          "fecha_publicacion": "2019-04-25",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 2,
+          "proyectos_ingresados": 2,
+          "resolutivos_emitidos": 0,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 89.69
+        },
+        "registros": [
+          {
+            "id": "01AG2019E0025",
+            "clave_proyecto": "01AG2019E0025",
+            "tipo_registro": "proyecto_ingresado",
+            "seccion_documento": "Proyectos Ingresados DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "FOTOVOLTAICA SAN BARTOLO",
+            "promovente": "MIRE-GMI CAPITAL SPV-5, S.A. DE C.V.",
+            "modalidad": "MIA REGIONAL",
+            "tipo_proyecto": "energia",
+            "fecha_ingreso": "2019-04-17",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": 896900,
+              "total_hectareas": 89.69,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": "pastizal natural y vegetación secundaria arbustiva",
+              "remocion": "total"
+            },
+            "ubicacion_especifica": null,
+            "descripcion": "El proyecto Parque Solar San Bartolo consiste en la preparación, construcción, instalación, operación y mantenimiento de un parque solar el cual comprende la instalación de 163,800 módulos fotovoltaicos de 330 WP y 28 inversores, con la capacidad suficiente para generar una potencia pico total de 54.054 MW KWP y una potencia activa en el POI de 43,000 KW., subestación elevadora, red de media tensión, línea de evacuación de aproximadamente 1.85 km de longitud, asimismo el proyecto demanda de caminos internos, el polígono total donde pretende instalarse el parque tiene una extensión de 89.69 ha, las cuales presentan vegetación de tipo pastizal natural y vegetación secundaria arbustiva de pastizal natural que será removido, con pretendida ubicación en el municipio de Aguascalientes, estado de Aguascalientes.",
+            "cambio_uso_suelo": true,
+            "areas_forestales": false,
+            "observaciones": null,
+            "id_db": 126,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [
+              91
+            ],
+            "gaceta_id": "22-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2019/01AG2019E0025.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019E0025.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019E0025.pdf",
+              "_fetched_at": "2025-12-08T15:37:13.990734"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:37:14.778775"
+            }
+          },
+          {
+            "id": "01AG2019HD024",
+            "clave_proyecto": "01AG2019HD024",
+            "tipo_registro": "proyecto_ingresado",
+            "seccion_documento": "Proyectos Ingresados DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "COLECTOR PLUVIAL DEL PASO A DESNIVEL DE AV. AGUASCALIENTES CON AV. ANTIGUO CAMINO A SAN IGNACIO",
+            "promovente": "GOBIERNO DEL ESTADO DE AGUASCALIENTES",
+            "modalidad": "MIA PARTICULAR",
+            "tipo_proyecto": "hidraulico",
+            "fecha_ingreso": "2019-04-16",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": "Consiste en la construcción de un colector pluvial en el paso a desnivel de Av. Aguascalientes y Av. Antiguo Camino a San Ignacio en la ciudad de Aguascalientes. El colector tendrá dos tramos, uno con tubería de concreto reforzado de 1.22 m de diámetro y 295 m de largo y el segundo, de 1.07 m de diámetro y 461 m de largo de concreto de alta resistencia grado 3 para trabajos de vialidad y hermético. También contará con 5 caimanes, 3 cajas y 5 pozos de visita; así como 2 lavaderos de concreto para las descargas en el río San Pedro.",
+            "cambio_uso_suelo": false,
+            "areas_forestales": false,
+            "observaciones": null,
+            "id_db": 127,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [
+              106
+            ],
+            "gaceta_id": "22-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2019/01AG2019HD024.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019HD024.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019HD024.pdf",
+              "_fetched_at": "2025-12-08T15:37:15.574294"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:37:16.368368"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 2 registros encontrados, 2 proyectos ingresados"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_21-19.pdf",
+      "año": 2019,
+      "gaceta_id": "21-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_20-19.pdf",
+      "año": 2019,
+      "gaceta_id": "20-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_19-19.pdf",
+      "año": 2019,
+      "gaceta_id": "019/19",
+      "fecha_publicacion": "2019-04-10",
+      "palabras_clave_encontradas": [
+        "Aguascalientes"
+      ],
+      "paginas": [
+        2
+      ],
+      "secciones": [
+        "Resolutivos emitidos"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "019/19",
+          "fecha_publicacion": "2019-04-11",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 2,
+          "proyectos_ingresados": 0,
+          "resolutivos_emitidos": 2,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 0.0
+        },
+        "registros": [
+          {
+            "id": "01AG2018H0018",
+            "clave_proyecto": "01AG2018H0018",
+            "tipo_registro": "resolutivo_emitido",
+            "seccion_documento": "Resolutivos emitidos DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "MONORELLENO PARA LA DISPOSICION FINAL DE LOS LODOS PROVENIENTES DE LA PLANTA DE TRATAMIENTO DE AGUAS RESIDUALES DE LA CIUDAD DE AGUASCALIENTES",
+            "promovente": "INSTITUTO DEL AGUA DEL ESTADO",
+            "modalidad": "DTU.-MODALIDAD B",
+            "tipo_proyecto": "hidraulico",
+            "fecha_ingreso": "2018-07-31",
+            "fecha_resolucion": "2019-04-02",
+            "estatus": "autorizado",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": "NO APLICA"
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": null,
+            "cambio_uso_suelo": null,
+            "areas_forestales": null,
+            "observaciones": null,
+            "id_db": 128,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [],
+            "gaceta_id": "019/19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2018/01AG2018H0018.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2018/01AG2018H0018.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2018/01AG2018H0018.pdf",
+              "_fetched_at": "2025-12-08T15:37:17.160055"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:37:17.961375"
+            }
+          },
+          {
+            "id": "01AG2018I0041",
+            "clave_proyecto": "01AG2018I0041",
+            "tipo_registro": "resolutivo_emitido",
+            "seccion_documento": "Resolutivos emitidos DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "CENTRO DE ACOPIO, TRATAMIENTO DE RESIDUOS INDUSTRIALES Y PELIGROSOS CATRIP AGUASCALIENTES",
+            "promovente": "TECNOLOGIA AMBIENTAL ESPECIALIZADA, S.A. DE C.V.",
+            "modalidad": "DTU.-MODALIDAD B",
+            "tipo_proyecto": "industrial",
+            "fecha_ingreso": "2018-11-21",
+            "fecha_resolucion": "2019-04-05",
+            "estatus": "autorizado",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": 33,
+              "texto_completo": "33 AÑOS"
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": null,
+            "cambio_uso_suelo": null,
+            "areas_forestales": null,
+            "observaciones": null,
+            "id_db": 129,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [],
+            "gaceta_id": "019/19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2018/01AG2018I0041.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2018/01AG2018I0041.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2018/01AG2018I0041.pdf",
+              "_fetched_at": "2025-12-08T15:37:18.765296"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:37:19.565342"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 2 registros encontrados, 2 resolutivos emitidos"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_18-19.pdf",
+      "año": 2019,
+      "gaceta_id": "18-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_17-19.pdf",
+      "año": 2019,
+      "gaceta_id": "17-19",
+      "fecha_publicacion": "2019-03-27",
+      "palabras_clave_encontradas": [
+        "Aguascalientes",
+        "Ags"
+      ],
+      "paginas": [
+        3
+      ],
+      "secciones": [
+        "Proyectos ingresados"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "17-19",
+          "fecha_publicacion": "2019-03-27",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 2,
+          "proyectos_ingresados": 2,
+          "resolutivos_emitidos": 0,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 0.0656973
+        },
+        "registros": [
+          {
+            "id": "01AG2019HD020",
+            "clave_proyecto": "01AG2019HD020",
+            "tipo_registro": "proyecto_ingresado",
+            "seccion_documento": "Proyectos Ingresados Oficinas de Representación",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "OBRAS EN ZONA FEDERAL EN ARROYO SIN NOMBRE, CONDOMINIO MANGATA",
+            "promovente": "DESARROLLOS Y CONSTRUCCIONES DEL CENTRO S.A. DE C.V.",
+            "modalidad": "MIA PARTICULAR",
+            "tipo_proyecto": "hidraulico",
+            "fecha_ingreso": "2019-03-12",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": 656.973,
+              "total_hectareas": 0.0656973,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": "Zona federal del arroyo sin nombre afluente del río San Pedro, al sur de la ciudad de Aguascalientes",
+            "descripcion": "El proyecto consiste en la construcción de 3 puentes vehiculares, 1 sección de muro de contención, 3 lavaderos (con números 2, 3 y 4), 2 secciones de trotapista y 3 caimanes. Las obras y trabajos en su totalidad ocupan una superficie de 656.973 metros cuadrados.",
+            "cambio_uso_suelo": false,
+            "areas_forestales": false,
+            "observaciones": null,
+            "id_db": 130,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [],
+            "gaceta_id": "17-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": null,
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019HD020.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019HD020.pdf",
+              "_fetched_at": "2025-12-08T15:37:20.365393"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:37:21.151429"
+            }
+          },
+          {
+            "id": "01AG2019MD022",
+            "clave_proyecto": "01AG2019MD022",
+            "tipo_registro": "proyecto_ingresado",
+            "seccion_documento": "Proyectos Ingresados Oficinas de Representación",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "SAN JOSE DE GRACIA",
+            "proyecto_nombre": "EXTRACCIÓN DE MATERIALES PÉTREOS DE LA PRESA BOCA DEL TÚNEL DE POTRERILLOS",
+            "promovente": "ARENEROS LA BENDICION DE DIOS, S. DE R.L. DE C.V.",
+            "modalidad": "MIA PARTICULAR",
+            "tipo_proyecto": "mineria",
+            "fecha_ingreso": "2019-03-19",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": "Presa Boca del Túnel de Potrerillos, municipio de San José de Gracia, AGS",
+            "descripcion": "El proyecto consiste en la extracción de materiales pétreos en la presa Boca de Túnel de Potrerillos y se basa en dos actividades: la de extracción de materiales pétreos no metálicos, y la segunda el desasolve de la presa para mejorar la capacidad de captación.",
+            "cambio_uso_suelo": false,
+            "areas_forestales": false,
+            "observaciones": null,
+            "id_db": 131,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [],
+            "gaceta_id": "17-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": null,
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019MD022.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019MD022.pdf",
+              "_fetched_at": "2025-12-08T15:37:21.948178"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:37:22.758490"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 2 registros encontrados, 2 proyectos ingresados"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_16-19.pdf",
+      "año": 2019,
+      "gaceta_id": "16-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_15-19.pdf",
+      "año": 2019,
+      "gaceta_id": "15-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_14-19.pdf",
+      "año": 2019,
+      "gaceta_id": "14-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_13-19.pdf",
+      "año": 2019,
+      "gaceta_id": "13-19",
+      "fecha_publicacion": "2019-03-13",
+      "palabras_clave_encontradas": [
+        "Aguascalientes",
+        "Ags"
+      ],
+      "paginas": [
+        4,
+        7
+      ],
+      "secciones": [
+        "Proyectos ingresados",
+        "Cambio de uso de suelo"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "13-19",
+          "fecha_publicacion": "2019-03-13",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 2,
+          "proyectos_ingresados": 1,
+          "resolutivos_emitidos": 0,
+          "tramites_unificados": 1,
+          "consultas_publicas": 0,
+          "hectareas_totales": 4.3291
+        },
+        "registros": [
+          {
+            "id": "01AG2018HD041",
+            "clave_proyecto": "01AG2018HD041",
+            "tipo_registro": "proyecto_ingresado",
+            "seccion_documento": "Proyectos Ingresados Oficinas de Representación",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "OBRAS EN ZONA FEDERAL EN ARROYO EL MOLINO",
+            "promovente": "IMPULSORA DE PROYECTOS INMOBILIARIOS DE CULIACAN, S.A. DE C.V.",
+            "modalidad": "MIA PARTICULAR",
+            "tipo_proyecto": "hidraulico",
+            "fecha_ingreso": "2018-11-14",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": 11.26,
+              "total_hectareas": 0.001126,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": "ZONA FEDERAL DEL ARROYO EL MOLINO",
+            "descripcion": "EL PROYECTO SE LOCALIZARÁ EN LA ZONA FEDERAL DEL ARROYO EL MOLINO, EN EL MUNICIPIO DE AGUASCALIENTES EL CUAL SE DESARROLLARÁ EN UNA SUPERFICIE TOTAL DE 11.26 M2, QUE CONSISTE EN LA CONSTRUCCIÓN DE UNA LÍNEA DE DESCARGA DE AGUAS PLUVIALES QUE SE CONDUCIRÁ A TRAVÉS DE UNA TUBERÍA DE POLIETILENO DE ALTA DENSIDAD CON UN DIÁMETRO DE 1.21 M, Y LA CONSTRUCCIÓN DE UN LAVADERO DE CONCRETO PARA EVITAR DESLAVES Y PROTEGER LA OBRA EN ZONA FEDERAL.",
+            "cambio_uso_suelo": false,
+            "areas_forestales": false,
+            "observaciones": null,
+            "id_db": 132,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [],
+            "gaceta_id": "13-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": null,
+              "estudio": "/edoc/documentos/ags/estudios/2018/01AG2018HD041.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2018/01AG2018HD041.pdf",
+              "_fetched_at": "2025-12-08T15:37:23.555539"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:37:24.354957"
+            }
+          },
+          {
+            "id": "01/MA-0009/03/19",
+            "clave_proyecto": "01/MA-0009/03/19",
+            "tipo_registro": "tramite_unificado",
+            "seccion_documento": "Trámites Unificados (DTU's)",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "TEPEZALA",
+            "proyecto_nombre": "BANCO DE MATERIALES SAN RAFAEL",
+            "promovente": "JAIME ALBERTO RAMIREZ ORTEGA",
+            "modalidad": "DTU MODALIDAD A",
+            "tipo_proyecto": "mineria",
+            "fecha_ingreso": "2019-03-05",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": 43291,
+              "total_hectareas": 4.3291,
+              "cambio_uso_suelo_m2": 43291,
+              "cambio_uso_suelo_hectareas": 4.3291
+            },
+            "vegetacion": {
+              "tipo": "MATORRAL XEROFILO CON PASTIZAL INDUCIDO",
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": "EL PROYECTO CONSISTE EN EL CAMBIO DE USO DE USO DE SUELO PARA EL ESTABLECIMIENTO DE UN BANCO DE EXTRACCION DE MATERIALES PETREOS PARA EL APROVECHAMIENTO DE CANTERA EN EL MUNICIPIO DE TEPEZALA AGS. A DESARROLLARSE EN UNA SUPERFICIE PROPUESTA DE 4.3291 HAS.",
+            "cambio_uso_suelo": true,
+            "areas_forestales": false,
+            "observaciones": null,
+            "id_db": 133,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [],
+            "gaceta_id": "13-19",
+            "semarnat_data": {
+              "mensaje": "error",
+              "detalle": null,
+              "_fetched_at": "2025-12-08T15:37:25.153126"
+            },
+            "semarnat_historial": {
+              "mensaje": "success",
+              "historial": [
+                {
+                  "hitorialConsecutivo": "01/MA-0009/03/19",
+                  "historialFechaTurn": "05-03-2019",
+                  "descipcionSituacion": "RECEPCION DEL TRAMITE EN VENTANILLA"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0009/03/19",
+                  "historialFechaTurn": "05-03-2019",
+                  "descipcionSituacion": "ENVIO AL AREA CORRESPONDIENTE"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0009/03/19",
+                  "historialFechaTurn": "12-03-2019",
+                  "descipcionSituacion": "RECEPCION DEL TRAMITE EN EL AREA CORRESPONDIENTE"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0009/03/19",
+                  "historialFechaTurn": "12-03-2019",
+                  "descipcionSituacion": "INTEGRACION DE EXPEDIENTE"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0009/03/19",
+                  "historialFechaTurn": "12-03-2019",
+                  "descipcionSituacion": "EVALUACION"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0009/03/19",
+                  "historialFechaTurn": "07-05-2019",
+                  "descipcionSituacion": "ENVIO DE OFICIO DE DATOS DE CALIDAD PARA RUBRICA"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0009/03/19",
+                  "historialFechaTurn": "07-05-2019",
+                  "descipcionSituacion": "OFICIO DE CALIDAD DE DATOS TURNADO PARA FIRMAR"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0009/03/19",
+                  "historialFechaTurn": "07-05-2019",
+                  "descipcionSituacion": "OFICIO DE CALIDAD DE DATOS TURNADO AL ECC PARA ENTREGA"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0009/03/19",
+                  "historialFechaTurn": "21-06-2019",
+                  "descipcionSituacion": "SUSPENDIDO EN POR SOLICITUD DE CALIDAD DE DATOS"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0009/03/19",
+                  "historialFechaTurn": "13-09-2019",
+                  "descipcionSituacion": "TRAMITE CON OFICIO DE CALIDAD DE DATOS ATENDIDO Y TURNADO AL AREA CORRESPONDIENTE"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0009/03/19",
+                  "historialFechaTurn": "13-09-2019",
+                  "descipcionSituacion": "EVALUACION"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0009/03/19",
+                  "historialFechaTurn": "25-09-2019",
+                  "descipcionSituacion": "ELABORACION DE PROPUESTA DE RESOLUCION"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0009/03/19",
+                  "historialFechaTurn": "25-09-2019",
+                  "descipcionSituacion": "ENVIO DE DICTAMEN PARA RUBRICA"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0009/03/19",
+                  "historialFechaTurn": "25-09-2019",
+                  "descipcionSituacion": "ENVIO DEL DICTAMEN RUBRICADO PARA FIRMA"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0009/03/19",
+                  "historialFechaTurn": "25-09-2019",
+                  "descipcionSituacion": "RESOLUTIVO FIRMADO Y RESUELTO"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0009/03/19",
+                  "historialFechaTurn": "25-09-2019",
+                  "descipcionSituacion": "RECEPCION DE RESOLUTIVO EN EL ECC PARA SU ENTREGA"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0009/03/19",
+                  "historialFechaTurn": "27-09-2019",
+                  "descipcionSituacion": "NOTIFICACION AL PROMOVENTE O GESTOR"
+                },
+                {
+                  "hitorialConsecutivo": "01/MA-0009/03/19",
+                  "historialFechaTurn": "08-10-2019",
+                  "descipcionSituacion": "RESOLUTIVO ENTREGADO AL PROMOVENTE O GESTOR, TRAMITE CONCLUIDO"
+                }
+              ],
+              "_fetched_at": "2025-12-08T15:37:25.966862"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 2 registros encontrados, 1 proyectos ingresados"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_12-19.pdf",
+      "año": 2019,
+      "gaceta_id": "012-19",
+      "fecha_publicacion": "2019-03-06",
+      "palabras_clave_encontradas": [
+        "Aguascalientes",
+        "Ags"
+      ],
+      "paginas": [
+        2,
+        4
+      ],
+      "secciones": [
+        "Resolutivos emitidos",
+        "Proyectos ingresados"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "012-19",
+          "fecha_publicacion": "2019-03-07",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 1,
+          "proyectos_ingresados": 0,
+          "resolutivos_emitidos": 1,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 0.0
+        },
+        "registros": [
+          {
+            "id": "01AG2018V0036",
+            "clave_proyecto": "01AG2018V0036",
+            "tipo_registro": "resolutivo_emitido",
+            "seccion_documento": "Resolutivos DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "AGOSTADERITO-SALTO DE LOS SALADO, A SECCION TIPO A2, TRAMO DEL KM 0+000 AL KM 1+700 EN EL ESTADO DE AGUASCALIENTES",
+            "promovente": "SECRETARIA DE COMUNICACIONES Y TRANSPORTES CENTRO SCT AGUASCALIENTES",
+            "modalidad": "MIA.-REGIONAL",
+            "tipo_proyecto": "vialidad",
+            "fecha_ingreso": "2018-10-25",
+            "fecha_resolucion": "2019-02-06",
+            "estatus": "autorizado",
+            "vigencia": {
+              "construccion_anios": 10,
+              "operacion_anios": 25,
+              "texto_completo": "10 AÑOS 25 AÑOS"
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": null,
+            "cambio_uso_suelo": null,
+            "areas_forestales": null,
+            "observaciones": null,
+            "id_db": 134,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [],
+            "gaceta_id": "012-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2018/01AG2018V0036.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2018/01AG2018V0036.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2018/01AG2018V0036.pdf",
+              "_fetched_at": "2025-12-08T15:37:26.759589"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:37:27.562426"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 1 registros encontrados, 1 resolutivos emitidos"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_10-19.pdf",
+      "año": 2019,
+      "gaceta_id": "010-19",
+      "fecha_publicacion": "2019-02-27",
+      "palabras_clave_encontradas": [
+        "Aguascalientes"
+      ],
+      "paginas": [
+        1,
+        2,
+        4
+      ],
+      "secciones": [
+        "Proyectos ingresados",
+        "Cambio de uso de suelo",
+        "Resolutivos emitidos"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "010-19",
+          "fecha_publicacion": "2019-02-28",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 3,
+          "proyectos_ingresados": 2,
+          "resolutivos_emitidos": 1,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 89.69
+        },
+        "registros": [
+          {
+            "id": "01AG2019E0019",
+            "clave_proyecto": "01AG2019E0019",
+            "tipo_registro": "proyecto_ingresado",
+            "seccion_documento": "Proyectos Ingresados DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "FOTOVOLTAICA SAN BARTOLO",
+            "promovente": "MIRE-GMI CAPITAL SPV-5, S.A. DE C.V.",
+            "modalidad": "MIA REGIONAL",
+            "tipo_proyecto": "energia",
+            "fecha_ingreso": "2019-02-27",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": 896900,
+              "total_hectareas": 89.69,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": "pastizal natural y vegetación secundaria arbustiva",
+              "remocion": "total"
+            },
+            "ubicacion_especifica": null,
+            "descripcion": "El proyecto Parque Solar San Bartolo consiste en la preparación, construcción, instalación, operación y mantenimiento de un parque solar el cual comprende la instalación de 163,800 módulos fotovoltaicos de 330 WP y 28 inversores, con la capacidad suficiente para generar una potencia pico total de 54.054 MW, subestación elevadora, red de media tensión, línea de evacuación de aproximadamente 1.85 km de longitud, asimismo el proyecto demanda de caminos internos, el polígono total donde pretende instalarse el parque tiene una extensión de 89.69 ha, las cuales presentan vegetación de tipo pastizal natural y vegetación secundaria arbustiva de pastizal natural que será removido, con pretendida ubicación en el municipio de Aguascalientes, estado de Aguascalientes.",
+            "cambio_uso_suelo": true,
+            "areas_forestales": false,
+            "observaciones": null,
+            "id_db": 135,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [
+              125
+            ],
+            "gaceta_id": "010-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2019/01AG2019E0019.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019E0019.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019E0019.pdf",
+              "_fetched_at": "2025-12-08T15:37:28.363041"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:37:29.153385"
+            }
+          },
+          {
+            "id": "01AG2019V0018",
+            "clave_proyecto": "01AG2019V0018",
+            "tipo_registro": "proyecto_ingresado",
+            "seccion_documento": "Proyectos Ingresados DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "CALVILLO",
+            "proyecto_nombre": "LA PANADERA - EL TEMAZCAL, TRAMO LA PANADERA - LA LABOR DEL KM. 0+000 AL KM. 13+500",
+            "promovente": "SECRETARIA DE COMUNICACIONES Y TRANSPORTES CENTRO SCT AGUASCALIENTES",
+            "modalidad": "MIA REGIONAL",
+            "tipo_proyecto": "vialidad",
+            "fecha_ingreso": "2019-02-22",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": "vegetación forestal",
+              "remocion": "total"
+            },
+            "ubicacion_especifica": null,
+            "descripcion": "Consiste en la modernización de un camino en operación tipo C con un ancho de corona de 7.0 m, a una carretera tipo A2 con un ancho de corona de 12.0 m, para alojar 2 carriles de circulación y acotamientos, el cual incluye rectificaciones de curva y modificación en la sección de un tramo, la construcción de dos puentes vehiculares para librar el cruce con cuerpos de agua, así como el cambio de uso de suelo por la remoción de vegetación forestal.",
+            "cambio_uso_suelo": true,
+            "areas_forestales": true,
+            "observaciones": null,
+            "id_db": 136,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [
+              103
+            ],
+            "gaceta_id": "010-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2019/01AG2019V0018.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019V0018.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019V0018.pdf",
+              "_fetched_at": "2025-12-08T15:37:29.949351"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:37:30.749469"
+            }
+          },
+          {
+            "id": "01AG2018E0034",
+            "clave_proyecto": "01AG2018E0034",
+            "tipo_registro": "resolutivo_emitido",
+            "seccion_documento": "Resolutivos emitidos DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "TEPEZALA",
+            "proyecto_nombre": "PLANTA SOLAR TEPEZALÁ I",
+            "promovente": "TEPEZALA SOLAR PV S.A. DE C.V.",
+            "modalidad": "MIA REGIONAL",
+            "tipo_proyecto": "energia",
+            "fecha_ingreso": "2018-10-18",
+            "fecha_resolucion": "2019-02-19",
+            "estatus": "autorizado",
+            "vigencia": {
+              "construccion_anios": 2,
+              "operacion_anios": 30,
+              "texto_completo": "27 MESES 30 AÑOS"
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": null,
+            "cambio_uso_suelo": null,
+            "areas_forestales": null,
+            "observaciones": null,
+            "id_db": 137,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [],
+            "gaceta_id": "010-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2018/01AG2018E0034.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2018/01AG2018E0034.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2018/01AG2018E0034.pdf",
+              "_fetched_at": "2025-12-08T15:37:31.555288"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:37:32.362729"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 3 registros encontrados, 2 proyectos ingresados, 1 resolutivos emitidos"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_11-19.pdf",
+      "año": 2019,
+      "gaceta_id": "11-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_09-19.pdf",
+      "año": 2019,
+      "gaceta_id": "09-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_08-19.pdf",
+      "año": 2019,
+      "gaceta_id": "008/19",
+      "fecha_publicacion": "2019-02-20",
+      "palabras_clave_encontradas": [
+        "Aguascalientes"
+      ],
+      "paginas": [
+        2
+      ],
+      "secciones": [
+        "Resolutivos emitidos"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "008/19",
+          "fecha_publicacion": "2019-02-21",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 1,
+          "proyectos_ingresados": 0,
+          "resolutivos_emitidos": 1,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 0.0
+        },
+        "registros": [
+          {
+            "id": "01AG2018E0039",
+            "clave_proyecto": "01AG2018E0039",
+            "tipo_registro": "resolutivo_emitido",
+            "seccion_documento": "Resolutivos DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "PABELLON DE ARTEAGA",
+            "proyecto_nombre": "HORUS SOLAR",
+            "promovente": "HORUS SOLAR S.A. DE C.V.",
+            "modalidad": "MIA REGIONAL",
+            "tipo_proyecto": "energia",
+            "fecha_ingreso": "2018-11-07",
+            "fecha_resolucion": "2019-02-12",
+            "estatus": "autorizado",
+            "vigencia": {
+              "construccion_anios": 1,
+              "operacion_anios": 42,
+              "texto_completo": "1 AÑO 42 AÑOS"
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": null,
+            "cambio_uso_suelo": null,
+            "areas_forestales": null,
+            "observaciones": null,
+            "id_db": 138,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [],
+            "gaceta_id": "008/19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2018/01AG2018E0039.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2018/01AG2018E0039.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2018/01AG2018E0039.pdf",
+              "_fetched_at": "2025-12-08T15:37:33.158375"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:37:33.958851"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 1 registros encontrados, 1 resolutivos emitidos"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_07-19.pdf",
+      "año": 2019,
+      "gaceta_id": "07-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_06-19.pdf",
+      "año": 2019,
+      "gaceta_id": "06-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_05-19.pdf",
+      "año": 2019,
+      "gaceta_id": "05-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_04-19.pdf",
+      "año": 2019,
+      "gaceta_id": "004-19",
+      "fecha_publicacion": "2019-01-23",
+      "palabras_clave_encontradas": [
+        "Aguascalientes"
+      ],
+      "paginas": [
+        1
+      ],
+      "secciones": [
+        "Proyectos ingresados"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "004-19",
+          "fecha_publicacion": "2019-01-24",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 1,
+          "proyectos_ingresados": 1,
+          "resolutivos_emitidos": 0,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 350.44
+        },
+        "registros": [
+          {
+            "id": "01AG2019E0001",
+            "clave_proyecto": "01AG2019E0001",
+            "tipo_registro": "proyecto_ingresado",
+            "seccion_documento": "Proyectos Ingresados DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "EL LLANO",
+            "proyecto_nombre": "PLANTA FOTOVOLTAICA ALTEN AGUASCALIENTES 3 DE 99 MW",
+            "promovente": "ALTEN ENERGIAS RENOVABLES MEXICO OCHO, S. A. DE C. V.",
+            "modalidad": "MIA REGIONAL",
+            "tipo_proyecto": "energia",
+            "fecha_ingreso": "2019-01-18",
+            "fecha_resolucion": null,
+            "estatus": "en_evaluacion",
+            "vigencia": {
+              "construccion_anios": null,
+              "operacion_anios": null,
+              "texto_completo": null
+            },
+            "superficie": {
+              "total_m2": 3504400,
+              "total_hectareas": 350.44,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": "EL PROYECTO CONSISTE EN LA CONSTRUCCION, OPERACION Y MANTENIMIENTO DE UNA PLANTA DE PRODUCCION DE ENERGIA ELECTRICA A PARTIR DE RADIACION SOLAR CON UNA CAPACIDAD DE 99 MW (MEGAWATTS), QUE CONTARA CON 374,400 MODULOS FOTOVOLTAICOS DE 330 WP CADA UNO, AGRUPADOS EN 32 BLOQUES DE POTENCIA; 32 INVERSORES; 4,160 SEGUIDORES SOLARES; 12,480 STRINGS; Y 480 CAJAS DE CONEXION DE BUSES DE CONTINUA; SUBESTACION DE MANIOBRAS (SEM) DENOMINADA ALTEN- AGUASCALIENTES 3 MANIOBRAS; TRES LINEAS DE TRANSMISION ELECTRICA AEREA (LTE). DOS LINEAS DE 115 KV, DE UN TOTAL DE 0.97 KM DE LONGITUD APROXIMADA Y UNA LINEA DE 34.5 KV DE 3.77 KM DE LONGITUD; UNA SUBESTACION ELECTRICA DE ELEVACION (SEE); Y OBRAS ASOCIADAS, QUE INCLUYEN ALMACENES, UN CENTRO DE CONTROL Y CAMINOS.",
+            "cambio_uso_suelo": null,
+            "areas_forestales": null,
+            "observaciones": null,
+            "id_db": 139,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [
+              120
+            ],
+            "gaceta_id": "004-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2019/01AG2019E0001.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2019/01AG2019E0001.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2019/01AG2019E0001.pdf",
+              "_fetched_at": "2025-12-08T15:37:34.764803"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:37:35.562666"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 1 registros encontrados, 1 proyectos ingresados"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_03-19.pdf",
+      "año": 2019,
+      "gaceta_id": "03-19",
+      "fecha_publicacion": "2019-01-16",
+      "palabras_clave_encontradas": [
+        "Aguascalientes"
+      ],
+      "paginas": [
+        3
+      ],
+      "secciones": [
+        "Resolutivos emitidos"
+      ],
+      "analisis_completo": {
+        "gaceta": {
+          "numero": "03-19",
+          "fecha_publicacion": "2019-01-16",
+          "anio": 2019
+        },
+        "resumen": {
+          "total_registros": 1,
+          "proyectos_ingresados": 0,
+          "resolutivos_emitidos": 1,
+          "tramites_unificados": 0,
+          "consultas_publicas": 0,
+          "hectareas_totales": 0.0
+        },
+        "registros": [
+          {
+            "id": "01AG2018I0031",
+            "clave_proyecto": "01AG2018I0031",
+            "tipo_registro": "resolutivo_emitido",
+            "seccion_documento": "Resolutivos emitidos DGIRA",
+            "entidad": "AGUASCALIENTES",
+            "municipio": "AGUASCALIENTES",
+            "proyecto_nombre": "PLANTA DE TRATAMIENTO DE EFLUENTES INDUSTRIALES CONTAMINADOS CON RESIDUOS PELIGROSOS",
+            "promovente": "GEN INDUSTRIAL, S.A. DE C.V.",
+            "modalidad": "MIA PARTICULAR",
+            "tipo_proyecto": "industrial",
+            "fecha_ingreso": "2018-10-10",
+            "fecha_resolucion": "2019-01-15",
+            "estatus": "autorizado",
+            "vigencia": {
+              "construccion_anios": 4,
+              "operacion_anios": 25,
+              "texto_completo": "4 MESES 25 AÑOS"
+            },
+            "superficie": {
+              "total_m2": null,
+              "total_hectareas": null,
+              "cambio_uso_suelo_m2": null,
+              "cambio_uso_suelo_hectareas": null
+            },
+            "vegetacion": {
+              "tipo": null,
+              "remocion": null
+            },
+            "ubicacion_especifica": null,
+            "descripcion": null,
+            "cambio_uso_suelo": null,
+            "areas_forestales": null,
+            "observaciones": null,
+            "id_db": 140,
+            "proyecto_ingresado_id": null,
+            "resolutivos_ids": [],
+            "gaceta_id": "03-19",
+            "semarnat_data": {
+              "mensaje": "success",
+              "resumen": "/edoc/documentos/ags/resumenes/2018/01AG2018I0031.pdf",
+              "estudio": "/edoc/documentos/ags/estudios/2018/01AG2018I0031.pdf",
+              "resolutivo": "/edoc/documentos/ags/resolutivos/2018/01AG2018I0031.pdf",
+              "_fetched_at": "2025-12-08T15:37:36.350116"
+            },
+            "semarnat_historial": {
+              "mensaje": "error",
+              "detalle": "service: no se encontraron resultados",
+              "_fetched_at": "2025-12-08T15:37:37.163037"
+            }
+          }
+        ]
+      },
+      "resumen": "Análisis completo: 1 registros encontrados, 1 resolutivos emitidos"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_02-19.pdf",
+      "año": 2019,
+      "gaceta_id": "02-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
+    },
+    {
+      "url": "https://sinat.semarnat.gob.mx:8443/Gacetas/archivos2019/gaceta_01-19.pdf",
+      "año": 2019,
+      "gaceta_id": "01-19",
+      "fecha_publicacion": null,
+      "palabras_clave_encontradas": [],
+      "paginas": [],
+      "secciones": null,
+      "analisis_completo": null,
+      "resumen": "Sin palabras clave encontradas"
     }
   ]
 }

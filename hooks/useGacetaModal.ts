@@ -1,8 +1,48 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import type { ProcessedGacetaAnalysis } from './useGacetasData'
 import type { RegistroGaceta } from './useGacetasData'
+
+// Cache del JSON para evitar múltiples fetches
+let gacetasDataCache: any = null
+let gacetasDataPromise: Promise<any> | null = null
+
+async function fetchGacetasData(): Promise<any> {
+  // Si ya tenemos los datos en cache, retornarlos inmediatamente
+  if (gacetasDataCache) {
+    return gacetasDataCache
+  }
+  
+  // Si hay una petición en curso, esperarla
+  if (gacetasDataPromise) {
+    return gacetasDataPromise
+  }
+  
+  // Crear nueva petición y cachearla
+  gacetasDataPromise = fetch('/data/gacetas_semarnat_analizadas.json')
+    .then(response => response.json())
+    .then(data => {
+      gacetasDataCache = data
+      return data
+    })
+    .finally(() => {
+      gacetasDataPromise = null
+    })
+  
+  return gacetasDataPromise
+}
+
+// Función helper para normalizar fecha
+function normalizeFecha(gaceta: any): string {
+  if (gaceta.fecha_publicacion) {
+    return gaceta.fecha_publicacion
+  } else if (gaceta.analisis_completo?.gaceta?.fecha_publicacion) {
+    return gaceta.analisis_completo.gaceta.fecha_publicacion
+  } else {
+    return `${gaceta.año}-01-01`
+  }
+}
 
 export function useGacetaModal() {
   const [isOpen, setIsOpen] = useState(false)
@@ -26,10 +66,9 @@ export function useGacetaModal() {
     }
   }, [])
 
-  const loadGacetaDataWithRegistro = async (gacetaId: string, registroId: number) => {
+  const loadGacetaDataWithRegistro = useCallback(async (gacetaId: string, registroId: number) => {
     try {
-      const response = await fetch('/data/gacetas_semarnat_analizadas.json')
-      const data = await response.json()
+      const data = await fetchGacetasData()
       const gaceta = data.analyses.find((g: any) => g.gaceta_id === gacetaId)
       
       if (gaceta) {
@@ -39,19 +78,9 @@ export function useGacetaModal() {
           registroEncontrado = gaceta.analisis_completo.registros.find((r: RegistroGaceta) => r.id_db === registroId) || null
         }
         
-        // Normalizar fecha_publicacion
-        let fechaNormalizada: string
-        if (gaceta.fecha_publicacion) {
-          fechaNormalizada = gaceta.fecha_publicacion
-        } else if (gaceta.analisis_completo?.gaceta?.fecha_publicacion) {
-          fechaNormalizada = gaceta.analisis_completo.gaceta.fecha_publicacion
-        } else {
-          fechaNormalizada = `${gaceta.año}-01-01`
-        }
-        
         setSelectedGaceta({
           ...gaceta,
-          fecha_publicacion: fechaNormalizada
+          fecha_publicacion: normalizeFecha(gaceta)
         } as ProcessedGacetaAnalysis)
         setSelectedRegistro(registroEncontrado)
         setIsOpen(true)
@@ -59,29 +88,17 @@ export function useGacetaModal() {
     } catch (error) {
       console.error('Error cargando datos de la gaceta:', error)
     }
-  }
+  }, [])
 
-  const loadGacetaData = async (gacetaId: string) => {
+  const loadGacetaData = useCallback(async (gacetaId: string) => {
     try {
-      // Cargar datos desde el archivo JSON público
-      const response = await fetch('/data/gacetas_semarnat_analizadas.json')
-      const data = await response.json()
+      const data = await fetchGacetasData()
       const gaceta = data.analyses.find((g: any) => g.gaceta_id === gacetaId)
       
       if (gaceta) {
-        // Normalizar fecha_publicacion
-        let fechaNormalizada: string
-        if (gaceta.fecha_publicacion) {
-          fechaNormalizada = gaceta.fecha_publicacion
-        } else if (gaceta.analisis_completo?.gaceta?.fecha_publicacion) {
-          fechaNormalizada = gaceta.analisis_completo.gaceta.fecha_publicacion
-        } else {
-          fechaNormalizada = `${gaceta.año}-01-01`
-        }
-        
         setSelectedGaceta({
           ...gaceta,
-          fecha_publicacion: fechaNormalizada
+          fecha_publicacion: normalizeFecha(gaceta)
         } as ProcessedGacetaAnalysis)
         setIsOpen(true)
       } else {
@@ -90,9 +107,9 @@ export function useGacetaModal() {
     } catch (error) {
       console.error('Error cargando datos de la gaceta:', error)
     }
-  }
+  }, [])
 
-  const openModal = (gaceta: ProcessedGacetaAnalysis, registro?: RegistroGaceta | null) => {
+  const openModal = useCallback((gaceta: ProcessedGacetaAnalysis, registro?: RegistroGaceta | null) => {
     setSelectedGaceta(gaceta)
     setSelectedRegistro(registro || null)
     setIsOpen(true)
@@ -105,18 +122,16 @@ export function useGacetaModal() {
       }
       window.history.pushState({}, '', url.toString())
     }
-  }
+  }, [])
 
-  const openModalByUrl = (gacetaUrl: string, registro?: RegistroGaceta | null) => {
+  const openModalByUrl = useCallback((gacetaUrl: string, registro?: RegistroGaceta | null) => {
     // Buscar la gaceta por URL en los datos cargados
     loadGacetaByUrl(gacetaUrl, registro)
-  }
+  }, [])
 
-  const openModalWithRegistro = async (gacetaUrl: string, registroId: number) => {
+  const openModalWithRegistro = useCallback(async (gacetaUrl: string, registroId: number) => {
     try {
-      // Cargar la gaceta
-      const response = await fetch('/data/gacetas_semarnat_analizadas.json')
-      const data = await response.json()
+      const data = await fetchGacetasData()
       const gaceta = data.analyses.find((g: any) => g.url === gacetaUrl)
       
       if (!gaceta) return
@@ -127,19 +142,9 @@ export function useGacetaModal() {
         registroEncontrado = gaceta.analisis_completo.registros.find((r: RegistroGaceta) => r.id_db === registroId) || null
       }
       
-      // Normalizar fecha
-      let fechaNormalizada: string
-      if (gaceta.fecha_publicacion) {
-        fechaNormalizada = gaceta.fecha_publicacion
-      } else if (gaceta.analisis_completo?.gaceta?.fecha_publicacion) {
-        fechaNormalizada = gaceta.analisis_completo.gaceta.fecha_publicacion
-      } else {
-        fechaNormalizada = `${gaceta.año}-01-01`
-      }
-      
       setSelectedGaceta({
         ...gaceta,
-        fecha_publicacion: fechaNormalizada
+        fecha_publicacion: normalizeFecha(gaceta)
       } as ProcessedGacetaAnalysis)
       setSelectedRegistro(registroEncontrado)
       setIsOpen(true)
@@ -156,28 +161,17 @@ export function useGacetaModal() {
     } catch (error) {
       console.error('Error cargando datos de la gaceta con registro:', error)
     }
-  }
+  }, [])
 
-  const loadGacetaByUrl = async (gacetaUrl: string, registro?: RegistroGaceta | null) => {
+  const loadGacetaByUrl = useCallback(async (gacetaUrl: string, registro?: RegistroGaceta | null) => {
     try {
-      const response = await fetch('/data/gacetas_semarnat_analizadas.json')
-      const data = await response.json()
+      const data = await fetchGacetasData()
       const gaceta = data.analyses.find((g: any) => g.url === gacetaUrl)
       
       if (gaceta) {
-        // Normalizar fecha_publicacion
-        let fechaNormalizada: string
-        if (gaceta.fecha_publicacion) {
-          fechaNormalizada = gaceta.fecha_publicacion
-        } else if (gaceta.analisis_completo?.gaceta?.fecha_publicacion) {
-          fechaNormalizada = gaceta.analisis_completo.gaceta.fecha_publicacion
-        } else {
-          fechaNormalizada = `${gaceta.año}-01-01`
-        }
-        
         setSelectedGaceta({
           ...gaceta,
-          fecha_publicacion: fechaNormalizada
+          fecha_publicacion: normalizeFecha(gaceta)
         } as ProcessedGacetaAnalysis)
         setSelectedRegistro(registro || null)
         setIsOpen(true)
@@ -195,9 +189,9 @@ export function useGacetaModal() {
     } catch (error) {
       console.error('Error cargando datos de la gaceta por URL:', error)
     }
-  }
+  }, [])
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setIsOpen(false)
     setSelectedGaceta(null)
     setSelectedRegistro(null)
@@ -208,7 +202,7 @@ export function useGacetaModal() {
       url.searchParams.delete('registro')
       window.history.pushState({}, '', url.toString())
     }
-  }
+  }, [])
 
   return {
     isOpen,

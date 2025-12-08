@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo, useRef, useCallback } from 'react'
 import { Box, Typography, Button, IconButton, Paper, Divider, Chip, CircularProgress, Alert, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material"
 import ReactMarkdown from "react-markdown"
 import CloseIcon from '@mui/icons-material/Close'
@@ -48,128 +48,227 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
     }
   }, [isOpen, onClose])
 
-  // Cargar información de SEMARNAT cuando se selecciona un registro
-  // Primero intentar desde el JSON enriquecido, luego desde API como fallback
+  // Usar useRef para trackear el registro actual y cancelar requests anteriores
+  const registroKeyRef = useRef<string | null>(null)
+  const abortControllerRef = useRef<AbortController | null>(null)
+
+  // Memoizar clave única del registro para evitar re-fetches innecesarios
+  const registroId = registro?.id
+  const registroClave = registro?.clave_proyecto
+  const registroKey = useMemo(() => {
+    if (!registro) return null
+    return `${registroId || registroClave || ''}-${registroClave || ''}`
+  }, [registro, registroId, registroClave])
+
+  // Procesar datos SEMARNAT desde el registro (memoizado)
+  const semarnatData = registro?.semarnat_data
+  const semarnatDataFromRegistro = useMemo(() => {
+    if (!semarnatData) return null
+    
+    if (semarnatData.error) {
+      return { error: semarnatData.error, data: null }
+    }
+    
+    if (semarnatData.mensaje === 'error' && 
+        !semarnatData.resumen && 
+        !semarnatData.estudio && 
+        !semarnatData.resolutivo) {
+      return { error: semarnatData.detalle || 'Error en datos de SEMARNAT', data: null }
+    }
+    
+    return { error: null, data: semarnatData }
+  }, [semarnatData])
+
+  // Procesar historial desde el registro (memoizado)
+  const semarnatHistorial = registro?.semarnat_historial
+  const historialFromRegistro = useMemo(() => {
+    if (!semarnatHistorial) return null
+    
+    const tieneHistorial = (semarnatHistorial.historial && 
+                           Array.isArray(semarnatHistorial.historial) && 
+                           semarnatHistorial.historial.length > 0) ||
+                          (Array.isArray(semarnatHistorial) && 
+                           semarnatHistorial.length > 0)
+    
+    if (tieneHistorial) {
+      return { error: null, data: semarnatHistorial }
+    }
+    
+    if (semarnatHistorial.error || 
+        (semarnatHistorial.mensaje === 'error' && !tieneHistorial)) {
+      return { 
+        error: semarnatHistorial.detalle || 
+               semarnatHistorial.error || 
+               'No hay historial disponible', 
+        data: null 
+      }
+    }
+    
+    return { error: null, data: semarnatHistorial }
+  }, [semarnatHistorial])
+
+  // Efecto para cargar datos SEMARNAT
   useEffect(() => {
-    if (isOpen && registro?.clave_proyecto) {
-      // Si el registro ya tiene datos enriquecidos en el JSON, usarlos
-      if (registro.semarnat_data) {
-        if (registro.semarnat_data.error) {
-          setErrorSemarnat(registro.semarnat_data.error)
-          setSemarnatData(null)
-        } else if (registro.semarnat_data.mensaje === 'error' && !registro.semarnat_data.resumen && !registro.semarnat_data.estudio && !registro.semarnat_data.resolutivo) {
-          setErrorSemarnat(registro.semarnat_data.detalle || 'Error en datos de SEMARNAT')
-          setSemarnatData(null)
-        } else {
-          setSemarnatData(registro.semarnat_data)
-          setErrorSemarnat(null)
-        }
-        setLoadingSemarnat(false)
-      } else {
-        // Si no hay datos en el JSON, hacer llamada a la API route
-        const fetchSemarnatData = async () => {
-          setLoadingSemarnat(true)
-          setErrorSemarnat(null)
-          setSemarnatData(null)
+    // Cancelar request anterior si existe
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort()
+    }
 
-          try {
-            const response = await fetch('/api/semarnat-proyecto', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ clave: registro.clave_proyecto })
-            })
-
-            const data: SemarnatApiResponse = await response.json()
-
-            if (!response.ok || data.error) {
-              setErrorSemarnat(data.error || 'Error al cargar información de SEMARNAT')
-              setSemarnatData(null)
-            } else {
-              setSemarnatData(data)
-              setErrorSemarnat(null)
-            }
-          } catch (error) {
-            console.error('Error fetching SEMARNAT data:', error)
-            setErrorSemarnat('Error al conectar con el servicio de SEMARNAT')
-            setSemarnatData(null)
-          } finally {
-            setLoadingSemarnat(false)
-          }
-        }
-
-        fetchSemarnatData()
-      }
-
-      // Historial: primero desde JSON, luego desde API
-      if (registro.semarnat_historial) {
-        const tieneHistorial = (registro.semarnat_historial.historial && Array.isArray(registro.semarnat_historial.historial) && registro.semarnat_historial.historial.length > 0) ||
-                               (Array.isArray(registro.semarnat_historial) && registro.semarnat_historial.length > 0)
-        
-        if (tieneHistorial) {
-          setHistorialData(registro.semarnat_historial)
-          setErrorHistorial(null)
-        } else if (registro.semarnat_historial.error || (registro.semarnat_historial.mensaje === 'error' && !tieneHistorial)) {
-          setErrorHistorial(registro.semarnat_historial.detalle || registro.semarnat_historial.error || 'No hay historial disponible')
-          setHistorialData(null)
-        } else {
-          setHistorialData(registro.semarnat_historial)
-          setErrorHistorial(null)
-        }
-        setLoadingHistorial(false)
-      } else {
-        // Si no hay historial en el JSON, hacer llamada a la API route
-        const fetchHistorialData = async () => {
-          setLoadingHistorial(true)
-          setErrorHistorial(null)
-          setHistorialData(null)
-
-          try {
-            const response = await fetch('/api/semarnat-historial', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ numBitacora: registro.id || registro.clave_proyecto })
-            })
-
-            const data = await response.json()
-
-            if (!response.ok) {
-              setErrorHistorial('Error al cargar el historial')
-              setHistorialData(null)
-            } else {
-              setHistorialData(data)
-              if (data.error && !data.historial && !Array.isArray(data.historial)) {
-                setErrorHistorial(data.error)
-              } else {
-                setErrorHistorial(null)
-              }
-            }
-          } catch (error) {
-            console.error('Error fetching historial data:', error)
-            setErrorHistorial('Error al conectar con el servicio de historial')
-            setHistorialData(null)
-          } finally {
-            setLoadingHistorial(false)
-          }
-        }
-
-        fetchHistorialData()
-      }
-    } else {
-      // Limpiar datos cuando se cierra el modal o no hay registro
+    if (!isOpen || !registro?.clave_proyecto) {
       setSemarnatData(null)
       setErrorSemarnat(null)
       setLoadingSemarnat(false)
+      return
+    }
+
+    // Si el registro cambió, limpiar estados
+    if (registroKeyRef.current !== registroKey) {
+      registroKeyRef.current = registroKey
       setPdfResponseData({})
       setLoadingPdf({})
+    }
+
+    // Si ya tenemos datos del registro, usarlos
+    if (semarnatDataFromRegistro) {
+      if (semarnatDataFromRegistro.error) {
+        setErrorSemarnat(semarnatDataFromRegistro.error)
+        setSemarnatData(null)
+      } else {
+        setSemarnatData(semarnatDataFromRegistro.data)
+        setErrorSemarnat(null)
+      }
+      setLoadingSemarnat(false)
+      return
+    }
+
+    // Si no hay datos en el registro, hacer llamada a la API
+    const controller = new AbortController()
+    abortControllerRef.current = controller
+
+    const fetchSemarnatData = async () => {
+      setLoadingSemarnat(true)
+      setErrorSemarnat(null)
+      setSemarnatData(null)
+
+      try {
+        const response = await fetch('/api/semarnat-proyecto', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ clave: registro.clave_proyecto }),
+          signal: controller.signal
+        })
+
+        if (controller.signal.aborted) return
+
+        const data: SemarnatApiResponse = await response.json()
+
+        if (controller.signal.aborted) return
+
+        if (!response.ok || data.error) {
+          setErrorSemarnat(data.error || 'Error al cargar información de SEMARNAT')
+          setSemarnatData(null)
+        } else {
+          setSemarnatData(data)
+          setErrorSemarnat(null)
+        }
+      } catch (error: any) {
+        if (error.name === 'AbortError') return
+        console.error('Error fetching SEMARNAT data:', error)
+        setErrorSemarnat('Error al conectar con el servicio de SEMARNAT')
+        setSemarnatData(null)
+      } finally {
+        if (!controller.signal.aborted) {
+          setLoadingSemarnat(false)
+        }
+      }
+    }
+
+    fetchSemarnatData()
+
+    return () => {
+      controller.abort()
+    }
+  }, [isOpen, registro?.clave_proyecto, registroKey, semarnatDataFromRegistro])
+
+  // Efecto separado para cargar historial
+  const historialRegistroId = registro?.id
+  const historialRegistroClave = registro?.clave_proyecto
+  useEffect(() => {
+    if (!isOpen || !registro) {
       setHistorialData(null)
       setErrorHistorial(null)
       setLoadingHistorial(false)
+      return
     }
-  }, [isOpen, registro?.clave_proyecto, registro?.id])
+
+    // Si ya tenemos datos del registro, usarlos
+    if (historialFromRegistro) {
+      if (historialFromRegistro.error) {
+        setErrorHistorial(historialFromRegistro.error)
+        setHistorialData(null)
+      } else {
+        setHistorialData(historialFromRegistro.data)
+        setErrorHistorial(null)
+      }
+      setLoadingHistorial(false)
+      return
+    }
+
+    // Si no hay historial en el registro, hacer llamada a la API
+    const controller = new AbortController()
+
+    const fetchHistorialData = async () => {
+      setLoadingHistorial(true)
+      setErrorHistorial(null)
+      setHistorialData(null)
+
+      try {
+        const response = await fetch('/api/semarnat-historial', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ numBitacora: historialRegistroId || historialRegistroClave }),
+          signal: controller.signal
+        })
+
+        if (controller.signal.aborted) return
+
+        const data = await response.json()
+
+        if (controller.signal.aborted) return
+
+        if (!response.ok) {
+          setErrorHistorial('Error al cargar el historial')
+          setHistorialData(null)
+        } else {
+          setHistorialData(data)
+          if (data.error && !data.historial && !Array.isArray(data.historial)) {
+            setErrorHistorial(data.error)
+          } else {
+            setErrorHistorial(null)
+          }
+        }
+      } catch (error: any) {
+        if (error.name === 'AbortError') return
+        console.error('Error fetching historial data:', error)
+        setErrorHistorial('Error al conectar con el servicio de historial')
+        setHistorialData(null)
+      } finally {
+        if (!controller.signal.aborted) {
+          setLoadingHistorial(false)
+        }
+      }
+    }
+
+    fetchHistorialData()
+
+    return () => {
+      controller.abort()
+    }
+  }, [isOpen, registro, historialRegistroId, historialRegistroClave, historialFromRegistro])
 
   if (!gaceta || !isOpen) return null
 

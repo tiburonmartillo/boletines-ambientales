@@ -18,6 +18,11 @@ interface SemarnatApiResponse {
   data?: any
   error?: string
   details?: string
+  mensaje?: string
+  detalle?: string
+  resumen?: string
+  estudio?: string
+  resolutivo?: string
 }
 
 export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalProps) {

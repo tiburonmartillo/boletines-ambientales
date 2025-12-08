@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import { 
   Card, 
   CardContent, 
@@ -27,6 +27,8 @@ import {
 import { Clear, OpenInNew } from "@mui/icons-material"
 import { styled } from "@mui/material/styles"
 import type { ProyectoGacetaProcessed, ResolutivoGacetaProcessed } from "@/hooks/useGacetasData"
+import { useGacetaModal } from "@/hooks/useGacetaModal"
+import { GacetaModal } from "./gaceta-modal"
 
 const StyledCard = styled(Card)(({ theme }) => ({
   borderRadius: '12px',
@@ -49,6 +51,16 @@ export function MuiGacetasProjectsTable({ proyectos, resolutivos, municipios }: 
   const [municipioFilter, setMunicipioFilter] = useState<string>("all")
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
+  const [mounted, setMounted] = useState(false)
+
+  // Hook para modal de gaceta con routing
+  const { isOpen: isGacetaModalOpen, selectedGaceta, selectedRegistro, openModal: openGacetaModal, openModalByUrl, openModalWithRegistro, closeModal: closeGacetaModal } = useGacetaModal()
+
+  // Evitar hidratación: solo renderizar contenido dependiente de datos asíncronos después de montar
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
 
   const currentData = activeTab === "proyectos" ? proyectos : resolutivos
 
@@ -289,7 +301,7 @@ export function MuiGacetasProjectsTable({ proyectos, resolutivos, municipios }: 
             <TableBody>
               {paginatedData.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={activeTab === "proyectos" ? 8 : 8} align="center" sx={{ py: 4 }}>
+                  <TableCell colSpan={activeTab === "proyectos" ? 8 : 7} align="center" sx={{ py: 4 }}>
                     <Typography variant="body2" color="text.secondary">
                       No se encontraron {activeTab === "proyectos" ? "ingresados" : "resolutivos"} que coincidan con los filtros
                     </Typography>
@@ -297,7 +309,21 @@ export function MuiGacetasProjectsTable({ proyectos, resolutivos, municipios }: 
                 </TableRow>
               ) : (
                 paginatedData.map((item, index) => (
-                  <TableRow key={`${item.clave}-${index}`} hover>
+                  <TableRow 
+                    key={`${item.clave}-${index}`} 
+                    hover
+                    onClick={() => {
+                      if (item.id_db) {
+                        openModalWithRegistro(item.gaceta_url, item.id_db)
+                      }
+                    }}
+                    sx={{
+                      cursor: 'pointer',
+                      '&:hover': {
+                        backgroundColor: 'rgba(0, 0, 0, 0.04)'
+                      }
+                    }}
+                  >
                     <TableCell sx={{ fontSize: '0.875rem' }}>
                       {item.clave || 'N/A'}
                     </TableCell>
@@ -477,6 +503,16 @@ export function MuiGacetasProjectsTable({ proyectos, resolutivos, municipios }: 
           labelDisplayedRows={({ from, to, count }) => `${from}-${to} de ${count}`}
         />
       </CardContent>
+
+      {/* Modal de resumen de gaceta */}
+      {mounted && (
+        <GacetaModal 
+          gaceta={selectedGaceta}
+          registro={selectedRegistro}
+          isOpen={isGacetaModalOpen} 
+          onClose={closeGacetaModal} 
+        />
+      )}
     </StyledCard>
   )
 }

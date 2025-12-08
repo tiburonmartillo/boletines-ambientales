@@ -115,6 +115,7 @@ export interface ProcessedGacetaAnalysis extends Omit<GacetaAnalysis, 'fecha_pub
 export interface ProyectoGacetaProcessed extends ProyectoIngresado {
   fecha_publicacion: string
   gaceta_url: string
+  gaceta_id: string
   resolutivos_ids?: number[] // IDs de resolutivos relacionados
 }
 
@@ -122,6 +123,7 @@ export interface ProyectoGacetaProcessed extends ProyectoIngresado {
 export interface ResolutivoGacetaProcessed extends ResolutivoEmitido {
   fecha_publicacion: string
   gaceta_url: string
+  gaceta_id: string
   gaceta_ingreso_url: string | null // URL de la gaceta donde se ingresó el proyecto original
 }
 
@@ -273,6 +275,7 @@ export function useGacetasData() {
                   descripcion: registro.descripcion || undefined,
                   fecha_publicacion: fechaNormalizada,
                   gaceta_url: gaceta.url,
+                  gaceta_id: gaceta.gaceta_id,
                   resolutivos_ids: registro.resolutivos_ids || []
                 })
               }
@@ -331,6 +334,7 @@ export function useGacetasData() {
                   proyecto_ingresado_id: registro.proyecto_ingresado_id,
                   fecha_publicacion: fechaNormalizada,
                   gaceta_url: gaceta.url,
+                  gaceta_id: gaceta.gaceta_id,
                   gaceta_ingreso_url: gacetaIngresoUrl
                 })
               }

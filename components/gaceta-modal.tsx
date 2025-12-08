@@ -108,6 +108,7 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
   }, [semarnatHistorial])
 
   // Efecto para cargar datos SEMARNAT
+  // PRIORIDAD: Primero intentar API en tiempo real, luego fallback a JSON enriquecido
   useEffect(() => {
     // Cancelar request anterior si existe
     if (abortControllerRef.current) {
@@ -128,20 +129,7 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
       setLoadingPdf({})
     }
 
-    // Si ya tenemos datos del registro, usarlos
-    if (semarnatDataFromRegistro) {
-      if (semarnatDataFromRegistro.error) {
-        setErrorSemarnat(semarnatDataFromRegistro.error)
-        setSemarnatData(null)
-      } else {
-        setSemarnatData(semarnatDataFromRegistro.data)
-        setErrorSemarnat(null)
-      }
-      setLoadingSemarnat(false)
-      return
-    }
-
-    // Si no hay datos en el registro, hacer llamada a la API
+    // PRIORIDAD 1: Intentar obtener datos desde la API en tiempo real
     const controller = new AbortController()
     abortControllerRef.current = controller
 
@@ -151,6 +139,7 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
       setSemarnatData(null)
 
       try {
+        console.log('🔄 [Modal] Intentando obtener datos desde API para:', registro.clave_proyecto)
         const response = await fetch('/api/semarnat-proyecto', {
           method: 'POST',
           headers: {
@@ -166,16 +155,40 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
 
         if (controller.signal.aborted) return
 
-        if (!response.ok || data.error) {
-          setErrorSemarnat(data.error || 'Error al cargar información de SEMARNAT')
-          setSemarnatData(null)
-        } else {
+        // Si la petición fue exitosa y tiene datos válidos
+        if (response.ok && !data.error && (data.resumen || data.estudio || data.resolutivo)) {
+          console.log('✅ [Modal] Datos obtenidos exitosamente desde API')
           setSemarnatData(data)
           setErrorSemarnat(null)
+          setLoadingSemarnat(false)
+          return
         }
+
+        // Si la petición fue rechazada o falló, hacer fallback al JSON
+        console.log('⚠️ [Modal] Petición rechazada o sin datos, usando fallback del JSON')
+        throw new Error(data.error || 'Petición rechazada')
+
       } catch (error: any) {
         if (error.name === 'AbortError') return
-        console.error('Error fetching SEMARNAT data:', error)
+
+        console.log('❌ [Modal] Error en petición API:', error.message)
+        
+        // FALLBACK: Usar datos del JSON enriquecido si están disponibles
+        if (semarnatDataFromRegistro) {
+          console.log('📦 [Modal] Usando datos del JSON enriquecido como fallback')
+          if (semarnatDataFromRegistro.error) {
+            setErrorSemarnat(semarnatDataFromRegistro.error)
+            setSemarnatData(null)
+          } else {
+            setSemarnatData(semarnatDataFromRegistro.data)
+            setErrorSemarnat(null)
+          }
+          setLoadingSemarnat(false)
+          return
+        }
+
+        // Si no hay datos en el JSON ni en la API, mostrar error
+        console.error('❌ [Modal] Sin datos disponibles ni en API ni en JSON')
         setErrorSemarnat('Error al conectar con el servicio de SEMARNAT')
         setSemarnatData(null)
       } finally {
@@ -193,6 +206,7 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
   }, [isOpen, registro?.clave_proyecto, registroKey, semarnatDataFromRegistro])
 
   // Efecto separado para cargar historial
+  // PRIORIDAD: Primero intentar API en tiempo real, luego fallback a JSON enriquecido
   const historialRegistroId = registro?.id
   const historialRegistroClave = registro?.clave_proyecto
   useEffect(() => {
@@ -203,20 +217,14 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
       return
     }
 
-    // Si ya tenemos datos del registro, usarlos
-    if (historialFromRegistro) {
-      if (historialFromRegistro.error) {
-        setErrorHistorial(historialFromRegistro.error)
-        setHistorialData(null)
-      } else {
-        setHistorialData(historialFromRegistro.data)
-        setErrorHistorial(null)
-      }
+    if (!historialRegistroId && !historialRegistroClave) {
+      setHistorialData(null)
+      setErrorHistorial(null)
       setLoadingHistorial(false)
       return
     }
 
-    // Si no hay historial en el registro, hacer llamada a la API
+    // PRIORIDAD 1: Intentar obtener historial desde la API en tiempo real
     const controller = new AbortController()
 
     const fetchHistorialData = async () => {
@@ -225,6 +233,7 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
       setHistorialData(null)
 
       try {
+        console.log('🔄 [Modal] Intentando obtener historial desde API para:', historialRegistroId || historialRegistroClave)
         const response = await fetch('/api/semarnat-historial', {
           method: 'POST',
           headers: {
@@ -240,20 +249,43 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
 
         if (controller.signal.aborted) return
 
-        if (!response.ok) {
-          setErrorHistorial('Error al cargar el historial')
-          setHistorialData(null)
-        } else {
+        // Si la petición fue exitosa y tiene historial válido
+        const tieneHistorial = (data.historial && Array.isArray(data.historial) && data.historial.length > 0) ||
+                              (Array.isArray(data) && data.length > 0)
+
+        if (response.ok && tieneHistorial) {
+          console.log('✅ [Modal] Historial obtenido exitosamente desde API')
           setHistorialData(data)
-          if (data.error && !data.historial && !Array.isArray(data.historial)) {
-            setErrorHistorial(data.error)
-          } else {
-            setErrorHistorial(null)
-          }
+          setErrorHistorial(null)
+          setLoadingHistorial(false)
+          return
         }
+
+        // Si la petición fue rechazada o falló, hacer fallback al JSON
+        console.log('⚠️ [Modal] Petición de historial rechazada o sin datos, usando fallback del JSON')
+        throw new Error(data.error || data.mensaje || 'Petición rechazada')
+
       } catch (error: any) {
         if (error.name === 'AbortError') return
-        console.error('Error fetching historial data:', error)
+
+        console.log('❌ [Modal] Error en petición de historial API:', error.message)
+        
+        // FALLBACK: Usar historial del JSON enriquecido si está disponible
+        if (historialFromRegistro) {
+          console.log('📦 [Modal] Usando historial del JSON enriquecido como fallback')
+          if (historialFromRegistro.error) {
+            setErrorHistorial(historialFromRegistro.error)
+            setHistorialData(null)
+          } else {
+            setHistorialData(historialFromRegistro.data)
+            setErrorHistorial(null)
+          }
+          setLoadingHistorial(false)
+          return
+        }
+
+        // Si no hay datos en el JSON ni en la API, mostrar error
+        console.error('❌ [Modal] Sin historial disponible ni en API ni en JSON')
         setErrorHistorial('Error al conectar con el servicio de historial')
         setHistorialData(null)
       } finally {

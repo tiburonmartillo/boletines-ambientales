@@ -29,11 +29,13 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
   const [semarnatData, setSemarnatData] = useState<any>(null)
   const [loadingSemarnat, setLoadingSemarnat] = useState(false)
   const [errorSemarnat, setErrorSemarnat] = useState<string | null>(null)
+  const [semarnatDataSource, setSemarnatDataSource] = useState<'api' | 'json' | null>(null)
   const [pdfResponseData, setPdfResponseData] = useState<{ [key: string]: any }>({})
   const [loadingPdf, setLoadingPdf] = useState<{ [key: string]: boolean }>({})
   const [historialData, setHistorialData] = useState<any>(null)
   const [loadingHistorial, setLoadingHistorial] = useState(false)
   const [errorHistorial, setErrorHistorial] = useState<string | null>(null)
+  const [historialDataSource, setHistorialDataSource] = useState<'api' | 'json' | null>(null)
   // Manejar escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -78,7 +80,7 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
         !registroSemarnatData.resumen && 
         !registroSemarnatData.estudio && 
         !registroSemarnatData.resolutivo) {
-      return { error: registroSemarnatData.detalle || 'Error en datos de SEMARNAT', data: null }
+      return { error: registroSemarnatData.detalle || 'Sin documentos disponibles', data: null }
     }
     
     return { error: null, data: registroSemarnatData }
@@ -123,6 +125,7 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
     if (!isOpen || !registro?.clave_proyecto) {
       setSemarnatData(null)
       setErrorSemarnat(null)
+      setSemarnatDataSource(null)
       setLoadingSemarnat(false)
       return
     }
@@ -163,6 +166,7 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
         if (response.ok && !data.error && (data.resumen || data.estudio || data.resolutivo)) {
           setSemarnatData(data)
           setErrorSemarnat(null)
+          setSemarnatDataSource('api')
           setLoadingSemarnat(false)
           return
         }
@@ -178,9 +182,11 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
           if (semarnatDataFromRegistro.error) {
             setErrorSemarnat(semarnatDataFromRegistro.error)
             setSemarnatData(null)
+            setSemarnatDataSource(null)
           } else {
             setSemarnatData(semarnatDataFromRegistro.data)
             setErrorSemarnat(null)
+            setSemarnatDataSource('json')
           }
           setLoadingSemarnat(false)
           return
@@ -207,17 +213,25 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
   // PRIORIDAD: Primero intentar API en tiempo real, luego fallback a JSON enriquecido
   const historialRegistroId = registro?.id
   const historialRegistroClave = registro?.clave_proyecto
+  const historialNumBitacora =
+    (registro as any)?.semarnat_proyecto?.tramite?.numBitacora ||
+    (registro as any)?.semarnat_bitacora?.tramite?.numBitacora ||
+    (registro as any)?.semarnat_proyecto_bitacora?.tramite?.numBitacora
   useEffect(() => {
     if (!isOpen || !registro) {
       setHistorialData(null)
       setErrorHistorial(null)
+      setHistorialDataSource(null)
       setLoadingHistorial(false)
       return
     }
 
-    if (!historialRegistroId && !historialRegistroClave) {
+    const bitacoraParam = historialNumBitacora || historialRegistroId || historialRegistroClave
+
+    if (!bitacoraParam) {
       setHistorialData(null)
       setErrorHistorial(null)
+      setHistorialDataSource(null)
       setLoadingHistorial(false)
       return
     }
@@ -236,7 +250,7 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ numBitacora: historialRegistroId || historialRegistroClave }),
+          body: JSON.stringify({ numBitacora: bitacoraParam }),
           signal: controller.signal
         })
 
@@ -253,6 +267,7 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
         if (response.ok && tieneHistorial) {
           setHistorialData(data)
           setErrorHistorial(null)
+          setHistorialDataSource('api')
           setLoadingHistorial(false)
           return
         }
@@ -268,9 +283,11 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
           if (historialFromRegistro.error) {
             setErrorHistorial(historialFromRegistro.error)
             setHistorialData(null)
+            setHistorialDataSource(null)
           } else {
             setHistorialData(historialFromRegistro.data)
             setErrorHistorial(null)
+            setHistorialDataSource('json')
           }
           setLoadingHistorial(false)
           return
@@ -291,7 +308,7 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
     return () => {
       controller.abort()
     }
-  }, [isOpen, registro, historialRegistroId, historialRegistroClave, historialFromRegistro])
+  }, [isOpen, registro, historialRegistroId, historialRegistroClave, historialNumBitacora, historialFromRegistro])
 
   if (!gaceta || !isOpen) return null
 
@@ -618,16 +635,26 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
                 
                 <Divider sx={{ my: 3 }} />
 
-                {/* Información de SEMARNAT API */}
+                {/* Información de SEMARNAT API - Documentos */}
                 <Box sx={{ mb: 4 }}>
                   <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-                    <Typography
-                      variant="h6"
-                      fontWeight="semibold"
-                      sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }}
-                    >
-                      Información del Sistema SEMARNAT
-                    </Typography>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flex: 1 }}>
+                      <Typography
+                        variant="h6"
+                        fontWeight="semibold"
+                        sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }}
+                      >
+                        Documentos del Sistema SEMARNAT
+                      </Typography>
+                      {semarnatDataSource && (
+                        <Chip
+                          label={semarnatDataSource === 'api' ? 'API' : 'JSON'}
+                          size="small"
+                          color={semarnatDataSource === 'api' ? 'success' : 'info'}
+                          sx={{ fontSize: '0.7rem', height: '20px' }}
+                        />
+                      )}
+                    </Box>
                     {registro?.clave_proyecto && (
                       <Button
                         variant="outlined"
@@ -649,7 +676,7 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, py: 2 }}>
                       <CircularProgress size={20} />
                       <Typography variant="body2" color="text.secondary">
-                        Cargando información del sistema SEMARNAT...
+                        Cargando documentos del sistema SEMARNAT...
                       </Typography>
                     </Box>
                   )}
@@ -980,16 +1007,27 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
                       )}
                     </Box>
                   )}
-                  
-                  {/* Historial del Trámite */}
-                  <Box sx={{ mb: 4 }}>
+                </Box>
+
+                {/* Historial del Trámite - Sección Separada */}
+                <Box sx={{ mb: 4 }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
                     <Typography
                       variant="h6"
                       fontWeight="semibold"
-                      sx={{ mb: 2, fontSize: { xs: '1rem', sm: '1.25rem' } }}
+                      sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }}
                     >
                       Historial del Trámite
                     </Typography>
+                    {historialDataSource && (
+                      <Chip
+                        label={historialDataSource === 'api' ? 'API' : 'JSON'}
+                        size="small"
+                        color={historialDataSource === 'api' ? 'success' : 'info'}
+                        sx={{ fontSize: '0.7rem', height: '20px' }}
+                      />
+                    )}
+                  </Box>
                     
                     {loadingHistorial && (
                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, py: 2 }}>
@@ -1048,7 +1086,6 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
                       </Alert>
                     ) : null}
                   </Box>
-                </Box>
               </Box>
             )}
 

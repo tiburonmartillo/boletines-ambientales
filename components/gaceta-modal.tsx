@@ -144,7 +144,6 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
       setSemarnatData(null)
 
       try {
-        console.log('🔄 [Modal] Intentando obtener datos desde API para:', registro.clave_proyecto)
         const response = await fetch('/api/semarnat-proyecto', {
           method: 'POST',
           headers: {
@@ -162,7 +161,6 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
 
         // Si la petición fue exitosa y tiene datos válidos
         if (response.ok && !data.error && (data.resumen || data.estudio || data.resolutivo)) {
-          console.log('✅ [Modal] Datos obtenidos exitosamente desde API')
           setSemarnatData(data)
           setErrorSemarnat(null)
           setLoadingSemarnat(false)
@@ -170,17 +168,13 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
         }
 
         // Si la petición fue rechazada o falló, hacer fallback al JSON
-        console.log('⚠️ [Modal] Petición rechazada o sin datos, usando fallback del JSON')
         throw new Error(data.error || 'Petición rechazada')
 
       } catch (error: any) {
         if (error.name === 'AbortError') return
-
-        console.log('❌ [Modal] Error en petición API:', error.message)
         
         // FALLBACK: Usar datos del JSON enriquecido si están disponibles
         if (semarnatDataFromRegistro) {
-          console.log('📦 [Modal] Usando datos del JSON enriquecido como fallback')
           if (semarnatDataFromRegistro.error) {
             setErrorSemarnat(semarnatDataFromRegistro.error)
             setSemarnatData(null)
@@ -193,7 +187,6 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
         }
 
         // Si no hay datos en el JSON ni en la API, mostrar error
-        console.error('❌ [Modal] Sin datos disponibles ni en API ni en JSON')
         setErrorSemarnat('Error al conectar con el servicio de SEMARNAT')
         setSemarnatData(null)
       } finally {
@@ -238,7 +231,6 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
       setHistorialData(null)
 
       try {
-        console.log('🔄 [Modal] Intentando obtener historial desde API para:', historialRegistroId || historialRegistroClave)
         const response = await fetch('/api/semarnat-historial', {
           method: 'POST',
           headers: {
@@ -259,7 +251,6 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
                               (Array.isArray(data) && data.length > 0)
 
         if (response.ok && tieneHistorial) {
-          console.log('✅ [Modal] Historial obtenido exitosamente desde API')
           setHistorialData(data)
           setErrorHistorial(null)
           setLoadingHistorial(false)
@@ -267,17 +258,13 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
         }
 
         // Si la petición fue rechazada o falló, hacer fallback al JSON
-        console.log('⚠️ [Modal] Petición de historial rechazada o sin datos, usando fallback del JSON')
         throw new Error(data.error || data.mensaje || 'Petición rechazada')
 
       } catch (error: any) {
         if (error.name === 'AbortError') return
-
-        console.log('❌ [Modal] Error en petición de historial API:', error.message)
         
         // FALLBACK: Usar historial del JSON enriquecido si está disponible
         if (historialFromRegistro) {
-          console.log('📦 [Modal] Usando historial del JSON enriquecido como fallback')
           if (historialFromRegistro.error) {
             setErrorHistorial(historialFromRegistro.error)
             setHistorialData(null)
@@ -290,7 +277,6 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
         }
 
         // Si no hay datos en el JSON ni en la API, mostrar error
-        console.error('❌ [Modal] Sin historial disponible ni en API ni en JSON')
         setErrorHistorial('Error al conectar con el servicio de historial')
         setHistorialData(null)
       } finally {
@@ -752,14 +738,12 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
                                           ...prev,
                                           resumen: { error: errorText, status: response.status }
                                         }))
-                                        console.error('Error al obtener el PDF:', errorText)
                                       }
                                     } catch (error) {
                                       setPdfResponseData(prev => ({
                                         ...prev,
                                         resumen: { error: error instanceof Error ? error.message : 'Error desconocido' }
                                       }))
-                                      console.error('Error al descargar el PDF:', error)
                                     } finally {
                                       setLoadingPdf(prev => ({ ...prev, resumen: false }))
                                     }
@@ -837,14 +821,12 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
                                           ...prev,
                                           estudio: { error: errorText, status: response.status }
                                         }))
-                                        console.error('Error al obtener el PDF:', errorText)
                                       }
                                     } catch (error) {
                                       setPdfResponseData(prev => ({
                                         ...prev,
                                         estudio: { error: error instanceof Error ? error.message : 'Error desconocido' }
                                       }))
-                                      console.error('Error al descargar el PDF:', error)
                                     } finally {
                                       setLoadingPdf(prev => ({ ...prev, estudio: false }))
                                     }
@@ -922,14 +904,12 @@ export function GacetaModal({ gaceta, registro, isOpen, onClose }: GacetaModalPr
                                           ...prev,
                                           resolutivo: { error: errorText, status: response.status }
                                         }))
-                                        console.error('Error al obtener el PDF:', errorText)
                                       }
                                     } catch (error) {
                                       setPdfResponseData(prev => ({
                                         ...prev,
                                         resolutivo: { error: error instanceof Error ? error.message : 'Error desconocido' }
                                       }))
-                                      console.error('Error al descargar el PDF:', error)
                                     } finally {
                                       setLoadingPdf(prev => ({ ...prev, resolutivo: false }))
                                     }

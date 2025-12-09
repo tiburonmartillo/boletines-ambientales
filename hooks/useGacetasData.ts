@@ -162,7 +162,6 @@ export function useGacetasData() {
     let isMounted = true
     const loadData = async () => {
       try {
-        console.log('🔄 Iniciando carga de datos de gacetas...')
         setLoading(true)
         setError(null)
         
@@ -171,7 +170,6 @@ export function useGacetasData() {
         const controller = new AbortController()
         const timeoutId = setTimeout(() => controller.abort(), 60000) // 60 segundos
 
-        console.log('📥 Fetching JSON desde:', dataUrl)
         const response = await fetch(dataUrl, {
           signal: controller.signal,
           headers: {
@@ -186,7 +184,6 @@ export function useGacetasData() {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
 
-        console.log('📦 Parseando JSON...')
         const jsonData: GacetasData = await response.json()
 
         if (!isMounted) return
@@ -195,12 +192,10 @@ export function useGacetasData() {
           throw new Error('Invalid data structure: missing analyses array')
         }
 
-        console.log('✅ JSON parseado, total analyses:', jsonData.analyses.length)
         setData(jsonData)
 
         // Procesar datos de gacetas y ordenar por fecha (más reciente primero)
         // Crear una fecha normalizada para cada gaceta (usar fecha_publicacion o año como fallback)
-        console.log('📊 Datos cargados, total analyses:', jsonData.analyses.length)
         const gacetasNormalizadas = jsonData.analyses
           .filter(a => a.resumen !== null && a.analisis_completo !== null)
           .map(gaceta => {
@@ -388,22 +383,17 @@ export function useGacetasData() {
         setLoading(false)
         
       } catch (err) {
-        console.error('❌ Error en loadData:', err)
         if (!isMounted) return
         
         if (err instanceof Error) {
           if (err.name === 'AbortError') {
-            console.error('Timeout al cargar datos')
             setError("Timeout: Los datos tardaron demasiado en cargar.")
           } else if (err.message.includes('Failed to fetch')) {
-            console.error('Error de fetch:', err.message)
             setError("Error de conexión: No se pudo cargar el archivo de datos.")
           } else {
-            console.error('Error desconocido:', err.message)
             setError(`Error al cargar los datos: ${err.message}`)
           }
         } else {
-          console.error('Error no es instancia de Error:', err)
           setError("Error desconocido al cargar los datos.")
         }
         

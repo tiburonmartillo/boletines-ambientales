@@ -370,12 +370,6 @@ export function useGacetasData() {
             lastUpdated: jsonData.metadata.last_updated
           }
         }
-
-        console.log('✅ Datos procesados exitosamente:', {
-          totalGacetas: processed.stats.totalGacetas,
-          totalProyectos: processed.stats.totalProyectos,
-          totalResolutivos: processed.stats.totalResolutivos
-        })
         
         if (!isMounted) return
         

@@ -41530,6 +41530,46 @@
       "director": "T.S.U. LUIS MEDINA HERNÁNDEZ",
       "cantidad_ingresados": 1,
       "id": 458
+    },
+    {
+      "secretario": "LIC. SARAHI MACIAS ALICEA",
+      "proyectos_ingresados": [
+        {
+          "numero": 1,
+          "tipo_estudio": "MIA",
+          "promovente": "FINVERR CORPORATIVO GLOBAL",
+          "nombre_proyecto": "CONDOMINIO MIXTO SAN BLAS",
+          "naturaleza_proyecto": "Este proyecto consiste en un condómino de 53,370.90 m2, El proyecto cuenta con 178 lotes habitacionales y 12 comerciales, en dos etapas, El predio se encuentra dentro del Estado de Aguascalientes, ubicado en el municipio de San Francisco de los Romo cercano a la localidad de Macario J. Gómez.",
+          "giro": "HABITACIONAL",
+          "municipio": "SAN FRANCISCO DE LOS ROMOS",
+          "coordenadas_x": 784853894.0,
+          "coordenadas_y": 2433573220.0,
+          "expediente": "SSMAA-DIRA-2836-2025",
+          "fecha_ingreso": "2025-12-04",
+          "boletin_id": 459
+        },
+        {
+          "numero": 2,
+          "tipo_estudio": "IP",
+          "promovente": "XMATSA CORPORACIÓN INMOBILIARIA, S.A. DE C.V.",
+          "nombre_proyecto": "CONDOMINIO MIXTO HABITACIONAL Y COMERCIAL “RESERVA COSMOS”",
+          "naturaleza_proyecto": "Preparación del sitio y urbanización de un Condominio mixto habitacional y comercial el cual contempla el desarrollo de 40 predios con una superficie total de 5,317.16m2 destinados a viviendas unifamiliares con medidas standard de 7.0 m x 18 m con una superficie de construcción promedio de 126 m2 cada uno, 6 lotes de tipo mixto con una superficie de 756.00m2 con las mismas medidas consideradas para los lotes unifamiliares de así como 3 lotes contemplados para actividades comerciales asimismo el condominio mixto habitacional y comercial “Reserva Cosmos” contempla la construcción de 2 vialidades interiores que dividirán al predio del proyecto. Dicho predio para este desarrollo habitacional abarca una superficie total de 9,990.08 m2.",
+          "giro": "HABITACIONAL",
+          "municipio": "PABELLON DE ARTEAGA",
+          "coordenadas_x": 780639.04,
+          "coordenadas_y": 2450774.67,
+          "expediente": "SSMAA-DIRA-2837-2025",
+          "fecha_ingreso": "2025-12-05",
+          "boletin_id": 459
+        }
+      ],
+      "fecha_publicacion": "2025-12-09",
+      "cantidad_ingresados": 2,
+      "filename": "https://www.aguascalientes.gob.mx/SSMAA/BoletinesSMA/Repositorio/2025/12%20Diciembre/BOLETIN49-2025_9%20DE%20DICIEMBRE_DEL0112_0512.pdf",
+      "director": "T.S.U. LUIS MEDINA HERNÁNDEZ",
+      "resolutivos_emitidos": [],
+      "cantidad_resolutivos": 0,
+      "id": 459
     }
   ],
   "metadata": {

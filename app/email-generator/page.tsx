@@ -219,14 +219,66 @@ export default function EmailGeneratorPage() {
     }
     
     setIsLoading(true);
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 segundos timeout
+    
     try {
-      const url = `https://adn-a.org/data/boletines.json`;
-      console.log('Fetching from:', url, 'looking for ID:', id);
+      // Intentar primero con la ruta local, luego con la URL remota
+      const localUrl = `/data/boletines.json`;
+      const remoteUrl = `https://adn-a.org/data/boletines.json`;
       
-      const response = await fetch(url);
+      let response: Response;
+      let url = localUrl;
+      
+      try {
+        console.log('Intentando cargar desde ruta local:', localUrl);
+        response = await fetch(localUrl, {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+          },
+          signal: controller.signal
+        });
+        
+        if (!response.ok) {
+          throw new Error(`Local file not found: ${response.status}`);
+        }
+        
+        console.log('✅ Datos cargados desde ruta local');
+      } catch (localError) {
+        console.warn('⚠️ No se pudo cargar desde ruta local, intentando URL remota:', localError);
+        url = remoteUrl;
+        console.log('Fetching from remote URL:', remoteUrl, 'looking for ID:', id);
+        
+        response = await fetch(remoteUrl, {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+          },
+          signal: controller.signal
+        }).catch((error) => {
+          clearTimeout(timeoutId);
+          // Capturar errores de red específicos
+          if (error.name === 'AbortError') {
+            throw new Error('La petición tardó demasiado tiempo. Por favor, intenta de nuevo.');
+          } else if (error.name === 'TypeError' && error.message.includes('fetch')) {
+            throw new Error('Error de conexión. Verifica tu conexión a internet o que el servidor esté disponible. Si el problema persiste, puede ser un problema de CORS.');
+          }
+          throw error;
+        });
+      }
+      
+      // Manejar errores de la petición remota si falló
+      if (!response.ok) {
+        const errorText = await response.text().catch(() => 'Sin detalles del error');
+        throw new Error(`HTTP error! status: ${response.status} - ${errorText}`);
+      }
+      
+      clearTimeout(timeoutId);
       
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorText = await response.text().catch(() => 'Sin detalles del error');
+        throw new Error(`HTTP error! status: ${response.status} - ${errorText}`);
       }
       
       const data = await response.json();
@@ -367,10 +419,22 @@ export default function EmailGeneratorPage() {
         description: `Boletín ${id} cargado: ${transformedData.projects.length} proyectos, ${transformedData.resolutions.length} resolutivos`
       });
     } catch (error) {
+      clearTimeout(timeoutId);
       const errorMessage = error instanceof Error ? error.message : 'Error desconocido';
+      
+      // Mensajes más específicos según el tipo de error
+      let userMessage = errorMessage;
+      if (errorMessage.includes('Failed to fetch') || errorMessage.includes('fetch')) {
+        userMessage = 'No se pudo conectar con el servidor. Verifica tu conexión a internet o que el servidor esté disponible.';
+      } else if (errorMessage.includes('CORS')) {
+        userMessage = 'Error de CORS. El servidor no permite el acceso desde este origen.';
+      } else if (errorMessage.includes('timeout') || errorMessage.includes('tardó demasiado')) {
+        userMessage = 'La petición tardó demasiado tiempo. Por favor, intenta de nuevo.';
+      }
+      
       toast({
         title: "Error",
-        description: `Error al cargar los datos: ${errorMessage}`,
+        description: `Error al cargar los datos: ${userMessage}`,
         variant: "destructive"
       });
       console.error('Error fetching bulletin data:', error);
